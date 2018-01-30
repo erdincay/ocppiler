@@ -3,6 +3,7 @@ all: cppiler.cpp
 
 clean:
 	$(RM) cppiler
+	$(RM) tmp.txt
 
 test:
 	g++ -g -Wall -std=c++0x cppiler.cpp -o cppiler
