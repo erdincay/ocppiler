@@ -3,3 +3,7 @@ all: cppiler.cpp
 
 clean:
 	$(RM) cppiler
+
+test:
+	g++ -g -Wall -std=c++0x cppiler.cpp -o cppiler
+	bash tests/test.sh
