@@ -31,6 +31,3 @@
 *.out
 *.app
 cppiler
-
-# Testing
-tests/tmp.txt
