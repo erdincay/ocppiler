@@ -8,7 +8,7 @@ It wants to be a compiler written in C++.
 ## How do I use it?
 ### Building it:
 
-You should have `git` and `g++` installed. Google how to do that on your OS. I'm not your mom.
+You should have `git` and `g++` installed.
 
 ```
 git clone https://github.com/hadleyel/cppiler/
@@ -17,7 +17,7 @@ make
 ```
 ### Running it:
 ```
-./cppiler [-length -help] [args]
+./cppiler
 ```
 ### Running tests:
 ```

@@ -1,4 +1,0 @@
-Usage: cppiler [flags] [args]
-Available flags:
-	-length	prints the lengths of each of the arguments
-	-help	prints this help message
