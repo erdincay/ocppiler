@@ -1,6 +1,7 @@
 #include <cctype> // for isspace, isdigit
 #include <fstream> // for ifstream
 #include <iostream> // for cout
+#include <memory> // for unique_ptr
 #include <vector> // for vector
 
 using namespace std; // unless I use actual libraries
@@ -13,19 +14,28 @@ public:
 
 class Literal: public Expression {
 public:
-  Literal (int);
-  int interpret();
+  Literal (int data) {
+    this->data = data;
+  };
+  int interpret() {
+    return data;
+  }
 private:
   int data;
 };
 
 class Plus: public Expression {
 public:
-  Plus (Expression&, Expression&);
-  int interpret();
+  Plus (Expression&, Expression&) {
+    this.e1 = e1;
+    this.e2 = e2;
+  }
+  int interpret() {
+    int ret = e1.interpret() + e2.interpret();
+  }
 private:
-  Expression *left;
-  Expression *right;
+  Expression *e1;
+  Expression *e2;
 };
 
 // Token classes ---------------------------------------------------------------
@@ -95,10 +105,42 @@ public:
     this->tokens = tokens;
     pos = 0;
   }
+  unique_ptr<Expression> parse() {
+    if (pos < (int) tokens.size()) {
+      Token token = tokens.at(pos);
+      string token_kind = token.kind;
+      int token_data = token.data;
+      if (token_kind.compare("INT")) {
+        advance();
+        Literal *ret = new Literal(token_data);
+        return unique_ptr<Expression>(ret);
+      } else if (token_kind.compare("LPAREN")) {
+        consume("LPAREN");
+        consume("PLUS");
+        unique_ptr<Expression> e1 = parse();
+        unique_ptr<Expression> e2 = parse();
+        consume("RPAREN");
+        Plus *ret = new Plus(e1, e2);
+        return unique_ptr<Expression>(ret);
+      } else {
+        cerr << "Unexpected token" << token.to_string();
+      }
+    }
+  }
 
 private:
   int pos;
   vector<Token> tokens;
+  void advance() {
+    pos++;
+  }
+  void consume(string kind) {
+    if (kind.compare(tokens.at(pos).kind)) {
+      advance();
+    } else {
+      cerr << "Expected " << kind << ", found " << tokens.at(pos).kind;
+    }
+  }
 };
 
 // Driver ----------------------------------------------------------------------
