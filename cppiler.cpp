@@ -29,39 +29,72 @@ private:
 };
 
 // Token classes ---------------------------------------------------------------
-enum TokenKind {
-  INT, PLUS, LPAREN, RPAREN;
-};
 
 class Token {
-public
+public:
+  string kind; // bjarne was mean and didn't give me enum methods :(
+  int data;
+  Token(string kind) {
+    Token(kind, -1);
+  }
+  Token(string kind, int data) {
+    this->kind = kind;
+    this->data = data;
+  }
+
+  string to_string() {
+    if (data == -1) {
+      return kind;
+    } else {
+      string number = std::to_string(data);
+      string ret;
+      ret.append(kind);
+      ret.append("(");
+      ret.append(number);
+      ret.append(")");
+      return ret;
+    }
+  }
 };
 
 // Lexer -----------------------------------------------------------------------
 
 vector<Token> lex(ifstream& input) {
   char cur_char;
-  vector<Token> ret;
+  vector<Token> tokens;
   while (!input.eof()) {
     input.get(cur_char);
     if (cur_char == '(') {
-      cout << "lparen ";
+      Token add("LPAREN");
+      tokens.push_back(add);
     } else if (cur_char == ')') {
-      cout << "rparen ";
+      Token add("RPAREN");
+      tokens.push_back(add);
     } else if (cur_char == '+') {
-      cout << "plus ";
+      Token add("RPAREN");
+      tokens.push_back(add);
     } else if (isspace(cur_char)) {
-      cout << "space ";
+      // do nothing
     } else if (isdigit(cur_char)) {
-      cout << "digit ";
+      string integer = "" + cur_char;
+      input.get(cur_char);
+      while (isdigit(cur_char)) {
+        integer += cur_char;
+        input.get(cur_char);
+      }
+      cout << "integer was " << integer;
+      Token add("INT", stoi(integer));
+      tokens.push_back(add);
     } else {
-      cout << "\nYOU DONE FUCKED UP\n";
+      cerr << "Unexpected char found: " << cur_char;
     }
   }
-  return ret;
+  return tokens;
 }
 
 // Parser ----------------------------------------------------------------------
+
+
 
 // Driver ----------------------------------------------------------------------
 
@@ -75,7 +108,10 @@ int main(int argc, char *argv[]) {
   }
 
   // Lex it.
-  lex(input);
+  vector<Token> tokens = lex(input);
+  for (unsigned int i = 0; i<10;i++) {
+    tokens.at(i).to_string();
+  }
 
   // Parse it.
 }
