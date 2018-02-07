@@ -34,9 +34,6 @@ class Token {
 public:
   string kind; // bjarne was mean and didn't give me enum methods :(
   int data;
-  Token(string kind) {
-    Token(kind, -1);
-  }
   Token(string kind, int data) {
     this->kind = kind;
     this->data = data;
@@ -65,24 +62,22 @@ vector<Token> lex(ifstream& input) {
   while (!input.eof()) {
     input.get(cur_char);
     if (cur_char == '(') {
-      Token add("LPAREN");
+      Token add("LPAREN", -1);
       tokens.push_back(add);
     } else if (cur_char == ')') {
-      Token add("RPAREN");
+      Token add("RPAREN", -1);
       tokens.push_back(add);
     } else if (cur_char == '+') {
-      Token add("RPAREN");
+      Token add("PLUS", -1);
       tokens.push_back(add);
     } else if (isspace(cur_char)) {
       // do nothing
     } else if (isdigit(cur_char)) {
-      string integer = "" + cur_char;
-      input.get(cur_char);
-      while (isdigit(cur_char)) {
-        integer += cur_char;
+      string integer(1, cur_char);
+      while (isdigit(input.peek())) {
         input.get(cur_char);
+        integer.push_back(cur_char);
       }
-      cout << "integer was " << integer;
       Token add("INT", stoi(integer));
       tokens.push_back(add);
     } else {
@@ -94,7 +89,17 @@ vector<Token> lex(ifstream& input) {
 
 // Parser ----------------------------------------------------------------------
 
+class Parser {
+public:
+  Parser(vector<Token> tokens) {
+    this->tokens = tokens;
+    pos = 0;
+  }
 
+private:
+  int pos;
+  vector<Token> tokens;
+};
 
 // Driver ----------------------------------------------------------------------
 
@@ -109,16 +114,9 @@ int main(int argc, char *argv[]) {
 
   // Lex it.
   vector<Token> tokens = lex(input);
-  for (unsigned int i = 0; i<10;i++) {
-    tokens.at(i).to_string();
-  }
-
+  /* Token test
+  for (unsigned int i = 0; i < tokens.size(); i++) {
+    cout << tokens.at(i).to_string();
+  } */
   // Parse it.
 }
-
-// Notes -----------------------------------------------------------------------
-//declare interface Exp
-// with a subclass literal (integer) implements exp, which returns value
-// with a subclass plus implements exp that can have two exp children,
-// both have an intepretation function
-// recursively call interpret on sub functions
