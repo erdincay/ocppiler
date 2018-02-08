@@ -1,7 +1,7 @@
 #include <cctype> // for isspace, isdigit
 #include <fstream> // for ifstream
 #include <iostream> // for cout
-#include <memory> // for unique_ptr
+#include <memory> // for shared_ptr
 #include <vector> // for vector
 
 using namespace std; // unless I use actual libraries
@@ -14,9 +14,18 @@ public:
 
 class Literal: public Expression {
 public:
-  Literal (int data) {
+  // normal constructor
+  Literal(int data) {
     this->data = data;
-  };
+  }
+  // copy constructor
+  Literal(const Literal &obj) {
+    this->data = obj.data;
+  }
+  // destructor
+  //~Literal() {
+//
+  //}
   int interpret() {
     return data;
   }
@@ -26,16 +35,27 @@ private:
 
 class Plus: public Expression {
 public:
-  Plus (Expression&, Expression&) {
-    this.e1 = e1;
-    this.e2 = e2;
+  // normal constructor
+  Plus (shared_ptr<Expression> left, shared_ptr<Expression> right) {
+    this->left = left;
+    this->right = right;
   }
+  // copy constructor
+  Plus (const Plus &obj) {
+    this->left = obj.left;
+    this->right = obj.right;
+  }
+  // destructor
+  //~Plus() {
+//
+  //}
   int interpret() {
-    int ret = e1.interpret() + e2.interpret();
+    int ret = left->interpret() + right->interpret();
+    return ret;
   }
 private:
-  Expression *e1;
-  Expression *e2;
+  shared_ptr<Expression> left;
+  shared_ptr<Expression> right;
 };
 
 // Token classes ---------------------------------------------------------------
@@ -105,27 +125,27 @@ public:
     this->tokens = tokens;
     pos = 0;
   }
-  unique_ptr<Expression> parse() {
+  shared_ptr<Expression> parse() {
     if (pos < (int) tokens.size()) {
       Token token = tokens.at(pos);
       string token_kind = token.kind;
       int token_data = token.data;
       if (token_kind.compare("INT")) {
         advance();
-        Literal *ret = new Literal(token_data);
-        return unique_ptr<Expression>(ret);
+        return make_shared<Expression>(new Literal(token_data));
       } else if (token_kind.compare("LPAREN")) {
         consume("LPAREN");
         consume("PLUS");
-        unique_ptr<Expression> e1 = parse();
-        unique_ptr<Expression> e2 = parse();
+        shared_ptr<Expression> left = parse();
+        shared_ptr<Expression> right = parse();
         consume("RPAREN");
-        Plus *ret = new Plus(e1, e2);
-        return unique_ptr<Expression>(ret);
+        return make_shared<Expression>(new Plus(left, right));
       } else {
         cerr << "Unexpected token" << token.to_string();
       }
     }
+    cerr << "Parsing error\n";
+    exit(EXIT_FAILURE);
   }
 
 private:
@@ -161,4 +181,7 @@ int main(int argc, char *argv[]) {
     cout << tokens.at(i).to_string();
   } */
   // Parse it.
+  Parser parser = Parser(tokens);
+  shared_ptr<Expression> e = parser.parse();
+  cout << e->interpret();
 }
