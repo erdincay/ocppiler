@@ -29,23 +29,38 @@ private:
   int data;
 };
 
-class Plus: public Expression {
+class Operator: public Expression {
 public:
   // normal constructor
-  Plus (shared_ptr<Expression> left, shared_ptr<Expression> right) {
+  Operator (string type, shared_ptr<Expression> left, shared_ptr<Expression> right) {
+    this->type = type;
     this->left = left;
     this->right = right;
   }
   // copy constructor
-  Plus (const Plus &obj) {
+  Operator (const Operator &obj) {
+    this->type = obj.type;
     this->left = obj.left;
     this->right = obj.right;
   }
   int interpret() {
-    int ret = left->interpret() + right->interpret();
+    int ret;
+    if (type.compare("PLUS") == 0) {
+      ret = left->interpret() + right->interpret();
+    } else if (type.compare("MINUS") == 0) {
+      ret = left->interpret() - right->interpret();
+    } else if (type.compare("TIMES") == 0) {
+      ret = left->interpret() * right->interpret();
+    } else if (type.compare("DIVIDE") == 0) {
+      ret = left->interpret() / right->interpret();
+    } else {
+      cerr << "Unexpected operator type " << type << "\n";
+      exit(EXIT_FAILURE);
+    }
     return ret;
   }
 private:
+  string type;
   shared_ptr<Expression> left;
   shared_ptr<Expression> right;
 };
@@ -189,7 +204,7 @@ public:
         shared_ptr<Expression> left = parse();
         shared_ptr<Expression> right = parse();
         consume("RPAREN");
-        return make_shared<Plus>(left, right);
+        return make_shared<Operator>("PLUS", left, right);
       } else {
         cerr << "Unexpected token" << token.to_string() << "\n";
       }
