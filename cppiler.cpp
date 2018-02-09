@@ -122,10 +122,12 @@ public:
       Token token = tokens.at(pos);
       string token_kind = token.kind;
       int token_data = token.data;
-      if (token_kind.compare("INT")) {
+      if (token_kind.compare("INT") == 0) {
+        cout << "found int\n";
         advance();
         return make_shared<Literal>(token_data);
-      } else if (token_kind.compare("LPAREN")) {
+      } else if (token_kind.compare("LPAREN") == 0) {
+        cout << "found lparen\n";
         consume("LPAREN");
         consume("PLUS");
         shared_ptr<Expression> left = parse();
@@ -133,7 +135,7 @@ public:
         consume("RPAREN");
         return make_shared<Plus>(left, right);
       } else {
-        cerr << "Unexpected token" << token.to_string();
+        cerr << "Unexpected token" << token.to_string() << "\n";
       }
     }
     cerr << "Parsing error\n";
@@ -147,10 +149,10 @@ private:
     pos++;
   }
   void consume(string kind) {
-    if (kind.compare(tokens.at(pos).kind)) {
+    if (kind.compare(tokens.at(pos).kind) == 0) {
       advance();
     } else {
-      cerr << "Expected " << kind << ", found " << tokens.at(pos).kind;
+      cerr << "Expected " << kind << ", found " << tokens.at(pos).kind << "\n";
     }
   }
 };
@@ -168,10 +170,10 @@ int main(int argc, char *argv[]) {
 
   // Lex it.
   vector<Token> tokens = lex(input);
-  /* Token test
-  for (unsigned int i = 0; i < tokens.size(); i++) {
+  //Token test
+  /*for (unsigned int i = 0; i < tokens.size(); i++) {
     cout << tokens.at(i).to_string();
-  } */
+  }*/
   // Parse it.
   Parser parser = Parser(tokens);
   shared_ptr<Expression> e = parser.parse();
