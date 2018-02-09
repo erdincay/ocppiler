@@ -1,4 +1,4 @@
-#include <cctype> // for isspace, isdigit
+#include <cctype> // for isspace, isdigit, isalpha, ispunct
 #include <fstream> // for ifstream
 #include <iostream> // for cout
 #include <memory> // for shared_ptr
@@ -92,6 +92,63 @@ vector<Token> lex(ifstream& input) {
     } else if (cur_char == '+') {
       Token add("PLUS", -1);
       tokens.push_back(add);
+    } else if (cur_char == '-') {
+      Token add("MINUS", -1);
+      tokens.push_back(add);
+    } else if (cur_char == '*') {
+      Token add("TIMES", -1);
+      tokens.push_back(add);
+    } else if (cur_char == '/') {
+      Token add("DIVIDE", -1);
+      tokens.push_back(add);
+    } else if (cur_char == 't') {
+      string boole(1, cur_char);
+      while (isalpha(input.peek())) {
+        input.get(cur_char);
+        boole.push_back(cur_char);
+      }
+      if (boole.compare("true") != 0) {
+        cerr << "Unexpected token " << boole << "\n";
+        exit(EXIT_FAILURE);
+      }
+      Token add("TRUE", -1);
+      tokens.push_back(add);
+    } else if (cur_char == 'f') {
+      string boole(1, cur_char);
+      while (isalpha(input.peek())) {
+        input.get(cur_char);
+        boole.push_back(cur_char);
+      }
+      if (boole.compare("false") != 0) {
+        cerr << "Unexpected token " << boole << "\n";
+        exit(EXIT_FAILURE);
+      }
+      Token add("FALSE", -1);
+      tokens.push_back(add);
+    } else if (cur_char == 'i') {
+      string control(1, cur_char);
+      while (isalpha(input.peek())) {
+        input.get(cur_char);
+        control.push_back(cur_char);
+      }
+      if (control.compare("if") != 0) {
+        cerr << "Unexpected token " << control << "\n";
+        exit(EXIT_FAILURE);
+      }
+      Token add("IF", -1);
+      tokens.push_back(add);
+    } else if (cur_char == '<') {
+      string comparer(1, cur_char);
+      while (ispunct(input.peek())) {
+        input.get(cur_char);
+        comparer.push_back(cur_char);
+      }
+      if (comparer.compare("<=") != 0) {
+        cerr << "Unexpected token " << comparer << "\n";
+        exit(EXIT_FAILURE);
+      }
+      Token add("<=", -1);
+      tokens.push_back(add);
     } else if (isspace(cur_char)) {
       // do nothing
     } else if (isdigit(cur_char)) {
@@ -104,6 +161,7 @@ vector<Token> lex(ifstream& input) {
       tokens.push_back(add);
     } else {
       cerr << "Unexpected char found: " << cur_char;
+      exit(EXIT_FAILURE);
     }
   }
   return tokens;
@@ -123,11 +181,9 @@ public:
       string token_kind = token.kind;
       int token_data = token.data;
       if (token_kind.compare("INT") == 0) {
-        cout << "found int\n";
         advance();
         return make_shared<Literal>(token_data);
       } else if (token_kind.compare("LPAREN") == 0) {
-        cout << "found lparen\n";
         consume("LPAREN");
         consume("PLUS");
         shared_ptr<Expression> left = parse();
@@ -171,11 +227,11 @@ int main(int argc, char *argv[]) {
   // Lex it.
   vector<Token> tokens = lex(input);
   //Token test
-  /*for (unsigned int i = 0; i < tokens.size(); i++) {
-    cout << tokens.at(i).to_string();
-  }*/
+  for (unsigned int i = 0; i < tokens.size(); i++) {
+    cout << tokens.at(i).to_string() << " ";
+  }
   // Parse it.
-  Parser parser = Parser(tokens);
-  shared_ptr<Expression> e = parser.parse();
-  cout << e->interpret() << "\n";
+  //Parser parser = Parser(tokens);
+  //shared_ptr<Expression> e = parser.parse();
+  //cout << e->interpret() << "\n";
 }
