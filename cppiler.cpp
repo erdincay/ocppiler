@@ -22,10 +22,6 @@ public:
   Literal(const Literal &obj) {
     this->data = obj.data;
   }
-  // destructor
-  //~Literal() {
-//
-  //}
   int interpret() {
     return data;
   }
@@ -45,10 +41,6 @@ public:
     this->left = obj.left;
     this->right = obj.right;
   }
-  // destructor
-  //~Plus() {
-//
-  //}
   int interpret() {
     int ret = left->interpret() + right->interpret();
     return ret;
@@ -132,14 +124,14 @@ public:
       int token_data = token.data;
       if (token_kind.compare("INT")) {
         advance();
-        return make_shared<Expression>(new Literal(token_data));
+        return make_shared<Literal>(token_data);
       } else if (token_kind.compare("LPAREN")) {
         consume("LPAREN");
         consume("PLUS");
         shared_ptr<Expression> left = parse();
         shared_ptr<Expression> right = parse();
         consume("RPAREN");
-        return make_shared<Expression>(new Plus(left, right));
+        return make_shared<Plus>(left, right);
       } else {
         cerr << "Unexpected token" << token.to_string();
       }
@@ -183,5 +175,5 @@ int main(int argc, char *argv[]) {
   // Parse it.
   Parser parser = Parser(tokens);
   shared_ptr<Expression> e = parser.parse();
-  cout << e->interpret();
+  cout << e->interpret() << "\n";
 }
