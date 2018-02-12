@@ -1,5 +1,10 @@
+#ifndef PARSER_HPP
+#define PARSER_HPP
+
 #include <memory> // for shared_ptr
 #include <vector> // for vector
+
+#include "lexer.hpp"
 
 class Expression {
 public:
@@ -51,3 +56,5 @@ private:
   void advance();
   void consume(std::string kind);
 };
+
+#endif

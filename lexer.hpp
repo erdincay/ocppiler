@@ -1,3 +1,6 @@
+#ifndef LEXER_HPP
+#define LEXER_HPP
+
 #include <fstream> // for ifstream
 #include <vector> // for vector
 
@@ -12,3 +15,4 @@ public:
 };
 
 std::vector<Token> lex(std::ifstream& input);
+#endif
