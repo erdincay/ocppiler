@@ -3,38 +3,34 @@
 #include <iostream> // for cerr
 #include <vector> // for vector
 
-class Token {
-public:
-  std::string kind; // bjarne was mean and didn't give me enum methods :(
-  int data;
-  //normal constructor
-  Token(std::string kind, int data) {
-    this->kind = kind;
-    this->data = data;
+#include "lexer.hpp"
+
+//Token
+Token::Token(std::string kind, int data) {
+  this->kind = kind;
+  this->data = data;
+}
+Token::Token(const Token &obj) {
+  this->kind = obj.kind;
+  this->data = obj.data;
+}
+void Token::operator= (const Token &obj) {
+  this->kind = obj.kind;
+  this->data = obj.data;
+}
+std::string Token::to_string() {
+  if (data == -1) {
+    return kind;
+  } else {
+    std::string number = std::to_string(data);
+    std::string ret;
+    ret.append(kind);
+    ret.append("(");
+    ret.append(number);
+    ret.append(")");
+    return ret;
   }
-  // copy constructor
-  Token(const Token &obj) {
-    this->kind = obj.kind;
-    this->data = obj.data;
-  }
-  void operator= (const Token &obj) {
-    this->kind = obj.kind;
-    this->data = obj.data;
-  }
-  std::string to_string() {
-    if (data == -1) {
-      return kind;
-    } else {
-      std::string number = std::to_string(data);
-      std::string ret;
-      ret.append(kind);
-      ret.append("(");
-      ret.append(number);
-      ret.append(")");
-      return ret;
-    }
-  }
-};
+}
 
 std::vector<Token> lex(std::ifstream& input) {
   char cur_char;

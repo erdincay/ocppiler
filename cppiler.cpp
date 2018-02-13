@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
   }
   cout << "\n"; */
   // Parse it.
-  Parser parser = Parser(tokens);
+  Parser parser (tokens);
   std::shared_ptr<Expression> e = parser.parse();
   std::cout << e->interpret() << "\n";
 }

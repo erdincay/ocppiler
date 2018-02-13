@@ -8,7 +8,7 @@
 
 class Expression {
 public:
-  virtual int interpret();
+  virtual int interpret() = 0;
 };
 
 class Literal: public Expression {

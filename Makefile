@@ -1,5 +1,5 @@
 all: cppiler.cpp
-	g++ -g -Wall -std=c++11 cppiler.cpp lexer.cpp parser.cpp -o cppiler
+	g++ -g -Wall -std=c++11 lexer.cpp parser.cpp cppiler.cpp -o cppiler
 
 clean:
 	$(RM) cppiler
