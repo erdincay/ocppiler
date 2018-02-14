@@ -1,5 +1,6 @@
 #include <iostream> // for cerr
 #include <memory> // for shared_ptr
+#include <string> // for to_string
 #include <vector> // for vector
 
 #include "lexer.hpp"
@@ -15,6 +16,10 @@ Literal::Literal(const Literal &obj) {
 int Literal::interpret() {
   return data;
 }
+std::string Literal::toString() {
+  return std::to_string(data);
+}
+
 // Operator
 Operator::Operator (std::string name, std::shared_ptr<Expression> left, std::shared_ptr<Expression> right) {
   this->name = name;
@@ -38,7 +43,7 @@ int Operator::interpret() {
     int leftside = left->interpret();
     int rightside = right->interpret();
     if (rightside == 0) {
-      perror("Division by zero is not permitted.\n");
+      std::cerr << "Division by zero is not permitted";
       exit(EXIT_FAILURE);
     }
     ret = leftside / rightside;
@@ -48,6 +53,31 @@ int Operator::interpret() {
     std::cerr << "Unexpected operator name " << name << "\n";
     exit(EXIT_FAILURE);
   }
+  return ret;
+}
+
+std::string Operator::toString() {
+  std::string ret;
+  ret.append("(");
+  if (!name.compare("PLUS")) {
+    ret.append("+");
+  } else if (!name.compare("MINUS")) {
+    ret.append("-");
+  } else if (!name.compare("TIMES")) {
+    ret.append("*");
+  } else if (!name.compare("DIVIDE")) {
+    ret.append("/");
+  } else if (!name.compare("LEQ")) {
+    ret.append("<=");
+  } else {
+    std::cerr << "Error determining operator";
+    exit(EXIT_FAILURE);
+  }
+  ret.append(" "); 
+  ret.append(left->toString());
+  ret.append(" ");
+  ret.append(right->toString());
+  ret.append(")");
   return ret;
 }
 
@@ -70,6 +100,18 @@ int Conditional::interpret() {
   } else {
     return els->interpret();
   }
+}
+
+std::string Conditional::toString() {
+  std::string ret;
+  ret.append("(if ");
+  ret.append(condition->toString());
+  ret.append(" ");
+  ret.append(then->toString());
+  ret.append(" ");
+  ret.append(els->toString());
+  ret.append(")");
+  return ret;
 }
 
 // Parser

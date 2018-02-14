@@ -9,6 +9,7 @@
 class Expression {
 public:
   virtual int interpret() = 0;
+  virtual std::string toString() = 0;
 };
 
 class Literal: public Expression {
@@ -16,6 +17,7 @@ public:
   Literal(int data);
   Literal(const Literal &obj);
   int interpret();
+  std::string toString();
 
 private:
   int data;
@@ -26,6 +28,7 @@ public:
   Operator (std::string name, std::shared_ptr<Expression> left, std::shared_ptr<Expression> right);
   Operator (const Operator &obj);
   int interpret();
+  std::string toString();
 private:
   std::string name;
   std::shared_ptr<Expression> left;
@@ -37,6 +40,7 @@ public:
   Conditional (std::string name, std::shared_ptr<Expression> condition, std::shared_ptr<Expression> then, std::shared_ptr<Expression> els);
   Conditional (const Conditional &obj);
   int interpret();
+  std::string toString();
 private:
   std::string name;
   std::shared_ptr<Expression> condition;
