@@ -44,6 +44,6 @@ int main(int argc, char *argv[]) {
     std::vector<Token> tokens = lex(input);
     Parser parser (tokens);
     std::shared_ptr<Expression> e = parser.parse();
-    std::cout << e->interpret() << "\n";
+    evaluate(e);
   }
 }

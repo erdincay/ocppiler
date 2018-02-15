@@ -6,18 +6,58 @@
 #include "lexer.hpp"
 #include "parser.hpp"
 
+void evaluate(std::shared_ptr<Expression> e) {
+  return_t ret = e->interpret();
+  return_kind_t type = ret.type;
+  switch (type) {
+  case INT:
+    std::cout << ret.integer << "\n";
+    break;
+  case BOOL:
+    if (ret.boolean == true) {
+      std::cout << "true" << "\n";
+    } else if (ret.boolean == false) {
+      std::cout << "false" << "\n";
+    } else {
+      std::cout << "improper boolean\n";
+    }
+    break;
+  default:
+    std::cerr << "Unrecognized type\n";
+    exit(EXIT_FAILURE);
+  }
+}
+
 // Literal
-Literal::Literal(int data) {
-  this->data = data;
+Literal::Literal(Token token) {
+  if (!token.kind.compare("TRUE")) {
+    data.type = BOOL;
+    data.boolean = true;
+  } else if (!token.kind.compare("FALSE")) {
+    data.type = BOOL;
+    data.boolean = false;
+  } else if (!token.kind.compare("INT")) {
+    data.type = INT;
+    data.integer = token.data;
+  } else {
+    std::cerr << "Invalid token.\n";
+    exit(EXIT_FAILURE);
+  }
 }
 Literal::Literal(const Literal &obj) {
   this->data = obj.data;
 }
-int Literal::interpret() {
+return_t Literal::interpret() {
   return data;
 }
 std::string Literal::toString() {
-  return std::to_string(data);
+  if ((data.type == BOOL) && (data.boolean == true)) {
+    return "true";
+  } else if ((data.type == BOOL) && (data.boolean == false)) {
+    return "false";
+  } else {
+    return std::to_string(data.integer);
+  }
 }
 
 // Operator
@@ -31,29 +71,40 @@ Operator::Operator (const Operator &obj) {
   this->left = obj.left;
   this->right = obj.right;
 }
-int Operator::interpret() {
-  int ret;
-  if (!name.compare("PLUS")) {
-    ret = left->interpret() + right->interpret();
-  } else if (!name.compare("MINUS")) {
-    ret = left->interpret() - right->interpret();
-  } else if (!name.compare("TIMES")) {
-    ret = left->interpret() * right->interpret();
-  } else if (!name.compare("DIVIDE")) {
-    int leftside = left->interpret();
-    int rightside = right->interpret();
-    if (rightside == 0) {
-      std::cerr << "Division by zero is not permitted";
+return_t Operator::interpret() {
+  return_t ret;
+  return_t left_side = left->interpret();
+  return_t right_side = right->interpret();
+
+  if ((left_side.type == INT) && (right_side.type == INT)) {
+    if (!name.compare("PLUS")) {
+      ret.type = INT;
+      ret.integer = left_side.integer + right_side.integer;
+    } else if (!name.compare("MINUS")) {
+      ret.type = INT;
+      ret.integer = left_side.integer - right_side.integer;
+    } else if (!name.compare("TIMES")) {
+      ret.type = INT;
+      ret.integer = left_side.integer * right_side.integer;
+    } else if (!name.compare("DIVIDE")) {
+      if (right_side.integer == 0) {
+        std::cerr << "Division by zero is not permitted";
+        exit(EXIT_FAILURE);
+      }
+      ret.type = INT;
+      ret.integer = left_side.integer / right_side.integer;
+    } else if (!name.compare("LEQ")) {
+      ret.type = BOOL;
+      ret.boolean = left_side.integer <= right_side.integer;
+    } else {
+      std::cerr << "Unexpected operator name " << name << "\n";
       exit(EXIT_FAILURE);
     }
-    ret = leftside / rightside;
-  } else if (!name.compare("LEQ")) {
-    ret = left->interpret() <= right->interpret(); // TODO: real booleans
+    return ret;
   } else {
-    std::cerr << "Unexpected operator name " << name << "\n";
+    std::cerr << "Operation was not made between ints.\n";
     exit(EXIT_FAILURE);
   }
-  return ret;
 }
 
 std::string Operator::toString() {
@@ -73,7 +124,7 @@ std::string Operator::toString() {
     std::cerr << "Error determining operator";
     exit(EXIT_FAILURE);
   }
-  ret.append(" "); 
+  ret.append(" ");
   ret.append(left->toString());
   ret.append(" ");
   ret.append(right->toString());
@@ -94,11 +145,20 @@ Conditional::Conditional (const Conditional &obj) {
   this->then = obj.then;
   this->els = obj.els;
 }
-int Conditional::interpret() {
-  if(condition->interpret()) {
-    return then->interpret();
+return_t Conditional::interpret() {
+  return_t cond = condition->interpret();
+  return_t thn = then->interpret();
+  return_t el = els->interpret();
+
+  if (cond.type == BOOL) {
+    if(cond.boolean) {
+      return thn;
+    } else {
+      return el;
+    }
   } else {
-    return els->interpret();
+    std::cerr << "Conditional was not boolean!\n";
+    exit(EXIT_FAILURE);
   }
 }
 
@@ -127,13 +187,12 @@ std::shared_ptr<Expression> Parser::parse() {
   if (pos < (int) tokens.size()) {
     Token token = tokens.at(pos);
     std::string token_kind = token.kind;
-    int token_data = token.data;
     if (!token_kind.compare("INT")) {
       advance();
-      return std::make_shared<Literal>(token_data);
+      return std::make_shared<Literal>(token);
     } else if (!token_kind.compare("TRUE") || (!token_kind.compare("FALSE"))) {
       advance();
-      return std::make_shared<Literal>(token_data);
+      return std::make_shared<Literal>(token);
     } else if (!token_kind.compare("LPAREN")) {
       consume("LPAREN");
       token = tokens.at(pos);

@@ -6,28 +6,38 @@
 
 #include "lexer.hpp"
 
+typedef enum { INT, BOOL } return_kind_t;
+
+typedef struct {
+  return_kind_t type;
+  int integer;
+  bool boolean;
+} return_t;
+
 class Expression {
 public:
-  virtual int interpret() = 0;
+  virtual return_t interpret() = 0;
   virtual std::string toString() = 0;
 };
 
+void evaluate(std::shared_ptr<Expression> e);
+
 class Literal: public Expression {
 public:
-  Literal(int data);
+  Literal(Token token);
   Literal(const Literal &obj);
-  int interpret();
+  return_t interpret();
   std::string toString();
 
 private:
-  int data;
+  return_t data;
 };
 
 class Operator: public Expression {
 public:
   Operator (std::string name, std::shared_ptr<Expression> left, std::shared_ptr<Expression> right);
   Operator (const Operator &obj);
-  int interpret();
+  return_t interpret();
   std::string toString();
 private:
   std::string name;
@@ -39,7 +49,7 @@ class Conditional: public Expression {
 public:
   Conditional (std::string name, std::shared_ptr<Expression> condition, std::shared_ptr<Expression> then, std::shared_ptr<Expression> els);
   Conditional (const Conditional &obj);
-  int interpret();
+  return_t interpret();
   std::string toString();
 private:
   std::string name;
