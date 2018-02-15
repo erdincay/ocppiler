@@ -6,5 +6,4 @@ clean:
 	$(RM) tmp.txt
 
 test:
-	g++ -g -Wall -std=c++0x cppiler.cpp -o cppiler
 	bash tests/test.sh

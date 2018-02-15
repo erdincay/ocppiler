@@ -88,7 +88,7 @@ return_t Operator::interpret() {
       ret.integer = left_side.integer * right_side.integer;
     } else if (!name.compare("DIVIDE")) {
       if (right_side.integer == 0) {
-        std::cerr << "Division by zero is not permitted";
+        std::cerr << "Division by zero is not permitted\n";
         exit(EXIT_FAILURE);
       }
       ret.type = INT;
