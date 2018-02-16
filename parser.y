@@ -71,3 +71,9 @@ int main(int argc, char** argv) {
 
   exit(EXIT_SUCCESS);
 }
+
+void yyerror(const char *s) {
+	std::cout << s << std::endl;
+	// might as well halt now:
+	exit(EXIT_FAILURE);
+}
