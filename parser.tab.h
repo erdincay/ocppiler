@@ -45,8 +45,16 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    INT = 258,
-    BOOL = 259
+    T_INT = 258,
+    T_FLOAT = 259,
+    T_PLUS = 260,
+    T_MINUS = 261,
+    T_MULTIPLY = 262,
+    T_DIVIDE = 263,
+    T_LEFT = 264,
+    T_RIGHT = 265,
+    T_NEWLINE = 266,
+    T_QUIT = 267
   };
 #endif
 
@@ -55,12 +63,12 @@ extern int yydebug;
 
 union YYSTYPE
 {
-#line 18 "parser.y" /* yacc.c:1909  */
+#line 10 "parser.y" /* yacc.c:1909  */
 
 	int ival;
-  bool bval;
+	float fval;
 
-#line 64 "parser.tab.h" /* yacc.c:1909  */
+#line 72 "parser.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;

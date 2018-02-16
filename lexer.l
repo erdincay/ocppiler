@@ -1,5 +1,6 @@
+%option noyywrap
+
 %{
-#include <cstdio>
 #include <iostream>
 #define YY_DECL extern "C" int yylex()
 
@@ -7,17 +8,21 @@
 
 %}
 %%
-[ \t\n]         ;
-"("             { std::cout << "LPAREN "; }
-")"             { std::cout << "RPAREN "; }
-[0-9]+          { yylval.ival = atoi(yytext); return INT; }
-"true"          { yylval.ival = true; return BOOL; }
-"false"         { yylval.ival = false; return BOOL; }
-"+"             { std::cout << "PLUS "; }
-"-"             { std::cout << "MINUS "; }
-"*"             { std::cout << "TIMES "; }
-"/"             { std::cout << "DIVIDE "; }
-"<="            { std::cout << "LEQ "; }
-"if"            { std::cout << "IF "; }
-.               { std::cerr << "Lexing error" << std::endl; exit(EXIT_FAILURE); }
+[ \t]            ;
+\n               { return NEWLINE; }
+"("              { return RPAREN; }
+")"              { return LPAREN; }
+[0-9]+           { yylval.ival = atoi(yytext); return INT; }
+"true"           { std::cout << "TRUE "; }
+"false"          { std::cout << "FALSE "; }
+"+ "             { return PLUS; }
+"- "             { return MINUS; }
+"* "             { return TIMES; }
+"/ "             { return DIVIDE; }
+"<= "            { std::cout << "LEQ "; }
+"if "            { std::cout << "IF "; }
+"then "          { std::cout << "THEN "; }
+"else "          { std::cout << "ELSE "; }
+"quit"           { return QUIT; }
+.                { std::cerr << "Lexing error" << std::endl; exit(EXIT_FAILURE); }
 %%
