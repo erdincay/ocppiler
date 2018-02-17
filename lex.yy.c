@@ -365,10 +365,10 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[40] =
     {   0,
-        0,    0,   19,   17,    1,    2,    3,    4,   10,    8,
-        9,   11,    5,   17,   17,   17,   17,   17,   17,    5,
+        0,    0,   19,   17,    1,    3,   10,   11,    8,    6,
+        7,    9,    2,   17,   17,   17,   17,   17,   17,    2,
        12,    0,    0,   13,    0,    0,    0,    0,    0,    0,
-        0,    0,   15,    0,   16,   14,    6,    7,    0
+        0,    0,   15,    0,   16,   14,    4,    5,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -752,55 +752,55 @@ YY_RULE_SETUP
 ;
 	YY_BREAK
 case 2:
-/* rule 2 can match eol */
 YY_RULE_SETUP
 #line 12 "lexer.l"
-{ return NEWLINE; }
+{ yylval.ival = atoi(yytext); return INT; }
 	YY_BREAK
 case 3:
+/* rule 3 can match eol */
 YY_RULE_SETUP
 #line 13 "lexer.l"
-{ return RPAREN; }
+{ return NEWLINE; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
 #line 14 "lexer.l"
-{ return LPAREN; }
+{ std::cout << "TRUE "; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
 #line 15 "lexer.l"
-{ yylval.ival = atoi(yytext); return INT; }
+{ std::cout << "FALSE "; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
 #line 16 "lexer.l"
-{ std::cout << "TRUE "; }
+{ return PLUS; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
 #line 17 "lexer.l"
-{ std::cout << "FALSE "; }
+{ return MINUS; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
 #line 18 "lexer.l"
-{ return PLUS; }
+{ return TIMES; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
 #line 19 "lexer.l"
-{ return MINUS; }
+{ return DIVIDE; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
 #line 20 "lexer.l"
-{ return TIMES; }
+{ return LPAREN; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
 #line 21 "lexer.l"
-{ return DIVIDE; }
+{ return RPAREN; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP

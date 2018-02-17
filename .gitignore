@@ -31,3 +31,8 @@
 *.out
 *.app
 cppiler
+
+# Flex/Bison specifics
+*.tab.c
+*.tab.h
+*.yy.c

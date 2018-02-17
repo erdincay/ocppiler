@@ -9,20 +9,20 @@
 %}
 %%
 [ \t]            ;
-\n               { return NEWLINE; }
-"("              { return RPAREN; }
-")"              { return LPAREN; }
 [0-9]+           { yylval.ival = atoi(yytext); return INT; }
+\n               { return NEWLINE; }
 "true"           { std::cout << "TRUE "; }
 "false"          { std::cout << "FALSE "; }
-"+"             { return PLUS; }
-"-"             { return MINUS; }
-"*"             { return TIMES; }
-"/"             { return DIVIDE; }
-"<="            { std::cout << "LEQ "; }
-"if"            { std::cout << "IF "; }
-"then"          { std::cout << "THEN "; }
-"else"          { std::cout << "ELSE "; }
+"+"              { return PLUS; }
+"-"              { return MINUS; }
+"*"              { return TIMES; }
+"/"              { return DIVIDE; }
+"("              { return LPAREN; }
+")"              { return RPAREN; }
+"<="             { std::cout << "LEQ "; }
+"if"             { std::cout << "IF "; }
+"then"           { std::cout << "THEN "; }
+"else"           { std::cout << "ELSE "; }
 "quit"           { return QUIT; }
 .                { std::cerr << "Lexing error" << std::endl; exit(EXIT_FAILURE); }
 %%
