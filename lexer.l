@@ -10,19 +10,18 @@
 %%
 [ \t]            ;
 [0-9]+           { yylval.ival = atoi(yytext); return INT; }
+"true"           { yylval.bval = true; return BOOL; }
+"false"          { yylval.bval = false; return BOOL;  }
 \n               { return NEWLINE; }
-"true"           { std::cout << "TRUE "; }
-"false"          { std::cout << "FALSE "; }
 "+"              { return PLUS; }
 "-"              { return MINUS; }
 "*"              { return TIMES; }
 "/"              { return DIVIDE; }
 "("              { return LPAREN; }
 ")"              { return RPAREN; }
-"<="             { std::cout << "LEQ "; }
-"if"             { std::cout << "IF "; }
-"then"           { std::cout << "THEN "; }
-"else"           { std::cout << "ELSE "; }
-"quit"           { return QUIT; }
+"<="             { return LEQ; }
+"if"             { return IF; }
+"then"           { return THEN; }
+"else"           { return ELSE; }
 .                { std::cerr << "Lexing error" << std::endl; exit(EXIT_FAILURE); }
 %%
