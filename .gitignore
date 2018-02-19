@@ -36,3 +36,6 @@ cppiler
 *.tab.c
 *.tab.h
 *.yy.c
+
+# Dolphin
+.directory
