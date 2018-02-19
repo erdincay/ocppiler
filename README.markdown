@@ -1,29 +1,35 @@
 # cppiler
-## Who are you?
-I'm Hadley and this is Cppiler.
+A bare-bones compiler written in C++, flex, and Bison; made by [@hadleyel](https://github.com/hadleyel "Hadley") to experiment with programming language implementation.
 
-## What is this?
-It's a compiler written in C++! (And C, for the moment.)
+## Grammar
+This will be frequently modified and added to.
+```
+e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 | if e1 then e2 else e3
+```
+## Compiler
+### Dependencies
+- [Git](https://git-scm.com/)
+- [Make](https://www.gnu.org/software/make/)
+- [GCC](http://gcc.gnu.org/ "GCC, the GNU Compiler Collection")
+- [flex](https://github.com/westes/flex "The Fast Lexical Analyzer")
+- [Bison](https://www.gnu/software/bison/)
 
-## How do I use it?
-### Building it:
+| Action | Command |
+| --- | --- |
+| Download | `git clone https://github.com/hadleyel/cppiler.git` |
+| Build | `make` |
+| Run | `./cppiler file-name.txt` |
+| Clean up | `make clean` |
 
-You should have `git`, `g++`, `bison`, and `flex` installed.
-
-```
-git clone https://github.com/hadleyel/cppiler/
-cd cppiler
-make
-```
-### Running it:
-```
-./cppiler filename.src
-```
-### Running tests:
-```
-make test
-```
-## What's up?
-* Homework 3: Psych! We're sticking with C++. Everything has been moved from my hand-rolled implementation into one using a combination of Bison and Flex.
-* Homework 2: I tried very hard to make a compiler for a Lisp-like language. It worked, but C++ templates are killing me so I'm switching to OCaml.
-* Homework 1: A bare-bones program and tests were added. No bugs! Probably.
+## History
+* **Assignment 3**:
+    * Added tests for hand-rolled parser
+    * Moved hand-rolled lexer/parser to its own folder
+    * Implemented flex/Bison lexer/parser
+* **Assignment 2**:
+    * Deleted simple C++ I/O program
+    * Created hand-rolled lexer/parser for a small, Lisp-like language
+    * Booleans were temporarily C-like (i.e. just ints), but became `bool`s in a later release
+* **Assignment 1**:
+    * Created simple C++ I/O program
+    * Added command-line flags
