@@ -38,4 +38,4 @@ cppiler
 *.yy.c
 
 # Dolphin
-.directory
+*.directory
