@@ -19,6 +19,7 @@ e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 
 | Download | `git clone https://github.com/hadleyel/cppiler.git` |
 | Build | `make` |
 | Run | `./cppiler file-name.txt` |
+| Test | `make test` |
 | Clean up | `make clean` |
 
 ## History
