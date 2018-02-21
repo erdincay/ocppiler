@@ -1,5 +1,11 @@
 Terminals unused in grammar
 
+   VAR
+   LET
+   EQUALS
+   IN
+   FUN
+   RARROW
    QUIT
 
 
@@ -33,31 +39,37 @@ $end (0) 0
 error (256)
 INT (258) 8
 BOOL (259) 6
-PLUS (260) 11
-MINUS (261) 12
-TIMES (262) 13
-DIVIDE (263) 14
-LEQ (264) 10
-IF (265) 7 9
-THEN (266) 7 9
-ELSE (267) 7 9
-LPAREN (268) 15
-RPAREN (269) 15
-NEWLINE (270) 3 4 5
-QUIT (271)
+VAR (260)
+LPAREN (261) 15
+RPAREN (262) 15
+PLUS (263) 11
+MINUS (264) 12
+TIMES (265) 13
+DIVIDE (266) 14
+LEQ (267) 10
+IF (268) 7 9
+THEN (269) 7 9
+ELSE (270) 7 9
+LET (271)
+EQUALS (272)
+IN (273)
+FUN (274)
+RARROW (275)
+NEWLINE (276) 3 4 5
+QUIT (277)
 
 
 Nonterminals, with rules where they appear
 
-$accept (17)
+$accept (23)
     on left: 0
-calculation (18)
+calculation (24)
     on left: 1 2, on right: 0 2
-line (19)
+line (25)
     on left: 3 4 5, on right: 2
-bexp (20)
+bexp (26)
     on left: 6 7, on right: 5 7 9
-iexp (21)
+iexp (27)
     on left: 8 9 10 11 12 13 14 15, on right: 4 9 10 11 12 13 14 15
 
 
@@ -78,8 +90,8 @@ State 1
     $end     shift, and go to state 2
     INT      shift, and go to state 3
     BOOL     shift, and go to state 4
-    IF       shift, and go to state 5
-    LPAREN   shift, and go to state 6
+    LPAREN   shift, and go to state 5
+    IF       shift, and go to state 6
     NEWLINE  shift, and go to state 7
 
     line  go to state 8
@@ -110,24 +122,24 @@ State 4
 
 State 5
 
-    7 bexp: IF . bexp THEN bexp ELSE bexp
-    9 iexp: IF . bexp THEN iexp ELSE iexp
+   15 iexp: LPAREN . iexp RPAREN
 
-    BOOL  shift, and go to state 4
-    IF    shift, and go to state 11
+    INT     shift, and go to state 3
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
-    bexp  go to state 12
+    iexp  go to state 12
 
 
 State 6
 
-   15 iexp: LPAREN . iexp RPAREN
+    7 bexp: IF . bexp THEN bexp ELSE bexp
+    9 iexp: IF . bexp THEN iexp ELSE iexp
 
-    INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 13
 
-    iexp  go to state 14
+    bexp  go to state 14
 
 
 State 7
@@ -170,33 +182,15 @@ State 10
 
 State 11
 
-    7 bexp: IF . bexp THEN bexp ELSE bexp
+    9 iexp: IF . bexp THEN iexp ELSE iexp
 
     BOOL  shift, and go to state 4
-    IF    shift, and go to state 11
+    IF    shift, and go to state 13
 
     bexp  go to state 22
 
 
 State 12
-
-    7 bexp: IF bexp . THEN bexp ELSE bexp
-    9 iexp: IF bexp . THEN iexp ELSE iexp
-
-    THEN  shift, and go to state 23
-
-
-State 13
-
-    9 iexp: IF . bexp THEN iexp ELSE iexp
-
-    BOOL  shift, and go to state 4
-    IF    shift, and go to state 11
-
-    bexp  go to state 24
-
-
-State 14
 
    10 iexp: iexp . LEQ iexp
    11     | iexp . PLUS iexp
@@ -205,12 +199,30 @@ State 14
    14     | iexp . DIVIDE iexp
    15     | LPAREN iexp . RPAREN
 
+    RPAREN  shift, and go to state 23
     PLUS    shift, and go to state 16
     MINUS   shift, and go to state 17
     TIMES   shift, and go to state 18
     DIVIDE  shift, and go to state 19
     LEQ     shift, and go to state 20
-    RPAREN  shift, and go to state 25
+
+
+State 13
+
+    7 bexp: IF . bexp THEN bexp ELSE bexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 13
+
+    bexp  go to state 24
+
+
+State 14
+
+    7 bexp: IF bexp . THEN bexp ELSE bexp
+    9 iexp: IF bexp . THEN iexp ELSE iexp
+
+    THEN  shift, and go to state 25
 
 
 State 15
@@ -225,8 +237,8 @@ State 16
    11 iexp: iexp PLUS . iexp
 
     INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
     iexp  go to state 26
 
@@ -236,8 +248,8 @@ State 17
    12 iexp: iexp MINUS . iexp
 
     INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
     iexp  go to state 27
 
@@ -247,8 +259,8 @@ State 18
    13 iexp: iexp TIMES . iexp
 
     INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
     iexp  go to state 28
 
@@ -258,8 +270,8 @@ State 19
    14 iexp: iexp DIVIDE . iexp
 
     INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
     iexp  go to state 29
 
@@ -269,8 +281,8 @@ State 20
    10 iexp: iexp LEQ . iexp
 
     INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
     iexp  go to state 30
 
@@ -284,37 +296,37 @@ State 21
 
 State 22
 
-    7 bexp: IF bexp . THEN bexp ELSE bexp
+    9 iexp: IF bexp . THEN iexp ELSE iexp
 
     THEN  shift, and go to state 31
 
 
 State 23
 
+   15 iexp: LPAREN iexp RPAREN .
+
+    $default  reduce using rule 15 (iexp)
+
+
+State 24
+
+    7 bexp: IF bexp . THEN bexp ELSE bexp
+
+    THEN  shift, and go to state 32
+
+
+State 25
+
     7 bexp: IF bexp THEN . bexp ELSE bexp
     9 iexp: IF bexp THEN . iexp ELSE iexp
 
     INT     shift, and go to state 3
     BOOL    shift, and go to state 4
-    IF      shift, and go to state 5
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 6
 
-    bexp  go to state 32
-    iexp  go to state 33
-
-
-State 24
-
-    9 iexp: IF bexp . THEN iexp ELSE iexp
-
-    THEN  shift, and go to state 34
-
-
-State 25
-
-   15 iexp: LPAREN iexp RPAREN .
-
-    $default  reduce using rule 15 (iexp)
+    bexp  go to state 33
+    iexp  go to state 34
 
 
 State 26
@@ -390,22 +402,33 @@ State 30
 
 State 31
 
-    7 bexp: IF bexp THEN . bexp ELSE bexp
+    9 iexp: IF bexp THEN . iexp ELSE iexp
 
-    BOOL  shift, and go to state 4
-    IF    shift, and go to state 11
+    INT     shift, and go to state 3
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
-    bexp  go to state 32
+    iexp  go to state 34
 
 
 State 32
+
+    7 bexp: IF bexp THEN . bexp ELSE bexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 13
+
+    bexp  go to state 33
+
+
+State 33
 
     7 bexp: IF bexp THEN bexp . ELSE bexp
 
     ELSE  shift, and go to state 35
 
 
-State 33
+State 34
 
     9 iexp: IF bexp THEN iexp . ELSE iexp
    10     | iexp . LEQ iexp
@@ -422,23 +445,12 @@ State 33
     ELSE    shift, and go to state 36
 
 
-State 34
-
-    9 iexp: IF bexp THEN . iexp ELSE iexp
-
-    INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
-
-    iexp  go to state 33
-
-
 State 35
 
     7 bexp: IF bexp THEN bexp ELSE . bexp
 
     BOOL  shift, and go to state 4
-    IF    shift, and go to state 11
+    IF    shift, and go to state 13
 
     bexp  go to state 37
 
@@ -448,8 +460,8 @@ State 36
     9 iexp: IF bexp THEN iexp ELSE . iexp
 
     INT     shift, and go to state 3
-    IF      shift, and go to state 13
-    LPAREN  shift, and go to state 6
+    LPAREN  shift, and go to state 5
+    IF      shift, and go to state 11
 
     iexp  go to state 38
 

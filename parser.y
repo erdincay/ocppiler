@@ -16,14 +16,19 @@ void yyerror(const char *s);
 %union {
 	int ival;
   bool bval;
+	char cval;
 }
 
 // ASSOCIATE TOKEN NAMES WITH THOSE TYPES
 %token<ival> INT
 %token<bval> BOOL
+%token<cval> VAR
 
 // OTHER TOKEN DECLARATIONS
-%token PLUS MINUS TIMES DIVIDE LEQ IF THEN ELSE LPAREN RPAREN
+%token LPAREN RPAREN
+%token PLUS MINUS TIMES DIVIDE
+%token LEQ
+%token IF THEN ELSE LET EQUALS IN FUN RARROW
 %token NEWLINE QUIT
 
 // OPERATOR PRECEDENCE (ASCENDING)
@@ -50,18 +55,19 @@ line: NEWLINE
     | bexp NEWLINE { std::cout << "\tResult: " << $1 << std::endl; }
 ;
 
-bexp: BOOL               { $$ = $1; }
-   | IF bexp THEN bexp ELSE bexp { if ($2) {$$ = $4;} else {$$ = $6;} }
-   ;
+bexp: BOOL                        { $$ = $1; }
+    | IF bexp THEN bexp ELSE bexp { if ($2) {$$ = $4;} else {$$ = $6;} }
+		| LPAREN bexp RPAREN { $$ = $2; }
+    ;
 
-iexp: INT				         { $$ = $1; }
+iexp: INT				                  { $$ = $1; }
     | IF bexp THEN iexp ELSE iexp { if ($2) {$$ = $4;} else {$$ = $6;} }
-    | iexp LEQ iexp      { $$ = $1 <= $3; }
-    | iexp PLUS iexp	   { $$ = $1 + $3; }
-	  | iexp MINUS iexp	   { $$ = $1 - $3; }
-	  | iexp TIMES iexp	   { $$ = $1 * $3; }
-    | iexp DIVIDE iexp   { $$ = $1 / $3; }
-	  | LPAREN iexp RPAREN { $$ = $2; }
+    | iexp LEQ iexp               { $$ = $1 <= $3; }
+    | iexp PLUS iexp	            { $$ = $1 + $3; }
+	  | iexp MINUS iexp	            { $$ = $1 - $3; }
+	  | iexp TIMES iexp	            { $$ = $1 * $3; }
+    | iexp DIVIDE iexp            { $$ = $1 / $3; }
+	  | LPAREN iexp RPAREN          { $$ = $2; }
 ;
 
 %%
