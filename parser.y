@@ -29,9 +29,8 @@ void yyerror(const char *s);
 // OPERATOR PRECEDENCE (ASCENDING)
 %left LEQ
 %left PLUS MINUS
-%left MULTIPLY DIVIDE
+%left TIMES DIVIDE
 
-%nonassoc IF
 %nonassoc THEN
 %nonassoc ELSE
 
@@ -52,10 +51,11 @@ line: NEWLINE
 ;
 
 bexp: BOOL               { $$ = $1; }
+   | IF bexp THEN bexp ELSE bexp { if ($2) {$$ = $4;} else {$$ = $6;} }
    ;
 
 iexp: INT				         { $$ = $1; }
-    | LPAREN IF bexp THEN iexp ELSE iexp RPAREN { if ($3) {$$ = $5;} else {$$ = $7;} }
+    | IF bexp THEN iexp ELSE iexp { if ($2) {$$ = $4;} else {$$ = $6;} }
     | iexp LEQ iexp      { $$ = $1 <= $3; }
     | iexp PLUS iexp	   { $$ = $1 + $3; }
 	  | iexp MINUS iexp	   { $$ = $1 - $3; }
@@ -67,7 +67,7 @@ iexp: INT				         { $$ = $1; }
 %%
 int main(int argc, char** argv) {
 
-  // flex doesn't like iostreams
+  // bison doesn't like iostreams
 	FILE *input = fopen(argv[1], "r");
 	if (!input) {
 		std::cout << "Error opening file." << std::endl;

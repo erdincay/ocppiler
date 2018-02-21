@@ -1,0 +1,473 @@
+Terminals unused in grammar
+
+   QUIT
+
+
+Grammar
+
+    0 $accept: calculation $end
+
+    1 calculation: %empty
+    2            | calculation line
+
+    3 line: NEWLINE
+    4     | iexp NEWLINE
+    5     | bexp NEWLINE
+
+    6 bexp: BOOL
+    7     | IF bexp THEN bexp ELSE bexp
+
+    8 iexp: INT
+    9     | IF bexp THEN iexp ELSE iexp
+   10     | iexp LEQ iexp
+   11     | iexp PLUS iexp
+   12     | iexp MINUS iexp
+   13     | iexp TIMES iexp
+   14     | iexp DIVIDE iexp
+   15     | LPAREN iexp RPAREN
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+INT (258) 8
+BOOL (259) 6
+PLUS (260) 11
+MINUS (261) 12
+TIMES (262) 13
+DIVIDE (263) 14
+LEQ (264) 10
+IF (265) 7 9
+THEN (266) 7 9
+ELSE (267) 7 9
+LPAREN (268) 15
+RPAREN (269) 15
+NEWLINE (270) 3 4 5
+QUIT (271)
+
+
+Nonterminals, with rules where they appear
+
+$accept (17)
+    on left: 0
+calculation (18)
+    on left: 1 2, on right: 0 2
+line (19)
+    on left: 3 4 5, on right: 2
+bexp (20)
+    on left: 6 7, on right: 5 7 9
+iexp (21)
+    on left: 8 9 10 11 12 13 14 15, on right: 4 9 10 11 12 13 14 15
+
+
+State 0
+
+    0 $accept: . calculation $end
+
+    $default  reduce using rule 1 (calculation)
+
+    calculation  go to state 1
+
+
+State 1
+
+    0 $accept: calculation . $end
+    2 calculation: calculation . line
+
+    $end     shift, and go to state 2
+    INT      shift, and go to state 3
+    BOOL     shift, and go to state 4
+    IF       shift, and go to state 5
+    LPAREN   shift, and go to state 6
+    NEWLINE  shift, and go to state 7
+
+    line  go to state 8
+    bexp  go to state 9
+    iexp  go to state 10
+
+
+State 2
+
+    0 $accept: calculation $end .
+
+    $default  accept
+
+
+State 3
+
+    8 iexp: INT .
+
+    $default  reduce using rule 8 (iexp)
+
+
+State 4
+
+    6 bexp: BOOL .
+
+    $default  reduce using rule 6 (bexp)
+
+
+State 5
+
+    7 bexp: IF . bexp THEN bexp ELSE bexp
+    9 iexp: IF . bexp THEN iexp ELSE iexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 11
+
+    bexp  go to state 12
+
+
+State 6
+
+   15 iexp: LPAREN . iexp RPAREN
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 14
+
+
+State 7
+
+    3 line: NEWLINE .
+
+    $default  reduce using rule 3 (line)
+
+
+State 8
+
+    2 calculation: calculation line .
+
+    $default  reduce using rule 2 (calculation)
+
+
+State 9
+
+    5 line: bexp . NEWLINE
+
+    NEWLINE  shift, and go to state 15
+
+
+State 10
+
+    4 line: iexp . NEWLINE
+   10 iexp: iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+
+    PLUS     shift, and go to state 16
+    MINUS    shift, and go to state 17
+    TIMES    shift, and go to state 18
+    DIVIDE   shift, and go to state 19
+    LEQ      shift, and go to state 20
+    NEWLINE  shift, and go to state 21
+
+
+State 11
+
+    7 bexp: IF . bexp THEN bexp ELSE bexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 11
+
+    bexp  go to state 22
+
+
+State 12
+
+    7 bexp: IF bexp . THEN bexp ELSE bexp
+    9 iexp: IF bexp . THEN iexp ELSE iexp
+
+    THEN  shift, and go to state 23
+
+
+State 13
+
+    9 iexp: IF . bexp THEN iexp ELSE iexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 11
+
+    bexp  go to state 24
+
+
+State 14
+
+   10 iexp: iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+   15     | LPAREN iexp . RPAREN
+
+    PLUS    shift, and go to state 16
+    MINUS   shift, and go to state 17
+    TIMES   shift, and go to state 18
+    DIVIDE  shift, and go to state 19
+    LEQ     shift, and go to state 20
+    RPAREN  shift, and go to state 25
+
+
+State 15
+
+    5 line: bexp NEWLINE .
+
+    $default  reduce using rule 5 (line)
+
+
+State 16
+
+   11 iexp: iexp PLUS . iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 26
+
+
+State 17
+
+   12 iexp: iexp MINUS . iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 27
+
+
+State 18
+
+   13 iexp: iexp TIMES . iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 28
+
+
+State 19
+
+   14 iexp: iexp DIVIDE . iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 29
+
+
+State 20
+
+   10 iexp: iexp LEQ . iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 30
+
+
+State 21
+
+    4 line: iexp NEWLINE .
+
+    $default  reduce using rule 4 (line)
+
+
+State 22
+
+    7 bexp: IF bexp . THEN bexp ELSE bexp
+
+    THEN  shift, and go to state 31
+
+
+State 23
+
+    7 bexp: IF bexp THEN . bexp ELSE bexp
+    9 iexp: IF bexp THEN . iexp ELSE iexp
+
+    INT     shift, and go to state 3
+    BOOL    shift, and go to state 4
+    IF      shift, and go to state 5
+    LPAREN  shift, and go to state 6
+
+    bexp  go to state 32
+    iexp  go to state 33
+
+
+State 24
+
+    9 iexp: IF bexp . THEN iexp ELSE iexp
+
+    THEN  shift, and go to state 34
+
+
+State 25
+
+   15 iexp: LPAREN iexp RPAREN .
+
+    $default  reduce using rule 15 (iexp)
+
+
+State 26
+
+   10 iexp: iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   11     | iexp PLUS iexp .
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+
+    TIMES   shift, and go to state 18
+    DIVIDE  shift, and go to state 19
+
+    $default  reduce using rule 11 (iexp)
+
+
+State 27
+
+   10 iexp: iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   12     | iexp MINUS iexp .
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+
+    TIMES   shift, and go to state 18
+    DIVIDE  shift, and go to state 19
+
+    $default  reduce using rule 12 (iexp)
+
+
+State 28
+
+   10 iexp: iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   13     | iexp TIMES iexp .
+   14     | iexp . DIVIDE iexp
+
+    $default  reduce using rule 13 (iexp)
+
+
+State 29
+
+   10 iexp: iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+   14     | iexp DIVIDE iexp .
+
+    $default  reduce using rule 14 (iexp)
+
+
+State 30
+
+   10 iexp: iexp . LEQ iexp
+   10     | iexp LEQ iexp .
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+
+    PLUS    shift, and go to state 16
+    MINUS   shift, and go to state 17
+    TIMES   shift, and go to state 18
+    DIVIDE  shift, and go to state 19
+
+    $default  reduce using rule 10 (iexp)
+
+
+State 31
+
+    7 bexp: IF bexp THEN . bexp ELSE bexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 11
+
+    bexp  go to state 32
+
+
+State 32
+
+    7 bexp: IF bexp THEN bexp . ELSE bexp
+
+    ELSE  shift, and go to state 35
+
+
+State 33
+
+    9 iexp: IF bexp THEN iexp . ELSE iexp
+   10     | iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+
+    PLUS    shift, and go to state 16
+    MINUS   shift, and go to state 17
+    TIMES   shift, and go to state 18
+    DIVIDE  shift, and go to state 19
+    LEQ     shift, and go to state 20
+    ELSE    shift, and go to state 36
+
+
+State 34
+
+    9 iexp: IF bexp THEN . iexp ELSE iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 33
+
+
+State 35
+
+    7 bexp: IF bexp THEN bexp ELSE . bexp
+
+    BOOL  shift, and go to state 4
+    IF    shift, and go to state 11
+
+    bexp  go to state 37
+
+
+State 36
+
+    9 iexp: IF bexp THEN iexp ELSE . iexp
+
+    INT     shift, and go to state 3
+    IF      shift, and go to state 13
+    LPAREN  shift, and go to state 6
+
+    iexp  go to state 38
+
+
+State 37
+
+    7 bexp: IF bexp THEN bexp ELSE bexp .
+
+    $default  reduce using rule 7 (bexp)
+
+
+State 38
+
+    9 iexp: IF bexp THEN iexp ELSE iexp .
+   10     | iexp . LEQ iexp
+   11     | iexp . PLUS iexp
+   12     | iexp . MINUS iexp
+   13     | iexp . TIMES iexp
+   14     | iexp . DIVIDE iexp
+
+    $default  reduce using rule 9 (iexp)
