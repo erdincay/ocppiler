@@ -57,12 +57,13 @@ line: NEWLINE
 
 bexp: BOOL                        { $$ = $1; }
     | IF bexp THEN bexp ELSE bexp { if ($2) {$$ = $4;} else {$$ = $6;} }
+    
+    | iexp LEQ iexp               { $$ = $1 <= $3; }
 		| LPAREN bexp RPAREN { $$ = $2; }
     ;
 
 iexp: INT				                  { $$ = $1; }
     | IF bexp THEN iexp ELSE iexp { if ($2) {$$ = $4;} else {$$ = $6;} }
-    | iexp LEQ iexp               { $$ = $1 <= $3; }
     | iexp PLUS iexp	            { $$ = $1 + $3; }
 	  | iexp MINUS iexp	            { $$ = $1 - $3; }
 	  | iexp TIMES iexp	            { $$ = $1 * $3; }
