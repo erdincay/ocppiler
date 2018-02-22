@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <iostream>
 #include <string>
+#include <string.h>
 
 // REQUIRED FLEX METHOD STUBS
 extern "C" int yylex();
@@ -43,6 +44,7 @@ void yyerror(const char *s);
 // TYPING EXPRESSIONS
 %type<ival> iexp
 %type<bval> bexp
+%type<sval> sexp
 
 %start calculation
 %%
@@ -56,17 +58,21 @@ line: NEWLINE
     | bexp NEWLINE { std::cout << "\tResult: " << $1 << std::endl; }
 ;
 
-fexp: FUN VAR RARROW bexp					{ }
-		| FUN VAR RARROW iexp					{ }
+sexp: VAR													{ $$ = $1; } // wrong
+;
+
+fexp: FUN sexp RARROW bexp				{ bool $2() { return $4; } } // wrong
+		| FUN sexp RARROW iexp				{ int $2() { return $4; } } // wrong
+;
 
 bexp: BOOL												{ $$ = $1; }
     | IF bexp THEN bexp ELSE bexp	{ if ($2) {$$ = $4;} else {$$ = $6;} }
     | iexp LEQ iexp								{ $$ = $1 <= $3; }
 		| LPAREN bexp RPAREN					{ $$ = $2; }
-		| LET VAR EQUAL bexp IN bexp	{ }
-		| LET VAR EQUAL iexp IN bexp	{ }
-		| fexp bexp										{ }
-    ;
+		| LET sexp EQUAL bexp IN bexp	{ }
+		| LET sexp EQUAL iexp IN bexp	{ }
+		| fexp bexp										{ $$ = $1($2); } // wrong
+;
 
 iexp: INT				                  { $$ = $1; }
     | IF bexp THEN iexp ELSE iexp { if ($2) {$$ = $4;} else {$$ = $6;} }
@@ -74,9 +80,9 @@ iexp: INT				                  { $$ = $1; }
 	  | iexp MINUS iexp	            { $$ = $1 - $3; }
 	  | iexp TIMES iexp	            { $$ = $1 * $3; }
     | iexp DIVIDE iexp            { $$ = $1 / $3; }
-		| LET VAR EQUAL iexp IN iexp  { }
-		| LET VAR EQUAL bexp IN iexp  { }
-		| fexp iexp										{ }
+		| LET sexp EQUAL iexp IN iexp { }
+		| LET sexp EQUAL bexp IN iexp { }
+		| fexp iexp										{ $$ = $1($2); } // wrong
 	  | LPAREN iexp RPAREN          { $$ = $2; }
 ;
 
