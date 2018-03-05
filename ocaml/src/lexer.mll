@@ -7,7 +7,14 @@ exception Lexer_error of string
 let symbols : (string * Parser.token) list =
   [ ("(", LPAREN)
   ; (")", RPAREN)
+  ; ("*", TIMES)
+  ; ("/", DIVIDE)
   ; ("+", PLUS)
+  ; ("-", MINUS)
+  ; ("<=", LEQ)
+  ; ("if", IF)
+  ; ("true", TRUE)
+  ; ("false", FALSE)
   ]
 
 let create_symbol lexbuf =
@@ -25,5 +32,5 @@ rule token = parse
   | eof                       { EOF }
   | digit+                    { INT (int_of_string (lexeme lexbuf)) }
   | whitespace+ | newline+    { token lexbuf }
-  | '(' | ')' | '+'           { create_symbol lexbuf }
+  | '(' | ')' | '*' | '/' | '+' | '-' | "<=" | "if" | "true" | "false" { create_symbol lexbuf }
   | _ as c { raise @@ Lexer_error ("Unexpected character: " ^ Char.escaped c) }
