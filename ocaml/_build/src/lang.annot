@@ -1,0 +1,117 @@
+"src/lang.ml" 5 46 54 "src/lang.ml" 5 46 63
+type(
+  exp -> int
+)
+ident(
+  def interpret "src/lang.ml" 5 46 46 "src/lang.ml" 1 0 -1
+)
+"src/lang.ml" 5 46 65 "src/lang.ml" 5 46 66
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 5 46 72 "src/lang.ml" 8 118 166
+)
+"src/lang.ml" 6 80 88 "src/lang.ml" 6 80 89
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 5 46 65 "src/lang.ml" 5 46 66
+)
+"src/lang.ml" 7 95 104 "src/lang.ml" 7 95 105
+type(
+  int
+)
+ident(
+  def n "src/lang.ml" 7 95 116 "src/lang.ml" 7 95 117
+)
+"src/lang.ml" 7 95 99 "src/lang.ml" 7 95 105
+type(
+  exp
+)
+"src/lang.ml" 7 95 116 "src/lang.ml" 7 95 117
+type(
+  int
+)
+ident(
+  int_ref n "src/lang.ml" 7 95 104 "src/lang.ml" 7 95 105
+)
+"src/lang.ml" 8 118 128 "src/lang.ml" 8 118 130
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 8 118 139 "src/lang.ml" 8 118 166
+)
+"src/lang.ml" 8 118 132 "src/lang.ml" 8 118 134
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 8 118 139 "src/lang.ml" 8 118 166
+)
+"src/lang.ml" 8 118 122 "src/lang.ml" 8 118 135
+type(
+  exp
+)
+"src/lang.ml" 8 118 139 "src/lang.ml" 8 118 148
+type(
+  exp -> int
+)
+ident(
+  int_ref interpret "src/lang.ml" 5 46 54 "src/lang.ml" 5 46 63
+)
+"src/lang.ml" 8 118 149 "src/lang.ml" 8 118 151
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 8 118 128 "src/lang.ml" 8 118 130
+)
+"src/lang.ml" 8 118 139 "src/lang.ml" 8 118 151
+call(
+  stack
+)
+type(
+  int
+)
+"src/lang.ml" 8 118 152 "src/lang.ml" 8 118 153
+type(
+  int -> int -> int
+)
+ident(
+  int_ref Pervasives.( + ) "pervasives.mli" 261 10267 10267 "pervasives.mli" 261 10267 10313
+)
+"src/lang.ml" 8 118 154 "src/lang.ml" 8 118 163
+type(
+  exp -> int
+)
+ident(
+  int_ref interpret "src/lang.ml" 5 46 54 "src/lang.ml" 5 46 63
+)
+"src/lang.ml" 8 118 164 "src/lang.ml" 8 118 166
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 8 118 132 "src/lang.ml" 8 118 134
+)
+"src/lang.ml" 8 118 154 "src/lang.ml" 8 118 166
+call(
+  stack
+)
+type(
+  int
+)
+"src/lang.ml" 8 118 139 "src/lang.ml" 8 118 166
+type(
+  int
+)
+"src/lang.ml" 6 80 82 "src/lang.ml" 8 118 166
+type(
+  int
+)
+type(
+  int
+)
