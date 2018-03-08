@@ -4,7 +4,7 @@ let main () =
     |> Lexing.from_channel
     |> Parser.prog Lexer.token
     |> Lang.interpret
-    |> string_of_int
+    |> Lang.string_of_value
     |> print_endline
 
 let _ = if !Sys.interactive then () else main ()

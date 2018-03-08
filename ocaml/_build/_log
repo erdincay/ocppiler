@@ -1,64 +1,39 @@
 ### Starting build.
-# Target: src/compiler.ml.depends, tags: { extension:ml, file:src/compiler.ml, ocaml, ocamldep, quiet, traverse }
+# Target: src/compiler.ml.depends, tags: { explain, extension:ml, file:src/compiler.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
 ocamlfind ocamldep -modules src/compiler.ml > src/compiler.ml.depends # cached
-# Target: src/lang.ml.depends, tags: { extension:ml, file:src/lang.ml, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -modules src/lang.ml > src/lang.ml.depends
-# Target: src/lexer.mll, tags: { extension:mll, file:src/lexer.mll, lexer, ocaml, ocamllex, quiet, traverse }
+# Target: src/lang.ml.depends, tags: { explain, extension:ml, file:src/lang.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamlfind ocamldep -modules src/lang.ml > src/lang.ml.depends # cached
+# Target: src/lang.cmo, tags: { byte, compile, explain, extension:cmo, extension:ml, file:src/lang.cmo, file:src/lang.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlfind ocamlc -c -annot -g -I src -o src/lang.cmo src/lang.ml # cached
+# Target: src/lexer.mll, tags: { explain, extension:mll, file:src/lexer.mll, lexer, ocaml, ocamllex, quiet, traverse, use_menhir }
 /usr/bin/ocamllex.opt -q src/lexer.mll # cached
-# Target: src/lexer.ml.depends, tags: { extension:ml, file:src/lexer.ml, ocaml, ocamldep, quiet, traverse }
+# Target: src/lexer.ml.depends, tags: { explain, extension:ml, file:src/lexer.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
 ocamlfind ocamldep -modules src/lexer.ml > src/lexer.ml.depends # cached
-# Target: src/parser.mly.depends, tags: { extension:mly, file:src/parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse }
+# Target: src/parser.mly.depends, tags: { explain, extension:mly, file:src/parser.mly, infer, menhir_ocamldep, ocaml, ocamldep, quiet, traverse, use_menhir }
 menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' src/parser.mly > src/parser.mly.depends
-+ menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' src/parser.mly > src/parser.mly.depends
-File "src/parser.mly", line 16, characters 7-12:
-Warning: the token FALSE is unused.
-File "src/parser.mly", line 14, characters 7-9:
-Warning: the token IF is unused.
-File "src/parser.mly", line 13, characters 7-10:
-Warning: the token LEQ is unused.
-File "src/parser.mly", line 15, characters 7-11:
-Warning: the token TRUE is unused.
-# Target: src/lang.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:src/lang.cmo, file:src/lang.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -annot -g -I src -o src/lang.cmo src/lang.ml
-+ ocamlfind ocamlc -c -annot -g -I src -o src/lang.cmo src/lang.ml
-File "src/lang.ml", line 10, characters 2-287:
-Warning 8: this pattern-matching is not exhaustive.
-Here is an example of a case that is not matched:
-ELeq (_, _)
-# Target: src/parser.mly, tags: { byte, compile, extension:ml, extension:mly, file:src/parser.ml, file:src/parser.mly, infer, menhir, ocaml, parser, quiet, traverse }
-menhir --ocamlc 'ocamlfind ocamlc -annot -g -I src' --infer src/parser.mly
-+ menhir --ocamlc 'ocamlfind ocamlc -annot -g -I src' --infer src/parser.mly
-File "src/parser.mly", line 16, characters 7-12:
-Warning: the token FALSE is unused.
-File "src/parser.mly", line 14, characters 7-9:
-Warning: the token IF is unused.
-File "src/parser.mly", line 13, characters 7-10:
-Warning: the token LEQ is unused.
-File "src/parser.mly", line 15, characters 7-11:
-Warning: the token TRUE is unused.
-# Target: src/parser.mli.depends, tags: { extension:mli, file:src/parser.mli, ocaml, ocamldep, quiet, traverse }
-ocamlfind ocamldep -modules src/parser.mli > src/parser.mli.depends
-# Target: src/parser.cmi, tags: { byte, compile, extension:mli, file:src/parser.mli, interf, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -annot -g -I src -o src/parser.cmi src/parser.mli
-# Target: src/lexer.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:src/lexer.cmo, file:src/lexer.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -annot -g -I src -o src/lexer.cmo src/lexer.ml
-# Target: src/compiler.cmo, tags: { byte, compile, extension:cmo, extension:ml, file:src/compiler.cmo, file:src/compiler.ml, implem, ocaml, quiet, traverse }
-ocamlfind ocamlc -c -annot -g -I src -o src/compiler.cmo src/compiler.ml
-# Target: src/parser.ml.depends, tags: { extension:ml, file:src/parser.ml, ocaml, ocamldep, quiet, traverse }
+# Target: src/parser.mly, tags: { byte, compile, explain, extension:ml, extension:mly, file:src/parser.ml, file:src/parser.mly, infer, menhir, ocaml, parser, quiet, traverse, use_menhir }
+menhir --ocamlc 'ocamlfind ocamlc -annot -g -I src' --explain --infer src/parser.mly
++ menhir --ocamlc 'ocamlfind ocamlc -annot -g -I src' --explain --infer src/parser.mly
+Warning: one state has shift/reduce conflicts.
+Warning: 5 shift/reduce conflicts were arbitrarily resolved.
+# Target: src/parser.mli.depends, tags: { explain, extension:mli, file:src/parser.mli, ocaml, ocamldep, quiet, traverse, use_menhir }
+ocamlfind ocamldep -modules src/parser.mli > src/parser.mli.depends # cached
+# Target: src/parser.cmi, tags: { byte, compile, explain, extension:mli, file:src/parser.mli, interf, ocaml, quiet, traverse, use_menhir }
+ocamlfind ocamlc -c -annot -g -I src -o src/parser.cmi src/parser.mli # cached
+# Target: src/lexer.cmo, tags: { byte, compile, explain, extension:cmo, extension:ml, file:src/lexer.cmo, file:src/lexer.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlfind ocamlc -c -annot -g -I src -o src/lexer.cmo src/lexer.ml # cached
+# Target: src/compiler.cmo, tags: { byte, compile, explain, extension:cmo, extension:ml, file:src/compiler.cmo, file:src/compiler.ml, implem, ocaml, quiet, traverse, use_menhir }
+ocamlfind ocamlc -c -annot -g -I src -o src/compiler.cmo src/compiler.ml # cached
+# Target: src/lang.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/lang.cmx, file:src/lang.ml, implem, native, ocaml, quiet, traverse, use_menhir }
+ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/lang.cmx src/lang.ml # cached
+# Target: src/parser.ml.depends, tags: { explain, extension:ml, file:src/parser.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
 ocamlfind ocamldep -modules src/parser.ml > src/parser.ml.depends
-# Target: src/lang.cmx, tags: { compile, extension:cmx, extension:ml, file:src/lang.cmx, file:src/lang.ml, implem, native, ocaml, quiet, traverse }
-ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/lang.cmx src/lang.ml
-+ ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/lang.cmx src/lang.ml
-File "src/lang.ml", line 10, characters 2-287:
-Warning 8: this pattern-matching is not exhaustive.
-Here is an example of a case that is not matched:
-ELeq (_, _)
-# Target: src/parser.cmx, tags: { compile, extension:cmx, extension:ml, file:src/parser.cmx, file:src/parser.ml, implem, native, ocaml, quiet, traverse }
+# Target: src/parser.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/parser.cmx, file:src/parser.ml, implem, native, ocaml, quiet, traverse, use_menhir }
 ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/parser.cmx src/parser.ml
-# Target: src/lexer.cmx, tags: { compile, extension:cmx, extension:ml, file:src/lexer.cmx, file:src/lexer.ml, implem, native, ocaml, quiet, traverse }
+# Target: src/lexer.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/lexer.cmx, file:src/lexer.ml, implem, native, ocaml, quiet, traverse, use_menhir }
 ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/lexer.cmx src/lexer.ml
-# Target: src/compiler.cmx, tags: { compile, extension:cmx, extension:ml, file:src/compiler.cmx, file:src/compiler.ml, implem, native, ocaml, quiet, traverse }
+# Target: src/compiler.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/compiler.cmx, file:src/compiler.ml, implem, native, ocaml, quiet, traverse, use_menhir }
 ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/compiler.cmx src/compiler.ml
-# Target: src/compiler.native, tags: { dont_link_with, extension:native, file:src/compiler.native, link, native, ocaml, program, quiet, traverse }
+# Target: src/compiler.native, tags: { dont_link_with, explain, extension:native, file:src/compiler.native, link, native, ocaml, program, quiet, traverse, use_menhir }
 ocamlfind ocamlopt -linkpkg -I src src/lang.cmx src/parser.cmx src/lexer.cmx src/compiler.cmx -o src/compiler.native
 # Compilation successful.

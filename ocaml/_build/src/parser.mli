@@ -2,8 +2,8 @@
 (* The type of tokens. *)
 
 type token = 
-  | TRUE
   | TIMES
+  | THEN
   | RPAREN
   | PLUS
   | MINUS
@@ -11,9 +11,10 @@ type token =
   | LEQ
   | INT of (int)
   | IF
-  | FALSE
   | EOF
+  | ELSE
   | DIVIDE
+  | BOOL of (bool)
 
 (* This exception is raised by the monolithic API functions. *)
 
