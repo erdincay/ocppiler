@@ -78,14 +78,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 25 291 291 "src/parser.mli" 25 291 356
+  int_ref Parser.prog "src/parser.mli" 31 355 355 "src/parser.mli" 31 355 420
 )
 "src/compiler.ml" 5 71 90 "src/compiler.ml" 5 71 101
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 127 6175 6183 "src/lexer.ml" 127 6175 6188
+  int_ref Lexer.token "src/lexer.ml" 137 6514 6522 "src/lexer.ml" 137 6514 6527
 )
 "src/compiler.ml" 5 71 78 "src/compiler.ml" 5 71 101
 type(
@@ -110,7 +110,7 @@ type(
   Lang.exp -> Lang.value
 )
 ident(
-  int_ref Lang.interpret "src/lang.ml" 20 331 339 "src/lang.ml" 20 331 348
+  int_ref Lang.interpret "src/lang.ml" 42 1230 1238 "src/lang.ml" 42 1230 1247
 )
 "src/compiler.ml" 2 14 16 "src/compiler.ml" 6 102 123
 call(
@@ -131,7 +131,7 @@ type(
   Lang.value -> string
 )
 ident(
-  int_ref Lang.string_of_value "src/lang.ml" 15 211 215 "src/lang.ml" 15 211 230
+  int_ref Lang.string_of_value "src/lang.ml" 36 1050 1054 "src/lang.ml" 36 1050 1069
 )
 "src/compiler.ml" 2 14 16 "src/compiler.ml" 7 124 151
 call(

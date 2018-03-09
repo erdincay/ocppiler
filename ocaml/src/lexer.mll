@@ -5,18 +5,23 @@ open Parser
 exception Lexer_error of string
 
 let symbols : (string * Parser.token) list =
-  [ ("(", LPAREN)
-  ; (")", RPAREN)
-  ; ("*", TIMES)
-  ; ("/", DIVIDE)
-  ; ("+", PLUS)
-  ; ("-", MINUS)
-  ; ("<=", LEQ)
+  [ ("true", BOOL true)
+  ; ("false", BOOL false)
+  ; ("let", LET)
+  ; ("in", IN)
+  ; ("fun", FUN)
+  ; ("->", RARROW)
   ; ("if", IF)
   ; ("then", THEN)
   ; ("else", ELSE)
-  ; ("true", BOOL true)
-  ; ("false", BOOL false)
+  ; ("<=", LEQ)
+  ; ("=", EQUAL)
+  ; ("-", MINUS)
+  ; ("+", PLUS)
+  ; ("/", DIVIDE)
+  ; ("*", TIMES)
+  ; ("(", LPAREN)
+  ; (")", RPAREN)
   ]
 
 let create_symbol lexbuf =
@@ -34,5 +39,5 @@ rule token = parse
   | eof                       { EOF }
   | digit+                    { INT (int_of_string (lexeme lexbuf)) }
   | whitespace+ | newline+    { token lexbuf }
-  | '(' | ')' | '*' | '/' | '+' | '-' | "<=" | "if" | "then" | "else" | "true" | "false" { create_symbol lexbuf }
+  | "true" | "false" | "let"  | "in"  | "fun" | "->" | "if" | "then" | "else" | "<=" | "=" | '-' | '+' | '/' | '*' | '(' | ')' { create_symbol lexbuf }
   | _ as c { raise @@ Lexer_error ("Unexpected character: " ^ Char.escaped c) }
