@@ -3,12 +3,11 @@
 
 type token = 
   | VAR of (string)
-  | TIMES
   | THEN
+  | SUB
   | RPAREN
   | RARROW
-  | PLUS
-  | MINUS
+  | MUL
   | LPAREN
   | LET
   | LEQ
@@ -16,11 +15,12 @@ type token =
   | IN
   | IF
   | FUN
-  | EQUAL
+  | EQ
   | EOF
   | ELSE
-  | DIVIDE
+  | DIV
   | BOOL of (bool)
+  | ADD
 
 (* This exception is raised by the monolithic API functions. *)
 

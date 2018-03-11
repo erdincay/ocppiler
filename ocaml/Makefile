@@ -28,3 +28,6 @@ clean:
 
 top: compiler.cma
 	utop
+
+test:
+	bash tests/test.sh

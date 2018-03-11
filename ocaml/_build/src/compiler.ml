@@ -3,7 +3,7 @@ let main () =
     |> open_in
     |> Lexing.from_channel
     |> Parser.prog Lexer.token
-    |> Lang.interpret
+    |> Lang.eval
     |> Lang.string_of_value
     |> print_endline
 

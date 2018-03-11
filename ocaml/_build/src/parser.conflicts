@@ -1,10 +1,10 @@
 
 ** Conflict (shift/reduce) in state 29.
-** Tokens involved: TIMES PLUS MINUS LEQ DIVIDE
-** The following explanations concentrate on token TIMES.
+** Tokens involved: SUB MUL LEQ DIV ADD
+** The following explanations concentrate on token SUB.
 ** This state is reached from prog after reading:
 
-LET VAR EQUAL exp IN exp 
+LET VAR EQ exp IN exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -13,22 +13,22 @@ prog
 exp EOF 
 (?)
 
-** In state 29, looking ahead at TIMES, reducing production
-** exp -> LET VAR EQUAL exp IN exp 
+** In state 29, looking ahead at SUB, reducing production
+** exp -> LET VAR EQ exp IN exp 
 ** is permitted because of the following sub-derivation:
 
-exp TIMES exp // lookahead token appears
-LET VAR EQUAL exp IN exp . 
+exp SUB exp // lookahead token appears
+LET VAR EQ exp IN exp . 
 
-** In state 29, looking ahead at TIMES, shifting is permitted
+** In state 29, looking ahead at SUB, shifting is permitted
 ** because of the following sub-derivation:
 
-LET VAR EQUAL exp IN exp 
-                     exp . TIMES exp 
+LET VAR EQ exp IN exp 
+                  exp . SUB exp 
 
 ** Conflict (shift/reduce) in state 26.
-** Tokens involved: TIMES PLUS MINUS LEQ DIVIDE
-** The following explanations concentrate on token TIMES.
+** Tokens involved: SUB MUL LEQ DIV ADD
+** The following explanations concentrate on token SUB.
 ** This state is reached from prog after reading:
 
 IF exp THEN exp ELSE exp 
@@ -40,22 +40,22 @@ prog
 exp EOF 
 (?)
 
-** In state 26, looking ahead at TIMES, reducing production
+** In state 26, looking ahead at SUB, reducing production
 ** exp -> IF exp THEN exp ELSE exp 
 ** is permitted because of the following sub-derivation:
 
-exp TIMES exp // lookahead token appears
+exp SUB exp // lookahead token appears
 IF exp THEN exp ELSE exp . 
 
-** In state 26, looking ahead at TIMES, shifting is permitted
+** In state 26, looking ahead at SUB, shifting is permitted
 ** because of the following sub-derivation:
 
 IF exp THEN exp ELSE exp 
-                     exp . TIMES exp 
+                     exp . SUB exp 
 
 ** Conflict (shift/reduce) in state 11.
-** Tokens involved: TIMES PLUS MINUS LEQ DIVIDE
-** The following explanations concentrate on token TIMES.
+** Tokens involved: SUB MUL LEQ DIV ADD
+** The following explanations concentrate on token SUB.
 ** This state is reached from prog after reading:
 
 FUN VAR RARROW exp 
@@ -67,15 +67,15 @@ prog
 exp EOF 
 (?)
 
-** In state 11, looking ahead at TIMES, reducing production
+** In state 11, looking ahead at SUB, reducing production
 ** exp -> FUN VAR RARROW exp 
 ** is permitted because of the following sub-derivation:
 
-exp TIMES exp // lookahead token appears
+exp SUB exp // lookahead token appears
 FUN VAR RARROW exp . 
 
-** In state 11, looking ahead at TIMES, shifting is permitted
+** In state 11, looking ahead at SUB, shifting is permitted
 ** because of the following sub-derivation:
 
 FUN VAR RARROW exp 
-               exp . TIMES exp 
+               exp . SUB exp 
