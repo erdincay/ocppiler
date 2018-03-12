@@ -15,6 +15,7 @@ type token =
   | IN
   | IF
   | FUN
+  | FIX
   | EQ
   | EOF
   | ELSE

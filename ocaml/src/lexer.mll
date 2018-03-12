@@ -10,6 +10,7 @@ let symbols : (string * Parser.token) list =
   ; ("let", LET)
   ; ("in", IN)
   ; ("fun", FUN)
+  ; ("fix", FIX)
   ; ("->", RARROW)
   ; ("if", IF)
   ; ("then", THEN)
@@ -34,12 +35,16 @@ let create_int lexbuf = lexeme lexbuf |> int_of_string
 let newline      = '\n' | ('\r' '\n') | '\r'
 let whitespace   = ['\t' ' ']
 let digit        = ['0'-'9']
-let other_tokens = "true" | "false" | "let"  | "in"  | "fun" | "->" | "if" | "then" | "else" | "<=" | "=" | '-' | '+' | '/' | '*' | '(' | ')'
+let booleans     = "true" | "false"
+let char_tokens  = '=' | '-' | '+' | '/' | '*' | '(' | ')'
+let string_tokens = "let"  | "in"  | "fun" | "fix" | "->" | "if" | "then" | "else" | "<="
 let var_chars    = ['a'-'z'] | ['A'-'Z'] | '_' | digit
 
 rule token = parse
   | digit+                    { INT (int_of_string (lexeme lexbuf)) }
-  | other_tokens              { create_symbol lexbuf }
+  | booleans                  { BOOL (bool_of_string (lexeme lexbuf)) }
+  | char_tokens               { create_symbol lexbuf }
+  | string_tokens             { create_symbol lexbuf }
   | var_chars+                { VAR (lexeme lexbuf) }
   | whitespace+ | newline+    { token lexbuf }
   | eof                       { EOF }

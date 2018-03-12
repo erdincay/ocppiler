@@ -1,5 +1,5 @@
 
-** Conflict (shift/reduce) in state 29.
+** Conflict (shift/reduce) in state 34.
 ** Tokens involved: SUB MUL LEQ DIV ADD
 ** The following explanations concentrate on token SUB.
 ** This state is reached from prog after reading:
@@ -13,25 +13,52 @@ prog
 exp EOF 
 (?)
 
-** In state 29, looking ahead at SUB, reducing production
+** In state 34, looking ahead at SUB, reducing production
 ** exp -> LET VAR EQ exp IN exp 
 ** is permitted because of the following sub-derivation:
 
 exp SUB exp // lookahead token appears
 LET VAR EQ exp IN exp . 
 
-** In state 29, looking ahead at SUB, shifting is permitted
+** In state 34, looking ahead at SUB, shifting is permitted
 ** because of the following sub-derivation:
 
 LET VAR EQ exp IN exp 
                   exp . SUB exp 
+
+** Conflict (shift/reduce) in state 31.
+** Tokens involved: SUB MUL LEQ DIV ADD
+** The following explanations concentrate on token SUB.
+** This state is reached from prog after reading:
+
+IF exp THEN exp ELSE exp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+exp EOF 
+(?)
+
+** In state 31, looking ahead at SUB, reducing production
+** exp -> IF exp THEN exp ELSE exp 
+** is permitted because of the following sub-derivation:
+
+exp SUB exp // lookahead token appears
+IF exp THEN exp ELSE exp . 
+
+** In state 31, looking ahead at SUB, shifting is permitted
+** because of the following sub-derivation:
+
+IF exp THEN exp ELSE exp 
+                     exp . SUB exp 
 
 ** Conflict (shift/reduce) in state 26.
 ** Tokens involved: SUB MUL LEQ DIV ADD
 ** The following explanations concentrate on token SUB.
 ** This state is reached from prog after reading:
 
-IF exp THEN exp ELSE exp 
+FUN VAR RARROW exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -41,24 +68,24 @@ exp EOF
 (?)
 
 ** In state 26, looking ahead at SUB, reducing production
-** exp -> IF exp THEN exp ELSE exp 
+** exp -> FUN VAR RARROW exp 
 ** is permitted because of the following sub-derivation:
 
 exp SUB exp // lookahead token appears
-IF exp THEN exp ELSE exp . 
+FUN VAR RARROW exp . 
 
 ** In state 26, looking ahead at SUB, shifting is permitted
 ** because of the following sub-derivation:
 
-IF exp THEN exp ELSE exp 
-                     exp . SUB exp 
+FUN VAR RARROW exp 
+               exp . SUB exp 
 
-** Conflict (shift/reduce) in state 11.
+** Conflict (shift/reduce) in state 15.
 ** Tokens involved: SUB MUL LEQ DIV ADD
 ** The following explanations concentrate on token SUB.
 ** This state is reached from prog after reading:
 
-FUN VAR RARROW exp 
+FIX VAR VAR RARROW exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -67,15 +94,15 @@ prog
 exp EOF 
 (?)
 
-** In state 11, looking ahead at SUB, reducing production
-** exp -> FUN VAR RARROW exp 
+** In state 15, looking ahead at SUB, reducing production
+** exp -> FIX VAR VAR RARROW exp 
 ** is permitted because of the following sub-derivation:
 
 exp SUB exp // lookahead token appears
-FUN VAR RARROW exp . 
+FIX VAR VAR RARROW exp . 
 
-** In state 11, looking ahead at SUB, shifting is permitted
+** In state 15, looking ahead at SUB, shifting is permitted
 ** because of the following sub-derivation:
 
-FUN VAR RARROW exp 
-               exp . SUB exp 
+FIX VAR VAR RARROW exp 
+                   exp . SUB exp 

@@ -5,6 +5,7 @@ type exp =
 | EVar  of var
 | ELet  of var * exp * exp
 | EFun  of var * exp
+| EFix  of var * var * exp
 | EIf   of exp * exp * exp
 | EOp   of exp * operator * exp
 
@@ -12,6 +13,7 @@ and value =
 | VInt  of int
 | VBool of bool
 | VFun  of var * exp
+| VFix  of var * var * exp
 
 and operator =
 | OLEq
@@ -26,19 +28,21 @@ and var =
 (* STRING GENERATION *)
 let rec string_of_exp (e:exp) : string =
   match e with
-  | EInt n                -> string_of_int n
-  | EBool b               -> string_of_bool b
-  | EVar (Var vr)         -> vr
-  | ELet (Var vr, e1, e2) -> "let " ^ vr ^ " = " ^ string_of_exp e1 ^ " in " ^ string_of_exp e2
-  | EFun (Var vr, e)      -> "fun " ^ vr ^ " -> " ^ string_of_exp e
-  | EIf (e1, e2, e3)      -> "if " ^ string_of_exp e1 ^ " then " ^ string_of_exp e2 ^ " else " ^ string_of_exp e3
-  | EOp (e1, o, e2)       -> string_of_exp e1 ^ " " ^ string_of_operator o ^ " " ^ string_of_exp e2
+  | EInt n                     -> string_of_value (VInt n)
+  | EBool b                    -> string_of_value (VBool b)
+  | EVar (Var vr)              -> vr
+  | ELet (Var vr, e1, e2)      -> "(let " ^ vr ^ " = " ^ string_of_exp e1 ^ " in " ^ string_of_exp e2
+  | EFun (Var vr, e)           -> string_of_value (VFun (Var vr, e))
+  | EFix (Var vr1, Var vr2, e) -> string_of_value (VFix (Var vr1, Var vr2, e))
+  | EIf (e1, e2, e3)           -> "(if " ^ string_of_exp e1 ^ " then " ^ string_of_exp e2 ^ " else " ^ string_of_exp e3 ^ ")"
+  | EOp (e1, o, e2)            -> "(" ^ string_of_exp e1 ^ " " ^ string_of_operator o ^ " " ^ string_of_exp e2 ^ ")"
 
 and string_of_value (vl:value) : string =
   match vl with
-  | VInt n               -> string_of_int n
-  | VBool b              -> string_of_bool b
-  | VFun (Var vr, e)      -> "fun " ^ vr ^ " ->" ^ string_of_exp e
+  | VInt n                     -> string_of_int n
+  | VBool b                    -> string_of_bool b
+  | VFun (Var vr, e)           -> "(fun " ^ vr ^ " ->" ^ string_of_exp e ^ ")"
+  | VFix (Var vr1, Var vr2, e) -> "(fix " ^ vr1 ^ " " ^ vr2 ^ " -> " ^ string_of_exp e ^ ")"
 
 and string_of_operator (o:operator) : string =
   match o with
@@ -53,8 +57,6 @@ let rec eval (e:exp) : value =
   match e with
   | EInt n           -> VInt n
   | EBool b          -> VBool b
-  (* | ELet (Var v1, e1, e2) -> do something *)
-  (* |  (Var v, e) -> do something *)
   | EIf (e1, e2, e3) -> (match (eval e1, eval e2, eval e3) with
                          | (VBool b, VInt n1, VInt n2)   -> (if b then VInt n1 else VInt n2)
                          | (VBool b, VBool b1, VBool b2) -> (if b then VBool b1 else VBool b2)
@@ -89,9 +91,10 @@ let rec subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
   | EBool b            -> EBool b
   | EVar vr1           -> if vr1 = vr_sub
                           then (match vl_sub with
-                                | VInt n           -> EInt n
-                                | VBool b          -> EBool b
-                                | VFun (Var vr, e) -> EFun (Var vr, e))
+                                | VInt n                     -> EInt n
+                                | VBool b                    -> EBool b
+                                | VFun (Var vr, e)           -> EFun (Var vr, e)
+                                | VFix (Var vr1, Var vr2, e) -> EFix (Var vr1, Var vr2, e))
                           else EVar vr1
   | ELet (vr1, e1, e2) -> if vr1 = vr_sub
                           then ELet (vr1, subst vl_sub vr_sub e1, e2)
@@ -99,5 +102,6 @@ let rec subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
   | EFun (vr1, e)      -> if vr1 = vr_sub
                           then EFun (vr1, e)
                           else EFun (vr1, subst vl_sub vr_sub e)
+  | EFix (vr1, vr2, e) -> EFix (vr1, vr2, e)
   | EIf (e1, e2, e3)   -> EIf (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2, subst vl_sub vr_sub e3)
   | EOp (e1, o, e2)    -> EOp (subst vl_sub vr_sub e1, o, subst vl_sub vr_sub e2)

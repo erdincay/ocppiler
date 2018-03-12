@@ -9,6 +9,7 @@ open Lang
 %token LET    (* let  *)
 %token IN     (* in   *)
 %token FUN    (* fun  *)
+%token FIX    (* fix  *)
 %token RARROW (* ->   *)
 %token IF     (* if   *)
 %token THEN   (* then *)
@@ -37,8 +38,9 @@ prog:
 exp:
   | n=INT                             { EInt n }
   | b=BOOL                            { EBool b }
-  | LET v=VAR EQ e1=exp IN e2=exp     { ELet (Var v, e1, e2) }
-  | FUN v=VAR RARROW e=exp            { EFun (Var v, e) }
+  | LET vr=VAR EQ e1=exp IN e2=exp    { ELet (Var vr, e1, e2) }
+  | FUN vr=VAR RARROW e=exp           { EFun (Var vr, e) }
+  | FIX vr1=VAR vr2=VAR RARROW e=exp  { EFix (Var vr1, Var vr2, e) }
   | IF e1=exp THEN e2=exp ELSE e3=exp { EIf (e1, e2, e3) }
   | e1=exp LEQ e2=exp                 { EOp (e1, OLEq, e2) }
   | e1=exp SUB e2=exp                 { EOp (e1, OSub, e2) }
