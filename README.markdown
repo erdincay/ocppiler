@@ -1,5 +1,5 @@
 # cppiler
-A bare-bones compiler written in C++, flex, and Bison, as well as OCaml, Lexing, and Menhir; made by [@hadleyel](https://github.com/hadleyel "Hadley") to experiment with programming language implementation.
+A bare-bones compiler written in C++, flex, and Bison, as well as OCaml and Menhir; made by [@hadleyel](https://github.com/hadleyel "Hadley") to experiment with programming language implementation.
 
 ## Grammar
 This will be frequently modified and added to.
@@ -13,6 +13,8 @@ e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 
 - [GCC](http://gcc.gnu.org/ "GCC, the GNU Compiler Collection")
 - [flex](https://github.com/westes/flex "The Fast Lexical Analyzer")
 - [Bison](https://www.gnu/software/bison/)
+- [OCaml](https://ocaml.org/)
+- [Menhir](http://gallium.inria.fr/~fpottier/menhir/)
 
 | Action | Command |
 | --- | --- |
