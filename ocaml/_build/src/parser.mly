@@ -38,13 +38,15 @@ prog:
 exp:
   | n=INT                             { EInt n }
   | b=BOOL                            { EBool b }
-  | LET vr= VAR EQ e1=exp IN e2=exp    { ELet (Var vr, e1, e2) }
-  | FUN vr= VAR RARROW e=exp           { EFun (Var vr, e) }
-  | FIX vr1= VAR vr2= VAR RARROW e=exp  { EFix (Var vr1, Var vr2, e) }
+  | vr=VAR                            { EVar (Var vr) }
+  | LET vr=VAR EQ e1=exp IN e2=exp    { ELet (Var vr, e1, e2) }
+  | FUN vr=VAR RARROW e=exp           { EFun (Var vr, e) }
+  | FIX vr1=VAR vr2=VAR RARROW e=exp  { EFix (Var vr1, Var vr2, e) }
   | IF e1=exp THEN e2=exp ELSE e3=exp { EIf (e1, e2, e3) }
   | e1=exp LEQ e2=exp                 { EOp (e1, OLEq, e2) }
   | e1=exp SUB e2=exp                 { EOp (e1, OSub, e2) }
   | e1=exp ADD e2=exp                 { EOp (e1, OAdd, e2) }
   | e1=exp DIV e2=exp                 { EOp (e1, ODiv, e2) }
   | e1=exp MUL e2=exp                 { EOp (e1, OMul, e2) }
+  | e1=exp e2=exp                     { EApp (e1, e2) }
   | LPAREN e=exp RPAREN               { e }

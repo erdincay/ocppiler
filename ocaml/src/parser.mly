@@ -38,6 +38,7 @@ prog:
 exp:
   | n=INT                             { EInt n }
   | b=BOOL                            { EBool b }
+  | vr=VAR                            { EVar (Var vr) }
   | LET vr=VAR EQ e1=exp IN e2=exp    { ELet (Var vr, e1, e2) }
   | FUN vr=VAR RARROW e=exp           { EFun (Var vr, e) }
   | FIX vr1=VAR vr2=VAR RARROW e=exp  { EFix (Var vr1, Var vr2, e) }
@@ -47,4 +48,5 @@ exp:
   | e1=exp ADD e2=exp                 { EOp (e1, OAdd, e2) }
   | e1=exp DIV e2=exp                 { EOp (e1, ODiv, e2) }
   | e1=exp MUL e2=exp                 { EOp (e1, OMul, e2) }
+  | e1=exp e2=exp                     { EApp (e1, e2) }
   | LPAREN e=exp RPAREN               { e }

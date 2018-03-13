@@ -1,1 +1,1 @@
-src/lexer.ml: Char Lexing List Parser
+src/lexer.ml: Char Lexing Parser

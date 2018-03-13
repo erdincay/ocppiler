@@ -7,7 +7,7 @@ let flag_handler file_name parse_b =
 
 let main () = begin
   let speclist = [("-parse", Arg.Set parse, "Performs lexing and parsing, but not evaluation.")] in
-  let anon_fun = (fun file_name -> flag_handler file_name !parse |> print_string) in
+  let anon_fun = (fun file_name -> flag_handler file_name !parse |> print_endline) in
   let usage_msg = "Flags: " in
   Arg.parse speclist anon_fun usage_msg
 end

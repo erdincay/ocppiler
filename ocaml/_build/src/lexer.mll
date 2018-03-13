@@ -4,48 +4,49 @@ open Parser
 
 exception Lexer_error of string
 
-let symbols : (string * Parser.token) list =
-  [ ("true", BOOL true)
-  ; ("false", BOOL false)
-  ; ("let", LET)
-  ; ("in", IN)
-  ; ("fun", FUN)
-  ; ("fix", FIX)
-  ; ("->", RARROW)
-  ; ("if", IF)
-  ; ("then", THEN)
-  ; ("else", ELSE)
-  ; ("<=", LEQ)
-  ; ("=", EQ)
-  ; ("-", SUB)
-  ; ("+", ADD)
-  ; ("/", DIV)
-  ; ("*", MUL)
-  ; ("(", LPAREN)
-  ; (")", RPAREN)
-  ]
+let create_char_token c =
+  match c with
+  | '=' -> EQ
+  | '-' -> SUB
+  | '+' -> ADD
+  | '/' -> DIV
+  | '*' -> MUL
+  | '(' -> LPAREN
+  | ')' -> RPAREN
+  | _   -> failwith "Expected single char, found string."
 
-let create_symbol lexbuf =
-  let str = lexeme lexbuf in
-  List.assoc str symbols
+let create_str_token str =
+  match str with
+  | "->"   -> RARROW
+  | "<="   -> LEQ
+  | _      -> failwith "Expected nonalphabetic string."
 
-let create_int lexbuf = lexeme lexbuf |> int_of_string
+let create_alpha_token str =
+  match str with
+  | "true"  -> BOOL true
+  | "false" -> BOOL false
+  | "let"   -> LET
+  | "in"    -> IN
+  | "fun"   -> FUN
+  | "fix"   -> FIX
+  | "if"    -> IF
+  | "then"  -> THEN
+  | "else"  -> ELSE
+  | _       -> VAR (str)
 }
 
 let newline      = '\n' | ('\r' '\n') | '\r'
 let whitespace   = ['\t' ' ']
 let digit        = ['0'-'9']
-let booleans     = "true" | "false"
 let char_tokens  = '=' | '-' | '+' | '/' | '*' | '(' | ')'
-let string_tokens = "let"  | "in"  | "fun" | "fix" | "->" | "if" | "then" | "else" | "<="
+let str_tokens   = "<=" | "->"
 let var_chars    = ['a'-'z'] | ['A'-'Z'] | '_' | digit
 
 rule token = parse
   | digit+                    { INT (int_of_string (lexeme lexbuf)) }
-  | booleans                  { BOOL (bool_of_string (lexeme lexbuf)) }
-  | char_tokens               { create_symbol lexbuf }
-  | string_tokens             { create_symbol lexbuf }
-  | var_chars+                { VAR (lexeme lexbuf) }
+  | char_tokens as c          { create_char_token c }
+  | str_tokens                { create_str_token (lexeme lexbuf) }
+  | var_chars+                { create_alpha_token (lexeme lexbuf) }
   | whitespace+ | newline+    { token lexbuf }
   | eof                       { EOF }
   | _ as c { raise @@ Lexer_error ("Unexpected character: " ^ Char.escaped c) }
