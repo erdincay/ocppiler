@@ -1,10 +1,10 @@
 # cppiler
-A bare-bones compiler written in C++, flex, and Bison; made by [@hadleyel](https://github.com/hadleyel "Hadley") to experiment with programming language implementation.
+A bare-bones compiler written in C++, flex, and Bison, as well as OCaml, Lexing, and Menhir; made by [@hadleyel](https://github.com/hadleyel "Hadley") to experiment with programming language implementation.
 
 ## Grammar
 This will be frequently modified and added to.
 ```
-e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 | if e1 then e2 else e3
+e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 | if e1 then e2 else e3 | x | let x = e1 in e2 | fun x -> e | e1 e2
 ```
 ## Compiler
 ### Dependencies
@@ -16,13 +16,17 @@ e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 
 
 | Action | Command |
 | --- | --- |
-| Download | `git clone https://github.com/hadleyel/cppiler.git` |
+| Download | `git clone https://github.com/hadleyel/ocppiler.git` |
 | Build | `make` |
-| Run | `./cppiler file-name.txt` |
+| Run | `./compiler.native file-name.txt` |
 | Test | `make test` |
 | Clean up | `make clean` |
 
 ## History
+* **Assignment 4**:
+    * Switched to OCaml, Lexing, and Menhir
+    * Added let, function, variable, and function application support
+    * Cried a lot
 * **Assignment 3**:
     * Added tests for hand-rolled parser
     * Moved hand-rolled lexer/parser to its own folder
