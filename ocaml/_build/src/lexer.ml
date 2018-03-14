@@ -12,6 +12,7 @@ let create_char_token c =
   | '+' -> ADD
   | '/' -> DIV
   | '*' -> MUL
+  | ':' -> COLON
   | '(' -> LPAREN
   | ')' -> RPAREN
   | _   -> failwith "Expected single char, found string."
@@ -26,6 +27,8 @@ let create_alpha_token str =
   match str with
   | "true"  -> BOOL true
   | "false" -> BOOL false
+  | "int"   -> TINT
+  | "bool"  -> TBOOL
   | "let"   -> LET
   | "in"    -> IN
   | "fun"   -> FUN
@@ -35,7 +38,7 @@ let create_alpha_token str =
   | "else"  -> ELSE
   | _       -> VAR (str)
 
-# 39 "src/lexer.ml"
+# 42 "src/lexer.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base =
    "\000\000\249\255\250\255\001\000\002\000\007\000\075\000\001\000\
@@ -54,7 +57,7 @@ let __ocaml_lex_tables = {
     \005\000\000\000\000\000\000\000\000\000\000\000\000\000\005\000\
     \008\000\008\000\008\000\008\000\000\000\009\000\000\000\008\000\
     \010\000\010\000\010\000\010\000\010\000\010\000\010\000\010\000\
-    \010\000\010\000\000\000\000\000\007\000\008\000\011\000\011\000\
+    \010\000\010\000\008\000\000\000\007\000\008\000\011\000\011\000\
     \000\000\006\000\006\000\006\000\006\000\006\000\006\000\006\000\
     \006\000\006\000\006\000\006\000\006\000\006\000\006\000\006\000\
     \006\000\006\000\006\000\006\000\006\000\006\000\006\000\006\000\
@@ -108,7 +111,7 @@ let __ocaml_lex_tables = {
     \000\000\255\255\255\255\255\255\255\255\255\255\255\255\005\000\
     \000\000\000\000\000\000\000\000\255\255\000\000\255\255\000\000\
     \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
-    \000\000\000\000\255\255\255\255\000\000\000\000\007\000\009\000\
+    \000\000\000\000\000\000\255\255\000\000\000\000\007\000\009\000\
     \255\255\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
     \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
     \000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\000\
@@ -173,49 +176,49 @@ let rec token lexbuf =
 and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 46 "src/lexer.mll"
+# 49 "src/lexer.mll"
                               ( INT (int_of_string (lexeme lexbuf)) )
-# 179 "src/lexer.ml"
+# 182 "src/lexer.ml"
 
   | 1 ->
 let
-# 47 "src/lexer.mll"
+# 50 "src/lexer.mll"
                    c
-# 185 "src/lexer.ml"
+# 188 "src/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 47 "src/lexer.mll"
+# 50 "src/lexer.mll"
                               ( create_char_token c )
-# 189 "src/lexer.ml"
+# 192 "src/lexer.ml"
 
   | 2 ->
-# 48 "src/lexer.mll"
+# 51 "src/lexer.mll"
                               ( create_str_token (lexeme lexbuf) )
-# 194 "src/lexer.ml"
+# 197 "src/lexer.ml"
 
   | 3 ->
-# 49 "src/lexer.mll"
+# 52 "src/lexer.mll"
                               ( create_alpha_token (lexeme lexbuf) )
-# 199 "src/lexer.ml"
+# 202 "src/lexer.ml"
 
   | 4 ->
-# 50 "src/lexer.mll"
+# 53 "src/lexer.mll"
                               ( token lexbuf )
-# 204 "src/lexer.ml"
+# 207 "src/lexer.ml"
 
   | 5 ->
-# 51 "src/lexer.mll"
+# 54 "src/lexer.mll"
                               ( EOF )
-# 209 "src/lexer.ml"
+# 212 "src/lexer.ml"
 
   | 6 ->
 let
-# 52 "src/lexer.mll"
+# 55 "src/lexer.mll"
          c
-# 215 "src/lexer.ml"
+# 218 "src/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 52 "src/lexer.mll"
+# 55 "src/lexer.mll"
            ( raise @@ Lexer_error ("Unexpected character: " ^ Char.escaped c) )
-# 219 "src/lexer.ml"
+# 222 "src/lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_token_rec lexbuf __ocaml_lex_state

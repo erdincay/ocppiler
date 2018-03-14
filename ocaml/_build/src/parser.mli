@@ -3,7 +3,9 @@
 
 type token = 
   | VAR of (string)
+  | TINT
   | THEN
+  | TBOOL
   | SUB
   | RPAREN
   | RARROW
@@ -20,6 +22,7 @@ type token =
   | EOF
   | ELSE
   | DIV
+  | COLON
   | BOOL of (bool)
   | ADD
 

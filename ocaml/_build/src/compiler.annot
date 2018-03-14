@@ -106,14 +106,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 32 352 352 "src/parser.mli" 32 352 417
+  int_ref Parser.prog "src/parser.mli" 35 381 381 "src/parser.mli" 35 381 446
 )
 "src/compiler.ml" 5 81 152 "src/compiler.ml" 5 81 163
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 171 8676 8684 "src/lexer.ml" 171 8676 8689
+  int_ref Lexer.token "src/lexer.ml" 174 8734 8742 "src/lexer.ml" 174 8734 8747
 )
 "src/compiler.ml" 5 81 140 "src/compiler.ml" 5 81 163
 type(
@@ -138,7 +138,7 @@ type(
   Lang.exp -> string
 )
 ident(
-  int_ref Lang.string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref Lang.string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
 "src/compiler.ml" 5 81 96 "src/compiler.ml" 5 81 185
 call(
@@ -205,14 +205,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 32 352 352 "src/parser.mli" 32 352 417
+  int_ref Parser.prog "src/parser.mli" 35 381 381 "src/parser.mli" 35 381 446
 )
 "src/compiler.ml" 6 186 257 "src/compiler.ml" 6 186 268
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 171 8676 8684 "src/lexer.ml" 171 8676 8689
+  int_ref Lexer.token "src/lexer.ml" 174 8734 8742 "src/lexer.ml" 174 8734 8747
 )
 "src/compiler.ml" 6 186 245 "src/compiler.ml" 6 186 268
 type(
@@ -237,7 +237,7 @@ type(
   Lang.exp -> Lang.value
 )
 ident(
-  int_ref Lang.eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref Lang.eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
 "src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 281
 call(
@@ -258,7 +258,7 @@ type(
   Lang.value -> string
 )
 ident(
-  int_ref Lang.string_of_value "src/lang.ml" 42 1218 1222 "src/lang.ml" 42 1218 1237
+  int_ref Lang.string_of_value "src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
 )
 "src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 305
 call(

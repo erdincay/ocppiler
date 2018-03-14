@@ -11,6 +11,7 @@ let create_char_token c =
   | '+' -> ADD
   | '/' -> DIV
   | '*' -> MUL
+  | ':' -> COLON
   | '(' -> LPAREN
   | ')' -> RPAREN
   | _   -> failwith "Expected single char, found string."
@@ -25,6 +26,8 @@ let create_alpha_token str =
   match str with
   | "true"  -> BOOL true
   | "false" -> BOOL false
+  | "int"   -> TINT
+  | "bool"  -> TBOOL
   | "let"   -> LET
   | "in"    -> IN
   | "fun"   -> FUN
@@ -38,7 +41,7 @@ let create_alpha_token str =
 let newline      = '\n' | ('\r' '\n') | '\r'
 let whitespace   = ['\t' ' ']
 let digit        = ['0'-'9']
-let char_tokens  = '=' | '-' | '+' | '/' | '*' | '(' | ')'
+let char_tokens  = '=' | '-' | '+' | '/' | '*' | '(' | ')' | ':'
 let str_tokens   = "<=" | "->"
 let var_chars    = ['a'-'z'] | ['A'-'Z'] | '_' | digit
 

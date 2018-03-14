@@ -6,6 +6,9 @@ open Lang
 %token <bool> BOOL
 %token <string> VAR
 
+%token TINT
+%token TBOOL
+
 %token LET    (* let  *)
 %token IN     (* in   *)
 %token FUN    (* fun  *)
@@ -20,6 +23,7 @@ open Lang
 %token ADD    (* +    *)
 %token DIV    (* /    *)
 %token MUL    (* *    *)
+%token COLON  (* :    *)
 %token LPAREN (* (    *)
 %token RPAREN (* )    *)
 %token EOF
@@ -33,20 +37,25 @@ open Lang
 %%
 
 prog:
-  | e=exp EOF                         { e }
+  | e=exp EOF                                                                { e }
 
 exp:
-  | n=INT                             { EInt n }
-  | b=BOOL                            { EBool b }
-  | vr=VAR                            { EVar (Var vr) }
-  | LET vr=VAR EQ e1=exp IN e2=exp    { ELet (Var vr, e1, e2) }
-  | FUN vr=VAR RARROW e=exp           { EFun (Var vr, e) }
-  | FIX vr1=VAR vr2=VAR RARROW e=exp  { EFix (Var vr1, Var vr2, e) }
-  | IF e1=exp THEN e2=exp ELSE e3=exp { EIf (e1, e2, e3) }
-  | e1=exp LEQ e2=exp                 { EOp (e1, OLEq, e2) }
-  | e1=exp SUB e2=exp                 { EOp (e1, OSub, e2) }
-  | e1=exp ADD e2=exp                 { EOp (e1, OAdd, e2) }
-  | e1=exp DIV e2=exp                 { EOp (e1, ODiv, e2) }
-  | e1=exp MUL e2=exp                 { EOp (e1, OMul, e2) }
-  | e1=exp e2=exp                     { EApp (e1, e2) }
-  | LPAREN e=exp RPAREN               { e }
+  | n=INT                                                                    { EInt n }
+  | b=BOOL                                                                   { EBool b }
+  | vr=VAR                                                                   { EVar (Var vr) }
+  | LET vr=VAR COLON t=typ EQ e1=exp IN e2=exp                               { ELet (Var vr, t, e1, e2) }
+  | FUN LPAREN vr=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp          { EFun (Var vr, t1, t2, e) }
+  | FIX vr1=VAR LPAREN vr2=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp { EFix (Var vr1, Var vr2, t1, t2, e) }
+  | IF e1=exp THEN e2=exp ELSE e3=exp                                        { EIf (e1, e2, e3) }
+  | e1=exp LEQ e2=exp                                                        { EOp (e1, OLEq, e2) }
+  | e1=exp SUB e2=exp                                                        { EOp (e1, OSub, e2) }
+  | e1=exp ADD e2=exp                                                        { EOp (e1, OAdd, e2) }
+  | e1=exp DIV e2=exp                                                        { EOp (e1, ODiv, e2) }
+  | e1=exp MUL e2=exp                                                        { EOp (e1, OMul, e2) }
+  | e1=exp e2=exp                                                            { EApp (e1, e2) }
+  | LPAREN e=exp RPAREN                                                      { e }
+
+typ:
+  | TINT  { TInt }
+  | TBOOL { TBool }
+  | t1=typ RARROW t2=typ { TConv (t1, t2) }

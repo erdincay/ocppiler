@@ -1,3978 +1,6169 @@
-"src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+"src/lang.ml" 39 1163 1167 "src/lang.ml" 39 1163 1179
+type(
+  context -> var -> typ -> (var * typ) list
+)
+ident(
+  def context_bind "src/lang.ml" 47 1482 1482 "src/lang.ml" 1 0 -1
+)
+"src/lang.ml" 39 1163 1181 "src/lang.ml" 39 1163 1184
+type(
+  context
+)
+ident(
+  def ctx "src/lang.ml" 39 1163 1194 "src/lang.ml" 44 1393 1456
+)
+"src/lang.ml" 39 1163 1195 "src/lang.ml" 39 1163 1197
+type(
+  var
+)
+ident(
+  def vr "src/lang.ml" 39 1163 1203 "src/lang.ml" 44 1393 1456
+)
+"src/lang.ml" 39 1163 1204 "src/lang.ml" 39 1163 1205
+type(
+  typ
+)
+ident(
+  def t "src/lang.ml" 40 1213 1215 "src/lang.ml" 44 1393 1456
+)
+"src/lang.ml" 41 1219 1223 "src/lang.ml" 41 1219 1229
+type(
+  typ -> unit
+)
+ident(
+  int_ref Pervasives.ignore "pervasives.mli" 593 22565 22565 "pervasives.mli" 593 22565 22605
+)
+"src/lang.ml" 41 1219 1230 "src/lang.ml" 41 1219 1240
+type(
+  var -> context -> typ
+)
+ident(
+  int_ref List.assoc "list.mli" 242 9129 9129 "list.mli" 242 9129 9167
+)
+"src/lang.ml" 41 1219 1241 "src/lang.ml" 41 1219 1243
+type(
+  var
+)
+ident(
+  int_ref vr "src/lang.ml" 39 1163 1195 "src/lang.ml" 39 1163 1197
+)
+"src/lang.ml" 41 1219 1244 "src/lang.ml" 41 1219 1247
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 39 1163 1181 "src/lang.ml" 39 1163 1184
+)
+"src/lang.ml" 41 1219 1229 "src/lang.ml" 41 1219 1248
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 41 1219 1223 "src/lang.ml" 41 1219 1248
+type(
+  unit
+)
+"src/lang.ml" 42 1300 1305 "src/lang.ml" 42 1300 1307
+type(
+  var
+)
+ident(
+  int_ref vr "src/lang.ml" 39 1163 1195 "src/lang.ml" 39 1163 1197
+)
+"src/lang.ml" 42 1300 1309 "src/lang.ml" 42 1300 1310
+type(
+  typ
+)
+ident(
+  int_ref t "src/lang.ml" 39 1163 1204 "src/lang.ml" 39 1163 1205
+)
+"src/lang.ml" 42 1300 1304 "src/lang.ml" 42 1300 1311
+type(
+  var * typ
+)
+"src/lang.ml" 42 1300 1316 "src/lang.ml" 42 1300 1333
+type(
+  var -> context -> (var * typ) list
+)
+ident(
+  int_ref List.remove_assoc "list.mli" 276 10445 10445 "list.mli" 276 10445 10502
+)
+"src/lang.ml" 42 1300 1334 "src/lang.ml" 42 1300 1336
+type(
+  var
+)
+ident(
+  int_ref vr "src/lang.ml" 39 1163 1195 "src/lang.ml" 39 1163 1197
+)
+"src/lang.ml" 42 1300 1337 "src/lang.ml" 42 1300 1340
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 39 1163 1181 "src/lang.ml" 39 1163 1184
+)
+"src/lang.ml" 42 1300 1315 "src/lang.ml" 42 1300 1341
+call(
+  stack
+)
+type(
+  (var * typ) list
+)
+"src/lang.ml" 42 1300 1304 "src/lang.ml" 42 1300 1341
+type(
+  (var * typ) list
+)
+"src/lang.ml" 41 1219 1223 "src/lang.ml" 42 1300 1341
+type(
+  (var * typ) list
+)
+"src/lang.ml" 44 1393 1397 "src/lang.ml" 44 1393 1406
+type(
+  exn
+)
+"src/lang.ml" 44 1393 1410 "src/lang.ml" 44 1393 1418
+type(
+  string -> (var * typ) list
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 44 1393 1419 "src/lang.ml" 44 1393 1456
+type(
+  string
+)
+"src/lang.ml" 44 1393 1410 "src/lang.ml" 44 1393 1456
+call(
+  tail
+)
+type(
+  (var * typ) list
+)
+"src/lang.ml" 40 1213 1215 "src/lang.ml" 44 1393 1456
+type(
+  (var * typ) list
+)
+"src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 type(
   exp -> string
 )
 ident(
-  def string_of_exp "src/lang.ml" 30 421 421 "src/lang.ml" 1 0 -1
+  def string_of_exp "src/lang.ml" 47 1482 1482 "src/lang.ml" 1 0 -1
 )
-"src/lang.ml" 30 421 444 "src/lang.ml" 30 421 445
+"src/lang.ml" 47 1482 1505 "src/lang.ml" 47 1482 1506
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 30 421 451 "src/lang.ml" 40 1127 1216
+  def e "src/lang.ml" 47 1482 1512 "src/lang.ml" 57 2294 2391
 )
-"src/lang.ml" 31 462 470 "src/lang.ml" 31 462 471
+"src/lang.ml" 48 1523 1531 "src/lang.ml" 48 1523 1532
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 30 421 444 "src/lang.ml" 30 421 445
+  int_ref e "src/lang.ml" 47 1482 1505 "src/lang.ml" 47 1482 1506
 )
-"src/lang.ml" 32 477 486 "src/lang.ml" 32 477 487
+"src/lang.ml" 49 1538 1547 "src/lang.ml" 49 1538 1548
 type(
   int
 )
 ident(
-  def n "src/lang.ml" 32 477 511 "src/lang.ml" 32 477 535
+  def n "src/lang.ml" 49 1538 1580 "src/lang.ml" 49 1538 1604
 )
-"src/lang.ml" 32 477 481 "src/lang.ml" 32 477 487
+"src/lang.ml" 49 1538 1542 "src/lang.ml" 49 1538 1548
 type(
   exp
 )
-"src/lang.ml" 32 477 511 "src/lang.ml" 32 477 526
+"src/lang.ml" 49 1538 1580 "src/lang.ml" 49 1538 1595
 type(
   value -> string
 )
 ident(
-  int_ref string_of_value "src/lang.ml" 42 1218 1222 "src/lang.ml" 42 1218 1237
+  int_ref string_of_value "src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
 )
-"src/lang.ml" 32 477 533 "src/lang.ml" 32 477 534
+"src/lang.ml" 49 1538 1602 "src/lang.ml" 49 1538 1603
 type(
   int
 )
 ident(
-  int_ref n "src/lang.ml" 32 477 486 "src/lang.ml" 32 477 487
+  int_ref n "src/lang.ml" 49 1538 1547 "src/lang.ml" 49 1538 1548
 )
-"src/lang.ml" 32 477 527 "src/lang.ml" 32 477 535
+"src/lang.ml" 49 1538 1596 "src/lang.ml" 49 1538 1604
 type(
   value
 )
-"src/lang.ml" 32 477 511 "src/lang.ml" 32 477 535
+"src/lang.ml" 49 1538 1580 "src/lang.ml" 49 1538 1604
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 33 536 546 "src/lang.ml" 33 536 547
+"src/lang.ml" 50 1605 1615 "src/lang.ml" 50 1605 1616
 type(
   bool
 )
 ident(
-  def b "src/lang.ml" 33 536 570 "src/lang.ml" 33 536 595
+  def b "src/lang.ml" 50 1605 1647 "src/lang.ml" 50 1605 1672
 )
-"src/lang.ml" 33 536 540 "src/lang.ml" 33 536 547
+"src/lang.ml" 50 1605 1609 "src/lang.ml" 50 1605 1616
 type(
   exp
 )
-"src/lang.ml" 33 536 570 "src/lang.ml" 33 536 585
+"src/lang.ml" 50 1605 1647 "src/lang.ml" 50 1605 1662
 type(
   value -> string
 )
 ident(
-  int_ref string_of_value "src/lang.ml" 42 1218 1222 "src/lang.ml" 42 1218 1237
+  int_ref string_of_value "src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
 )
-"src/lang.ml" 33 536 593 "src/lang.ml" 33 536 594
+"src/lang.ml" 50 1605 1670 "src/lang.ml" 50 1605 1671
 type(
   bool
 )
 ident(
-  int_ref b "src/lang.ml" 33 536 546 "src/lang.ml" 33 536 547
+  int_ref b "src/lang.ml" 50 1605 1615 "src/lang.ml" 50 1605 1616
 )
-"src/lang.ml" 33 536 586 "src/lang.ml" 33 536 595
+"src/lang.ml" 50 1605 1663 "src/lang.ml" 50 1605 1672
 type(
   value
 )
-"src/lang.ml" 33 536 570 "src/lang.ml" 33 536 595
+"src/lang.ml" 50 1605 1647 "src/lang.ml" 50 1605 1672
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 34 596 610 "src/lang.ml" 34 596 612
+"src/lang.ml" 51 1673 1687 "src/lang.ml" 51 1673 1689
 type(
   string
 )
 ident(
-  def vr "src/lang.ml" 34 596 630 "src/lang.ml" 34 596 632
+  def vr "src/lang.ml" 51 1673 1715 "src/lang.ml" 51 1673 1717
 )
-"src/lang.ml" 34 596 605 "src/lang.ml" 34 596 613
+"src/lang.ml" 51 1673 1682 "src/lang.ml" 51 1673 1690
 type(
   var
 )
-"src/lang.ml" 34 596 600 "src/lang.ml" 34 596 613
+"src/lang.ml" 51 1673 1677 "src/lang.ml" 51 1673 1690
 type(
   exp
 )
-"src/lang.ml" 34 596 630 "src/lang.ml" 34 596 632
+"src/lang.ml" 51 1673 1715 "src/lang.ml" 51 1673 1717
 type(
   string
 )
 ident(
-  int_ref vr "src/lang.ml" 34 596 610 "src/lang.ml" 34 596 612
+  int_ref vr "src/lang.ml" 51 1673 1687 "src/lang.ml" 51 1673 1689
 )
-"src/lang.ml" 35 633 647 "src/lang.ml" 35 633 649
+"src/lang.ml" 52 1718 1732 "src/lang.ml" 52 1718 1734
 type(
   string
 )
 ident(
-  def vr "src/lang.ml" 35 633 667 "src/lang.ml" 35 633 735
+  def vr "src/lang.ml" 52 1718 1760 "src/lang.ml" 52 1718 1854
 )
-"src/lang.ml" 35 633 643 "src/lang.ml" 35 633 649
+"src/lang.ml" 52 1718 1728 "src/lang.ml" 52 1718 1734
 type(
   var
 )
-"src/lang.ml" 35 633 651 "src/lang.ml" 35 633 653
+"src/lang.ml" 52 1718 1736 "src/lang.ml" 52 1718 1737
+type(
+  typ
+)
+ident(
+  def t "src/lang.ml" 52 1718 1760 "src/lang.ml" 52 1718 1854
+)
+"src/lang.ml" 52 1718 1739 "src/lang.ml" 52 1718 1741
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 35 633 667 "src/lang.ml" 35 633 735
+  def e1 "src/lang.ml" 52 1718 1760 "src/lang.ml" 52 1718 1854
 )
-"src/lang.ml" 35 633 655 "src/lang.ml" 35 633 657
+"src/lang.ml" 52 1718 1743 "src/lang.ml" 52 1718 1745
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 35 633 667 "src/lang.ml" 35 633 735
+  def e2 "src/lang.ml" 52 1718 1760 "src/lang.ml" 52 1718 1854
 )
-"src/lang.ml" 35 633 637 "src/lang.ml" 35 633 658
+"src/lang.ml" 52 1718 1722 "src/lang.ml" 52 1718 1746
 type(
   exp
 )
-"src/lang.ml" 35 633 667 "src/lang.ml" 35 633 674
+"src/lang.ml" 52 1718 1760 "src/lang.ml" 52 1718 1767
 type(
   string
 )
-"src/lang.ml" 35 633 676 "src/lang.ml" 35 633 677
+"src/lang.ml" 52 1718 1769 "src/lang.ml" 52 1718 1770
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 35 633 678 "src/lang.ml" 35 633 680
+"src/lang.ml" 52 1718 1771 "src/lang.ml" 52 1718 1773
 type(
   string
 )
 ident(
-  int_ref vr "src/lang.ml" 35 633 647 "src/lang.ml" 35 633 649
+  int_ref vr "src/lang.ml" 52 1718 1732 "src/lang.ml" 52 1718 1734
 )
-"src/lang.ml" 35 633 681 "src/lang.ml" 35 633 682
+"src/lang.ml" 52 1718 1774 "src/lang.ml" 52 1718 1775
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 35 633 683 "src/lang.ml" 35 633 688
+"src/lang.ml" 52 1718 1776 "src/lang.ml" 52 1718 1781
 type(
   string
 )
-"src/lang.ml" 35 633 689 "src/lang.ml" 35 633 690
+"src/lang.ml" 52 1718 1782 "src/lang.ml" 52 1718 1783
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 35 633 691 "src/lang.ml" 35 633 704
+"src/lang.ml" 52 1718 1784 "src/lang.ml" 52 1718 1797
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 52 1718 1798 "src/lang.ml" 52 1718 1799
+type(
+  typ
+)
+ident(
+  int_ref t "src/lang.ml" 52 1718 1736 "src/lang.ml" 52 1718 1737
+)
+"src/lang.ml" 52 1718 1784 "src/lang.ml" 52 1718 1799
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 52 1718 1800 "src/lang.ml" 52 1718 1801
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 52 1718 1802 "src/lang.ml" 52 1718 1807
+type(
+  string
+)
+"src/lang.ml" 52 1718 1808 "src/lang.ml" 52 1718 1809
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 52 1718 1810 "src/lang.ml" 52 1718 1823
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 35 633 705 "src/lang.ml" 35 633 707
+"src/lang.ml" 52 1718 1824 "src/lang.ml" 52 1718 1826
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 35 633 651 "src/lang.ml" 35 633 653
+  int_ref e1 "src/lang.ml" 52 1718 1739 "src/lang.ml" 52 1718 1741
 )
-"src/lang.ml" 35 633 691 "src/lang.ml" 35 633 707
+"src/lang.ml" 52 1718 1810 "src/lang.ml" 52 1718 1826
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 35 633 708 "src/lang.ml" 35 633 709
+"src/lang.ml" 52 1718 1827 "src/lang.ml" 52 1718 1828
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 35 633 710 "src/lang.ml" 35 633 716
+"src/lang.ml" 52 1718 1829 "src/lang.ml" 52 1718 1835
 type(
   string
 )
-"src/lang.ml" 35 633 717 "src/lang.ml" 35 633 718
+"src/lang.ml" 52 1718 1836 "src/lang.ml" 52 1718 1837
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 35 633 719 "src/lang.ml" 35 633 732
+"src/lang.ml" 52 1718 1838 "src/lang.ml" 52 1718 1851
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 35 633 733 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1852 "src/lang.ml" 52 1718 1854
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 35 633 655 "src/lang.ml" 35 633 657
+  int_ref e2 "src/lang.ml" 52 1718 1743 "src/lang.ml" 52 1718 1745
 )
-"src/lang.ml" 35 633 719 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1838 "src/lang.ml" 52 1718 1854
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 35 633 710 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1829 "src/lang.ml" 52 1718 1854
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 35 633 691 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1810 "src/lang.ml" 52 1718 1854
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 35 633 683 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1802 "src/lang.ml" 52 1718 1854
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 35 633 678 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1784 "src/lang.ml" 52 1718 1854
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 35 633 667 "src/lang.ml" 35 633 735
+"src/lang.ml" 52 1718 1776 "src/lang.ml" 52 1718 1854
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 52 1718 1771 "src/lang.ml" 52 1718 1854
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 52 1718 1760 "src/lang.ml" 52 1718 1854
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 36 736 750 "src/lang.ml" 36 736 752
+"src/lang.ml" 53 1855 1869 "src/lang.ml" 53 1855 1871
 type(
   string
 )
 ident(
-  def vr "src/lang.ml" 36 736 770 "src/lang.ml" 36 736 804
+  def vr "src/lang.ml" 53 1855 1897 "src/lang.ml" 53 1855 1939
 )
-"src/lang.ml" 36 736 746 "src/lang.ml" 36 736 752
+"src/lang.ml" 53 1855 1865 "src/lang.ml" 53 1855 1871
 type(
   var
 )
-"src/lang.ml" 36 736 754 "src/lang.ml" 36 736 755
+"src/lang.ml" 53 1855 1873 "src/lang.ml" 53 1855 1875
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 53 1855 1897 "src/lang.ml" 53 1855 1939
+)
+"src/lang.ml" 53 1855 1877 "src/lang.ml" 53 1855 1879
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 53 1855 1897 "src/lang.ml" 53 1855 1939
+)
+"src/lang.ml" 53 1855 1881 "src/lang.ml" 53 1855 1882
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 36 736 770 "src/lang.ml" 36 736 804
+  def e "src/lang.ml" 53 1855 1897 "src/lang.ml" 53 1855 1939
 )
-"src/lang.ml" 36 736 740 "src/lang.ml" 36 736 756
+"src/lang.ml" 53 1855 1859 "src/lang.ml" 53 1855 1883
 type(
   exp
 )
-"src/lang.ml" 36 736 770 "src/lang.ml" 36 736 785
+"src/lang.ml" 53 1855 1897 "src/lang.ml" 53 1855 1912
 type(
   value -> string
 )
 ident(
-  int_ref string_of_value "src/lang.ml" 42 1218 1222 "src/lang.ml" 42 1218 1237
+  int_ref string_of_value "src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
 )
-"src/lang.ml" 36 736 797 "src/lang.ml" 36 736 799
+"src/lang.ml" 53 1855 1924 "src/lang.ml" 53 1855 1926
 type(
   string
 )
 ident(
-  int_ref vr "src/lang.ml" 36 736 750 "src/lang.ml" 36 736 752
+  int_ref vr "src/lang.ml" 53 1855 1869 "src/lang.ml" 53 1855 1871
 )
-"src/lang.ml" 36 736 793 "src/lang.ml" 36 736 799
+"src/lang.ml" 53 1855 1920 "src/lang.ml" 53 1855 1926
 type(
   var
 )
-"src/lang.ml" 36 736 801 "src/lang.ml" 36 736 802
+"src/lang.ml" 53 1855 1928 "src/lang.ml" 53 1855 1930
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 53 1855 1873 "src/lang.ml" 53 1855 1875
+)
+"src/lang.ml" 53 1855 1932 "src/lang.ml" 53 1855 1934
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 53 1855 1877 "src/lang.ml" 53 1855 1879
+)
+"src/lang.ml" 53 1855 1936 "src/lang.ml" 53 1855 1937
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 36 736 754 "src/lang.ml" 36 736 755
+  int_ref e "src/lang.ml" 53 1855 1881 "src/lang.ml" 53 1855 1882
 )
-"src/lang.ml" 36 736 786 "src/lang.ml" 36 736 804
+"src/lang.ml" 53 1855 1913 "src/lang.ml" 53 1855 1939
 type(
   value
 )
-"src/lang.ml" 36 736 770 "src/lang.ml" 36 736 804
+"src/lang.ml" 53 1855 1897 "src/lang.ml" 53 1855 1939
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 37 805 819 "src/lang.ml" 37 805 822
+"src/lang.ml" 54 1940 1954 "src/lang.ml" 54 1940 1957
 type(
   string
 )
 ident(
-  def vr1 "src/lang.ml" 37 805 839 "src/lang.ml" 37 805 883
+  def vr1 "src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 2034
 )
-"src/lang.ml" 37 805 815 "src/lang.ml" 37 805 822
+"src/lang.ml" 54 1940 1950 "src/lang.ml" 54 1940 1957
 type(
   var
 )
-"src/lang.ml" 37 805 828 "src/lang.ml" 37 805 831
+"src/lang.ml" 54 1940 1963 "src/lang.ml" 54 1940 1966
 type(
   string
 )
 ident(
-  def vr2 "src/lang.ml" 37 805 839 "src/lang.ml" 37 805 883
+  def vr2 "src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 2034
 )
-"src/lang.ml" 37 805 824 "src/lang.ml" 37 805 831
+"src/lang.ml" 54 1940 1959 "src/lang.ml" 54 1940 1966
 type(
   var
 )
-"src/lang.ml" 37 805 833 "src/lang.ml" 37 805 834
+"src/lang.ml" 54 1940 1968 "src/lang.ml" 54 1940 1970
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 2034
+)
+"src/lang.ml" 54 1940 1972 "src/lang.ml" 54 1940 1974
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 2034
+)
+"src/lang.ml" 54 1940 1976 "src/lang.ml" 54 1940 1977
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 37 805 839 "src/lang.ml" 37 805 883
+  def e "src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 2034
 )
-"src/lang.ml" 37 805 809 "src/lang.ml" 37 805 835
+"src/lang.ml" 54 1940 1944 "src/lang.ml" 54 1940 1978
 type(
   exp
 )
-"src/lang.ml" 37 805 839 "src/lang.ml" 37 805 854
+"src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 1997
 type(
   value -> string
 )
 ident(
-  int_ref string_of_value "src/lang.ml" 42 1218 1222 "src/lang.ml" 42 1218 1237
+  int_ref string_of_value "src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
 )
-"src/lang.ml" 37 805 866 "src/lang.ml" 37 805 869
+"src/lang.ml" 54 1940 2009 "src/lang.ml" 54 1940 2012
 type(
   string
 )
 ident(
-  int_ref vr1 "src/lang.ml" 37 805 819 "src/lang.ml" 37 805 822
+  int_ref vr1 "src/lang.ml" 54 1940 1954 "src/lang.ml" 54 1940 1957
 )
-"src/lang.ml" 37 805 862 "src/lang.ml" 37 805 869
+"src/lang.ml" 54 1940 2005 "src/lang.ml" 54 1940 2012
 type(
   var
 )
-"src/lang.ml" 37 805 875 "src/lang.ml" 37 805 878
+"src/lang.ml" 54 1940 2018 "src/lang.ml" 54 1940 2021
 type(
   string
 )
 ident(
-  int_ref vr2 "src/lang.ml" 37 805 828 "src/lang.ml" 37 805 831
+  int_ref vr2 "src/lang.ml" 54 1940 1963 "src/lang.ml" 54 1940 1966
 )
-"src/lang.ml" 37 805 871 "src/lang.ml" 37 805 878
+"src/lang.ml" 54 1940 2014 "src/lang.ml" 54 1940 2021
 type(
   var
 )
-"src/lang.ml" 37 805 880 "src/lang.ml" 37 805 881
+"src/lang.ml" 54 1940 2023 "src/lang.ml" 54 1940 2025
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 54 1940 1968 "src/lang.ml" 54 1940 1970
+)
+"src/lang.ml" 54 1940 2027 "src/lang.ml" 54 1940 2029
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 54 1940 1972 "src/lang.ml" 54 1940 1974
+)
+"src/lang.ml" 54 1940 2031 "src/lang.ml" 54 1940 2032
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 37 805 833 "src/lang.ml" 37 805 834
+  int_ref e "src/lang.ml" 54 1940 1976 "src/lang.ml" 54 1940 1977
 )
-"src/lang.ml" 37 805 855 "src/lang.ml" 37 805 883
+"src/lang.ml" 54 1940 1998 "src/lang.ml" 54 1940 2034
 type(
   value
 )
-"src/lang.ml" 37 805 839 "src/lang.ml" 37 805 883
+"src/lang.ml" 54 1940 1982 "src/lang.ml" 54 1940 2034
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 38 884 893 "src/lang.ml" 38 884 895
+"src/lang.ml" 55 2035 2044 "src/lang.ml" 55 2035 2046
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 38 884 918 "src/lang.ml" 38 884 1009
+  def e1 "src/lang.ml" 55 2035 2077 "src/lang.ml" 55 2035 2168
 )
-"src/lang.ml" 38 884 897 "src/lang.ml" 38 884 899
+"src/lang.ml" 55 2035 2048 "src/lang.ml" 55 2035 2050
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 38 884 918 "src/lang.ml" 38 884 1009
+  def e2 "src/lang.ml" 55 2035 2077 "src/lang.ml" 55 2035 2168
 )
-"src/lang.ml" 38 884 901 "src/lang.ml" 38 884 903
+"src/lang.ml" 55 2035 2052 "src/lang.ml" 55 2035 2054
 type(
   exp
 )
 ident(
-  def e3 "src/lang.ml" 38 884 918 "src/lang.ml" 38 884 1009
+  def e3 "src/lang.ml" 55 2035 2077 "src/lang.ml" 55 2035 2168
 )
-"src/lang.ml" 38 884 888 "src/lang.ml" 38 884 904
+"src/lang.ml" 55 2035 2039 "src/lang.ml" 55 2035 2055
 type(
   exp
 )
-"src/lang.ml" 38 884 918 "src/lang.ml" 38 884 924
+"src/lang.ml" 55 2035 2077 "src/lang.ml" 55 2035 2083
 type(
   string
 )
-"src/lang.ml" 38 884 925 "src/lang.ml" 38 884 926
+"src/lang.ml" 55 2035 2084 "src/lang.ml" 55 2035 2085
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 38 884 927 "src/lang.ml" 38 884 940
+"src/lang.ml" 55 2035 2086 "src/lang.ml" 55 2035 2099
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 38 884 941 "src/lang.ml" 38 884 943
+"src/lang.ml" 55 2035 2100 "src/lang.ml" 55 2035 2102
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 38 884 893 "src/lang.ml" 38 884 895
+  int_ref e1 "src/lang.ml" 55 2035 2044 "src/lang.ml" 55 2035 2046
 )
-"src/lang.ml" 38 884 927 "src/lang.ml" 38 884 943
+"src/lang.ml" 55 2035 2086 "src/lang.ml" 55 2035 2102
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 944 "src/lang.ml" 38 884 945
+"src/lang.ml" 55 2035 2103 "src/lang.ml" 55 2035 2104
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 38 884 946 "src/lang.ml" 38 884 954
+"src/lang.ml" 55 2035 2105 "src/lang.ml" 55 2035 2113
 type(
   string
 )
-"src/lang.ml" 38 884 955 "src/lang.ml" 38 884 956
+"src/lang.ml" 55 2035 2114 "src/lang.ml" 55 2035 2115
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 38 884 957 "src/lang.ml" 38 884 970
+"src/lang.ml" 55 2035 2116 "src/lang.ml" 55 2035 2129
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 38 884 971 "src/lang.ml" 38 884 973
+"src/lang.ml" 55 2035 2130 "src/lang.ml" 55 2035 2132
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 38 884 897 "src/lang.ml" 38 884 899
+  int_ref e2 "src/lang.ml" 55 2035 2048 "src/lang.ml" 55 2035 2050
 )
-"src/lang.ml" 38 884 957 "src/lang.ml" 38 884 973
+"src/lang.ml" 55 2035 2116 "src/lang.ml" 55 2035 2132
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 974 "src/lang.ml" 38 884 975
+"src/lang.ml" 55 2035 2133 "src/lang.ml" 55 2035 2134
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 38 884 976 "src/lang.ml" 38 884 984
+"src/lang.ml" 55 2035 2135 "src/lang.ml" 55 2035 2143
 type(
   string
 )
-"src/lang.ml" 38 884 985 "src/lang.ml" 38 884 986
+"src/lang.ml" 55 2035 2144 "src/lang.ml" 55 2035 2145
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 38 884 987 "src/lang.ml" 38 884 1000
+"src/lang.ml" 55 2035 2146 "src/lang.ml" 55 2035 2159
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 38 884 1001 "src/lang.ml" 38 884 1003
+"src/lang.ml" 55 2035 2160 "src/lang.ml" 55 2035 2162
 type(
   exp
 )
 ident(
-  int_ref e3 "src/lang.ml" 38 884 901 "src/lang.ml" 38 884 903
+  int_ref e3 "src/lang.ml" 55 2035 2052 "src/lang.ml" 55 2035 2054
 )
-"src/lang.ml" 38 884 987 "src/lang.ml" 38 884 1003
+"src/lang.ml" 55 2035 2146 "src/lang.ml" 55 2035 2162
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 1004 "src/lang.ml" 38 884 1005
+"src/lang.ml" 55 2035 2163 "src/lang.ml" 55 2035 2164
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 38 884 1006 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2165 "src/lang.ml" 55 2035 2168
 type(
   string
 )
-"src/lang.ml" 38 884 987 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2146 "src/lang.ml" 55 2035 2168
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 976 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2135 "src/lang.ml" 55 2035 2168
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 957 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2116 "src/lang.ml" 55 2035 2168
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 946 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2105 "src/lang.ml" 55 2035 2168
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 927 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2086 "src/lang.ml" 55 2035 2168
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 38 884 918 "src/lang.ml" 38 884 1009
+"src/lang.ml" 55 2035 2077 "src/lang.ml" 55 2035 2168
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1019 "src/lang.ml" 39 1010 1021
+"src/lang.ml" 56 2169 2178 "src/lang.ml" 56 2169 2180
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 39 1010 1044 "src/lang.ml" 39 1010 1126
+  def e1 "src/lang.ml" 56 2169 2211 "src/lang.ml" 56 2169 2293
 )
-"src/lang.ml" 39 1010 1023 "src/lang.ml" 39 1010 1024
+"src/lang.ml" 56 2169 2182 "src/lang.ml" 56 2169 2183
 type(
   operator
 )
 ident(
-  def o "src/lang.ml" 39 1010 1044 "src/lang.ml" 39 1010 1126
+  def o "src/lang.ml" 56 2169 2211 "src/lang.ml" 56 2169 2293
 )
-"src/lang.ml" 39 1010 1026 "src/lang.ml" 39 1010 1028
+"src/lang.ml" 56 2169 2185 "src/lang.ml" 56 2169 2187
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 39 1010 1044 "src/lang.ml" 39 1010 1126
+  def e2 "src/lang.ml" 56 2169 2211 "src/lang.ml" 56 2169 2293
 )
-"src/lang.ml" 39 1010 1014 "src/lang.ml" 39 1010 1029
+"src/lang.ml" 56 2169 2173 "src/lang.ml" 56 2169 2188
 type(
   exp
 )
-"src/lang.ml" 39 1010 1044 "src/lang.ml" 39 1010 1047
+"src/lang.ml" 56 2169 2211 "src/lang.ml" 56 2169 2214
 type(
   string
 )
-"src/lang.ml" 39 1010 1048 "src/lang.ml" 39 1010 1049
+"src/lang.ml" 56 2169 2215 "src/lang.ml" 56 2169 2216
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 39 1010 1050 "src/lang.ml" 39 1010 1063
+"src/lang.ml" 56 2169 2217 "src/lang.ml" 56 2169 2230
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 39 1010 1064 "src/lang.ml" 39 1010 1066
+"src/lang.ml" 56 2169 2231 "src/lang.ml" 56 2169 2233
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 39 1010 1019 "src/lang.ml" 39 1010 1021
+  int_ref e1 "src/lang.ml" 56 2169 2178 "src/lang.ml" 56 2169 2180
 )
-"src/lang.ml" 39 1010 1050 "src/lang.ml" 39 1010 1066
+"src/lang.ml" 56 2169 2217 "src/lang.ml" 56 2169 2233
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1067 "src/lang.ml" 39 1010 1068
+"src/lang.ml" 56 2169 2234 "src/lang.ml" 56 2169 2235
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 39 1010 1069 "src/lang.ml" 39 1010 1072
+"src/lang.ml" 56 2169 2236 "src/lang.ml" 56 2169 2239
 type(
   string
 )
-"src/lang.ml" 39 1010 1073 "src/lang.ml" 39 1010 1074
+"src/lang.ml" 56 2169 2240 "src/lang.ml" 56 2169 2241
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 39 1010 1075 "src/lang.ml" 39 1010 1093
+"src/lang.ml" 56 2169 2242 "src/lang.ml" 56 2169 2260
 type(
   operator -> string
 )
 ident(
-  int_ref string_of_operator "src/lang.ml" 49 1550 1554 "src/lang.ml" 49 1550 1572
+  int_ref string_of_operator "src/lang.ml" 66 2861 2865 "src/lang.ml" 66 2861 2883
 )
-"src/lang.ml" 39 1010 1094 "src/lang.ml" 39 1010 1095
+"src/lang.ml" 56 2169 2261 "src/lang.ml" 56 2169 2262
 type(
   operator
 )
 ident(
-  int_ref o "src/lang.ml" 39 1010 1023 "src/lang.ml" 39 1010 1024
+  int_ref o "src/lang.ml" 56 2169 2182 "src/lang.ml" 56 2169 2183
 )
-"src/lang.ml" 39 1010 1075 "src/lang.ml" 39 1010 1095
+"src/lang.ml" 56 2169 2242 "src/lang.ml" 56 2169 2262
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1096 "src/lang.ml" 39 1010 1097
+"src/lang.ml" 56 2169 2263 "src/lang.ml" 56 2169 2264
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 39 1010 1098 "src/lang.ml" 39 1010 1101
+"src/lang.ml" 56 2169 2265 "src/lang.ml" 56 2169 2268
 type(
   string
 )
-"src/lang.ml" 39 1010 1102 "src/lang.ml" 39 1010 1103
+"src/lang.ml" 56 2169 2269 "src/lang.ml" 56 2169 2270
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 39 1010 1104 "src/lang.ml" 39 1010 1117
+"src/lang.ml" 56 2169 2271 "src/lang.ml" 56 2169 2284
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 39 1010 1118 "src/lang.ml" 39 1010 1120
+"src/lang.ml" 56 2169 2285 "src/lang.ml" 56 2169 2287
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 39 1010 1026 "src/lang.ml" 39 1010 1028
+  int_ref e2 "src/lang.ml" 56 2169 2185 "src/lang.ml" 56 2169 2187
 )
-"src/lang.ml" 39 1010 1104 "src/lang.ml" 39 1010 1120
+"src/lang.ml" 56 2169 2271 "src/lang.ml" 56 2169 2287
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1121 "src/lang.ml" 39 1010 1122
+"src/lang.ml" 56 2169 2288 "src/lang.ml" 56 2169 2289
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 39 1010 1123 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2290 "src/lang.ml" 56 2169 2293
 type(
   string
 )
-"src/lang.ml" 39 1010 1104 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2271 "src/lang.ml" 56 2169 2293
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1098 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2265 "src/lang.ml" 56 2169 2293
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1075 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2242 "src/lang.ml" 56 2169 2293
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1069 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2236 "src/lang.ml" 56 2169 2293
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1050 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2217 "src/lang.ml" 56 2169 2293
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 39 1010 1044 "src/lang.ml" 39 1010 1126
+"src/lang.ml" 56 2169 2211 "src/lang.ml" 56 2169 2293
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 40 1127 1137 "src/lang.ml" 40 1127 1139
+"src/lang.ml" 57 2294 2304 "src/lang.ml" 57 2294 2306
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 40 1127 1161 "src/lang.ml" 40 1127 1216
+  def e1 "src/lang.ml" 57 2294 2336 "src/lang.ml" 57 2294 2391
 )
-"src/lang.ml" 40 1127 1141 "src/lang.ml" 40 1127 1143
+"src/lang.ml" 57 2294 2308 "src/lang.ml" 57 2294 2310
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 40 1127 1161 "src/lang.ml" 40 1127 1216
+  def e2 "src/lang.ml" 57 2294 2336 "src/lang.ml" 57 2294 2391
 )
-"src/lang.ml" 40 1127 1131 "src/lang.ml" 40 1127 1144
+"src/lang.ml" 57 2294 2298 "src/lang.ml" 57 2294 2311
 type(
   exp
 )
-"src/lang.ml" 40 1127 1161 "src/lang.ml" 40 1127 1165
+"src/lang.ml" 57 2294 2336 "src/lang.ml" 57 2294 2340
 type(
   string
 )
-"src/lang.ml" 40 1127 1166 "src/lang.ml" 40 1127 1167
+"src/lang.ml" 57 2294 2341 "src/lang.ml" 57 2294 2342
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 40 1127 1168 "src/lang.ml" 40 1127 1181
+"src/lang.ml" 57 2294 2343 "src/lang.ml" 57 2294 2356
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 40 1127 1182 "src/lang.ml" 40 1127 1184
+"src/lang.ml" 57 2294 2357 "src/lang.ml" 57 2294 2359
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 40 1127 1137 "src/lang.ml" 40 1127 1139
+  int_ref e1 "src/lang.ml" 57 2294 2304 "src/lang.ml" 57 2294 2306
 )
-"src/lang.ml" 40 1127 1168 "src/lang.ml" 40 1127 1184
+"src/lang.ml" 57 2294 2343 "src/lang.ml" 57 2294 2359
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 40 1127 1185 "src/lang.ml" 40 1127 1186
+"src/lang.ml" 57 2294 2360 "src/lang.ml" 57 2294 2361
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 40 1127 1187 "src/lang.ml" 40 1127 1190
+"src/lang.ml" 57 2294 2362 "src/lang.ml" 57 2294 2365
 type(
   string
 )
-"src/lang.ml" 40 1127 1191 "src/lang.ml" 40 1127 1192
+"src/lang.ml" 57 2294 2366 "src/lang.ml" 57 2294 2367
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 40 1127 1193 "src/lang.ml" 40 1127 1206
+"src/lang.ml" 57 2294 2368 "src/lang.ml" 57 2294 2381
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 40 1127 1207 "src/lang.ml" 40 1127 1209
+"src/lang.ml" 57 2294 2382 "src/lang.ml" 57 2294 2384
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 40 1127 1141 "src/lang.ml" 40 1127 1143
+  int_ref e2 "src/lang.ml" 57 2294 2308 "src/lang.ml" 57 2294 2310
 )
-"src/lang.ml" 40 1127 1193 "src/lang.ml" 40 1127 1209
+"src/lang.ml" 57 2294 2368 "src/lang.ml" 57 2294 2384
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 40 1127 1210 "src/lang.ml" 40 1127 1211
+"src/lang.ml" 57 2294 2385 "src/lang.ml" 57 2294 2386
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 40 1127 1212 "src/lang.ml" 40 1127 1216
+"src/lang.ml" 57 2294 2387 "src/lang.ml" 57 2294 2391
 type(
   string
 )
-"src/lang.ml" 40 1127 1193 "src/lang.ml" 40 1127 1216
+"src/lang.ml" 57 2294 2368 "src/lang.ml" 57 2294 2391
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 40 1127 1187 "src/lang.ml" 40 1127 1216
+"src/lang.ml" 57 2294 2362 "src/lang.ml" 57 2294 2391
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 40 1127 1168 "src/lang.ml" 40 1127 1216
+"src/lang.ml" 57 2294 2343 "src/lang.ml" 57 2294 2391
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 40 1127 1161 "src/lang.ml" 40 1127 1216
+"src/lang.ml" 57 2294 2336 "src/lang.ml" 57 2294 2391
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 31 462 464 "src/lang.ml" 40 1127 1216
+"src/lang.ml" 48 1523 1525 "src/lang.ml" 57 2294 2391
 type(
   string
 )
 type(
   string
 )
-"src/lang.ml" 42 1218 1222 "src/lang.ml" 42 1218 1237
+"src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
 type(
   value -> string
 )
 ident(
-  def string_of_value "src/lang.ml" 30 421 421 "src/lang.ml" 1 0 -1
+  def string_of_value "src/lang.ml" 47 1482 1482 "src/lang.ml" 1 0 -1
 )
-"src/lang.ml" 42 1218 1239 "src/lang.ml" 42 1218 1241
+"src/lang.ml" 59 2393 2414 "src/lang.ml" 59 2393 2416
 type(
   value
 )
 ident(
-  def vl "src/lang.ml" 42 1218 1249 "src/lang.ml" 47 1456 1548
+  def vl "src/lang.ml" 59 2393 2424 "src/lang.ml" 64 2706 2859
 )
-"src/lang.ml" 43 1260 1268 "src/lang.ml" 43 1260 1270
+"src/lang.ml" 60 2435 2443 "src/lang.ml" 60 2435 2445
 type(
   value
 )
 ident(
-  int_ref vl "src/lang.ml" 42 1218 1239 "src/lang.ml" 42 1218 1241
+  int_ref vl "src/lang.ml" 59 2393 2414 "src/lang.ml" 59 2393 2416
 )
-"src/lang.ml" 44 1276 1285 "src/lang.ml" 44 1276 1286
+"src/lang.ml" 61 2451 2460 "src/lang.ml" 61 2451 2461
 type(
   int
 )
 ident(
-  def n "src/lang.ml" 44 1276 1310 "src/lang.ml" 44 1276 1325
+  def n "src/lang.ml" 61 2451 2492 "src/lang.ml" 61 2451 2507
 )
-"src/lang.ml" 44 1276 1280 "src/lang.ml" 44 1276 1286
+"src/lang.ml" 61 2451 2455 "src/lang.ml" 61 2451 2461
 type(
   value
 )
-"src/lang.ml" 44 1276 1310 "src/lang.ml" 44 1276 1323
+"src/lang.ml" 61 2451 2492 "src/lang.ml" 61 2451 2505
 type(
   int -> string
 )
 ident(
   int_ref Pervasives.string_of_int "pervasives.mli" 621 23467 23467 "pervasives.mli" 621 23467 23500
 )
-"src/lang.ml" 44 1276 1324 "src/lang.ml" 44 1276 1325
+"src/lang.ml" 61 2451 2506 "src/lang.ml" 61 2451 2507
 type(
   int
 )
 ident(
-  int_ref n "src/lang.ml" 44 1276 1285 "src/lang.ml" 44 1276 1286
+  int_ref n "src/lang.ml" 61 2451 2460 "src/lang.ml" 61 2451 2461
 )
-"src/lang.ml" 44 1276 1310 "src/lang.ml" 44 1276 1325
+"src/lang.ml" 61 2451 2492 "src/lang.ml" 61 2451 2507
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 45 1326 1336 "src/lang.ml" 45 1326 1337
+"src/lang.ml" 62 2508 2518 "src/lang.ml" 62 2508 2519
 type(
   bool
 )
 ident(
-  def b "src/lang.ml" 45 1326 1360 "src/lang.ml" 45 1326 1376
+  def b "src/lang.ml" 62 2508 2549 "src/lang.ml" 62 2508 2565
 )
-"src/lang.ml" 45 1326 1330 "src/lang.ml" 45 1326 1337
+"src/lang.ml" 62 2508 2512 "src/lang.ml" 62 2508 2519
 type(
   value
 )
-"src/lang.ml" 45 1326 1360 "src/lang.ml" 45 1326 1374
+"src/lang.ml" 62 2508 2549 "src/lang.ml" 62 2508 2563
 type(
   bool -> string
 )
 ident(
   int_ref Pervasives.string_of_bool "pervasives.mli" 604 22943 22943 "pervasives.mli" 604 22943 22978
 )
-"src/lang.ml" 45 1326 1375 "src/lang.ml" 45 1326 1376
+"src/lang.ml" 62 2508 2564 "src/lang.ml" 62 2508 2565
 type(
   bool
 )
 ident(
-  int_ref b "src/lang.ml" 45 1326 1336 "src/lang.ml" 45 1326 1337
+  int_ref b "src/lang.ml" 62 2508 2518 "src/lang.ml" 62 2508 2519
 )
-"src/lang.ml" 45 1326 1360 "src/lang.ml" 45 1326 1376
+"src/lang.ml" 62 2508 2549 "src/lang.ml" 62 2508 2565
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 46 1377 1391 "src/lang.ml" 46 1377 1393
+"src/lang.ml" 63 2566 2580 "src/lang.ml" 63 2566 2582
 type(
   string
 )
 ident(
-  def vr "src/lang.ml" 46 1377 1411 "src/lang.ml" 46 1377 1455
+  def vr "src/lang.ml" 63 2566 2607 "src/lang.ml" 63 2566 2705
 )
-"src/lang.ml" 46 1377 1387 "src/lang.ml" 46 1377 1393
+"src/lang.ml" 63 2566 2576 "src/lang.ml" 63 2566 2582
 type(
   var
 )
-"src/lang.ml" 46 1377 1395 "src/lang.ml" 46 1377 1396
+"src/lang.ml" 63 2566 2584 "src/lang.ml" 63 2566 2586
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 63 2566 2607 "src/lang.ml" 63 2566 2705
+)
+"src/lang.ml" 63 2566 2588 "src/lang.ml" 63 2566 2590
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 63 2566 2607 "src/lang.ml" 63 2566 2705
+)
+"src/lang.ml" 63 2566 2592 "src/lang.ml" 63 2566 2593
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 46 1377 1411 "src/lang.ml" 46 1377 1455
+  def e "src/lang.ml" 63 2566 2607 "src/lang.ml" 63 2566 2705
 )
-"src/lang.ml" 46 1377 1381 "src/lang.ml" 46 1377 1397
+"src/lang.ml" 63 2566 2570 "src/lang.ml" 63 2566 2594
 type(
   value
 )
-"src/lang.ml" 46 1377 1411 "src/lang.ml" 46 1377 1418
+"src/lang.ml" 63 2566 2607 "src/lang.ml" 63 2566 2615
 type(
   string
 )
-"src/lang.ml" 46 1377 1419 "src/lang.ml" 46 1377 1420
+"src/lang.ml" 63 2566 2616 "src/lang.ml" 63 2566 2617
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 46 1377 1421 "src/lang.ml" 46 1377 1423
+"src/lang.ml" 63 2566 2618 "src/lang.ml" 63 2566 2620
 type(
   string
 )
 ident(
-  int_ref vr "src/lang.ml" 46 1377 1391 "src/lang.ml" 46 1377 1393
+  int_ref vr "src/lang.ml" 63 2566 2580 "src/lang.ml" 63 2566 2582
 )
-"src/lang.ml" 46 1377 1424 "src/lang.ml" 46 1377 1425
+"src/lang.ml" 63 2566 2621 "src/lang.ml" 63 2566 2622
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 46 1377 1426 "src/lang.ml" 46 1377 1431
+"src/lang.ml" 63 2566 2623 "src/lang.ml" 63 2566 2626
 type(
   string
 )
-"src/lang.ml" 46 1377 1432 "src/lang.ml" 46 1377 1433
+"src/lang.ml" 63 2566 2627 "src/lang.ml" 63 2566 2628
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 46 1377 1434 "src/lang.ml" 46 1377 1447
+"src/lang.ml" 63 2566 2629 "src/lang.ml" 63 2566 2642
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 63 2566 2643 "src/lang.ml" 63 2566 2645
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 63 2566 2584 "src/lang.ml" 63 2566 2586
+)
+"src/lang.ml" 63 2566 2629 "src/lang.ml" 63 2566 2645
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 63 2566 2646 "src/lang.ml" 63 2566 2647
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 63 2566 2648 "src/lang.ml" 63 2566 2654
+type(
+  string
+)
+"src/lang.ml" 63 2566 2655 "src/lang.ml" 63 2566 2656
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 63 2566 2657 "src/lang.ml" 63 2566 2670
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 63 2566 2671 "src/lang.ml" 63 2566 2673
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 63 2566 2588 "src/lang.ml" 63 2566 2590
+)
+"src/lang.ml" 63 2566 2657 "src/lang.ml" 63 2566 2673
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 63 2566 2674 "src/lang.ml" 63 2566 2675
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 63 2566 2676 "src/lang.ml" 63 2566 2681
+type(
+  string
+)
+"src/lang.ml" 63 2566 2682 "src/lang.ml" 63 2566 2683
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 63 2566 2684 "src/lang.ml" 63 2566 2697
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 46 1377 1448 "src/lang.ml" 46 1377 1449
+"src/lang.ml" 63 2566 2698 "src/lang.ml" 63 2566 2699
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 46 1377 1395 "src/lang.ml" 46 1377 1396
+  int_ref e "src/lang.ml" 63 2566 2592 "src/lang.ml" 63 2566 2593
 )
-"src/lang.ml" 46 1377 1434 "src/lang.ml" 46 1377 1449
+"src/lang.ml" 63 2566 2684 "src/lang.ml" 63 2566 2699
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 46 1377 1450 "src/lang.ml" 46 1377 1451
+"src/lang.ml" 63 2566 2700 "src/lang.ml" 63 2566 2701
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 46 1377 1452 "src/lang.ml" 46 1377 1455
+"src/lang.ml" 63 2566 2702 "src/lang.ml" 63 2566 2705
 type(
   string
 )
-"src/lang.ml" 46 1377 1434 "src/lang.ml" 46 1377 1455
+"src/lang.ml" 63 2566 2684 "src/lang.ml" 63 2566 2705
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 46 1377 1426 "src/lang.ml" 46 1377 1455
+"src/lang.ml" 63 2566 2676 "src/lang.ml" 63 2566 2705
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 46 1377 1421 "src/lang.ml" 46 1377 1455
+"src/lang.ml" 63 2566 2657 "src/lang.ml" 63 2566 2705
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 46 1377 1411 "src/lang.ml" 46 1377 1455
+"src/lang.ml" 63 2566 2648 "src/lang.ml" 63 2566 2705
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 63 2566 2629 "src/lang.ml" 63 2566 2705
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 63 2566 2623 "src/lang.ml" 63 2566 2705
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 63 2566 2618 "src/lang.ml" 63 2566 2705
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 63 2566 2607 "src/lang.ml" 63 2566 2705
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1470 "src/lang.ml" 47 1456 1473
+"src/lang.ml" 64 2706 2720 "src/lang.ml" 64 2706 2723
 type(
   string
 )
 ident(
-  def vr1 "src/lang.ml" 47 1456 1490 "src/lang.ml" 47 1456 1548
+  def vr1 "src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2859
 )
-"src/lang.ml" 47 1456 1466 "src/lang.ml" 47 1456 1473
+"src/lang.ml" 64 2706 2716 "src/lang.ml" 64 2706 2723
 type(
   var
 )
-"src/lang.ml" 47 1456 1479 "src/lang.ml" 47 1456 1482
+"src/lang.ml" 64 2706 2729 "src/lang.ml" 64 2706 2732
 type(
   string
 )
 ident(
-  def vr2 "src/lang.ml" 47 1456 1490 "src/lang.ml" 47 1456 1548
+  def vr2 "src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2859
 )
-"src/lang.ml" 47 1456 1475 "src/lang.ml" 47 1456 1482
+"src/lang.ml" 64 2706 2725 "src/lang.ml" 64 2706 2732
 type(
   var
 )
-"src/lang.ml" 47 1456 1484 "src/lang.ml" 47 1456 1485
+"src/lang.ml" 64 2706 2734 "src/lang.ml" 64 2706 2736
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2859
+)
+"src/lang.ml" 64 2706 2738 "src/lang.ml" 64 2706 2740
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2859
+)
+"src/lang.ml" 64 2706 2742 "src/lang.ml" 64 2706 2743
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 47 1456 1490 "src/lang.ml" 47 1456 1548
+  def e "src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2859
 )
-"src/lang.ml" 47 1456 1460 "src/lang.ml" 47 1456 1486
+"src/lang.ml" 64 2706 2710 "src/lang.ml" 64 2706 2744
 type(
   value
 )
-"src/lang.ml" 47 1456 1490 "src/lang.ml" 47 1456 1497
+"src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2755
 type(
   string
 )
-"src/lang.ml" 47 1456 1498 "src/lang.ml" 47 1456 1499
+"src/lang.ml" 64 2706 2756 "src/lang.ml" 64 2706 2757
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 47 1456 1500 "src/lang.ml" 47 1456 1503
+"src/lang.ml" 64 2706 2758 "src/lang.ml" 64 2706 2761
 type(
   string
 )
 ident(
-  int_ref vr1 "src/lang.ml" 47 1456 1470 "src/lang.ml" 47 1456 1473
+  int_ref vr1 "src/lang.ml" 64 2706 2720 "src/lang.ml" 64 2706 2723
 )
-"src/lang.ml" 47 1456 1504 "src/lang.ml" 47 1456 1505
+"src/lang.ml" 64 2706 2762 "src/lang.ml" 64 2706 2763
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 47 1456 1506 "src/lang.ml" 47 1456 1509
+"src/lang.ml" 64 2706 2764 "src/lang.ml" 64 2706 2768
 type(
   string
 )
-"src/lang.ml" 47 1456 1510 "src/lang.ml" 47 1456 1511
+"src/lang.ml" 64 2706 2769 "src/lang.ml" 64 2706 2770
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 47 1456 1512 "src/lang.ml" 47 1456 1515
+"src/lang.ml" 64 2706 2771 "src/lang.ml" 64 2706 2774
 type(
   string
 )
 ident(
-  int_ref vr2 "src/lang.ml" 47 1456 1479 "src/lang.ml" 47 1456 1482
+  int_ref vr2 "src/lang.ml" 64 2706 2729 "src/lang.ml" 64 2706 2732
 )
-"src/lang.ml" 47 1456 1516 "src/lang.ml" 47 1456 1517
+"src/lang.ml" 64 2706 2775 "src/lang.ml" 64 2706 2776
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 47 1456 1518 "src/lang.ml" 47 1456 1524
+"src/lang.ml" 64 2706 2777 "src/lang.ml" 64 2706 2780
 type(
   string
 )
-"src/lang.ml" 47 1456 1525 "src/lang.ml" 47 1456 1526
+"src/lang.ml" 64 2706 2781 "src/lang.ml" 64 2706 2782
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 47 1456 1527 "src/lang.ml" 47 1456 1540
+"src/lang.ml" 64 2706 2783 "src/lang.ml" 64 2706 2796
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 64 2706 2797 "src/lang.ml" 64 2706 2799
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 64 2706 2734 "src/lang.ml" 64 2706 2736
+)
+"src/lang.ml" 64 2706 2783 "src/lang.ml" 64 2706 2799
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 64 2706 2800 "src/lang.ml" 64 2706 2801
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 64 2706 2802 "src/lang.ml" 64 2706 2808
+type(
+  string
+)
+"src/lang.ml" 64 2706 2809 "src/lang.ml" 64 2706 2810
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 64 2706 2811 "src/lang.ml" 64 2706 2824
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 64 2706 2825 "src/lang.ml" 64 2706 2827
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 64 2706 2738 "src/lang.ml" 64 2706 2740
+)
+"src/lang.ml" 64 2706 2811 "src/lang.ml" 64 2706 2827
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 64 2706 2828 "src/lang.ml" 64 2706 2829
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 64 2706 2830 "src/lang.ml" 64 2706 2835
+type(
+  string
+)
+"src/lang.ml" 64 2706 2836 "src/lang.ml" 64 2706 2837
+type(
+  string -> string -> string
+)
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 64 2706 2838 "src/lang.ml" 64 2706 2851
 type(
   exp -> string
 )
 ident(
-  int_ref string_of_exp "src/lang.ml" 30 421 429 "src/lang.ml" 30 421 442
+  int_ref string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
 )
-"src/lang.ml" 47 1456 1541 "src/lang.ml" 47 1456 1542
+"src/lang.ml" 64 2706 2852 "src/lang.ml" 64 2706 2853
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 47 1456 1484 "src/lang.ml" 47 1456 1485
+  int_ref e "src/lang.ml" 64 2706 2742 "src/lang.ml" 64 2706 2743
 )
-"src/lang.ml" 47 1456 1527 "src/lang.ml" 47 1456 1542
+"src/lang.ml" 64 2706 2838 "src/lang.ml" 64 2706 2853
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1543 "src/lang.ml" 47 1456 1544
+"src/lang.ml" 64 2706 2854 "src/lang.ml" 64 2706 2855
 type(
   string -> string -> string
 )
 ident(
   int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 47 1456 1545 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2856 "src/lang.ml" 64 2706 2859
 type(
   string
 )
-"src/lang.ml" 47 1456 1527 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2838 "src/lang.ml" 64 2706 2859
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1518 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2830 "src/lang.ml" 64 2706 2859
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1512 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2811 "src/lang.ml" 64 2706 2859
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1506 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2802 "src/lang.ml" 64 2706 2859
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1500 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2783 "src/lang.ml" 64 2706 2859
 call(
   stack
 )
 type(
   string
 )
-"src/lang.ml" 47 1456 1490 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 64 2706 2777 "src/lang.ml" 64 2706 2859
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 64 2706 2771 "src/lang.ml" 64 2706 2859
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 64 2706 2764 "src/lang.ml" 64 2706 2859
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 64 2706 2758 "src/lang.ml" 64 2706 2859
+call(
+  stack
+)
+type(
+  string
+)
+"src/lang.ml" 64 2706 2748 "src/lang.ml" 64 2706 2859
 call(
   tail
 )
 type(
   string
 )
-"src/lang.ml" 43 1260 1262 "src/lang.ml" 47 1456 1548
+"src/lang.ml" 60 2435 2437 "src/lang.ml" 64 2706 2859
 type(
   string
 )
 type(
   string
 )
-"src/lang.ml" 49 1550 1554 "src/lang.ml" 49 1550 1572
+"src/lang.ml" 66 2861 2865 "src/lang.ml" 66 2861 2883
 type(
   operator -> string
 )
 ident(
-  def string_of_operator "src/lang.ml" 30 421 421 "src/lang.ml" 1 0 -1
+  def string_of_operator "src/lang.ml" 47 1482 1482 "src/lang.ml" 1 0 -1
 )
-"src/lang.ml" 49 1550 1574 "src/lang.ml" 49 1550 1575
+"src/lang.ml" 66 2861 2885 "src/lang.ml" 66 2861 2886
 type(
   operator
 )
 ident(
-  def o "src/lang.ml" 49 1550 1586 "src/lang.ml" 55 1677 1692
+  def o "src/lang.ml" 66 2861 2897 "src/lang.ml" 72 2988 3003
 )
-"src/lang.ml" 50 1597 1605 "src/lang.ml" 50 1597 1606
+"src/lang.ml" 67 2908 2916 "src/lang.ml" 67 2908 2917
 type(
   operator
 )
 ident(
-  int_ref o "src/lang.ml" 49 1550 1574 "src/lang.ml" 49 1550 1575
+  int_ref o "src/lang.ml" 66 2861 2885 "src/lang.ml" 66 2861 2886
 )
-"src/lang.ml" 51 1612 1616 "src/lang.ml" 51 1612 1620
+"src/lang.ml" 68 2923 2927 "src/lang.ml" 68 2923 2931
 type(
   operator
 )
-"src/lang.ml" 51 1612 1624 "src/lang.ml" 51 1612 1628
+"src/lang.ml" 68 2923 2935 "src/lang.ml" 68 2923 2939
 type(
   string
 )
-"src/lang.ml" 52 1629 1633 "src/lang.ml" 52 1629 1637
+"src/lang.ml" 69 2940 2944 "src/lang.ml" 69 2940 2948
 type(
   operator
 )
-"src/lang.ml" 52 1629 1641 "src/lang.ml" 52 1629 1644
+"src/lang.ml" 69 2940 2952 "src/lang.ml" 69 2940 2955
 type(
   string
 )
-"src/lang.ml" 53 1645 1649 "src/lang.ml" 53 1645 1653
+"src/lang.ml" 70 2956 2960 "src/lang.ml" 70 2956 2964
 type(
   operator
 )
-"src/lang.ml" 53 1645 1657 "src/lang.ml" 53 1645 1660
+"src/lang.ml" 70 2956 2968 "src/lang.ml" 70 2956 2971
 type(
   string
 )
-"src/lang.ml" 54 1661 1665 "src/lang.ml" 54 1661 1669
+"src/lang.ml" 71 2972 2976 "src/lang.ml" 71 2972 2980
 type(
   operator
 )
-"src/lang.ml" 54 1661 1673 "src/lang.ml" 54 1661 1676
+"src/lang.ml" 71 2972 2984 "src/lang.ml" 71 2972 2987
 type(
   string
 )
-"src/lang.ml" 55 1677 1681 "src/lang.ml" 55 1677 1685
+"src/lang.ml" 72 2988 2992 "src/lang.ml" 72 2988 2996
 type(
   operator
 )
-"src/lang.ml" 55 1677 1689 "src/lang.ml" 55 1677 1692
+"src/lang.ml" 72 2988 3000 "src/lang.ml" 72 2988 3003
 type(
   string
 )
-"src/lang.ml" 50 1597 1599 "src/lang.ml" 55 1677 1692
+"src/lang.ml" 67 2908 2910 "src/lang.ml" 72 2988 3003
 type(
   string
 )
 type(
   string
 )
-"src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
+"src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
 type(
-  value -> var -> exp -> exp
+  typ -> string
 )
 ident(
-  def subst "src/lang.ml" 58 1723 1723 "src/lang.ml" 1 0 -1
+  def string_of_typ "src/lang.ml" 47 1482 1482 "src/lang.ml" 1 0 -1
 )
-"src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
+"src/lang.ml" 74 3005 3024 "src/lang.ml" 74 3005 3025
 type(
-  value
+  typ
 )
 ident(
-  def vl_sub "src/lang.ml" 58 1723 1752 "src/lang.ml" 78 2903 2982
+  def t "src/lang.ml" 74 3005 3031 "src/lang.ml" 78 3114 3180
 )
-"src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
+"src/lang.ml" 75 3042 3050 "src/lang.ml" 75 3042 3051
 type(
-  var
+  typ
 )
 ident(
-  def vr_sub "src/lang.ml" 58 1723 1765 "src/lang.ml" 78 2903 2982
+  int_ref t "src/lang.ml" 74 3005 3024 "src/lang.ml" 74 3005 3025
 )
-"src/lang.ml" 58 1723 1766 "src/lang.ml" 58 1723 1771
+"src/lang.ml" 76 3057 3061 "src/lang.ml" 76 3057 3065
 type(
-  exp
+  typ
 )
-ident(
-  def e_sub "src/lang.ml" 58 1723 1777 "src/lang.ml" 78 2903 2982
-)
-"src/lang.ml" 59 1785 1793 "src/lang.ml" 59 1785 1798
-type(
-  exp
-)
-ident(
-  int_ref e_sub "src/lang.ml" 58 1723 1766 "src/lang.ml" 58 1723 1771
-)
-"src/lang.ml" 60 1804 1813 "src/lang.ml" 60 1804 1814
-type(
-  int
-)
-ident(
-  def n "src/lang.ml" 60 1804 1830 "src/lang.ml" 60 1804 1836
-)
-"src/lang.ml" 60 1804 1808 "src/lang.ml" 60 1804 1814
-type(
-  exp
-)
-"src/lang.ml" 60 1804 1835 "src/lang.ml" 60 1804 1836
-type(
-  int
-)
-ident(
-  int_ref n "src/lang.ml" 60 1804 1813 "src/lang.ml" 60 1804 1814
-)
-"src/lang.ml" 60 1804 1830 "src/lang.ml" 60 1804 1836
-type(
-  exp
-)
-"src/lang.ml" 61 1837 1847 "src/lang.ml" 61 1837 1848
-type(
-  bool
-)
-ident(
-  def b "src/lang.ml" 61 1837 1863 "src/lang.ml" 61 1837 1870
-)
-"src/lang.ml" 61 1837 1841 "src/lang.ml" 61 1837 1848
-type(
-  exp
-)
-"src/lang.ml" 61 1837 1869 "src/lang.ml" 61 1837 1870
-type(
-  bool
-)
-ident(
-  int_ref b "src/lang.ml" 61 1837 1847 "src/lang.ml" 61 1837 1848
-)
-"src/lang.ml" 61 1837 1863 "src/lang.ml" 61 1837 1870
-type(
-  exp
-)
-"src/lang.ml" 62 1871 1880 "src/lang.ml" 62 1871 1883
-type(
-  var
-)
-ident(
-  def vr1 "src/lang.ml" 62 1871 1897 "src/lang.ml" 68 2279 2318
-)
-"src/lang.ml" 62 1871 1875 "src/lang.ml" 62 1871 1883
-type(
-  exp
-)
-"src/lang.ml" 62 1871 1900 "src/lang.ml" 62 1871 1903
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 62 1871 1880 "src/lang.ml" 62 1871 1883
-)
-"src/lang.ml" 62 1871 1904 "src/lang.ml" 62 1871 1905
-type(
-  var -> var -> bool
-)
-ident(
-  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
-)
-"src/lang.ml" 62 1871 1906 "src/lang.ml" 62 1871 1912
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 62 1871 1900 "src/lang.ml" 62 1871 1912
-type(
-  bool
-)
-"src/lang.ml" 63 1913 1951 "src/lang.ml" 63 1913 1957
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 64 1963 2002 "src/lang.ml" 64 1963 2003
-type(
-  int
-)
-ident(
-  def n "src/lang.ml" 64 1963 2027 "src/lang.ml" 64 1963 2033
-)
-"src/lang.ml" 64 1963 1997 "src/lang.ml" 64 1963 2003
-type(
-  value
-)
-"src/lang.ml" 64 1963 2032 "src/lang.ml" 64 1963 2033
-type(
-  int
-)
-ident(
-  int_ref n "src/lang.ml" 64 1963 2002 "src/lang.ml" 64 1963 2003
-)
-"src/lang.ml" 64 1963 2027 "src/lang.ml" 64 1963 2033
-type(
-  exp
-)
-"src/lang.ml" 65 2034 2074 "src/lang.ml" 65 2034 2075
-type(
-  bool
-)
-ident(
-  def b "src/lang.ml" 65 2034 2098 "src/lang.ml" 65 2034 2105
-)
-"src/lang.ml" 65 2034 2068 "src/lang.ml" 65 2034 2075
-type(
-  value
-)
-"src/lang.ml" 65 2034 2104 "src/lang.ml" 65 2034 2105
-type(
-  bool
-)
-ident(
-  int_ref b "src/lang.ml" 65 2034 2074 "src/lang.ml" 65 2034 2075
-)
-"src/lang.ml" 65 2034 2098 "src/lang.ml" 65 2034 2105
-type(
-  exp
-)
-"src/lang.ml" 66 2106 2150 "src/lang.ml" 66 2106 2152
+"src/lang.ml" 76 3057 3079 "src/lang.ml" 76 3057 3084
 type(
   string
 )
-ident(
-  def vr "src/lang.ml" 66 2106 2170 "src/lang.ml" 66 2106 2186
-)
-"src/lang.ml" 66 2106 2146 "src/lang.ml" 66 2106 2152
+"src/lang.ml" 77 3085 3089 "src/lang.ml" 77 3085 3094
 type(
-  var
+  typ
 )
-"src/lang.ml" 66 2106 2154 "src/lang.ml" 66 2106 2155
-type(
-  exp
-)
-ident(
-  def e "src/lang.ml" 66 2106 2170 "src/lang.ml" 66 2106 2186
-)
-"src/lang.ml" 66 2106 2140 "src/lang.ml" 66 2106 2156
-type(
-  value
-)
-"src/lang.ml" 66 2106 2180 "src/lang.ml" 66 2106 2182
+"src/lang.ml" 77 3085 3107 "src/lang.ml" 77 3085 3113
 type(
   string
 )
-ident(
-  int_ref vr "src/lang.ml" 66 2106 2150 "src/lang.ml" 66 2106 2152
-)
-"src/lang.ml" 66 2106 2176 "src/lang.ml" 66 2106 2182
+"src/lang.ml" 78 3114 3125 "src/lang.ml" 78 3114 3127
 type(
-  var
-)
-"src/lang.ml" 66 2106 2184 "src/lang.ml" 66 2106 2185
-type(
-  exp
+  typ
 )
 ident(
-  int_ref e "src/lang.ml" 66 2106 2154 "src/lang.ml" 66 2106 2155
+  def t1 "src/lang.ml" 78 3114 3136 "src/lang.ml" 78 3114 3180
 )
-"src/lang.ml" 66 2106 2170 "src/lang.ml" 66 2106 2186
+"src/lang.ml" 78 3114 3129 "src/lang.ml" 78 3114 3131
 type(
-  exp
+  typ
 )
-"src/lang.ml" 67 2187 2231 "src/lang.ml" 67 2187 2234
+ident(
+  def t2 "src/lang.ml" 78 3114 3136 "src/lang.ml" 78 3114 3180
+)
+"src/lang.ml" 78 3114 3118 "src/lang.ml" 78 3114 3132
+type(
+  typ
+)
+"src/lang.ml" 78 3114 3136 "src/lang.ml" 78 3114 3149
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 78 3114 3150 "src/lang.ml" 78 3114 3152
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 78 3114 3125 "src/lang.ml" 78 3114 3127
+)
+"src/lang.ml" 78 3114 3136 "src/lang.ml" 78 3114 3152
+call(
+  stack
+)
 type(
   string
 )
-ident(
-  def vr1 "src/lang.ml" 67 2187 2251 "src/lang.ml" 67 2187 2277
-)
-"src/lang.ml" 67 2187 2227 "src/lang.ml" 67 2187 2234
+"src/lang.ml" 78 3114 3153 "src/lang.ml" 78 3114 3154
 type(
-  var
-)
-"src/lang.ml" 67 2187 2240 "src/lang.ml" 67 2187 2243
-type(
-  string
+  string -> string -> string
 )
 ident(
-  def vr2 "src/lang.ml" 67 2187 2251 "src/lang.ml" 67 2187 2277
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
 )
-"src/lang.ml" 67 2187 2236 "src/lang.ml" 67 2187 2243
-type(
-  var
-)
-"src/lang.ml" 67 2187 2245 "src/lang.ml" 67 2187 2246
-type(
-  exp
-)
-ident(
-  def e "src/lang.ml" 67 2187 2251 "src/lang.ml" 67 2187 2277
-)
-"src/lang.ml" 67 2187 2221 "src/lang.ml" 67 2187 2247
-type(
-  value
-)
-"src/lang.ml" 67 2187 2261 "src/lang.ml" 67 2187 2264
+"src/lang.ml" 78 3114 3155 "src/lang.ml" 78 3114 3161
 type(
   string
 )
-ident(
-  int_ref vr1 "src/lang.ml" 67 2187 2231 "src/lang.ml" 67 2187 2234
-)
-"src/lang.ml" 67 2187 2257 "src/lang.ml" 67 2187 2264
+"src/lang.ml" 78 3114 3162 "src/lang.ml" 78 3114 3163
 type(
-  var
+  string -> string -> string
 )
-"src/lang.ml" 67 2187 2270 "src/lang.ml" 67 2187 2273
+ident(
+  int_ref Pervasives.( ^ ) "pervasives.mli" 572 22042 22042 "pervasives.mli" 572 22042 22080
+)
+"src/lang.ml" 78 3114 3164 "src/lang.ml" 78 3114 3177
+type(
+  typ -> string
+)
+ident(
+  int_ref string_of_typ "src/lang.ml" 74 3005 3009 "src/lang.ml" 74 3005 3022
+)
+"src/lang.ml" 78 3114 3178 "src/lang.ml" 78 3114 3180
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 78 3114 3129 "src/lang.ml" 78 3114 3131
+)
+"src/lang.ml" 78 3114 3164 "src/lang.ml" 78 3114 3180
+call(
+  stack
+)
 type(
   string
 )
-ident(
-  int_ref vr2 "src/lang.ml" 67 2187 2240 "src/lang.ml" 67 2187 2243
-)
-"src/lang.ml" 67 2187 2266 "src/lang.ml" 67 2187 2273
-type(
-  var
-)
-"src/lang.ml" 67 2187 2275 "src/lang.ml" 67 2187 2276
-type(
-  exp
-)
-ident(
-  int_ref e "src/lang.ml" 67 2187 2245 "src/lang.ml" 67 2187 2246
-)
-"src/lang.ml" 67 2187 2251 "src/lang.ml" 67 2187 2277
-type(
-  exp
-)
-"src/lang.ml" 63 1913 1944 "src/lang.ml" 67 2187 2278
-type(
-  exp
-)
-"src/lang.ml" 68 2279 2315 "src/lang.ml" 68 2279 2318
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 62 1871 1880 "src/lang.ml" 62 1871 1883
-)
-"src/lang.ml" 68 2279 2310 "src/lang.ml" 68 2279 2318
-type(
-  exp
-)
-"src/lang.ml" 62 1871 1897 "src/lang.ml" 68 2279 2318
-type(
-  exp
-)
-"src/lang.ml" 69 2319 2329 "src/lang.ml" 69 2319 2332
-type(
-  var
-)
-ident(
-  def vr1 "src/lang.ml" 69 2319 2345 "src/lang.ml" 71 2431 2520
-)
-"src/lang.ml" 69 2319 2334 "src/lang.ml" 69 2319 2336
-type(
-  exp
-)
-ident(
-  def e1 "src/lang.ml" 69 2319 2345 "src/lang.ml" 71 2431 2520
-)
-"src/lang.ml" 69 2319 2338 "src/lang.ml" 69 2319 2340
-type(
-  exp
-)
-ident(
-  def e2 "src/lang.ml" 69 2319 2345 "src/lang.ml" 71 2431 2520
-)
-"src/lang.ml" 69 2319 2323 "src/lang.ml" 69 2319 2341
-type(
-  exp
-)
-"src/lang.ml" 69 2319 2348 "src/lang.ml" 69 2319 2351
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 69 2319 2329 "src/lang.ml" 69 2319 2332
-)
-"src/lang.ml" 69 2319 2352 "src/lang.ml" 69 2319 2353
-type(
-  var -> var -> bool
-)
-ident(
-  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
-)
-"src/lang.ml" 69 2319 2354 "src/lang.ml" 69 2319 2360
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 69 2319 2348 "src/lang.ml" 69 2319 2360
-type(
-  bool
-)
-"src/lang.ml" 70 2361 2398 "src/lang.ml" 70 2361 2401
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 69 2319 2329 "src/lang.ml" 69 2319 2332
-)
-"src/lang.ml" 70 2361 2403 "src/lang.ml" 70 2361 2408
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 70 2361 2409 "src/lang.ml" 70 2361 2415
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 70 2361 2416 "src/lang.ml" 70 2361 2422
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 70 2361 2423 "src/lang.ml" 70 2361 2425
-type(
-  exp
-)
-ident(
-  int_ref e1 "src/lang.ml" 69 2319 2334 "src/lang.ml" 69 2319 2336
-)
-"src/lang.ml" 70 2361 2403 "src/lang.ml" 70 2361 2425
+"src/lang.ml" 78 3114 3155 "src/lang.ml" 78 3114 3180
 call(
   stack
 )
 type(
-  exp
+  string
 )
-"src/lang.ml" 70 2361 2427 "src/lang.ml" 70 2361 2429
-type(
-  exp
-)
-ident(
-  int_ref e2 "src/lang.ml" 69 2319 2338 "src/lang.ml" 69 2319 2340
-)
-"src/lang.ml" 70 2361 2392 "src/lang.ml" 70 2361 2430
-type(
-  exp
-)
-"src/lang.ml" 71 2431 2468 "src/lang.ml" 71 2431 2471
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 69 2319 2329 "src/lang.ml" 69 2319 2332
-)
-"src/lang.ml" 71 2431 2473 "src/lang.ml" 71 2431 2478
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 71 2431 2479 "src/lang.ml" 71 2431 2485
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 71 2431 2486 "src/lang.ml" 71 2431 2492
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 71 2431 2493 "src/lang.ml" 71 2431 2495
-type(
-  exp
-)
-ident(
-  int_ref e1 "src/lang.ml" 69 2319 2334 "src/lang.ml" 69 2319 2336
-)
-"src/lang.ml" 71 2431 2473 "src/lang.ml" 71 2431 2495
+"src/lang.ml" 78 3114 3136 "src/lang.ml" 78 3114 3180
 call(
-  stack
+  tail
 )
 type(
-  exp
+  string
 )
-"src/lang.ml" 71 2431 2497 "src/lang.ml" 71 2431 2502
+"src/lang.ml" 75 3042 3044 "src/lang.ml" 78 3114 3180
 type(
-  value -> var -> exp -> exp
+  string
 )
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 71 2431 2503 "src/lang.ml" 71 2431 2509
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 71 2431 2510 "src/lang.ml" 71 2431 2516
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 71 2431 2517 "src/lang.ml" 71 2431 2519
-type(
-  exp
-)
-ident(
-  int_ref e2 "src/lang.ml" 69 2319 2338 "src/lang.ml" 69 2319 2340
-)
-"src/lang.ml" 71 2431 2497 "src/lang.ml" 71 2431 2519
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 71 2431 2462 "src/lang.ml" 71 2431 2520
-type(
-  exp
-)
-"src/lang.ml" 69 2319 2345 "src/lang.ml" 71 2431 2520
-type(
-  exp
-)
-"src/lang.ml" 72 2521 2531 "src/lang.ml" 72 2521 2534
-type(
-  var
-)
-ident(
-  def vr1 "src/lang.ml" 72 2521 2547 "src/lang.ml" 74 2608 2672
-)
-"src/lang.ml" 72 2521 2536 "src/lang.ml" 72 2521 2537
-type(
-  exp
-)
-ident(
-  def e "src/lang.ml" 72 2521 2547 "src/lang.ml" 74 2608 2672
-)
-"src/lang.ml" 72 2521 2525 "src/lang.ml" 72 2521 2538
-type(
-  exp
-)
-"src/lang.ml" 72 2521 2550 "src/lang.ml" 72 2521 2553
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 72 2521 2531 "src/lang.ml" 72 2521 2534
-)
-"src/lang.ml" 72 2521 2554 "src/lang.ml" 72 2521 2555
-type(
-  var -> var -> bool
-)
-ident(
-  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
-)
-"src/lang.ml" 72 2521 2556 "src/lang.ml" 72 2521 2562
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 72 2521 2550 "src/lang.ml" 72 2521 2562
-type(
-  bool
-)
-"src/lang.ml" 73 2563 2600 "src/lang.ml" 73 2563 2603
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 72 2521 2531 "src/lang.ml" 72 2521 2534
-)
-"src/lang.ml" 73 2563 2605 "src/lang.ml" 73 2563 2606
-type(
-  exp
-)
-ident(
-  int_ref e "src/lang.ml" 72 2521 2536 "src/lang.ml" 72 2521 2537
-)
-"src/lang.ml" 73 2563 2594 "src/lang.ml" 73 2563 2607
-type(
-  exp
-)
-"src/lang.ml" 74 2608 2645 "src/lang.ml" 74 2608 2648
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 72 2521 2531 "src/lang.ml" 72 2521 2534
-)
-"src/lang.ml" 74 2608 2650 "src/lang.ml" 74 2608 2655
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 74 2608 2656 "src/lang.ml" 74 2608 2662
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 74 2608 2663 "src/lang.ml" 74 2608 2669
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 74 2608 2670 "src/lang.ml" 74 2608 2671
-type(
-  exp
-)
-ident(
-  int_ref e "src/lang.ml" 72 2521 2536 "src/lang.ml" 72 2521 2537
-)
-"src/lang.ml" 74 2608 2650 "src/lang.ml" 74 2608 2671
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 74 2608 2639 "src/lang.ml" 74 2608 2672
-type(
-  exp
-)
-"src/lang.ml" 72 2521 2547 "src/lang.ml" 74 2608 2672
-type(
-  exp
-)
-"src/lang.ml" 75 2673 2683 "src/lang.ml" 75 2673 2686
-type(
-  var
-)
-ident(
-  def vr1 "src/lang.ml" 75 2673 2699 "src/lang.ml" 75 2673 2717
-)
-"src/lang.ml" 75 2673 2688 "src/lang.ml" 75 2673 2691
-type(
-  var
-)
-ident(
-  def vr2 "src/lang.ml" 75 2673 2699 "src/lang.ml" 75 2673 2717
-)
-"src/lang.ml" 75 2673 2693 "src/lang.ml" 75 2673 2694
-type(
-  exp
-)
-ident(
-  def e "src/lang.ml" 75 2673 2699 "src/lang.ml" 75 2673 2717
-)
-"src/lang.ml" 75 2673 2677 "src/lang.ml" 75 2673 2695
-type(
-  exp
-)
-"src/lang.ml" 75 2673 2705 "src/lang.ml" 75 2673 2708
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 75 2673 2683 "src/lang.ml" 75 2673 2686
-)
-"src/lang.ml" 75 2673 2710 "src/lang.ml" 75 2673 2713
-type(
-  var
-)
-ident(
-  int_ref vr2 "src/lang.ml" 75 2673 2688 "src/lang.ml" 75 2673 2691
-)
-"src/lang.ml" 75 2673 2715 "src/lang.ml" 75 2673 2716
-type(
-  exp
-)
-ident(
-  int_ref e "src/lang.ml" 75 2673 2693 "src/lang.ml" 75 2673 2694
-)
-"src/lang.ml" 75 2673 2699 "src/lang.ml" 75 2673 2717
-type(
-  exp
-)
-"src/lang.ml" 76 2718 2727 "src/lang.ml" 76 2718 2729
-type(
-  exp
-)
-ident(
-  def e1 "src/lang.ml" 76 2718 2744 "src/lang.ml" 76 2718 2820
-)
-"src/lang.ml" 76 2718 2731 "src/lang.ml" 76 2718 2733
-type(
-  exp
-)
-ident(
-  def e2 "src/lang.ml" 76 2718 2744 "src/lang.ml" 76 2718 2820
-)
-"src/lang.ml" 76 2718 2735 "src/lang.ml" 76 2718 2737
-type(
-  exp
-)
-ident(
-  def e3 "src/lang.ml" 76 2718 2744 "src/lang.ml" 76 2718 2820
-)
-"src/lang.ml" 76 2718 2722 "src/lang.ml" 76 2718 2738
-type(
-  exp
-)
-"src/lang.ml" 76 2718 2749 "src/lang.ml" 76 2718 2754
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 76 2718 2755 "src/lang.ml" 76 2718 2761
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 76 2718 2762 "src/lang.ml" 76 2718 2768
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 76 2718 2769 "src/lang.ml" 76 2718 2771
-type(
-  exp
-)
-ident(
-  int_ref e1 "src/lang.ml" 76 2718 2727 "src/lang.ml" 76 2718 2729
-)
-"src/lang.ml" 76 2718 2749 "src/lang.ml" 76 2718 2771
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 76 2718 2773 "src/lang.ml" 76 2718 2778
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 76 2718 2779 "src/lang.ml" 76 2718 2785
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 76 2718 2786 "src/lang.ml" 76 2718 2792
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 76 2718 2793 "src/lang.ml" 76 2718 2795
-type(
-  exp
-)
-ident(
-  int_ref e2 "src/lang.ml" 76 2718 2731 "src/lang.ml" 76 2718 2733
-)
-"src/lang.ml" 76 2718 2773 "src/lang.ml" 76 2718 2795
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 76 2718 2797 "src/lang.ml" 76 2718 2802
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 76 2718 2803 "src/lang.ml" 76 2718 2809
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 76 2718 2810 "src/lang.ml" 76 2718 2816
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 76 2718 2817 "src/lang.ml" 76 2718 2819
-type(
-  exp
-)
-ident(
-  int_ref e3 "src/lang.ml" 76 2718 2735 "src/lang.ml" 76 2718 2737
-)
-"src/lang.ml" 76 2718 2797 "src/lang.ml" 76 2718 2819
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 76 2718 2744 "src/lang.ml" 76 2718 2820
-type(
-  exp
-)
-"src/lang.ml" 77 2821 2830 "src/lang.ml" 77 2821 2832
-type(
-  exp
-)
-ident(
-  def e1 "src/lang.ml" 77 2821 2847 "src/lang.ml" 77 2821 2902
-)
-"src/lang.ml" 77 2821 2834 "src/lang.ml" 77 2821 2835
-type(
-  operator
-)
-ident(
-  def o "src/lang.ml" 77 2821 2847 "src/lang.ml" 77 2821 2902
-)
-"src/lang.ml" 77 2821 2837 "src/lang.ml" 77 2821 2839
-type(
-  exp
-)
-ident(
-  def e2 "src/lang.ml" 77 2821 2847 "src/lang.ml" 77 2821 2902
-)
-"src/lang.ml" 77 2821 2825 "src/lang.ml" 77 2821 2840
-type(
-  exp
-)
-"src/lang.ml" 77 2821 2852 "src/lang.ml" 77 2821 2857
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 77 2821 2858 "src/lang.ml" 77 2821 2864
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 77 2821 2865 "src/lang.ml" 77 2821 2871
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 77 2821 2872 "src/lang.ml" 77 2821 2874
-type(
-  exp
-)
-ident(
-  int_ref e1 "src/lang.ml" 77 2821 2830 "src/lang.ml" 77 2821 2832
-)
-"src/lang.ml" 77 2821 2852 "src/lang.ml" 77 2821 2874
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 77 2821 2876 "src/lang.ml" 77 2821 2877
-type(
-  operator
-)
-ident(
-  int_ref o "src/lang.ml" 77 2821 2834 "src/lang.ml" 77 2821 2835
-)
-"src/lang.ml" 77 2821 2879 "src/lang.ml" 77 2821 2884
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 77 2821 2885 "src/lang.ml" 77 2821 2891
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 77 2821 2892 "src/lang.ml" 77 2821 2898
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 77 2821 2899 "src/lang.ml" 77 2821 2901
-type(
-  exp
-)
-ident(
-  int_ref e2 "src/lang.ml" 77 2821 2837 "src/lang.ml" 77 2821 2839
-)
-"src/lang.ml" 77 2821 2879 "src/lang.ml" 77 2821 2901
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 77 2821 2847 "src/lang.ml" 77 2821 2902
-type(
-  exp
-)
-"src/lang.ml" 78 2903 2913 "src/lang.ml" 78 2903 2915
-type(
-  exp
-)
-ident(
-  def e1 "src/lang.ml" 78 2903 2929 "src/lang.ml" 78 2903 2982
-)
-"src/lang.ml" 78 2903 2917 "src/lang.ml" 78 2903 2919
-type(
-  exp
-)
-ident(
-  def e2 "src/lang.ml" 78 2903 2929 "src/lang.ml" 78 2903 2982
-)
-"src/lang.ml" 78 2903 2907 "src/lang.ml" 78 2903 2920
-type(
-  exp
-)
-"src/lang.ml" 78 2903 2935 "src/lang.ml" 78 2903 2940
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 78 2903 2941 "src/lang.ml" 78 2903 2947
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 78 2903 2948 "src/lang.ml" 78 2903 2954
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 78 2903 2955 "src/lang.ml" 78 2903 2957
-type(
-  exp
-)
-ident(
-  int_ref e1 "src/lang.ml" 78 2903 2913 "src/lang.ml" 78 2903 2915
-)
-"src/lang.ml" 78 2903 2935 "src/lang.ml" 78 2903 2957
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 78 2903 2959 "src/lang.ml" 78 2903 2964
-type(
-  value -> var -> exp -> exp
-)
-ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
-)
-"src/lang.ml" 78 2903 2965 "src/lang.ml" 78 2903 2971
-type(
-  value
-)
-ident(
-  int_ref vl_sub "src/lang.ml" 58 1723 1738 "src/lang.ml" 58 1723 1744
-)
-"src/lang.ml" 78 2903 2972 "src/lang.ml" 78 2903 2978
-type(
-  var
-)
-ident(
-  int_ref vr_sub "src/lang.ml" 58 1723 1753 "src/lang.ml" 58 1723 1759
-)
-"src/lang.ml" 78 2903 2979 "src/lang.ml" 78 2903 2981
-type(
-  exp
-)
-ident(
-  int_ref e2 "src/lang.ml" 78 2903 2917 "src/lang.ml" 78 2903 2919
-)
-"src/lang.ml" 78 2903 2959 "src/lang.ml" 78 2903 2981
-call(
-  stack
-)
-type(
-  exp
-)
-"src/lang.ml" 78 2903 2929 "src/lang.ml" 78 2903 2982
-type(
-  exp
-)
-"src/lang.ml" 59 1785 1787 "src/lang.ml" 78 2903 2982
-type(
-  exp
-)
 type(
-  exp
+  string
 )
-"src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+"src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 type(
   exp -> value
 )
 ident(
-  def eval "src/lang.ml" 81 2996 2996 "src/lang.ml" 1 0 -1
+  def eval "src/lang.ml" 81 3194 3194 "src/lang.ml" 1 0 -1
 )
-"src/lang.ml" 81 2996 3010 "src/lang.ml" 81 2996 3011
+"src/lang.ml" 81 3194 3208 "src/lang.ml" 81 3194 3209
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 81 2996 3017 "src/lang.ml" 97 4021 4076
+  def e "src/lang.ml" 81 3194 3215 "src/lang.ml" 97 4351 4412
 )
-"src/lang.ml" 82 3027 3035 "src/lang.ml" 82 3027 3036
+"src/lang.ml" 82 3225 3233 "src/lang.ml" 82 3225 3234
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 81 2996 3010 "src/lang.ml" 81 2996 3011
+  int_ref e "src/lang.ml" 81 3194 3208 "src/lang.ml" 81 3194 3209
 )
-"src/lang.ml" 83 3042 3051 "src/lang.ml" 83 3042 3052
+"src/lang.ml" 83 3240 3249 "src/lang.ml" 83 3240 3250
 type(
   int
 )
 ident(
-  def n "src/lang.ml" 83 3042 3070 "src/lang.ml" 83 3042 3076
+  def n "src/lang.ml" 83 3240 3274 "src/lang.ml" 83 3240 3280
 )
-"src/lang.ml" 83 3042 3046 "src/lang.ml" 83 3042 3052
+"src/lang.ml" 83 3240 3244 "src/lang.ml" 83 3240 3250
 type(
   exp
 )
-"src/lang.ml" 83 3042 3075 "src/lang.ml" 83 3042 3076
+"src/lang.ml" 83 3240 3279 "src/lang.ml" 83 3240 3280
 type(
   int
 )
 ident(
-  int_ref n "src/lang.ml" 83 3042 3051 "src/lang.ml" 83 3042 3052
+  int_ref n "src/lang.ml" 83 3240 3249 "src/lang.ml" 83 3240 3250
 )
-"src/lang.ml" 83 3042 3070 "src/lang.ml" 83 3042 3076
+"src/lang.ml" 83 3240 3274 "src/lang.ml" 83 3240 3280
 type(
   value
 )
-"src/lang.ml" 84 3077 3087 "src/lang.ml" 84 3077 3088
+"src/lang.ml" 84 3281 3291 "src/lang.ml" 84 3281 3292
 type(
   bool
 )
 ident(
-  def b "src/lang.ml" 84 3077 3105 "src/lang.ml" 84 3077 3112
+  def b "src/lang.ml" 84 3281 3315 "src/lang.ml" 84 3281 3322
 )
-"src/lang.ml" 84 3077 3081 "src/lang.ml" 84 3077 3088
+"src/lang.ml" 84 3281 3285 "src/lang.ml" 84 3281 3292
 type(
   exp
 )
-"src/lang.ml" 84 3077 3111 "src/lang.ml" 84 3077 3112
+"src/lang.ml" 84 3281 3321 "src/lang.ml" 84 3281 3322
 type(
   bool
 )
 ident(
-  int_ref b "src/lang.ml" 84 3077 3087 "src/lang.ml" 84 3077 3088
+  int_ref b "src/lang.ml" 84 3281 3291 "src/lang.ml" 84 3281 3292
 )
-"src/lang.ml" 84 3077 3105 "src/lang.ml" 84 3077 3112
+"src/lang.ml" 84 3281 3315 "src/lang.ml" 84 3281 3322
 type(
   value
 )
-"src/lang.ml" 85 3113 3123 "src/lang.ml" 85 3113 3125
+"src/lang.ml" 85 3323 3333 "src/lang.ml" 85 3323 3335
 type(
   var
 )
 ident(
-  def vr "src/lang.ml" 85 3113 3141 "src/lang.ml" 85 3113 3153
+  def vr "src/lang.ml" 85 3323 3357 "src/lang.ml" 85 3323 3398
 )
-"src/lang.ml" 85 3113 3127 "src/lang.ml" 85 3113 3128
+"src/lang.ml" 85 3323 3337 "src/lang.ml" 85 3323 3338
+type(
+  typ
+)
+ident(
+  def t "src/lang.ml" 85 3323 3357 "src/lang.ml" 85 3323 3398
+)
+"src/lang.ml" 85 3323 3340 "src/lang.ml" 85 3323 3342
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 85 3113 3141 "src/lang.ml" 85 3113 3153
+  def e1 "src/lang.ml" 85 3323 3357 "src/lang.ml" 85 3323 3398
 )
-"src/lang.ml" 85 3113 3117 "src/lang.ml" 85 3113 3129
-type(
-  exp
-)
-"src/lang.ml" 85 3113 3147 "src/lang.ml" 85 3113 3149
-type(
-  var
-)
-ident(
-  int_ref vr "src/lang.ml" 85 3113 3123 "src/lang.ml" 85 3113 3125
-)
-"src/lang.ml" 85 3113 3151 "src/lang.ml" 85 3113 3152
+"src/lang.ml" 85 3323 3344 "src/lang.ml" 85 3323 3346
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 85 3113 3127 "src/lang.ml" 85 3113 3128
+  def e2 "src/lang.ml" 85 3323 3357 "src/lang.ml" 85 3323 3398
 )
-"src/lang.ml" 85 3113 3141 "src/lang.ml" 85 3113 3153
-type(
-  value
-)
-"src/lang.ml" 86 3154 3164 "src/lang.ml" 86 3154 3167
-type(
-  var
-)
-ident(
-  def vr1 "src/lang.ml" 86 3154 3182 "src/lang.ml" 86 3154 3200
-)
-"src/lang.ml" 86 3154 3169 "src/lang.ml" 86 3154 3172
-type(
-  var
-)
-ident(
-  def vr2 "src/lang.ml" 86 3154 3182 "src/lang.ml" 86 3154 3200
-)
-"src/lang.ml" 86 3154 3174 "src/lang.ml" 86 3154 3175
+"src/lang.ml" 85 3323 3327 "src/lang.ml" 85 3323 3347
 type(
   exp
 )
-ident(
-  def e "src/lang.ml" 86 3154 3182 "src/lang.ml" 86 3154 3200
-)
-"src/lang.ml" 86 3154 3158 "src/lang.ml" 86 3154 3176
-type(
-  exp
-)
-"src/lang.ml" 86 3154 3188 "src/lang.ml" 86 3154 3191
-type(
-  var
-)
-ident(
-  int_ref vr1 "src/lang.ml" 86 3154 3164 "src/lang.ml" 86 3154 3167
-)
-"src/lang.ml" 86 3154 3193 "src/lang.ml" 86 3154 3196
-type(
-  var
-)
-ident(
-  int_ref vr2 "src/lang.ml" 86 3154 3169 "src/lang.ml" 86 3154 3172
-)
-"src/lang.ml" 86 3154 3198 "src/lang.ml" 86 3154 3199
-type(
-  exp
-)
-ident(
-  int_ref e "src/lang.ml" 86 3154 3174 "src/lang.ml" 86 3154 3175
-)
-"src/lang.ml" 86 3154 3182 "src/lang.ml" 86 3154 3200
-type(
-  value
-)
-"src/lang.ml" 87 3201 3211 "src/lang.ml" 87 3201 3213
-type(
-  var
-)
-ident(
-  def vr "src/lang.ml" 87 3201 3229 "src/lang.ml" 87 3201 3270
-)
-"src/lang.ml" 87 3201 3215 "src/lang.ml" 87 3201 3217
-type(
-  exp
-)
-ident(
-  def e1 "src/lang.ml" 87 3201 3229 "src/lang.ml" 87 3201 3270
-)
-"src/lang.ml" 87 3201 3219 "src/lang.ml" 87 3201 3221
-type(
-  exp
-)
-ident(
-  def e2 "src/lang.ml" 87 3201 3229 "src/lang.ml" 87 3201 3270
-)
-"src/lang.ml" 87 3201 3205 "src/lang.ml" 87 3201 3222
-type(
-  exp
-)
-"src/lang.ml" 87 3201 3233 "src/lang.ml" 87 3201 3235
+"src/lang.ml" 85 3323 3361 "src/lang.ml" 85 3323 3363
 type(
   value
 )
 ident(
-  def vl "src/lang.ml" 87 3201 3249 "src/lang.ml" 87 3201 3270
+  def vl "src/lang.ml" 85 3323 3377 "src/lang.ml" 85 3323 3398
 )
-"src/lang.ml" 87 3201 3238 "src/lang.ml" 87 3201 3242
+"src/lang.ml" 85 3323 3366 "src/lang.ml" 85 3323 3370
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 87 3201 3243 "src/lang.ml" 87 3201 3245
+"src/lang.ml" 85 3323 3371 "src/lang.ml" 85 3323 3373
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 87 3201 3215 "src/lang.ml" 87 3201 3217
+  int_ref e1 "src/lang.ml" 85 3323 3340 "src/lang.ml" 85 3323 3342
 )
-"src/lang.ml" 87 3201 3238 "src/lang.ml" 87 3201 3245
+"src/lang.ml" 85 3323 3366 "src/lang.ml" 85 3323 3373
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 87 3201 3249 "src/lang.ml" 87 3201 3253
+"src/lang.ml" 85 3323 3377 "src/lang.ml" 85 3323 3381
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 87 3201 3255 "src/lang.ml" 87 3201 3260
+"src/lang.ml" 85 3323 3383 "src/lang.ml" 85 3323 3388
 type(
   value -> var -> exp -> exp
 )
 ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
 )
-"src/lang.ml" 87 3201 3261 "src/lang.ml" 87 3201 3263
+"src/lang.ml" 85 3323 3389 "src/lang.ml" 85 3323 3391
 type(
   value
 )
 ident(
-  int_ref vl "src/lang.ml" 87 3201 3233 "src/lang.ml" 87 3201 3235
+  int_ref vl "src/lang.ml" 85 3323 3361 "src/lang.ml" 85 3323 3363
 )
-"src/lang.ml" 87 3201 3264 "src/lang.ml" 87 3201 3266
+"src/lang.ml" 85 3323 3392 "src/lang.ml" 85 3323 3394
 type(
   var
 )
 ident(
-  int_ref vr "src/lang.ml" 87 3201 3211 "src/lang.ml" 87 3201 3213
+  int_ref vr "src/lang.ml" 85 3323 3333 "src/lang.ml" 85 3323 3335
 )
-"src/lang.ml" 87 3201 3267 "src/lang.ml" 87 3201 3269
+"src/lang.ml" 85 3323 3395 "src/lang.ml" 85 3323 3397
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 87 3201 3219 "src/lang.ml" 87 3201 3221
+  int_ref e2 "src/lang.ml" 85 3323 3344 "src/lang.ml" 85 3323 3346
 )
-"src/lang.ml" 87 3201 3254 "src/lang.ml" 87 3201 3270
+"src/lang.ml" 85 3323 3382 "src/lang.ml" 85 3323 3398
 call(
   stack
 )
 type(
   exp
 )
-"src/lang.ml" 87 3201 3249 "src/lang.ml" 87 3201 3270
+"src/lang.ml" 85 3323 3377 "src/lang.ml" 85 3323 3398
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 87 3201 3229 "src/lang.ml" 87 3201 3270
+"src/lang.ml" 85 3323 3357 "src/lang.ml" 85 3323 3398
 type(
   value
 )
-"src/lang.ml" 88 3271 3280 "src/lang.ml" 88 3271 3282
+"src/lang.ml" 86 3399 3409 "src/lang.ml" 86 3399 3411
+type(
+  var
+)
+ident(
+  def vr "src/lang.ml" 86 3399 3433 "src/lang.ml" 86 3399 3453
+)
+"src/lang.ml" 86 3399 3413 "src/lang.ml" 86 3399 3415
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 86 3399 3433 "src/lang.ml" 86 3399 3453
+)
+"src/lang.ml" 86 3399 3417 "src/lang.ml" 86 3399 3419
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 86 3399 3433 "src/lang.ml" 86 3399 3453
+)
+"src/lang.ml" 86 3399 3421 "src/lang.ml" 86 3399 3422
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 88 3271 3299 "src/lang.ml" 91 3535 3651
+  def e "src/lang.ml" 86 3399 3433 "src/lang.ml" 86 3399 3453
 )
-"src/lang.ml" 88 3271 3284 "src/lang.ml" 88 3271 3286
+"src/lang.ml" 86 3399 3403 "src/lang.ml" 86 3399 3423
+type(
+  exp
+)
+"src/lang.ml" 86 3399 3439 "src/lang.ml" 86 3399 3441
+type(
+  var
+)
+ident(
+  int_ref vr "src/lang.ml" 86 3399 3409 "src/lang.ml" 86 3399 3411
+)
+"src/lang.ml" 86 3399 3443 "src/lang.ml" 86 3399 3445
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 86 3399 3413 "src/lang.ml" 86 3399 3415
+)
+"src/lang.ml" 86 3399 3447 "src/lang.ml" 86 3399 3449
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 86 3399 3417 "src/lang.ml" 86 3399 3419
+)
+"src/lang.ml" 86 3399 3451 "src/lang.ml" 86 3399 3452
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 88 3271 3299 "src/lang.ml" 91 3535 3651
+  int_ref e "src/lang.ml" 86 3399 3421 "src/lang.ml" 86 3399 3422
 )
-"src/lang.ml" 88 3271 3288 "src/lang.ml" 88 3271 3290
+"src/lang.ml" 86 3399 3433 "src/lang.ml" 86 3399 3453
+type(
+  value
+)
+"src/lang.ml" 87 3454 3464 "src/lang.ml" 87 3454 3467
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 87 3454 3488 "src/lang.ml" 87 3454 3514
+)
+"src/lang.ml" 87 3454 3469 "src/lang.ml" 87 3454 3472
+type(
+  var
+)
+ident(
+  def vr2 "src/lang.ml" 87 3454 3488 "src/lang.ml" 87 3454 3514
+)
+"src/lang.ml" 87 3454 3474 "src/lang.ml" 87 3454 3476
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 87 3454 3488 "src/lang.ml" 87 3454 3514
+)
+"src/lang.ml" 87 3454 3478 "src/lang.ml" 87 3454 3480
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 87 3454 3488 "src/lang.ml" 87 3454 3514
+)
+"src/lang.ml" 87 3454 3482 "src/lang.ml" 87 3454 3483
 type(
   exp
 )
 ident(
-  def e3 "src/lang.ml" 88 3271 3299 "src/lang.ml" 91 3535 3651
+  def e "src/lang.ml" 87 3454 3488 "src/lang.ml" 87 3454 3514
 )
-"src/lang.ml" 88 3271 3275 "src/lang.ml" 88 3271 3291
+"src/lang.ml" 87 3454 3458 "src/lang.ml" 87 3454 3484
 type(
   exp
 )
-"src/lang.ml" 88 3271 3307 "src/lang.ml" 88 3271 3311
+"src/lang.ml" 87 3454 3494 "src/lang.ml" 87 3454 3497
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 87 3454 3464 "src/lang.ml" 87 3454 3467
+)
+"src/lang.ml" 87 3454 3499 "src/lang.ml" 87 3454 3502
+type(
+  var
+)
+ident(
+  int_ref vr2 "src/lang.ml" 87 3454 3469 "src/lang.ml" 87 3454 3472
+)
+"src/lang.ml" 87 3454 3504 "src/lang.ml" 87 3454 3506
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 87 3454 3474 "src/lang.ml" 87 3454 3476
+)
+"src/lang.ml" 87 3454 3508 "src/lang.ml" 87 3454 3510
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 87 3454 3478 "src/lang.ml" 87 3454 3480
+)
+"src/lang.ml" 87 3454 3512 "src/lang.ml" 87 3454 3513
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 87 3454 3482 "src/lang.ml" 87 3454 3483
+)
+"src/lang.ml" 87 3454 3488 "src/lang.ml" 87 3454 3514
+type(
+  value
+)
+"src/lang.ml" 88 3515 3524 "src/lang.ml" 88 3515 3526
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 88 3515 3549 "src/lang.ml" 91 3797 3919
+)
+"src/lang.ml" 88 3515 3528 "src/lang.ml" 88 3515 3530
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 88 3515 3549 "src/lang.ml" 91 3797 3919
+)
+"src/lang.ml" 88 3515 3532 "src/lang.ml" 88 3515 3534
+type(
+  exp
+)
+ident(
+  def e3 "src/lang.ml" 88 3515 3549 "src/lang.ml" 91 3797 3919
+)
+"src/lang.ml" 88 3515 3519 "src/lang.ml" 88 3515 3535
+type(
+  exp
+)
+"src/lang.ml" 88 3515 3557 "src/lang.ml" 88 3515 3561
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 88 3271 3312 "src/lang.ml" 88 3271 3314
+"src/lang.ml" 88 3515 3562 "src/lang.ml" 88 3515 3564
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 88 3271 3280 "src/lang.ml" 88 3271 3282
+  int_ref e1 "src/lang.ml" 88 3515 3524 "src/lang.ml" 88 3515 3526
 )
-"src/lang.ml" 88 3271 3307 "src/lang.ml" 88 3271 3314
+"src/lang.ml" 88 3515 3557 "src/lang.ml" 88 3515 3564
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 88 3271 3316 "src/lang.ml" 88 3271 3320
+"src/lang.ml" 88 3515 3566 "src/lang.ml" 88 3515 3570
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 88 3271 3321 "src/lang.ml" 88 3271 3323
+"src/lang.ml" 88 3515 3571 "src/lang.ml" 88 3515 3573
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 88 3271 3284 "src/lang.ml" 88 3271 3286
+  int_ref e2 "src/lang.ml" 88 3515 3528 "src/lang.ml" 88 3515 3530
 )
-"src/lang.ml" 88 3271 3316 "src/lang.ml" 88 3271 3323
+"src/lang.ml" 88 3515 3566 "src/lang.ml" 88 3515 3573
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 88 3271 3325 "src/lang.ml" 88 3271 3329
+"src/lang.ml" 88 3515 3575 "src/lang.ml" 88 3515 3579
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 88 3271 3330 "src/lang.ml" 88 3271 3332
+"src/lang.ml" 88 3515 3580 "src/lang.ml" 88 3515 3582
 type(
   exp
 )
 ident(
-  int_ref e3 "src/lang.ml" 88 3271 3288 "src/lang.ml" 88 3271 3290
+  int_ref e3 "src/lang.ml" 88 3515 3532 "src/lang.ml" 88 3515 3534
 )
-"src/lang.ml" 88 3271 3325 "src/lang.ml" 88 3271 3332
+"src/lang.ml" 88 3515 3575 "src/lang.ml" 88 3515 3582
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 88 3271 3306 "src/lang.ml" 88 3271 3333
+"src/lang.ml" 88 3515 3556 "src/lang.ml" 88 3515 3583
 type(
   value * value * value
 )
-"src/lang.ml" 89 3339 3377 "src/lang.ml" 89 3339 3378
+"src/lang.ml" 89 3589 3633 "src/lang.ml" 89 3589 3634
 type(
   bool
 )
 ident(
-  def b "src/lang.ml" 89 3339 3403 "src/lang.ml" 89 3339 3435
+  def b "src/lang.ml" 89 3589 3659 "src/lang.ml" 89 3589 3691
 )
-"src/lang.ml" 89 3339 3371 "src/lang.ml" 89 3339 3378
+"src/lang.ml" 89 3589 3627 "src/lang.ml" 89 3589 3634
 type(
   value
 )
-"src/lang.ml" 89 3339 3385 "src/lang.ml" 89 3339 3387
+"src/lang.ml" 89 3589 3641 "src/lang.ml" 89 3589 3643
 type(
   int
 )
 ident(
-  def n1 "src/lang.ml" 89 3339 3403 "src/lang.ml" 89 3339 3435
+  def n1 "src/lang.ml" 89 3589 3659 "src/lang.ml" 89 3589 3691
 )
-"src/lang.ml" 89 3339 3380 "src/lang.ml" 89 3339 3387
+"src/lang.ml" 89 3589 3636 "src/lang.ml" 89 3589 3643
 type(
   value
 )
-"src/lang.ml" 89 3339 3394 "src/lang.ml" 89 3339 3396
+"src/lang.ml" 89 3589 3650 "src/lang.ml" 89 3589 3652
 type(
   int
 )
 ident(
-  def n2 "src/lang.ml" 89 3339 3403 "src/lang.ml" 89 3339 3435
+  def n2 "src/lang.ml" 89 3589 3659 "src/lang.ml" 89 3589 3691
 )
-"src/lang.ml" 89 3339 3389 "src/lang.ml" 89 3339 3396
+"src/lang.ml" 89 3589 3645 "src/lang.ml" 89 3589 3652
 type(
   value
 )
-"src/lang.ml" 89 3339 3370 "src/lang.ml" 89 3339 3397
+"src/lang.ml" 89 3589 3626 "src/lang.ml" 89 3589 3653
 type(
   value * value * value
 )
-"src/lang.ml" 89 3339 3407 "src/lang.ml" 89 3339 3408
+"src/lang.ml" 89 3589 3663 "src/lang.ml" 89 3589 3664
 type(
   bool
 )
 ident(
-  int_ref b "src/lang.ml" 89 3339 3377 "src/lang.ml" 89 3339 3378
+  int_ref b "src/lang.ml" 89 3589 3633 "src/lang.ml" 89 3589 3634
 )
-"src/lang.ml" 89 3339 3419 "src/lang.ml" 89 3339 3421
+"src/lang.ml" 89 3589 3675 "src/lang.ml" 89 3589 3677
 type(
   int
 )
 ident(
-  int_ref n1 "src/lang.ml" 89 3339 3385 "src/lang.ml" 89 3339 3387
+  int_ref n1 "src/lang.ml" 89 3589 3641 "src/lang.ml" 89 3589 3643
 )
-"src/lang.ml" 89 3339 3414 "src/lang.ml" 89 3339 3421
+"src/lang.ml" 89 3589 3670 "src/lang.ml" 89 3589 3677
 type(
   value
 )
-"src/lang.ml" 89 3339 3432 "src/lang.ml" 89 3339 3434
+"src/lang.ml" 89 3589 3688 "src/lang.ml" 89 3589 3690
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 89 3339 3394 "src/lang.ml" 89 3339 3396
+  int_ref n2 "src/lang.ml" 89 3589 3650 "src/lang.ml" 89 3589 3652
 )
-"src/lang.ml" 89 3339 3427 "src/lang.ml" 89 3339 3434
+"src/lang.ml" 89 3589 3683 "src/lang.ml" 89 3589 3690
 type(
   value
 )
-"src/lang.ml" 89 3339 3403 "src/lang.ml" 89 3339 3435
+"src/lang.ml" 89 3589 3659 "src/lang.ml" 89 3589 3691
 type(
   value
 )
-"src/lang.ml" 90 3436 3474 "src/lang.ml" 90 3436 3475
+"src/lang.ml" 90 3692 3736 "src/lang.ml" 90 3692 3737
 type(
   bool
 )
 ident(
-  def b "src/lang.ml" 90 3436 3500 "src/lang.ml" 90 3436 3534
+  def b "src/lang.ml" 90 3692 3762 "src/lang.ml" 90 3692 3796
 )
-"src/lang.ml" 90 3436 3468 "src/lang.ml" 90 3436 3475
+"src/lang.ml" 90 3692 3730 "src/lang.ml" 90 3692 3737
 type(
   value
 )
-"src/lang.ml" 90 3436 3483 "src/lang.ml" 90 3436 3485
+"src/lang.ml" 90 3692 3745 "src/lang.ml" 90 3692 3747
 type(
   bool
 )
 ident(
-  def b1 "src/lang.ml" 90 3436 3500 "src/lang.ml" 90 3436 3534
+  def b1 "src/lang.ml" 90 3692 3762 "src/lang.ml" 90 3692 3796
 )
-"src/lang.ml" 90 3436 3477 "src/lang.ml" 90 3436 3485
+"src/lang.ml" 90 3692 3739 "src/lang.ml" 90 3692 3747
 type(
   value
 )
-"src/lang.ml" 90 3436 3493 "src/lang.ml" 90 3436 3495
+"src/lang.ml" 90 3692 3755 "src/lang.ml" 90 3692 3757
 type(
   bool
 )
 ident(
-  def b2 "src/lang.ml" 90 3436 3500 "src/lang.ml" 90 3436 3534
+  def b2 "src/lang.ml" 90 3692 3762 "src/lang.ml" 90 3692 3796
 )
-"src/lang.ml" 90 3436 3487 "src/lang.ml" 90 3436 3495
+"src/lang.ml" 90 3692 3749 "src/lang.ml" 90 3692 3757
 type(
   value
 )
-"src/lang.ml" 90 3436 3467 "src/lang.ml" 90 3436 3496
+"src/lang.ml" 90 3692 3729 "src/lang.ml" 90 3692 3758
 type(
   value * value * value
 )
-"src/lang.ml" 90 3436 3504 "src/lang.ml" 90 3436 3505
+"src/lang.ml" 90 3692 3766 "src/lang.ml" 90 3692 3767
 type(
   bool
 )
 ident(
-  int_ref b "src/lang.ml" 90 3436 3474 "src/lang.ml" 90 3436 3475
+  int_ref b "src/lang.ml" 90 3692 3736 "src/lang.ml" 90 3692 3737
 )
-"src/lang.ml" 90 3436 3517 "src/lang.ml" 90 3436 3519
+"src/lang.ml" 90 3692 3779 "src/lang.ml" 90 3692 3781
 type(
   bool
 )
 ident(
-  int_ref b1 "src/lang.ml" 90 3436 3483 "src/lang.ml" 90 3436 3485
+  int_ref b1 "src/lang.ml" 90 3692 3745 "src/lang.ml" 90 3692 3747
 )
-"src/lang.ml" 90 3436 3511 "src/lang.ml" 90 3436 3519
+"src/lang.ml" 90 3692 3773 "src/lang.ml" 90 3692 3781
 type(
   value
 )
-"src/lang.ml" 90 3436 3531 "src/lang.ml" 90 3436 3533
+"src/lang.ml" 90 3692 3793 "src/lang.ml" 90 3692 3795
 type(
   bool
 )
 ident(
-  int_ref b2 "src/lang.ml" 90 3436 3493 "src/lang.ml" 90 3436 3495
+  int_ref b2 "src/lang.ml" 90 3692 3755 "src/lang.ml" 90 3692 3757
 )
-"src/lang.ml" 90 3436 3525 "src/lang.ml" 90 3436 3533
+"src/lang.ml" 90 3692 3787 "src/lang.ml" 90 3692 3795
 type(
   value
 )
-"src/lang.ml" 90 3436 3500 "src/lang.ml" 90 3436 3534
+"src/lang.ml" 90 3692 3762 "src/lang.ml" 90 3692 3796
 type(
   value
 )
-"src/lang.ml" 91 3535 3566 "src/lang.ml" 91 3535 3567
+"src/lang.ml" 91 3797 3834 "src/lang.ml" 91 3797 3835
 type(
   value * value * value
 )
-"src/lang.ml" 91 3535 3599 "src/lang.ml" 91 3535 3607
+"src/lang.ml" 91 3797 3867 "src/lang.ml" 91 3797 3875
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 91 3535 3608 "src/lang.ml" 91 3535 3650
+"src/lang.ml" 91 3797 3876 "src/lang.ml" 91 3797 3918
 type(
   string
 )
-"src/lang.ml" 91 3535 3599 "src/lang.ml" 91 3535 3650
+"src/lang.ml" 91 3797 3867 "src/lang.ml" 91 3797 3918
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 88 3271 3299 "src/lang.ml" 91 3535 3651
+"src/lang.ml" 88 3515 3549 "src/lang.ml" 91 3797 3919
 type(
   value
 )
-"src/lang.ml" 92 3652 3661 "src/lang.ml" 92 3652 3663
+"src/lang.ml" 92 3920 3929 "src/lang.ml" 92 3920 3931
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 92 3652 3680 "src/lang.ml" 92 3652 3699
+  def e1 "src/lang.ml" 92 3920 3954 "src/lang.ml" 92 3920 3973
 )
-"src/lang.ml" 92 3652 3665 "src/lang.ml" 92 3652 3666
+"src/lang.ml" 92 3920 3933 "src/lang.ml" 92 3920 3934
 type(
   operator
 )
 ident(
-  def o "src/lang.ml" 92 3652 3680 "src/lang.ml" 92 3652 3699
+  def o "src/lang.ml" 92 3920 3954 "src/lang.ml" 92 3920 3973
 )
-"src/lang.ml" 92 3652 3668 "src/lang.ml" 92 3652 3670
+"src/lang.ml" 92 3920 3936 "src/lang.ml" 92 3920 3938
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 92 3652 3680 "src/lang.ml" 92 3652 3699
+  def e2 "src/lang.ml" 92 3920 3954 "src/lang.ml" 92 3920 3973
 )
-"src/lang.ml" 92 3652 3656 "src/lang.ml" 92 3652 3671
+"src/lang.ml" 92 3920 3924 "src/lang.ml" 92 3920 3939
 type(
   exp
 )
-"src/lang.ml" 92 3652 3680 "src/lang.ml" 92 3652 3691
+"src/lang.ml" 92 3920 3954 "src/lang.ml" 92 3920 3965
 type(
   exp -> operator -> exp -> value
 )
 ident(
-  int_ref eval_op_exp "src/lang.ml" 99 4078 4082 "src/lang.ml" 99 4078 4093
+  int_ref eval_op_exp "src/lang.ml" 99 4414 4418 "src/lang.ml" 99 4414 4429
 )
-"src/lang.ml" 92 3652 3692 "src/lang.ml" 92 3652 3694
+"src/lang.ml" 92 3920 3966 "src/lang.ml" 92 3920 3968
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 92 3652 3661 "src/lang.ml" 92 3652 3663
+  int_ref e1 "src/lang.ml" 92 3920 3929 "src/lang.ml" 92 3920 3931
 )
-"src/lang.ml" 92 3652 3695 "src/lang.ml" 92 3652 3696
+"src/lang.ml" 92 3920 3969 "src/lang.ml" 92 3920 3970
 type(
   operator
 )
 ident(
-  int_ref o "src/lang.ml" 92 3652 3665 "src/lang.ml" 92 3652 3666
+  int_ref o "src/lang.ml" 92 3920 3933 "src/lang.ml" 92 3920 3934
 )
-"src/lang.ml" 92 3652 3697 "src/lang.ml" 92 3652 3699
+"src/lang.ml" 92 3920 3971 "src/lang.ml" 92 3920 3973
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 92 3652 3668 "src/lang.ml" 92 3652 3670
+  int_ref e2 "src/lang.ml" 92 3920 3936 "src/lang.ml" 92 3920 3938
 )
-"src/lang.ml" 92 3652 3680 "src/lang.ml" 92 3652 3699
+"src/lang.ml" 92 3920 3954 "src/lang.ml" 92 3920 3973
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 93 3700 3710 "src/lang.ml" 93 3700 3712
+"src/lang.ml" 93 3974 3984 "src/lang.ml" 93 3974 3986
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 93 3700 3728 "src/lang.ml" 96 3930 4020
+  def e1 "src/lang.ml" 93 3974 4008 "src/lang.ml" 96 4246 4350
 )
-"src/lang.ml" 93 3700 3714 "src/lang.ml" 93 3700 3716
+"src/lang.ml" 93 3974 3988 "src/lang.ml" 93 3974 3990
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 93 3700 3728 "src/lang.ml" 96 3930 4020
+  def e2 "src/lang.ml" 93 3974 4008 "src/lang.ml" 96 4246 4350
 )
-"src/lang.ml" 93 3700 3704 "src/lang.ml" 93 3700 3717
+"src/lang.ml" 93 3974 3978 "src/lang.ml" 93 3974 3991
 type(
   exp
 )
-"src/lang.ml" 93 3700 3736 "src/lang.ml" 93 3700 3740
+"src/lang.ml" 93 3974 4016 "src/lang.ml" 93 3974 4020
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 93 3700 3741 "src/lang.ml" 93 3700 3743
+"src/lang.ml" 93 3974 4021 "src/lang.ml" 93 3974 4023
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 93 3700 3710 "src/lang.ml" 93 3700 3712
+  int_ref e1 "src/lang.ml" 93 3974 3984 "src/lang.ml" 93 3974 3986
 )
-"src/lang.ml" 93 3700 3735 "src/lang.ml" 93 3700 3744
+"src/lang.ml" 93 3974 4015 "src/lang.ml" 93 3974 4024
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 94 3750 3787 "src/lang.ml" 94 3750 3788
+"src/lang.ml" 94 4030 4073 "src/lang.ml" 94 4030 4074
 type(
   var
 )
 ident(
-  def x "src/lang.ml" 94 3750 3799 "src/lang.ml" 94 3750 3826
+  def x "src/lang.ml" 94 4030 4093 "src/lang.ml" 94 4030 4120
 )
-"src/lang.ml" 94 3750 3790 "src/lang.ml" 94 3750 3791
+"src/lang.ml" 94 4030 4076 "src/lang.ml" 94 4030 4078
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 94 4030 4093 "src/lang.ml" 94 4030 4120
+)
+"src/lang.ml" 94 4030 4080 "src/lang.ml" 94 4030 4082
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 94 4030 4093 "src/lang.ml" 94 4030 4120
+)
+"src/lang.ml" 94 4030 4084 "src/lang.ml" 94 4030 4085
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 94 3750 3799 "src/lang.ml" 94 3750 3826
+  def e "src/lang.ml" 94 4030 4093 "src/lang.ml" 94 4030 4120
 )
-"src/lang.ml" 94 3750 3781 "src/lang.ml" 94 3750 3792
+"src/lang.ml" 94 4030 4067 "src/lang.ml" 94 4030 4086
 type(
   value
 )
-"src/lang.ml" 94 3750 3799 "src/lang.ml" 94 3750 3803
+"src/lang.ml" 94 4030 4093 "src/lang.ml" 94 4030 4097
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 94 3750 3805 "src/lang.ml" 94 3750 3810
+"src/lang.ml" 94 4030 4099 "src/lang.ml" 94 4030 4104
 type(
   value -> var -> exp -> exp
 )
 ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
 )
-"src/lang.ml" 94 3750 3813 "src/lang.ml" 94 3750 3817
+"src/lang.ml" 94 4030 4107 "src/lang.ml" 94 4030 4111
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 94 3750 3818 "src/lang.ml" 94 3750 3820
+"src/lang.ml" 94 4030 4112 "src/lang.ml" 94 4030 4114
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 93 3700 3714 "src/lang.ml" 93 3700 3716
+  int_ref e2 "src/lang.ml" 93 3974 3988 "src/lang.ml" 93 3974 3990
 )
-"src/lang.ml" 94 3750 3812 "src/lang.ml" 94 3750 3821
+"src/lang.ml" 94 4030 4106 "src/lang.ml" 94 4030 4115
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 94 3750 3822 "src/lang.ml" 94 3750 3823
+"src/lang.ml" 94 4030 4116 "src/lang.ml" 94 4030 4117
 type(
   var
 )
 ident(
-  int_ref x "src/lang.ml" 94 3750 3787 "src/lang.ml" 94 3750 3788
+  int_ref x "src/lang.ml" 94 4030 4073 "src/lang.ml" 94 4030 4074
 )
-"src/lang.ml" 94 3750 3824 "src/lang.ml" 94 3750 3825
+"src/lang.ml" 94 4030 4118 "src/lang.ml" 94 4030 4119
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 94 3750 3790 "src/lang.ml" 94 3750 3791
+  int_ref e "src/lang.ml" 94 4030 4084 "src/lang.ml" 94 4030 4085
 )
-"src/lang.ml" 94 3750 3804 "src/lang.ml" 94 3750 3826
+"src/lang.ml" 94 4030 4098 "src/lang.ml" 94 4030 4120
 call(
   stack
 )
 type(
   exp
 )
-"src/lang.ml" 94 3750 3799 "src/lang.ml" 94 3750 3826
+"src/lang.ml" 94 4030 4093 "src/lang.ml" 94 4030 4120
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 95 3827 3864 "src/lang.ml" 95 3827 3865
+"src/lang.ml" 95 4121 4164 "src/lang.ml" 95 4121 4165
 type(
   var
 )
 ident(
-  def f "src/lang.ml" 95 3827 3876 "src/lang.ml" 95 3827 3929
+  def f "src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4245
 )
-"src/lang.ml" 95 3827 3867 "src/lang.ml" 95 3827 3868
+"src/lang.ml" 95 4121 4167 "src/lang.ml" 95 4121 4168
 type(
   var
 )
 ident(
-  def x "src/lang.ml" 95 3827 3876 "src/lang.ml" 95 3827 3929
+  def x "src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4245
 )
-"src/lang.ml" 95 3827 3870 "src/lang.ml" 95 3827 3871
+"src/lang.ml" 95 4121 4170 "src/lang.ml" 95 4121 4172
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4245
+)
+"src/lang.ml" 95 4121 4174 "src/lang.ml" 95 4121 4176
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4245
+)
+"src/lang.ml" 95 4121 4178 "src/lang.ml" 95 4121 4179
 type(
   exp
 )
 ident(
-  def e "src/lang.ml" 95 3827 3876 "src/lang.ml" 95 3827 3929
+  def e "src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4245
 )
-"src/lang.ml" 95 3827 3858 "src/lang.ml" 95 3827 3872
+"src/lang.ml" 95 4121 4158 "src/lang.ml" 95 4121 4180
 type(
   value
 )
-"src/lang.ml" 95 3827 3876 "src/lang.ml" 95 3827 3880
+"src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4188
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 95 3827 3882 "src/lang.ml" 95 3827 3887
+"src/lang.ml" 95 4121 4190 "src/lang.ml" 95 4121 4195
 type(
   value -> var -> exp -> exp
 )
 ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
 )
-"src/lang.ml" 95 3827 3895 "src/lang.ml" 95 3827 3896
+"src/lang.ml" 95 4121 4203 "src/lang.ml" 95 4121 4204
 type(
   var
 )
 ident(
-  int_ref f "src/lang.ml" 95 3827 3864 "src/lang.ml" 95 3827 3865
+  int_ref f "src/lang.ml" 95 4121 4164 "src/lang.ml" 95 4121 4165
 )
-"src/lang.ml" 95 3827 3898 "src/lang.ml" 95 3827 3899
+"src/lang.ml" 95 4121 4206 "src/lang.ml" 95 4121 4207
 type(
   var
 )
 ident(
-  int_ref x "src/lang.ml" 95 3827 3867 "src/lang.ml" 95 3827 3868
+  int_ref x "src/lang.ml" 95 4121 4167 "src/lang.ml" 95 4121 4168
 )
-"src/lang.ml" 95 3827 3901 "src/lang.ml" 95 3827 3902
+"src/lang.ml" 95 4121 4209 "src/lang.ml" 95 4121 4211
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 95 4121 4170 "src/lang.ml" 95 4121 4172
+)
+"src/lang.ml" 95 4121 4213 "src/lang.ml" 95 4121 4215
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 95 4121 4174 "src/lang.ml" 95 4121 4176
+)
+"src/lang.ml" 95 4121 4217 "src/lang.ml" 95 4121 4218
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 95 3827 3870 "src/lang.ml" 95 3827 3871
+  int_ref e "src/lang.ml" 95 4121 4178 "src/lang.ml" 95 4121 4179
 )
-"src/lang.ml" 95 3827 3888 "src/lang.ml" 95 3827 3904
+"src/lang.ml" 95 4121 4196 "src/lang.ml" 95 4121 4220
 type(
   value
 )
-"src/lang.ml" 95 3827 3905 "src/lang.ml" 95 3827 3906
+"src/lang.ml" 95 4121 4221 "src/lang.ml" 95 4121 4222
 type(
   var
 )
 ident(
-  int_ref f "src/lang.ml" 95 3827 3864 "src/lang.ml" 95 3827 3865
+  int_ref f "src/lang.ml" 95 4121 4164 "src/lang.ml" 95 4121 4165
 )
-"src/lang.ml" 95 3827 3908 "src/lang.ml" 95 3827 3913
+"src/lang.ml" 95 4121 4224 "src/lang.ml" 95 4121 4229
 type(
   value -> var -> exp -> exp
 )
 ident(
-  int_ref subst "src/lang.ml" 58 1723 1731 "src/lang.ml" 58 1723 1736
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
 )
-"src/lang.ml" 95 3827 3915 "src/lang.ml" 95 3827 3919
+"src/lang.ml" 95 4121 4231 "src/lang.ml" 95 4121 4235
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 95 3827 3920 "src/lang.ml" 95 3827 3922
+"src/lang.ml" 95 4121 4236 "src/lang.ml" 95 4121 4238
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 93 3700 3714 "src/lang.ml" 93 3700 3716
+  int_ref e2 "src/lang.ml" 93 3974 3988 "src/lang.ml" 93 3974 3990
 )
-"src/lang.ml" 95 3827 3914 "src/lang.ml" 95 3827 3923
+"src/lang.ml" 95 4121 4230 "src/lang.ml" 95 4121 4239
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 95 3827 3924 "src/lang.ml" 95 3827 3925
+"src/lang.ml" 95 4121 4240 "src/lang.ml" 95 4121 4241
 type(
   var
 )
 ident(
-  int_ref x "src/lang.ml" 95 3827 3867 "src/lang.ml" 95 3827 3868
+  int_ref x "src/lang.ml" 95 4121 4167 "src/lang.ml" 95 4121 4168
 )
-"src/lang.ml" 95 3827 3926 "src/lang.ml" 95 3827 3927
+"src/lang.ml" 95 4121 4242 "src/lang.ml" 95 4121 4243
 type(
   exp
 )
 ident(
-  int_ref e "src/lang.ml" 95 3827 3870 "src/lang.ml" 95 3827 3871
+  int_ref e "src/lang.ml" 95 4121 4178 "src/lang.ml" 95 4121 4179
 )
-"src/lang.ml" 95 3827 3907 "src/lang.ml" 95 3827 3928
+"src/lang.ml" 95 4121 4223 "src/lang.ml" 95 4121 4244
 call(
   stack
 )
 type(
   exp
 )
-"src/lang.ml" 95 3827 3881 "src/lang.ml" 95 3827 3929
+"src/lang.ml" 95 4121 4189 "src/lang.ml" 95 4121 4245
 call(
   stack
 )
 type(
   exp
 )
-"src/lang.ml" 95 3827 3876 "src/lang.ml" 95 3827 3929
+"src/lang.ml" 95 4121 4184 "src/lang.ml" 95 4121 4245
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 96 3930 3961 "src/lang.ml" 96 3930 3962
+"src/lang.ml" 96 4246 4283 "src/lang.ml" 96 4246 4284
 type(
   value
 )
-"src/lang.ml" 96 3930 3979 "src/lang.ml" 96 3930 3987
+"src/lang.ml" 96 4246 4309 "src/lang.ml" 96 4246 4317
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 96 3930 3988 "src/lang.ml" 96 3930 4019
+"src/lang.ml" 96 4246 4318 "src/lang.ml" 96 4246 4349
 type(
   string
 )
-"src/lang.ml" 96 3930 3979 "src/lang.ml" 96 3930 4019
+"src/lang.ml" 96 4246 4309 "src/lang.ml" 96 4246 4349
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 93 3700 3728 "src/lang.ml" 96 3930 4020
+"src/lang.ml" 93 3974 4008 "src/lang.ml" 96 4246 4350
 type(
   value
 )
-"src/lang.ml" 97 4021 4025 "src/lang.ml" 97 4021 4026
+"src/lang.ml" 97 4351 4355 "src/lang.ml" 97 4351 4356
 type(
   exp
 )
-"src/lang.ml" 97 4021 4049 "src/lang.ml" 97 4021 4057
+"src/lang.ml" 97 4351 4385 "src/lang.ml" 97 4351 4393
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 97 4021 4058 "src/lang.ml" 97 4021 4076
+"src/lang.ml" 97 4351 4394 "src/lang.ml" 97 4351 4412
 type(
   string
 )
-"src/lang.ml" 97 4021 4049 "src/lang.ml" 97 4021 4076
+"src/lang.ml" 97 4351 4385 "src/lang.ml" 97 4351 4412
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 82 3027 3029 "src/lang.ml" 97 4021 4076
+"src/lang.ml" 82 3225 3227 "src/lang.ml" 97 4351 4412
 type(
   value
 )
 type(
   value
 )
-"src/lang.ml" 99 4078 4082 "src/lang.ml" 99 4078 4093
+"src/lang.ml" 99 4414 4418 "src/lang.ml" 99 4414 4429
 type(
   exp -> operator -> exp -> value
 )
 ident(
-  def eval_op_exp "src/lang.ml" 81 2996 2996 "src/lang.ml" 1 0 -1
+  def eval_op_exp "src/lang.ml" 81 3194 3194 "src/lang.ml" 1 0 -1
 )
-"src/lang.ml" 99 4078 4095 "src/lang.ml" 99 4078 4097
+"src/lang.ml" 99 4414 4431 "src/lang.ml" 99 4414 4433
 type(
   exp
 )
 ident(
-  def e1 "src/lang.ml" 99 4078 4103 "src/lang.ml" 117 5198 5302
+  def e1 "src/lang.ml" 99 4414 4439 "src/lang.ml" 117 5534 5638
 )
-"src/lang.ml" 99 4078 4104 "src/lang.ml" 99 4078 4105
+"src/lang.ml" 99 4414 4440 "src/lang.ml" 99 4414 4441
 type(
   operator
 )
 ident(
-  def o "src/lang.ml" 99 4078 4116 "src/lang.ml" 117 5198 5302
+  def o "src/lang.ml" 99 4414 4452 "src/lang.ml" 117 5534 5638
 )
-"src/lang.ml" 99 4078 4117 "src/lang.ml" 99 4078 4119
+"src/lang.ml" 99 4414 4453 "src/lang.ml" 99 4414 4455
 type(
   exp
 )
 ident(
-  def e2 "src/lang.ml" 99 4078 4125 "src/lang.ml" 117 5198 5302
+  def e2 "src/lang.ml" 99 4414 4461 "src/lang.ml" 117 5534 5638
 )
-"src/lang.ml" 100 4135 4143 "src/lang.ml" 100 4135 4144
+"src/lang.ml" 100 4471 4479 "src/lang.ml" 100 4471 4480
 type(
   operator
 )
 ident(
-  int_ref o "src/lang.ml" 99 4078 4104 "src/lang.ml" 99 4078 4105
+  int_ref o "src/lang.ml" 99 4414 4440 "src/lang.ml" 99 4414 4441
 )
-"src/lang.ml" 101 4150 4154 "src/lang.ml" 101 4150 4158
+"src/lang.ml" 101 4486 4490 "src/lang.ml" 101 4486 4494
 type(
   operator
 )
-"src/lang.ml" 101 4150 4170 "src/lang.ml" 101 4150 4174
+"src/lang.ml" 101 4486 4506 "src/lang.ml" 101 4486 4510
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 101 4150 4175 "src/lang.ml" 101 4150 4177
+"src/lang.ml" 101 4486 4511 "src/lang.ml" 101 4486 4513
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 99 4078 4095 "src/lang.ml" 99 4078 4097
+  int_ref e1 "src/lang.ml" 99 4414 4431 "src/lang.ml" 99 4414 4433
 )
-"src/lang.ml" 101 4150 4170 "src/lang.ml" 101 4150 4177
+"src/lang.ml" 101 4486 4506 "src/lang.ml" 101 4486 4513
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 101 4150 4179 "src/lang.ml" 101 4150 4183
+"src/lang.ml" 101 4486 4515 "src/lang.ml" 101 4486 4519
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 101 4150 4184 "src/lang.ml" 101 4150 4186
+"src/lang.ml" 101 4486 4520 "src/lang.ml" 101 4486 4522
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 99 4078 4117 "src/lang.ml" 99 4078 4119
+  int_ref e2 "src/lang.ml" 99 4414 4453 "src/lang.ml" 99 4414 4455
 )
-"src/lang.ml" 101 4150 4179 "src/lang.ml" 101 4150 4186
+"src/lang.ml" 101 4486 4515 "src/lang.ml" 101 4486 4522
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 101 4150 4169 "src/lang.ml" 101 4150 4187
+"src/lang.ml" 101 4486 4505 "src/lang.ml" 101 4486 4523
 type(
   value * value
 )
-"src/lang.ml" 102 4193 4214 "src/lang.ml" 102 4193 4216
+"src/lang.ml" 102 4529 4550 "src/lang.ml" 102 4529 4552
 type(
   int
 )
 ident(
-  def n1 "src/lang.ml" 102 4193 4230 "src/lang.ml" 102 4193 4246
+  def n1 "src/lang.ml" 102 4529 4566 "src/lang.ml" 102 4529 4582
 )
-"src/lang.ml" 102 4193 4209 "src/lang.ml" 102 4193 4216
+"src/lang.ml" 102 4529 4545 "src/lang.ml" 102 4529 4552
 type(
   value
 )
-"src/lang.ml" 102 4193 4223 "src/lang.ml" 102 4193 4225
+"src/lang.ml" 102 4529 4559 "src/lang.ml" 102 4529 4561
 type(
   int
 )
 ident(
-  def n2 "src/lang.ml" 102 4193 4230 "src/lang.ml" 102 4193 4246
+  def n2 "src/lang.ml" 102 4529 4566 "src/lang.ml" 102 4529 4582
 )
-"src/lang.ml" 102 4193 4218 "src/lang.ml" 102 4193 4225
+"src/lang.ml" 102 4529 4554 "src/lang.ml" 102 4529 4561
 type(
   value
 )
-"src/lang.ml" 102 4193 4208 "src/lang.ml" 102 4193 4226
+"src/lang.ml" 102 4529 4544 "src/lang.ml" 102 4529 4562
 type(
   value * value
 )
-"src/lang.ml" 102 4193 4237 "src/lang.ml" 102 4193 4239
+"src/lang.ml" 102 4529 4573 "src/lang.ml" 102 4529 4575
 type(
   int
 )
 ident(
-  int_ref n1 "src/lang.ml" 102 4193 4214 "src/lang.ml" 102 4193 4216
+  int_ref n1 "src/lang.ml" 102 4529 4550 "src/lang.ml" 102 4529 4552
 )
-"src/lang.ml" 102 4193 4240 "src/lang.ml" 102 4193 4242
+"src/lang.ml" 102 4529 4576 "src/lang.ml" 102 4529 4578
 type(
   int -> int -> bool
 )
 ident(
   int_ref Pervasives.( <= ) "pervasives.mli" 72 2999 2999 "pervasives.mli" 72 2999 3048
 )
-"src/lang.ml" 102 4193 4243 "src/lang.ml" 102 4193 4245
+"src/lang.ml" 102 4529 4579 "src/lang.ml" 102 4529 4581
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 102 4193 4223 "src/lang.ml" 102 4193 4225
+  int_ref n2 "src/lang.ml" 102 4529 4559 "src/lang.ml" 102 4529 4561
 )
-"src/lang.ml" 102 4193 4236 "src/lang.ml" 102 4193 4246
+"src/lang.ml" 102 4529 4572 "src/lang.ml" 102 4529 4582
 type(
   bool
 )
-"src/lang.ml" 102 4193 4230 "src/lang.ml" 102 4193 4246
+"src/lang.ml" 102 4529 4566 "src/lang.ml" 102 4529 4582
 type(
   value
 )
-"src/lang.ml" 103 4247 4262 "src/lang.ml" 103 4247 4263
+"src/lang.ml" 103 4583 4598 "src/lang.ml" 103 4583 4599
 type(
   value * value
 )
-"src/lang.ml" 103 4247 4284 "src/lang.ml" 103 4247 4292
+"src/lang.ml" 103 4583 4620 "src/lang.ml" 103 4583 4628
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 103 4247 4293 "src/lang.ml" 103 4247 4358
+"src/lang.ml" 103 4583 4629 "src/lang.ml" 103 4583 4694
 type(
   string
 )
-"src/lang.ml" 103 4247 4284 "src/lang.ml" 103 4247 4358
+"src/lang.ml" 103 4583 4620 "src/lang.ml" 103 4583 4694
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 101 4150 4162 "src/lang.ml" 103 4247 4359
+"src/lang.ml" 101 4486 4498 "src/lang.ml" 103 4583 4695
 type(
   value
 )
-"src/lang.ml" 104 4360 4364 "src/lang.ml" 104 4360 4368
+"src/lang.ml" 104 4696 4700 "src/lang.ml" 104 4696 4704
 type(
   operator
 )
-"src/lang.ml" 104 4360 4380 "src/lang.ml" 104 4360 4384
+"src/lang.ml" 104 4696 4716 "src/lang.ml" 104 4696 4720
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 104 4360 4385 "src/lang.ml" 104 4360 4387
+"src/lang.ml" 104 4696 4721 "src/lang.ml" 104 4696 4723
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 99 4078 4095 "src/lang.ml" 99 4078 4097
+  int_ref e1 "src/lang.ml" 99 4414 4431 "src/lang.ml" 99 4414 4433
 )
-"src/lang.ml" 104 4360 4380 "src/lang.ml" 104 4360 4387
+"src/lang.ml" 104 4696 4716 "src/lang.ml" 104 4696 4723
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 104 4360 4389 "src/lang.ml" 104 4360 4393
+"src/lang.ml" 104 4696 4725 "src/lang.ml" 104 4696 4729
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 104 4360 4394 "src/lang.ml" 104 4360 4396
+"src/lang.ml" 104 4696 4730 "src/lang.ml" 104 4696 4732
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 99 4078 4117 "src/lang.ml" 99 4078 4119
+  int_ref e2 "src/lang.ml" 99 4414 4453 "src/lang.ml" 99 4414 4455
 )
-"src/lang.ml" 104 4360 4389 "src/lang.ml" 104 4360 4396
+"src/lang.ml" 104 4696 4725 "src/lang.ml" 104 4696 4732
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 104 4360 4379 "src/lang.ml" 104 4360 4397
+"src/lang.ml" 104 4696 4715 "src/lang.ml" 104 4696 4733
 type(
   value * value
 )
-"src/lang.ml" 105 4403 4424 "src/lang.ml" 105 4403 4426
+"src/lang.ml" 105 4739 4760 "src/lang.ml" 105 4739 4762
 type(
   int
 )
 ident(
-  def n1 "src/lang.ml" 105 4403 4440 "src/lang.ml" 105 4403 4454
+  def n1 "src/lang.ml" 105 4739 4776 "src/lang.ml" 105 4739 4790
 )
-"src/lang.ml" 105 4403 4419 "src/lang.ml" 105 4403 4426
+"src/lang.ml" 105 4739 4755 "src/lang.ml" 105 4739 4762
 type(
   value
 )
-"src/lang.ml" 105 4403 4433 "src/lang.ml" 105 4403 4435
+"src/lang.ml" 105 4739 4769 "src/lang.ml" 105 4739 4771
 type(
   int
 )
 ident(
-  def n2 "src/lang.ml" 105 4403 4440 "src/lang.ml" 105 4403 4454
+  def n2 "src/lang.ml" 105 4739 4776 "src/lang.ml" 105 4739 4790
 )
-"src/lang.ml" 105 4403 4428 "src/lang.ml" 105 4403 4435
+"src/lang.ml" 105 4739 4764 "src/lang.ml" 105 4739 4771
 type(
   value
 )
-"src/lang.ml" 105 4403 4418 "src/lang.ml" 105 4403 4436
+"src/lang.ml" 105 4739 4754 "src/lang.ml" 105 4739 4772
 type(
   value * value
 )
-"src/lang.ml" 105 4403 4446 "src/lang.ml" 105 4403 4448
+"src/lang.ml" 105 4739 4782 "src/lang.ml" 105 4739 4784
 type(
   int
 )
 ident(
-  int_ref n1 "src/lang.ml" 105 4403 4424 "src/lang.ml" 105 4403 4426
+  int_ref n1 "src/lang.ml" 105 4739 4760 "src/lang.ml" 105 4739 4762
 )
-"src/lang.ml" 105 4403 4449 "src/lang.ml" 105 4403 4450
+"src/lang.ml" 105 4739 4785 "src/lang.ml" 105 4739 4786
 type(
   int -> int -> int
 )
 ident(
   int_ref Pervasives.( - ) "pervasives.mli" 265 10396 10396 "pervasives.mli" 265 10396 10442
 )
-"src/lang.ml" 105 4403 4451 "src/lang.ml" 105 4403 4453
+"src/lang.ml" 105 4739 4787 "src/lang.ml" 105 4739 4789
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 105 4403 4433 "src/lang.ml" 105 4403 4435
+  int_ref n2 "src/lang.ml" 105 4739 4769 "src/lang.ml" 105 4739 4771
 )
-"src/lang.ml" 105 4403 4445 "src/lang.ml" 105 4403 4454
+"src/lang.ml" 105 4739 4781 "src/lang.ml" 105 4739 4790
 type(
   int
 )
-"src/lang.ml" 105 4403 4440 "src/lang.ml" 105 4403 4454
+"src/lang.ml" 105 4739 4776 "src/lang.ml" 105 4739 4790
 type(
   value
 )
-"src/lang.ml" 106 4455 4470 "src/lang.ml" 106 4455 4471
+"src/lang.ml" 106 4791 4806 "src/lang.ml" 106 4791 4807
 type(
   value * value
 )
-"src/lang.ml" 106 4455 4492 "src/lang.ml" 106 4455 4500
+"src/lang.ml" 106 4791 4828 "src/lang.ml" 106 4791 4836
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 106 4455 4501 "src/lang.ml" 106 4455 4555
+"src/lang.ml" 106 4791 4837 "src/lang.ml" 106 4791 4891
 type(
   string
 )
-"src/lang.ml" 106 4455 4492 "src/lang.ml" 106 4455 4555
+"src/lang.ml" 106 4791 4828 "src/lang.ml" 106 4791 4891
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 104 4360 4372 "src/lang.ml" 106 4455 4556
+"src/lang.ml" 104 4696 4708 "src/lang.ml" 106 4791 4892
 type(
   value
 )
-"src/lang.ml" 107 4557 4561 "src/lang.ml" 107 4557 4565
+"src/lang.ml" 107 4893 4897 "src/lang.ml" 107 4893 4901
 type(
   operator
 )
-"src/lang.ml" 107 4557 4577 "src/lang.ml" 107 4557 4581
+"src/lang.ml" 107 4893 4913 "src/lang.ml" 107 4893 4917
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 107 4557 4582 "src/lang.ml" 107 4557 4584
+"src/lang.ml" 107 4893 4918 "src/lang.ml" 107 4893 4920
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 99 4078 4095 "src/lang.ml" 99 4078 4097
+  int_ref e1 "src/lang.ml" 99 4414 4431 "src/lang.ml" 99 4414 4433
 )
-"src/lang.ml" 107 4557 4577 "src/lang.ml" 107 4557 4584
+"src/lang.ml" 107 4893 4913 "src/lang.ml" 107 4893 4920
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 107 4557 4586 "src/lang.ml" 107 4557 4590
+"src/lang.ml" 107 4893 4922 "src/lang.ml" 107 4893 4926
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 107 4557 4591 "src/lang.ml" 107 4557 4593
+"src/lang.ml" 107 4893 4927 "src/lang.ml" 107 4893 4929
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 99 4078 4117 "src/lang.ml" 99 4078 4119
+  int_ref e2 "src/lang.ml" 99 4414 4453 "src/lang.ml" 99 4414 4455
 )
-"src/lang.ml" 107 4557 4586 "src/lang.ml" 107 4557 4593
+"src/lang.ml" 107 4893 4922 "src/lang.ml" 107 4893 4929
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 107 4557 4576 "src/lang.ml" 107 4557 4594
+"src/lang.ml" 107 4893 4912 "src/lang.ml" 107 4893 4930
 type(
   value * value
 )
-"src/lang.ml" 108 4600 4621 "src/lang.ml" 108 4600 4623
+"src/lang.ml" 108 4936 4957 "src/lang.ml" 108 4936 4959
 type(
   int
 )
 ident(
-  def n1 "src/lang.ml" 108 4600 4637 "src/lang.ml" 108 4600 4651
+  def n1 "src/lang.ml" 108 4936 4973 "src/lang.ml" 108 4936 4987
 )
-"src/lang.ml" 108 4600 4616 "src/lang.ml" 108 4600 4623
+"src/lang.ml" 108 4936 4952 "src/lang.ml" 108 4936 4959
 type(
   value
 )
-"src/lang.ml" 108 4600 4630 "src/lang.ml" 108 4600 4632
+"src/lang.ml" 108 4936 4966 "src/lang.ml" 108 4936 4968
 type(
   int
 )
 ident(
-  def n2 "src/lang.ml" 108 4600 4637 "src/lang.ml" 108 4600 4651
+  def n2 "src/lang.ml" 108 4936 4973 "src/lang.ml" 108 4936 4987
 )
-"src/lang.ml" 108 4600 4625 "src/lang.ml" 108 4600 4632
+"src/lang.ml" 108 4936 4961 "src/lang.ml" 108 4936 4968
 type(
   value
 )
-"src/lang.ml" 108 4600 4615 "src/lang.ml" 108 4600 4633
+"src/lang.ml" 108 4936 4951 "src/lang.ml" 108 4936 4969
 type(
   value * value
 )
-"src/lang.ml" 108 4600 4643 "src/lang.ml" 108 4600 4645
+"src/lang.ml" 108 4936 4979 "src/lang.ml" 108 4936 4981
 type(
   int
 )
 ident(
-  int_ref n1 "src/lang.ml" 108 4600 4621 "src/lang.ml" 108 4600 4623
+  int_ref n1 "src/lang.ml" 108 4936 4957 "src/lang.ml" 108 4936 4959
 )
-"src/lang.ml" 108 4600 4646 "src/lang.ml" 108 4600 4647
+"src/lang.ml" 108 4936 4982 "src/lang.ml" 108 4936 4983
 type(
   int -> int -> int
 )
 ident(
   int_ref Pervasives.( + ) "pervasives.mli" 261 10267 10267 "pervasives.mli" 261 10267 10313
 )
-"src/lang.ml" 108 4600 4648 "src/lang.ml" 108 4600 4650
+"src/lang.ml" 108 4936 4984 "src/lang.ml" 108 4936 4986
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 108 4600 4630 "src/lang.ml" 108 4600 4632
+  int_ref n2 "src/lang.ml" 108 4936 4966 "src/lang.ml" 108 4936 4968
 )
-"src/lang.ml" 108 4600 4642 "src/lang.ml" 108 4600 4651
+"src/lang.ml" 108 4936 4978 "src/lang.ml" 108 4936 4987
 type(
   int
 )
-"src/lang.ml" 108 4600 4637 "src/lang.ml" 108 4600 4651
+"src/lang.ml" 108 4936 4973 "src/lang.ml" 108 4936 4987
 type(
   value
 )
-"src/lang.ml" 109 4652 4667 "src/lang.ml" 109 4652 4668
+"src/lang.ml" 109 4988 5003 "src/lang.ml" 109 4988 5004
 type(
   value * value
 )
-"src/lang.ml" 109 4652 4689 "src/lang.ml" 109 4652 4697
+"src/lang.ml" 109 4988 5025 "src/lang.ml" 109 4988 5033
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 109 4652 4698 "src/lang.ml" 109 4652 4749
+"src/lang.ml" 109 4988 5034 "src/lang.ml" 109 4988 5085
 type(
   string
 )
-"src/lang.ml" 109 4652 4689 "src/lang.ml" 109 4652 4749
+"src/lang.ml" 109 4988 5025 "src/lang.ml" 109 4988 5085
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 107 4557 4569 "src/lang.ml" 109 4652 4750
+"src/lang.ml" 107 4893 4905 "src/lang.ml" 109 4988 5086
 type(
   value
 )
-"src/lang.ml" 110 4751 4755 "src/lang.ml" 110 4751 4759
+"src/lang.ml" 110 5087 5091 "src/lang.ml" 110 5087 5095
 type(
   operator
 )
-"src/lang.ml" 110 4751 4771 "src/lang.ml" 110 4751 4775
+"src/lang.ml" 110 5087 5107 "src/lang.ml" 110 5087 5111
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 110 4751 4776 "src/lang.ml" 110 4751 4778
+"src/lang.ml" 110 5087 5112 "src/lang.ml" 110 5087 5114
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 99 4078 4095 "src/lang.ml" 99 4078 4097
+  int_ref e1 "src/lang.ml" 99 4414 4431 "src/lang.ml" 99 4414 4433
 )
-"src/lang.ml" 110 4751 4771 "src/lang.ml" 110 4751 4778
+"src/lang.ml" 110 5087 5107 "src/lang.ml" 110 5087 5114
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 110 4751 4780 "src/lang.ml" 110 4751 4784
+"src/lang.ml" 110 5087 5116 "src/lang.ml" 110 5087 5120
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 110 4751 4785 "src/lang.ml" 110 4751 4787
+"src/lang.ml" 110 5087 5121 "src/lang.ml" 110 5087 5123
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 99 4078 4117 "src/lang.ml" 99 4078 4119
+  int_ref e2 "src/lang.ml" 99 4414 4453 "src/lang.ml" 99 4414 4455
 )
-"src/lang.ml" 110 4751 4780 "src/lang.ml" 110 4751 4787
+"src/lang.ml" 110 5087 5116 "src/lang.ml" 110 5087 5123
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 110 4751 4770 "src/lang.ml" 110 4751 4788
+"src/lang.ml" 110 5087 5106 "src/lang.ml" 110 5087 5124
 type(
   value * value
 )
-"src/lang.ml" 111 4794 4815 "src/lang.ml" 111 4794 4817
+"src/lang.ml" 111 5130 5151 "src/lang.ml" 111 5130 5153
 type(
   int
 )
 ident(
-  def n1 "src/lang.ml" 111 4794 4831 "src/lang.ml" 113 4947 5003
+  def n1 "src/lang.ml" 111 5130 5167 "src/lang.ml" 113 5283 5339
 )
-"src/lang.ml" 111 4794 4810 "src/lang.ml" 111 4794 4817
+"src/lang.ml" 111 5130 5146 "src/lang.ml" 111 5130 5153
 type(
   value
 )
-"src/lang.ml" 111 4794 4824 "src/lang.ml" 111 4794 4826
+"src/lang.ml" 111 5130 5160 "src/lang.ml" 111 5130 5162
 type(
   int
 )
 ident(
-  def n2 "src/lang.ml" 111 4794 4831 "src/lang.ml" 113 4947 5003
+  def n2 "src/lang.ml" 111 5130 5167 "src/lang.ml" 113 5283 5339
 )
-"src/lang.ml" 111 4794 4819 "src/lang.ml" 111 4794 4826
+"src/lang.ml" 111 5130 5155 "src/lang.ml" 111 5130 5162
 type(
   value
 )
-"src/lang.ml" 111 4794 4809 "src/lang.ml" 111 4794 4827
+"src/lang.ml" 111 5130 5145 "src/lang.ml" 111 5130 5163
 type(
   value * value
 )
-"src/lang.ml" 111 4794 4834 "src/lang.ml" 111 4794 4836
+"src/lang.ml" 111 5130 5170 "src/lang.ml" 111 5130 5172
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 111 4794 4824 "src/lang.ml" 111 4794 4826
+  int_ref n2 "src/lang.ml" 111 5130 5160 "src/lang.ml" 111 5130 5162
 )
-"src/lang.ml" 111 4794 4837 "src/lang.ml" 111 4794 4838
+"src/lang.ml" 111 5130 5173 "src/lang.ml" 111 5130 5174
 type(
   int -> int -> bool
 )
 ident(
   int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
 )
-"src/lang.ml" 111 4794 4839 "src/lang.ml" 111 4794 4840
+"src/lang.ml" 111 5130 5175 "src/lang.ml" 111 5130 5176
 type(
   int
 )
-"src/lang.ml" 111 4794 4834 "src/lang.ml" 111 4794 4840
+"src/lang.ml" 111 5130 5170 "src/lang.ml" 111 5130 5176
 type(
   bool
 )
-"src/lang.ml" 112 4841 4883 "src/lang.ml" 112 4841 4891
+"src/lang.ml" 112 5177 5219 "src/lang.ml" 112 5177 5227
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 112 4841 4892 "src/lang.ml" 112 4841 4946
+"src/lang.ml" 112 5177 5228 "src/lang.ml" 112 5177 5282
 type(
   string
 )
-"src/lang.ml" 112 4841 4883 "src/lang.ml" 112 4841 4946
+"src/lang.ml" 112 5177 5219 "src/lang.ml" 112 5177 5282
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 113 4947 4995 "src/lang.ml" 113 4947 4997
+"src/lang.ml" 113 5283 5331 "src/lang.ml" 113 5283 5333
 type(
   int
 )
 ident(
-  int_ref n1 "src/lang.ml" 111 4794 4815 "src/lang.ml" 111 4794 4817
+  int_ref n1 "src/lang.ml" 111 5130 5151 "src/lang.ml" 111 5130 5153
 )
-"src/lang.ml" 113 4947 4998 "src/lang.ml" 113 4947 4999
+"src/lang.ml" 113 5283 5334 "src/lang.ml" 113 5283 5335
 type(
   int -> int -> int
 )
 ident(
   int_ref Pervasives.( / ) "pervasives.mli" 273 10663 10663 "pervasives.mli" 273 10663 10709
 )
-"src/lang.ml" 113 4947 5000 "src/lang.ml" 113 4947 5002
+"src/lang.ml" 113 5283 5336 "src/lang.ml" 113 5283 5338
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 111 4794 4824 "src/lang.ml" 111 4794 4826
+  int_ref n2 "src/lang.ml" 111 5130 5160 "src/lang.ml" 111 5130 5162
 )
-"src/lang.ml" 113 4947 4994 "src/lang.ml" 113 4947 5003
+"src/lang.ml" 113 5283 5330 "src/lang.ml" 113 5283 5339
 type(
   int
 )
-"src/lang.ml" 113 4947 4989 "src/lang.ml" 113 4947 5003
+"src/lang.ml" 113 5283 5325 "src/lang.ml" 113 5283 5339
 type(
   value
 )
-"src/lang.ml" 111 4794 4831 "src/lang.ml" 113 4947 5003
+"src/lang.ml" 111 5130 5167 "src/lang.ml" 113 5283 5339
 type(
   value
 )
-"src/lang.ml" 114 5004 5019 "src/lang.ml" 114 5004 5020
+"src/lang.ml" 114 5340 5355 "src/lang.ml" 114 5340 5356
 type(
   value * value
 )
-"src/lang.ml" 114 5004 5041 "src/lang.ml" 114 5004 5049
+"src/lang.ml" 114 5340 5377 "src/lang.ml" 114 5340 5385
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 114 5004 5050 "src/lang.ml" 114 5004 5101
+"src/lang.ml" 114 5340 5386 "src/lang.ml" 114 5340 5437
 type(
   string
 )
-"src/lang.ml" 114 5004 5041 "src/lang.ml" 114 5004 5101
+"src/lang.ml" 114 5340 5377 "src/lang.ml" 114 5340 5437
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 110 4751 4763 "src/lang.ml" 114 5004 5102
+"src/lang.ml" 110 5087 5099 "src/lang.ml" 114 5340 5438
 type(
   value
 )
-"src/lang.ml" 115 5103 5107 "src/lang.ml" 115 5103 5111
+"src/lang.ml" 115 5439 5443 "src/lang.ml" 115 5439 5447
 type(
   operator
 )
-"src/lang.ml" 115 5103 5123 "src/lang.ml" 115 5103 5127
+"src/lang.ml" 115 5439 5459 "src/lang.ml" 115 5439 5463
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 115 5103 5128 "src/lang.ml" 115 5103 5130
+"src/lang.ml" 115 5439 5464 "src/lang.ml" 115 5439 5466
 type(
   exp
 )
 ident(
-  int_ref e1 "src/lang.ml" 99 4078 4095 "src/lang.ml" 99 4078 4097
+  int_ref e1 "src/lang.ml" 99 4414 4431 "src/lang.ml" 99 4414 4433
 )
-"src/lang.ml" 115 5103 5123 "src/lang.ml" 115 5103 5130
+"src/lang.ml" 115 5439 5459 "src/lang.ml" 115 5439 5466
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 115 5103 5132 "src/lang.ml" 115 5103 5136
+"src/lang.ml" 115 5439 5468 "src/lang.ml" 115 5439 5472
 type(
   exp -> value
 )
 ident(
-  int_ref eval "src/lang.ml" 81 2996 3004 "src/lang.ml" 81 2996 3008
+  int_ref eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
 )
-"src/lang.ml" 115 5103 5137 "src/lang.ml" 115 5103 5139
+"src/lang.ml" 115 5439 5473 "src/lang.ml" 115 5439 5475
 type(
   exp
 )
 ident(
-  int_ref e2 "src/lang.ml" 99 4078 4117 "src/lang.ml" 99 4078 4119
+  int_ref e2 "src/lang.ml" 99 4414 4453 "src/lang.ml" 99 4414 4455
 )
-"src/lang.ml" 115 5103 5132 "src/lang.ml" 115 5103 5139
+"src/lang.ml" 115 5439 5468 "src/lang.ml" 115 5439 5475
 call(
   stack
 )
 type(
   value
 )
-"src/lang.ml" 115 5103 5122 "src/lang.ml" 115 5103 5140
+"src/lang.ml" 115 5439 5458 "src/lang.ml" 115 5439 5476
 type(
   value * value
 )
-"src/lang.ml" 116 5146 5167 "src/lang.ml" 116 5146 5169
+"src/lang.ml" 116 5482 5503 "src/lang.ml" 116 5482 5505
 type(
   int
 )
 ident(
-  def n1 "src/lang.ml" 116 5146 5183 "src/lang.ml" 116 5146 5197
+  def n1 "src/lang.ml" 116 5482 5519 "src/lang.ml" 116 5482 5533
 )
-"src/lang.ml" 116 5146 5162 "src/lang.ml" 116 5146 5169
+"src/lang.ml" 116 5482 5498 "src/lang.ml" 116 5482 5505
 type(
   value
 )
-"src/lang.ml" 116 5146 5176 "src/lang.ml" 116 5146 5178
+"src/lang.ml" 116 5482 5512 "src/lang.ml" 116 5482 5514
 type(
   int
 )
 ident(
-  def n2 "src/lang.ml" 116 5146 5183 "src/lang.ml" 116 5146 5197
+  def n2 "src/lang.ml" 116 5482 5519 "src/lang.ml" 116 5482 5533
 )
-"src/lang.ml" 116 5146 5171 "src/lang.ml" 116 5146 5178
+"src/lang.ml" 116 5482 5507 "src/lang.ml" 116 5482 5514
 type(
   value
 )
-"src/lang.ml" 116 5146 5161 "src/lang.ml" 116 5146 5179
+"src/lang.ml" 116 5482 5497 "src/lang.ml" 116 5482 5515
 type(
   value * value
 )
-"src/lang.ml" 116 5146 5189 "src/lang.ml" 116 5146 5191
+"src/lang.ml" 116 5482 5525 "src/lang.ml" 116 5482 5527
 type(
   int
 )
 ident(
-  int_ref n1 "src/lang.ml" 116 5146 5167 "src/lang.ml" 116 5146 5169
+  int_ref n1 "src/lang.ml" 116 5482 5503 "src/lang.ml" 116 5482 5505
 )
-"src/lang.ml" 116 5146 5192 "src/lang.ml" 116 5146 5193
+"src/lang.ml" 116 5482 5528 "src/lang.ml" 116 5482 5529
 type(
   int -> int -> int
 )
 ident(
   int_ref Pervasives.( * ) "pervasives.mli" 269 10528 10528 "pervasives.mli" 269 10528 10574
 )
-"src/lang.ml" 116 5146 5194 "src/lang.ml" 116 5146 5196
+"src/lang.ml" 116 5482 5530 "src/lang.ml" 116 5482 5532
 type(
   int
 )
 ident(
-  int_ref n2 "src/lang.ml" 116 5146 5176 "src/lang.ml" 116 5146 5178
+  int_ref n2 "src/lang.ml" 116 5482 5512 "src/lang.ml" 116 5482 5514
 )
-"src/lang.ml" 116 5146 5188 "src/lang.ml" 116 5146 5197
+"src/lang.ml" 116 5482 5524 "src/lang.ml" 116 5482 5533
 type(
   int
 )
-"src/lang.ml" 116 5146 5183 "src/lang.ml" 116 5146 5197
+"src/lang.ml" 116 5482 5519 "src/lang.ml" 116 5482 5533
 type(
   value
 )
-"src/lang.ml" 117 5198 5213 "src/lang.ml" 117 5198 5214
+"src/lang.ml" 117 5534 5549 "src/lang.ml" 117 5534 5550
 type(
   value * value
 )
-"src/lang.ml" 117 5198 5235 "src/lang.ml" 117 5198 5243
+"src/lang.ml" 117 5534 5571 "src/lang.ml" 117 5534 5579
 type(
   string -> value
 )
 ident(
   int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
 )
-"src/lang.ml" 117 5198 5244 "src/lang.ml" 117 5198 5301
+"src/lang.ml" 117 5534 5580 "src/lang.ml" 117 5534 5637
 type(
   string
 )
-"src/lang.ml" 117 5198 5235 "src/lang.ml" 117 5198 5301
+"src/lang.ml" 117 5534 5571 "src/lang.ml" 117 5534 5637
 call(
   tail
 )
 type(
   value
 )
-"src/lang.ml" 115 5103 5115 "src/lang.ml" 117 5198 5302
+"src/lang.ml" 115 5439 5451 "src/lang.ml" 117 5534 5638
 type(
   value
 )
-"src/lang.ml" 100 4135 4137 "src/lang.ml" 117 5198 5302
+"src/lang.ml" 100 4471 4473 "src/lang.ml" 117 5534 5638
 type(
   value
 )
 type(
   value
+)
+"src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  def subst "src/lang.ml" 81 3194 3194 "src/lang.ml" 1 0 -1
+)
+"src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+type(
+  value
+)
+ident(
+  def vl_sub "src/lang.ml" 120 5669 5694 "src/lang.ml" 140 7067 7152
+)
+"src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+type(
+  var
+)
+ident(
+  def vr_sub "src/lang.ml" 120 5669 5707 "src/lang.ml" 140 7067 7152
+)
+"src/lang.ml" 120 5669 5708 "src/lang.ml" 120 5669 5713
+type(
+  exp
+)
+ident(
+  def e_sub "src/lang.ml" 120 5669 5719 "src/lang.ml" 140 7067 7152
+)
+"src/lang.ml" 121 5727 5733 "src/lang.ml" 121 5727 5738
+type(
+  exp
+)
+ident(
+  int_ref e_sub "src/lang.ml" 120 5669 5708 "src/lang.ml" 120 5669 5713
+)
+"src/lang.ml" 122 5744 5751 "src/lang.ml" 122 5744 5752
+type(
+  int
+)
+ident(
+  def n "src/lang.ml" 122 5744 5776 "src/lang.ml" 122 5744 5782
+)
+"src/lang.ml" 122 5744 5746 "src/lang.ml" 122 5744 5752
+type(
+  exp
+)
+"src/lang.ml" 122 5744 5781 "src/lang.ml" 122 5744 5782
+type(
+  int
+)
+ident(
+  int_ref n "src/lang.ml" 122 5744 5751 "src/lang.ml" 122 5744 5752
+)
+"src/lang.ml" 122 5744 5776 "src/lang.ml" 122 5744 5782
+type(
+  exp
+)
+"src/lang.ml" 123 5783 5791 "src/lang.ml" 123 5783 5792
+type(
+  bool
+)
+ident(
+  def b "src/lang.ml" 123 5783 5815 "src/lang.ml" 123 5783 5822
+)
+"src/lang.ml" 123 5783 5785 "src/lang.ml" 123 5783 5792
+type(
+  exp
+)
+"src/lang.ml" 123 5783 5821 "src/lang.ml" 123 5783 5822
+type(
+  bool
+)
+ident(
+  int_ref b "src/lang.ml" 123 5783 5791 "src/lang.ml" 123 5783 5792
+)
+"src/lang.ml" 123 5783 5815 "src/lang.ml" 123 5783 5822
+type(
+  exp
+)
+"src/lang.ml" 124 5823 5830 "src/lang.ml" 124 5823 5833
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 124 5823 5855 "src/lang.ml" 130 6315 6360
+)
+"src/lang.ml" 124 5823 5825 "src/lang.ml" 124 5823 5833
+type(
+  exp
+)
+"src/lang.ml" 124 5823 5858 "src/lang.ml" 124 5823 5861
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 124 5823 5830 "src/lang.ml" 124 5823 5833
+)
+"src/lang.ml" 124 5823 5862 "src/lang.ml" 124 5823 5863
+type(
+  var -> var -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 124 5823 5864 "src/lang.ml" 124 5823 5870
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 124 5823 5858 "src/lang.ml" 124 5823 5870
+type(
+  bool
+)
+"src/lang.ml" 125 5871 5915 "src/lang.ml" 125 5871 5921
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 126 5927 5972 "src/lang.ml" 126 5927 5973
+type(
+  int
+)
+ident(
+  def n "src/lang.ml" 126 5927 6005 "src/lang.ml" 126 5927 6011
+)
+"src/lang.ml" 126 5927 5967 "src/lang.ml" 126 5927 5973
+type(
+  value
+)
+"src/lang.ml" 126 5927 6010 "src/lang.ml" 126 5927 6011
+type(
+  int
+)
+ident(
+  int_ref n "src/lang.ml" 126 5927 5972 "src/lang.ml" 126 5927 5973
+)
+"src/lang.ml" 126 5927 6005 "src/lang.ml" 126 5927 6011
+type(
+  exp
+)
+"src/lang.ml" 127 6012 6058 "src/lang.ml" 127 6012 6059
+type(
+  bool
+)
+ident(
+  def b "src/lang.ml" 127 6012 6090 "src/lang.ml" 127 6012 6097
+)
+"src/lang.ml" 127 6012 6052 "src/lang.ml" 127 6012 6059
+type(
+  value
+)
+"src/lang.ml" 127 6012 6096 "src/lang.ml" 127 6012 6097
+type(
+  bool
+)
+ident(
+  int_ref b "src/lang.ml" 127 6012 6058 "src/lang.ml" 127 6012 6059
+)
+"src/lang.ml" 127 6012 6090 "src/lang.ml" 127 6012 6097
+type(
+  exp
+)
+"src/lang.ml" 128 6098 6148 "src/lang.ml" 128 6098 6150
+type(
+  string
+)
+ident(
+  def vr "src/lang.ml" 128 6098 6176 "src/lang.ml" 128 6098 6200
+)
+"src/lang.ml" 128 6098 6144 "src/lang.ml" 128 6098 6150
+type(
+  var
+)
+"src/lang.ml" 128 6098 6152 "src/lang.ml" 128 6098 6154
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 128 6098 6176 "src/lang.ml" 128 6098 6200
+)
+"src/lang.ml" 128 6098 6156 "src/lang.ml" 128 6098 6158
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 128 6098 6176 "src/lang.ml" 128 6098 6200
+)
+"src/lang.ml" 128 6098 6160 "src/lang.ml" 128 6098 6161
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 128 6098 6176 "src/lang.ml" 128 6098 6200
+)
+"src/lang.ml" 128 6098 6138 "src/lang.ml" 128 6098 6162
+type(
+  value
+)
+"src/lang.ml" 128 6098 6186 "src/lang.ml" 128 6098 6188
+type(
+  string
+)
+ident(
+  int_ref vr "src/lang.ml" 128 6098 6148 "src/lang.ml" 128 6098 6150
+)
+"src/lang.ml" 128 6098 6182 "src/lang.ml" 128 6098 6188
+type(
+  var
+)
+"src/lang.ml" 128 6098 6190 "src/lang.ml" 128 6098 6192
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 128 6098 6152 "src/lang.ml" 128 6098 6154
+)
+"src/lang.ml" 128 6098 6194 "src/lang.ml" 128 6098 6196
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 128 6098 6156 "src/lang.ml" 128 6098 6158
+)
+"src/lang.ml" 128 6098 6198 "src/lang.ml" 128 6098 6199
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 128 6098 6160 "src/lang.ml" 128 6098 6161
+)
+"src/lang.ml" 128 6098 6176 "src/lang.ml" 128 6098 6200
+type(
+  exp
+)
+"src/lang.ml" 129 6201 6251 "src/lang.ml" 129 6201 6254
+type(
+  string
+)
+ident(
+  def vr1 "src/lang.ml" 129 6201 6279 "src/lang.ml" 129 6201 6313
+)
+"src/lang.ml" 129 6201 6247 "src/lang.ml" 129 6201 6254
+type(
+  var
+)
+"src/lang.ml" 129 6201 6260 "src/lang.ml" 129 6201 6263
+type(
+  string
+)
+ident(
+  def vr2 "src/lang.ml" 129 6201 6279 "src/lang.ml" 129 6201 6313
+)
+"src/lang.ml" 129 6201 6256 "src/lang.ml" 129 6201 6263
+type(
+  var
+)
+"src/lang.ml" 129 6201 6265 "src/lang.ml" 129 6201 6267
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 129 6201 6279 "src/lang.ml" 129 6201 6313
+)
+"src/lang.ml" 129 6201 6269 "src/lang.ml" 129 6201 6271
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 129 6201 6279 "src/lang.ml" 129 6201 6313
+)
+"src/lang.ml" 129 6201 6273 "src/lang.ml" 129 6201 6274
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 129 6201 6279 "src/lang.ml" 129 6201 6313
+)
+"src/lang.ml" 129 6201 6241 "src/lang.ml" 129 6201 6275
+type(
+  value
+)
+"src/lang.ml" 129 6201 6289 "src/lang.ml" 129 6201 6292
+type(
+  string
+)
+ident(
+  int_ref vr1 "src/lang.ml" 129 6201 6251 "src/lang.ml" 129 6201 6254
+)
+"src/lang.ml" 129 6201 6285 "src/lang.ml" 129 6201 6292
+type(
+  var
+)
+"src/lang.ml" 129 6201 6298 "src/lang.ml" 129 6201 6301
+type(
+  string
+)
+ident(
+  int_ref vr2 "src/lang.ml" 129 6201 6260 "src/lang.ml" 129 6201 6263
+)
+"src/lang.ml" 129 6201 6294 "src/lang.ml" 129 6201 6301
+type(
+  var
+)
+"src/lang.ml" 129 6201 6303 "src/lang.ml" 129 6201 6305
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 129 6201 6265 "src/lang.ml" 129 6201 6267
+)
+"src/lang.ml" 129 6201 6307 "src/lang.ml" 129 6201 6309
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 129 6201 6269 "src/lang.ml" 129 6201 6271
+)
+"src/lang.ml" 129 6201 6311 "src/lang.ml" 129 6201 6312
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 129 6201 6273 "src/lang.ml" 129 6201 6274
+)
+"src/lang.ml" 129 6201 6279 "src/lang.ml" 129 6201 6313
+type(
+  exp
+)
+"src/lang.ml" 125 5871 5908 "src/lang.ml" 129 6201 6314
+type(
+  exp
+)
+"src/lang.ml" 130 6315 6357 "src/lang.ml" 130 6315 6360
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 124 5823 5830 "src/lang.ml" 124 5823 5833
+)
+"src/lang.ml" 130 6315 6352 "src/lang.ml" 130 6315 6360
+type(
+  exp
+)
+"src/lang.ml" 124 5823 5855 "src/lang.ml" 130 6315 6360
+type(
+  exp
+)
+"src/lang.ml" 131 6361 6369 "src/lang.ml" 131 6361 6372
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 131 6361 6393 "src/lang.ml" 133 6488 6586
+)
+"src/lang.ml" 131 6361 6374 "src/lang.ml" 131 6361 6375
+type(
+  typ
+)
+ident(
+  def t "src/lang.ml" 131 6361 6393 "src/lang.ml" 133 6488 6586
+)
+"src/lang.ml" 131 6361 6377 "src/lang.ml" 131 6361 6379
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 131 6361 6393 "src/lang.ml" 133 6488 6586
+)
+"src/lang.ml" 131 6361 6381 "src/lang.ml" 131 6361 6383
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 131 6361 6393 "src/lang.ml" 133 6488 6586
+)
+"src/lang.ml" 131 6361 6363 "src/lang.ml" 131 6361 6384
+type(
+  exp
+)
+"src/lang.ml" 131 6361 6396 "src/lang.ml" 131 6361 6399
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 131 6361 6369 "src/lang.ml" 131 6361 6372
+)
+"src/lang.ml" 131 6361 6400 "src/lang.ml" 131 6361 6401
+type(
+  var -> var -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 131 6361 6402 "src/lang.ml" 131 6361 6408
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 131 6361 6396 "src/lang.ml" 131 6361 6408
+type(
+  bool
+)
+"src/lang.ml" 132 6409 6452 "src/lang.ml" 132 6409 6455
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 131 6361 6369 "src/lang.ml" 131 6361 6372
+)
+"src/lang.ml" 132 6409 6457 "src/lang.ml" 132 6409 6458
+type(
+  typ
+)
+ident(
+  int_ref t "src/lang.ml" 131 6361 6374 "src/lang.ml" 131 6361 6375
+)
+"src/lang.ml" 132 6409 6460 "src/lang.ml" 132 6409 6465
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 132 6409 6466 "src/lang.ml" 132 6409 6472
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 132 6409 6473 "src/lang.ml" 132 6409 6479
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 132 6409 6480 "src/lang.ml" 132 6409 6482
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 131 6361 6377 "src/lang.ml" 131 6361 6379
+)
+"src/lang.ml" 132 6409 6460 "src/lang.ml" 132 6409 6482
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 132 6409 6484 "src/lang.ml" 132 6409 6486
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 131 6361 6381 "src/lang.ml" 131 6361 6383
+)
+"src/lang.ml" 132 6409 6446 "src/lang.ml" 132 6409 6487
+type(
+  exp
+)
+"src/lang.ml" 133 6488 6531 "src/lang.ml" 133 6488 6534
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 131 6361 6369 "src/lang.ml" 131 6361 6372
+)
+"src/lang.ml" 133 6488 6536 "src/lang.ml" 133 6488 6537
+type(
+  typ
+)
+ident(
+  int_ref t "src/lang.ml" 131 6361 6374 "src/lang.ml" 131 6361 6375
+)
+"src/lang.ml" 133 6488 6539 "src/lang.ml" 133 6488 6544
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 133 6488 6545 "src/lang.ml" 133 6488 6551
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 133 6488 6552 "src/lang.ml" 133 6488 6558
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 133 6488 6559 "src/lang.ml" 133 6488 6561
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 131 6361 6377 "src/lang.ml" 131 6361 6379
+)
+"src/lang.ml" 133 6488 6539 "src/lang.ml" 133 6488 6561
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 133 6488 6563 "src/lang.ml" 133 6488 6568
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 133 6488 6569 "src/lang.ml" 133 6488 6575
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 133 6488 6576 "src/lang.ml" 133 6488 6582
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 133 6488 6583 "src/lang.ml" 133 6488 6585
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 131 6361 6381 "src/lang.ml" 131 6361 6383
+)
+"src/lang.ml" 133 6488 6563 "src/lang.ml" 133 6488 6585
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 133 6488 6525 "src/lang.ml" 133 6488 6586
+type(
+  exp
+)
+"src/lang.ml" 131 6361 6393 "src/lang.ml" 133 6488 6586
+type(
+  exp
+)
+"src/lang.ml" 134 6587 6595 "src/lang.ml" 134 6587 6598
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 134 6587 6619 "src/lang.ml" 136 6694 6772
+)
+"src/lang.ml" 134 6587 6600 "src/lang.ml" 134 6587 6602
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 134 6587 6619 "src/lang.ml" 136 6694 6772
+)
+"src/lang.ml" 134 6587 6604 "src/lang.ml" 134 6587 6606
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 134 6587 6619 "src/lang.ml" 136 6694 6772
+)
+"src/lang.ml" 134 6587 6608 "src/lang.ml" 134 6587 6609
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 134 6587 6619 "src/lang.ml" 136 6694 6772
+)
+"src/lang.ml" 134 6587 6589 "src/lang.ml" 134 6587 6610
+type(
+  exp
+)
+"src/lang.ml" 134 6587 6622 "src/lang.ml" 134 6587 6625
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 134 6587 6595 "src/lang.ml" 134 6587 6598
+)
+"src/lang.ml" 134 6587 6626 "src/lang.ml" 134 6587 6627
+type(
+  var -> var -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 134 6587 6628 "src/lang.ml" 134 6587 6634
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 134 6587 6622 "src/lang.ml" 134 6587 6634
+type(
+  bool
+)
+"src/lang.ml" 135 6635 6678 "src/lang.ml" 135 6635 6681
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 134 6587 6595 "src/lang.ml" 134 6587 6598
+)
+"src/lang.ml" 135 6635 6683 "src/lang.ml" 135 6635 6685
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 134 6587 6600 "src/lang.ml" 134 6587 6602
+)
+"src/lang.ml" 135 6635 6687 "src/lang.ml" 135 6635 6689
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 134 6587 6604 "src/lang.ml" 134 6587 6606
+)
+"src/lang.ml" 135 6635 6691 "src/lang.ml" 135 6635 6692
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 134 6587 6608 "src/lang.ml" 134 6587 6609
+)
+"src/lang.ml" 135 6635 6672 "src/lang.ml" 135 6635 6693
+type(
+  exp
+)
+"src/lang.ml" 136 6694 6737 "src/lang.ml" 136 6694 6740
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 134 6587 6595 "src/lang.ml" 134 6587 6598
+)
+"src/lang.ml" 136 6694 6742 "src/lang.ml" 136 6694 6744
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 134 6587 6600 "src/lang.ml" 134 6587 6602
+)
+"src/lang.ml" 136 6694 6746 "src/lang.ml" 136 6694 6748
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 134 6587 6604 "src/lang.ml" 134 6587 6606
+)
+"src/lang.ml" 136 6694 6750 "src/lang.ml" 136 6694 6755
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 136 6694 6756 "src/lang.ml" 136 6694 6762
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 136 6694 6763 "src/lang.ml" 136 6694 6769
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 136 6694 6770 "src/lang.ml" 136 6694 6771
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 134 6587 6608 "src/lang.ml" 134 6587 6609
+)
+"src/lang.ml" 136 6694 6750 "src/lang.ml" 136 6694 6771
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 136 6694 6731 "src/lang.ml" 136 6694 6772
+type(
+  exp
+)
+"src/lang.ml" 134 6587 6619 "src/lang.ml" 136 6694 6772
+type(
+  exp
+)
+"src/lang.ml" 137 6773 6781 "src/lang.ml" 137 6773 6784
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 137 6773 6805 "src/lang.ml" 137 6773 6831
+)
+"src/lang.ml" 137 6773 6786 "src/lang.ml" 137 6773 6789
+type(
+  var
+)
+ident(
+  def vr2 "src/lang.ml" 137 6773 6805 "src/lang.ml" 137 6773 6831
+)
+"src/lang.ml" 137 6773 6791 "src/lang.ml" 137 6773 6793
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 137 6773 6805 "src/lang.ml" 137 6773 6831
+)
+"src/lang.ml" 137 6773 6795 "src/lang.ml" 137 6773 6797
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 137 6773 6805 "src/lang.ml" 137 6773 6831
+)
+"src/lang.ml" 137 6773 6799 "src/lang.ml" 137 6773 6800
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 137 6773 6805 "src/lang.ml" 137 6773 6831
+)
+"src/lang.ml" 137 6773 6775 "src/lang.ml" 137 6773 6801
+type(
+  exp
+)
+"src/lang.ml" 137 6773 6811 "src/lang.ml" 137 6773 6814
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 137 6773 6781 "src/lang.ml" 137 6773 6784
+)
+"src/lang.ml" 137 6773 6816 "src/lang.ml" 137 6773 6819
+type(
+  var
+)
+ident(
+  int_ref vr2 "src/lang.ml" 137 6773 6786 "src/lang.ml" 137 6773 6789
+)
+"src/lang.ml" 137 6773 6821 "src/lang.ml" 137 6773 6823
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 137 6773 6791 "src/lang.ml" 137 6773 6793
+)
+"src/lang.ml" 137 6773 6825 "src/lang.ml" 137 6773 6827
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 137 6773 6795 "src/lang.ml" 137 6773 6797
+)
+"src/lang.ml" 137 6773 6829 "src/lang.ml" 137 6773 6830
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 137 6773 6799 "src/lang.ml" 137 6773 6800
+)
+"src/lang.ml" 137 6773 6805 "src/lang.ml" 137 6773 6831
+type(
+  exp
+)
+"src/lang.ml" 138 6870 6877 "src/lang.ml" 138 6870 6879
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 138 6870 6902 "src/lang.ml" 138 6870 6978
+)
+"src/lang.ml" 138 6870 6881 "src/lang.ml" 138 6870 6883
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 138 6870 6902 "src/lang.ml" 138 6870 6978
+)
+"src/lang.ml" 138 6870 6885 "src/lang.ml" 138 6870 6887
+type(
+  exp
+)
+ident(
+  def e3 "src/lang.ml" 138 6870 6902 "src/lang.ml" 138 6870 6978
+)
+"src/lang.ml" 138 6870 6872 "src/lang.ml" 138 6870 6888
+type(
+  exp
+)
+"src/lang.ml" 138 6870 6907 "src/lang.ml" 138 6870 6912
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 138 6870 6913 "src/lang.ml" 138 6870 6919
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 138 6870 6920 "src/lang.ml" 138 6870 6926
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 138 6870 6927 "src/lang.ml" 138 6870 6929
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 138 6870 6877 "src/lang.ml" 138 6870 6879
+)
+"src/lang.ml" 138 6870 6907 "src/lang.ml" 138 6870 6929
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 138 6870 6931 "src/lang.ml" 138 6870 6936
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 138 6870 6937 "src/lang.ml" 138 6870 6943
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 138 6870 6944 "src/lang.ml" 138 6870 6950
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 138 6870 6951 "src/lang.ml" 138 6870 6953
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 138 6870 6881 "src/lang.ml" 138 6870 6883
+)
+"src/lang.ml" 138 6870 6931 "src/lang.ml" 138 6870 6953
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 138 6870 6955 "src/lang.ml" 138 6870 6960
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 138 6870 6961 "src/lang.ml" 138 6870 6967
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 138 6870 6968 "src/lang.ml" 138 6870 6974
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 138 6870 6975 "src/lang.ml" 138 6870 6977
+type(
+  exp
+)
+ident(
+  int_ref e3 "src/lang.ml" 138 6870 6885 "src/lang.ml" 138 6870 6887
+)
+"src/lang.ml" 138 6870 6955 "src/lang.ml" 138 6870 6977
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 138 6870 6902 "src/lang.ml" 138 6870 6978
+type(
+  exp
+)
+"src/lang.ml" 139 6979 6986 "src/lang.ml" 139 6979 6988
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 139 6979 7011 "src/lang.ml" 139 6979 7066
+)
+"src/lang.ml" 139 6979 6990 "src/lang.ml" 139 6979 6991
+type(
+  operator
+)
+ident(
+  def o "src/lang.ml" 139 6979 7011 "src/lang.ml" 139 6979 7066
+)
+"src/lang.ml" 139 6979 6993 "src/lang.ml" 139 6979 6995
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 139 6979 7011 "src/lang.ml" 139 6979 7066
+)
+"src/lang.ml" 139 6979 6981 "src/lang.ml" 139 6979 6996
+type(
+  exp
+)
+"src/lang.ml" 139 6979 7016 "src/lang.ml" 139 6979 7021
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 139 6979 7022 "src/lang.ml" 139 6979 7028
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 139 6979 7029 "src/lang.ml" 139 6979 7035
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 139 6979 7036 "src/lang.ml" 139 6979 7038
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 139 6979 6986 "src/lang.ml" 139 6979 6988
+)
+"src/lang.ml" 139 6979 7016 "src/lang.ml" 139 6979 7038
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 139 6979 7040 "src/lang.ml" 139 6979 7041
+type(
+  operator
+)
+ident(
+  int_ref o "src/lang.ml" 139 6979 6990 "src/lang.ml" 139 6979 6991
+)
+"src/lang.ml" 139 6979 7043 "src/lang.ml" 139 6979 7048
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 139 6979 7049 "src/lang.ml" 139 6979 7055
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 139 6979 7056 "src/lang.ml" 139 6979 7062
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 139 6979 7063 "src/lang.ml" 139 6979 7065
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 139 6979 6993 "src/lang.ml" 139 6979 6995
+)
+"src/lang.ml" 139 6979 7043 "src/lang.ml" 139 6979 7065
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 139 6979 7011 "src/lang.ml" 139 6979 7066
+type(
+  exp
+)
+"src/lang.ml" 140 7067 7075 "src/lang.ml" 140 7067 7077
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 140 7067 7099 "src/lang.ml" 140 7067 7152
+)
+"src/lang.ml" 140 7067 7079 "src/lang.ml" 140 7067 7081
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 140 7067 7099 "src/lang.ml" 140 7067 7152
+)
+"src/lang.ml" 140 7067 7069 "src/lang.ml" 140 7067 7082
+type(
+  exp
+)
+"src/lang.ml" 140 7067 7105 "src/lang.ml" 140 7067 7110
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 140 7067 7111 "src/lang.ml" 140 7067 7117
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 140 7067 7118 "src/lang.ml" 140 7067 7124
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 140 7067 7125 "src/lang.ml" 140 7067 7127
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 140 7067 7075 "src/lang.ml" 140 7067 7077
+)
+"src/lang.ml" 140 7067 7105 "src/lang.ml" 140 7067 7127
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 140 7067 7129 "src/lang.ml" 140 7067 7134
+type(
+  value -> var -> exp -> exp
+)
+ident(
+  int_ref subst "src/lang.ml" 120 5669 5673 "src/lang.ml" 120 5669 5678
+)
+"src/lang.ml" 140 7067 7135 "src/lang.ml" 140 7067 7141
+type(
+  value
+)
+ident(
+  int_ref vl_sub "src/lang.ml" 120 5669 5680 "src/lang.ml" 120 5669 5686
+)
+"src/lang.ml" 140 7067 7142 "src/lang.ml" 140 7067 7148
+type(
+  var
+)
+ident(
+  int_ref vr_sub "src/lang.ml" 120 5669 5695 "src/lang.ml" 120 5669 5701
+)
+"src/lang.ml" 140 7067 7149 "src/lang.ml" 140 7067 7151
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 140 7067 7079 "src/lang.ml" 140 7067 7081
+)
+"src/lang.ml" 140 7067 7129 "src/lang.ml" 140 7067 7151
+call(
+  stack
+)
+type(
+  exp
+)
+"src/lang.ml" 140 7067 7099 "src/lang.ml" 140 7067 7152
+type(
+  exp
+)
+"src/lang.ml" 121 5727 5727 "src/lang.ml" 140 7067 7152
+type(
+  exp
+)
+type(
+  exp
+)
+"src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+type(
+  context -> exp -> typ
+)
+ident(
+  def typecheck "src/lang.ml" 142 7154 7154 "src/lang.ml" 1 0 -1
+)
+"src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+type(
+  context
+)
+ident(
+  def ctx "src/lang.ml" 142 7154 7186 "src/lang.ml" 180 9622 9740
+)
+"src/lang.ml" 142 7154 7187 "src/lang.ml" 142 7154 7188
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 142 7154 7194 "src/lang.ml" 180 9622 9740
+)
+"src/lang.ml" 143 7202 7210 "src/lang.ml" 143 7202 7211
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 142 7154 7187 "src/lang.ml" 142 7154 7188
+)
+"src/lang.ml" 144 7217 7226 "src/lang.ml" 144 7217 7227
+type(
+  int
+)
+ident(
+  def n "src/lang.ml" 144 7217 7251 "src/lang.ml" 144 7217 7255
+)
+"src/lang.ml" 144 7217 7221 "src/lang.ml" 144 7217 7227
+type(
+  exp
+)
+"src/lang.ml" 144 7217 7251 "src/lang.ml" 144 7217 7255
+type(
+  typ
+)
+"src/lang.ml" 145 7256 7266 "src/lang.ml" 145 7256 7267
+type(
+  bool
+)
+ident(
+  def b "src/lang.ml" 145 7256 7290 "src/lang.ml" 145 7256 7295
+)
+"src/lang.ml" 145 7256 7260 "src/lang.ml" 145 7256 7267
+type(
+  exp
+)
+"src/lang.ml" 145 7256 7290 "src/lang.ml" 145 7256 7295
+type(
+  typ
+)
+"src/lang.ml" 146 7296 7305 "src/lang.ml" 146 7296 7307
+type(
+  var
+)
+ident(
+  def vr "src/lang.ml" 146 7296 7330 "src/lang.ml" 147 7353 7447
+)
+"src/lang.ml" 146 7296 7300 "src/lang.ml" 146 7296 7307
+type(
+  exp
+)
+"src/lang.ml" 146 7296 7335 "src/lang.ml" 146 7296 7345
+type(
+  var -> context -> typ
+)
+ident(
+  int_ref List.assoc "list.mli" 242 9129 9129 "list.mli" 242 9129 9167
+)
+"src/lang.ml" 146 7296 7346 "src/lang.ml" 146 7296 7348
+type(
+  var
+)
+ident(
+  int_ref vr "src/lang.ml" 146 7296 7305 "src/lang.ml" 146 7296 7307
+)
+"src/lang.ml" 146 7296 7349 "src/lang.ml" 146 7296 7352
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 146 7296 7335 "src/lang.ml" 146 7296 7352
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 147 7353 7392 "src/lang.ml" 147 7353 7401
+type(
+  exn
+)
+"src/lang.ml" 147 7353 7405 "src/lang.ml" 147 7353 7413
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 147 7353 7414 "src/lang.ml" 147 7353 7446
+type(
+  string
+)
+"src/lang.ml" 147 7353 7405 "src/lang.ml" 147 7353 7446
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 146 7296 7330 "src/lang.ml" 147 7353 7447
+type(
+  typ
+)
+"src/lang.ml" 148 7448 7458 "src/lang.ml" 148 7448 7461
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 148 7448 7482 "src/lang.ml" 151 7642 7713
+)
+"src/lang.ml" 148 7448 7463 "src/lang.ml" 148 7448 7464
+type(
+  typ
+)
+ident(
+  def t "src/lang.ml" 148 7448 7482 "src/lang.ml" 151 7642 7713
+)
+"src/lang.ml" 148 7448 7466 "src/lang.ml" 148 7448 7468
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 148 7448 7482 "src/lang.ml" 151 7642 7713
+)
+"src/lang.ml" 148 7448 7470 "src/lang.ml" 148 7448 7472
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 148 7448 7482 "src/lang.ml" 151 7642 7713
+)
+"src/lang.ml" 148 7448 7452 "src/lang.ml" 148 7448 7473
+type(
+  exp
+)
+"src/lang.ml" 148 7448 7486 "src/lang.ml" 148 7448 7494
+type(
+  (var * typ) list
+)
+ident(
+  def this_ctx "src/lang.ml" 149 7523 7557 "src/lang.ml" 151 7642 7713
+)
+"src/lang.ml" 148 7448 7497 "src/lang.ml" 148 7448 7509
+type(
+  context -> var -> typ -> (var * typ) list
+)
+ident(
+  int_ref context_bind "src/lang.ml" 39 1163 1167 "src/lang.ml" 39 1163 1179
+)
+"src/lang.ml" 148 7448 7510 "src/lang.ml" 148 7448 7513
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 148 7448 7514 "src/lang.ml" 148 7448 7517
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 148 7448 7458 "src/lang.ml" 148 7448 7461
+)
+"src/lang.ml" 148 7448 7518 "src/lang.ml" 148 7448 7519
+type(
+  typ
+)
+ident(
+  int_ref t "src/lang.ml" 148 7448 7463 "src/lang.ml" 148 7448 7464
+)
+"src/lang.ml" 148 7448 7497 "src/lang.ml" 148 7448 7519
+call(
+  stack
+)
+type(
+  (var * typ) list
+)
+"src/lang.ml" 149 7523 7560 "src/lang.ml" 149 7523 7561
+type(
+  typ
+)
+ident(
+  int_ref t "src/lang.ml" 148 7448 7463 "src/lang.ml" 148 7448 7464
+)
+"src/lang.ml" 149 7523 7562 "src/lang.ml" 149 7523 7563
+type(
+  typ -> typ -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 149 7523 7564 "src/lang.ml" 149 7523 7573
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 149 7523 7574 "src/lang.ml" 149 7523 7577
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 149 7523 7578 "src/lang.ml" 149 7523 7580
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 148 7448 7466 "src/lang.ml" 148 7448 7468
+)
+"src/lang.ml" 149 7523 7564 "src/lang.ml" 149 7523 7580
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 149 7523 7560 "src/lang.ml" 149 7523 7580
+type(
+  bool
+)
+"src/lang.ml" 150 7581 7620 "src/lang.ml" 150 7581 7629
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 150 7581 7630 "src/lang.ml" 150 7581 7638
+type(
+  context
+)
+ident(
+  int_ref this_ctx "src/lang.ml" 148 7448 7486 "src/lang.ml" 148 7448 7494
+)
+"src/lang.ml" 150 7581 7639 "src/lang.ml" 150 7581 7641
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 148 7448 7470 "src/lang.ml" 148 7448 7472
+)
+"src/lang.ml" 150 7581 7620 "src/lang.ml" 150 7581 7641
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 151 7642 7681 "src/lang.ml" 151 7642 7689
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 151 7642 7690 "src/lang.ml" 151 7642 7713
+type(
+  string
+)
+"src/lang.ml" 151 7642 7681 "src/lang.ml" 151 7642 7713
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 149 7523 7557 "src/lang.ml" 151 7642 7713
+type(
+  typ
+)
+"src/lang.ml" 148 7448 7482 "src/lang.ml" 151 7642 7713
+type(
+  typ
+)
+"src/lang.ml" 152 7714 7724 "src/lang.ml" 152 7714 7726
+type(
+  var
+)
+ident(
+  def vr "src/lang.ml" 152 7714 7748 "src/lang.ml" 155 7906 7977
+)
+"src/lang.ml" 152 7714 7728 "src/lang.ml" 152 7714 7730
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 152 7714 7748 "src/lang.ml" 155 7906 7977
+)
+"src/lang.ml" 152 7714 7732 "src/lang.ml" 152 7714 7734
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 152 7714 7748 "src/lang.ml" 155 7906 7977
+)
+"src/lang.ml" 152 7714 7736 "src/lang.ml" 152 7714 7737
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 152 7714 7748 "src/lang.ml" 155 7906 7977
+)
+"src/lang.ml" 152 7714 7718 "src/lang.ml" 152 7714 7738
+type(
+  exp
+)
+"src/lang.ml" 152 7714 7752 "src/lang.ml" 152 7714 7760
+type(
+  (var * typ) list
+)
+ident(
+  def this_ctx "src/lang.ml" 153 7789 7823 "src/lang.ml" 155 7906 7977
+)
+"src/lang.ml" 152 7714 7763 "src/lang.ml" 152 7714 7775
+type(
+  context -> var -> typ -> (var * typ) list
+)
+ident(
+  int_ref context_bind "src/lang.ml" 39 1163 1167 "src/lang.ml" 39 1163 1179
+)
+"src/lang.ml" 152 7714 7776 "src/lang.ml" 152 7714 7779
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 152 7714 7780 "src/lang.ml" 152 7714 7782
+type(
+  var
+)
+ident(
+  int_ref vr "src/lang.ml" 152 7714 7724 "src/lang.ml" 152 7714 7726
+)
+"src/lang.ml" 152 7714 7783 "src/lang.ml" 152 7714 7785
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 152 7714 7728 "src/lang.ml" 152 7714 7730
+)
+"src/lang.ml" 152 7714 7763 "src/lang.ml" 152 7714 7785
+call(
+  stack
+)
+type(
+  (var * typ) list
+)
+"src/lang.ml" 153 7789 7826 "src/lang.ml" 153 7789 7828
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 152 7714 7732 "src/lang.ml" 152 7714 7734
+)
+"src/lang.ml" 153 7789 7829 "src/lang.ml" 153 7789 7830
+type(
+  typ -> typ -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 153 7789 7831 "src/lang.ml" 153 7789 7840
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 153 7789 7841 "src/lang.ml" 153 7789 7849
+type(
+  context
+)
+ident(
+  int_ref this_ctx "src/lang.ml" 152 7714 7752 "src/lang.ml" 152 7714 7760
+)
+"src/lang.ml" 153 7789 7850 "src/lang.ml" 153 7789 7851
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 152 7714 7736 "src/lang.ml" 152 7714 7737
+)
+"src/lang.ml" 153 7789 7831 "src/lang.ml" 153 7789 7851
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 153 7789 7826 "src/lang.ml" 153 7789 7851
+type(
+  bool
+)
+"src/lang.ml" 154 7852 7898 "src/lang.ml" 154 7852 7900
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 152 7714 7728 "src/lang.ml" 152 7714 7730
+)
+"src/lang.ml" 154 7852 7902 "src/lang.ml" 154 7852 7904
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 152 7714 7732 "src/lang.ml" 152 7714 7734
+)
+"src/lang.ml" 154 7852 7891 "src/lang.ml" 154 7852 7905
+type(
+  typ
+)
+"src/lang.ml" 155 7906 7945 "src/lang.ml" 155 7906 7953
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 155 7906 7954 "src/lang.ml" 155 7906 7977
+type(
+  string
+)
+"src/lang.ml" 155 7906 7945 "src/lang.ml" 155 7906 7977
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 153 7789 7823 "src/lang.ml" 155 7906 7977
+type(
+  typ
+)
+"src/lang.ml" 152 7714 7748 "src/lang.ml" 155 7906 7977
+type(
+  typ
+)
+"src/lang.ml" 156 7978 7988 "src/lang.ml" 156 7978 7991
+type(
+  var
+)
+ident(
+  def vr1 "src/lang.ml" 156 7978 8012 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 156 7978 7993 "src/lang.ml" 156 7978 7996
+type(
+  var
+)
+ident(
+  def vr2 "src/lang.ml" 156 7978 8012 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 156 7978 7998 "src/lang.ml" 156 7978 8000
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 156 7978 8012 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 156 7978 8002 "src/lang.ml" 156 7978 8004
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 156 7978 8012 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 156 7978 8006 "src/lang.ml" 156 7978 8007
+type(
+  exp
+)
+ident(
+  def e "src/lang.ml" 156 7978 8012 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 156 7978 7982 "src/lang.ml" 156 7978 8008
+type(
+  exp
+)
+"src/lang.ml" 156 7978 8016 "src/lang.ml" 156 7978 8024
+type(
+  (var * typ) list
+)
+ident(
+  def this_ctx "src/lang.ml" 157 8054 8088 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 156 7978 8027 "src/lang.ml" 156 7978 8039
+type(
+  context -> var -> typ -> (var * typ) list
+)
+ident(
+  int_ref context_bind "src/lang.ml" 39 1163 1167 "src/lang.ml" 39 1163 1179
+)
+"src/lang.ml" 156 7978 8040 "src/lang.ml" 156 7978 8043
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 156 7978 8044 "src/lang.ml" 156 7978 8047
+type(
+  var
+)
+ident(
+  int_ref vr2 "src/lang.ml" 156 7978 7993 "src/lang.ml" 156 7978 7996
+)
+"src/lang.ml" 156 7978 8048 "src/lang.ml" 156 7978 8050
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 156 7978 7998 "src/lang.ml" 156 7978 8000
+)
+"src/lang.ml" 156 7978 8027 "src/lang.ml" 156 7978 8050
+call(
+  stack
+)
+type(
+  (var * typ) list
+)
+"src/lang.ml" 157 8054 8092 "src/lang.ml" 157 8054 8100
+type(
+  (var * typ) list
+)
+ident(
+  def this_ctx "src/lang.ml" 158 8149 8183 "src/lang.ml" 160 8266 8337
+)
+"src/lang.ml" 157 8054 8103 "src/lang.ml" 157 8054 8115
+type(
+  context -> var -> typ -> (var * typ) list
+)
+ident(
+  int_ref context_bind "src/lang.ml" 39 1163 1167 "src/lang.ml" 39 1163 1179
+)
+"src/lang.ml" 157 8054 8116 "src/lang.ml" 157 8054 8124
+type(
+  context
+)
+ident(
+  int_ref this_ctx "src/lang.ml" 156 7978 8016 "src/lang.ml" 156 7978 8024
+)
+"src/lang.ml" 157 8054 8125 "src/lang.ml" 157 8054 8128
+type(
+  var
+)
+ident(
+  int_ref vr1 "src/lang.ml" 156 7978 7988 "src/lang.ml" 156 7978 7991
+)
+"src/lang.ml" 157 8054 8137 "src/lang.ml" 157 8054 8139
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 156 7978 7998 "src/lang.ml" 156 7978 8000
+)
+"src/lang.ml" 157 8054 8141 "src/lang.ml" 157 8054 8143
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 156 7978 8002 "src/lang.ml" 156 7978 8004
+)
+"src/lang.ml" 157 8054 8129 "src/lang.ml" 157 8054 8145
+type(
+  typ
+)
+"src/lang.ml" 157 8054 8103 "src/lang.ml" 157 8054 8145
+call(
+  stack
+)
+type(
+  (var * typ) list
+)
+"src/lang.ml" 158 8149 8186 "src/lang.ml" 158 8149 8188
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 156 7978 8002 "src/lang.ml" 156 7978 8004
+)
+"src/lang.ml" 158 8149 8189 "src/lang.ml" 158 8149 8190
+type(
+  typ -> typ -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 158 8149 8191 "src/lang.ml" 158 8149 8200
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 158 8149 8201 "src/lang.ml" 158 8149 8209
+type(
+  context
+)
+ident(
+  int_ref this_ctx "src/lang.ml" 157 8054 8092 "src/lang.ml" 157 8054 8100
+)
+"src/lang.ml" 158 8149 8210 "src/lang.ml" 158 8149 8211
+type(
+  exp
+)
+ident(
+  int_ref e "src/lang.ml" 156 7978 8006 "src/lang.ml" 156 7978 8007
+)
+"src/lang.ml" 158 8149 8191 "src/lang.ml" 158 8149 8211
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 158 8149 8186 "src/lang.ml" 158 8149 8211
+type(
+  bool
+)
+"src/lang.ml" 159 8212 8258 "src/lang.ml" 159 8212 8260
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 156 7978 7998 "src/lang.ml" 156 7978 8000
+)
+"src/lang.ml" 159 8212 8262 "src/lang.ml" 159 8212 8264
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 156 7978 8002 "src/lang.ml" 156 7978 8004
+)
+"src/lang.ml" 159 8212 8251 "src/lang.ml" 159 8212 8265
+type(
+  typ
+)
+"src/lang.ml" 160 8266 8305 "src/lang.ml" 160 8266 8313
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 160 8266 8314 "src/lang.ml" 160 8266 8337
+type(
+  string
+)
+"src/lang.ml" 160 8266 8305 "src/lang.ml" 160 8266 8337
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 158 8149 8183 "src/lang.ml" 160 8266 8337
+type(
+  typ
+)
+"src/lang.ml" 157 8054 8088 "src/lang.ml" 160 8266 8337
+type(
+  typ
+)
+"src/lang.ml" 156 7978 8012 "src/lang.ml" 160 8266 8337
+type(
+  typ
+)
+"src/lang.ml" 161 8338 8347 "src/lang.ml" 161 8338 8349
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 161 8338 8372 "src/lang.ml" 168 8772 8858
+)
+"src/lang.ml" 161 8338 8351 "src/lang.ml" 161 8338 8353
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 161 8338 8372 "src/lang.ml" 168 8772 8858
+)
+"src/lang.ml" 161 8338 8355 "src/lang.ml" 161 8338 8357
+type(
+  exp
+)
+ident(
+  def e3 "src/lang.ml" 161 8338 8372 "src/lang.ml" 168 8772 8858
+)
+"src/lang.ml" 161 8338 8342 "src/lang.ml" 161 8338 8358
+type(
+  exp
+)
+"src/lang.ml" 161 8338 8376 "src/lang.ml" 161 8338 8378
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 162 8401 8435 "src/lang.ml" 168 8772 8858
+)
+"src/lang.ml" 161 8338 8381 "src/lang.ml" 161 8338 8390
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 161 8338 8391 "src/lang.ml" 161 8338 8394
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 161 8338 8395 "src/lang.ml" 161 8338 8397
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 161 8338 8347 "src/lang.ml" 161 8338 8349
+)
+"src/lang.ml" 161 8338 8381 "src/lang.ml" 161 8338 8397
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 162 8401 8439 "src/lang.ml" 162 8401 8441
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 163 8464 8498 "src/lang.ml" 168 8772 8858
+)
+"src/lang.ml" 162 8401 8444 "src/lang.ml" 162 8401 8453
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 162 8401 8454 "src/lang.ml" 162 8401 8457
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 162 8401 8458 "src/lang.ml" 162 8401 8460
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 161 8338 8351 "src/lang.ml" 161 8338 8353
+)
+"src/lang.ml" 162 8401 8444 "src/lang.ml" 162 8401 8460
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 163 8464 8502 "src/lang.ml" 163 8464 8504
+type(
+  typ
+)
+ident(
+  def t3 "src/lang.ml" 164 8527 8561 "src/lang.ml" 168 8772 8858
+)
+"src/lang.ml" 163 8464 8507 "src/lang.ml" 163 8464 8516
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 163 8464 8517 "src/lang.ml" 163 8464 8520
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 163 8464 8521 "src/lang.ml" 163 8464 8523
+type(
+  exp
+)
+ident(
+  int_ref e3 "src/lang.ml" 161 8338 8355 "src/lang.ml" 161 8338 8357
+)
+"src/lang.ml" 163 8464 8507 "src/lang.ml" 163 8464 8523
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 164 8527 8564 "src/lang.ml" 164 8527 8566
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 161 8338 8376 "src/lang.ml" 161 8338 8378
+)
+"src/lang.ml" 164 8527 8567 "src/lang.ml" 164 8527 8568
+type(
+  typ -> typ -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 164 8527 8569 "src/lang.ml" 164 8527 8574
+type(
+  typ
+)
+"src/lang.ml" 164 8527 8564 "src/lang.ml" 164 8527 8574
+type(
+  bool
+)
+"src/lang.ml" 165 8575 8617 "src/lang.ml" 165 8575 8619
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 162 8401 8439 "src/lang.ml" 162 8401 8441
+)
+"src/lang.ml" 165 8575 8620 "src/lang.ml" 165 8575 8621
+type(
+  typ -> typ -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 165 8575 8622 "src/lang.ml" 165 8575 8624
+type(
+  typ
+)
+ident(
+  int_ref t3 "src/lang.ml" 163 8464 8502 "src/lang.ml" 163 8464 8504
+)
+"src/lang.ml" 165 8575 8617 "src/lang.ml" 165 8575 8624
+type(
+  bool
+)
+"src/lang.ml" 166 8625 8669 "src/lang.ml" 166 8625 8671
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 162 8401 8439 "src/lang.ml" 162 8401 8441
+)
+"src/lang.ml" 167 8672 8716 "src/lang.ml" 167 8672 8724
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 167 8672 8725 "src/lang.ml" 167 8672 8771
+type(
+  string
+)
+"src/lang.ml" 167 8672 8716 "src/lang.ml" 167 8672 8771
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 165 8575 8614 "src/lang.ml" 167 8672 8771
+type(
+  typ
+)
+"src/lang.ml" 168 8772 8811 "src/lang.ml" 168 8772 8819
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 168 8772 8820 "src/lang.ml" 168 8772 8858
+type(
+  string
+)
+"src/lang.ml" 168 8772 8811 "src/lang.ml" 168 8772 8858
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 164 8527 8561 "src/lang.ml" 168 8772 8858
+type(
+  typ
+)
+"src/lang.ml" 163 8464 8498 "src/lang.ml" 168 8772 8858
+type(
+  typ
+)
+"src/lang.ml" 162 8401 8435 "src/lang.ml" 168 8772 8858
+type(
+  typ
+)
+"src/lang.ml" 161 8338 8372 "src/lang.ml" 168 8772 8858
+type(
+  typ
+)
+"src/lang.ml" 169 8859 8868 "src/lang.ml" 169 8859 8870
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 169 8859 8893 "src/lang.ml" 173 9098 9200
+)
+"src/lang.ml" 169 8859 8872 "src/lang.ml" 169 8859 8873
+type(
+  operator
+)
+ident(
+  def o "src/lang.ml" 169 8859 8893 "src/lang.ml" 173 9098 9200
+)
+"src/lang.ml" 169 8859 8875 "src/lang.ml" 169 8859 8877
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 169 8859 8893 "src/lang.ml" 173 9098 9200
+)
+"src/lang.ml" 169 8859 8863 "src/lang.ml" 169 8859 8878
+type(
+  exp
+)
+"src/lang.ml" 169 8859 8897 "src/lang.ml" 169 8859 8899
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 170 8922 8956 "src/lang.ml" 173 9098 9200
+)
+"src/lang.ml" 169 8859 8902 "src/lang.ml" 169 8859 8911
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 169 8859 8912 "src/lang.ml" 169 8859 8915
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 169 8859 8916 "src/lang.ml" 169 8859 8918
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 169 8859 8868 "src/lang.ml" 169 8859 8870
+)
+"src/lang.ml" 169 8859 8902 "src/lang.ml" 169 8859 8918
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 170 8922 8960 "src/lang.ml" 170 8922 8962
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 171 8985 9019 "src/lang.ml" 173 9098 9200
+)
+"src/lang.ml" 170 8922 8965 "src/lang.ml" 170 8922 8974
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 170 8922 8975 "src/lang.ml" 170 8922 8978
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 170 8922 8979 "src/lang.ml" 170 8922 8981
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 169 8859 8875 "src/lang.ml" 169 8859 8877
+)
+"src/lang.ml" 170 8922 8965 "src/lang.ml" 170 8922 8981
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 171 8985 9027 "src/lang.ml" 171 8985 9029
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 169 8859 8897 "src/lang.ml" 169 8859 8899
+)
+"src/lang.ml" 171 8985 9031 "src/lang.ml" 171 8985 9033
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 170 8922 8960 "src/lang.ml" 170 8922 8962
+)
+"src/lang.ml" 171 8985 9026 "src/lang.ml" 171 8985 9034
+type(
+  typ * typ
+)
+"src/lang.ml" 172 9040 9078 "src/lang.ml" 172 9040 9082
+type(
+  typ
+)
+"src/lang.ml" 172 9040 9084 "src/lang.ml" 172 9040 9088
+type(
+  typ
+)
+"src/lang.ml" 172 9040 9077 "src/lang.ml" 172 9040 9089
+type(
+  typ * typ
+)
+"src/lang.ml" 172 9040 9093 "src/lang.ml" 172 9040 9097
+type(
+  typ
+)
+"src/lang.ml" 173 9098 9135 "src/lang.ml" 173 9098 9136
+type(
+  typ * typ
+)
+"src/lang.ml" 173 9098 9151 "src/lang.ml" 173 9098 9159
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 173 9098 9160 "src/lang.ml" 173 9098 9199
+type(
+  string
+)
+"src/lang.ml" 173 9098 9151 "src/lang.ml" 173 9098 9199
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 171 8985 9019 "src/lang.ml" 173 9098 9200
+type(
+  typ
+)
+"src/lang.ml" 170 8922 8956 "src/lang.ml" 173 9098 9200
+type(
+  typ
+)
+"src/lang.ml" 169 8859 8893 "src/lang.ml" 173 9098 9200
+type(
+  typ
+)
+"src/lang.ml" 174 9201 9211 "src/lang.ml" 174 9201 9213
+type(
+  exp
+)
+ident(
+  def e1 "src/lang.ml" 174 9201 9235 "src/lang.ml" 180 9622 9740
+)
+"src/lang.ml" 174 9201 9215 "src/lang.ml" 174 9201 9217
+type(
+  exp
+)
+ident(
+  def e2 "src/lang.ml" 174 9201 9235 "src/lang.ml" 180 9622 9740
+)
+"src/lang.ml" 174 9201 9205 "src/lang.ml" 174 9201 9218
+type(
+  exp
+)
+"src/lang.ml" 174 9201 9239 "src/lang.ml" 174 9201 9241
+type(
+  typ
+)
+ident(
+  def t1 "src/lang.ml" 175 9264 9298 "src/lang.ml" 180 9622 9740
+)
+"src/lang.ml" 174 9201 9244 "src/lang.ml" 174 9201 9253
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 174 9201 9254 "src/lang.ml" 174 9201 9257
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 174 9201 9258 "src/lang.ml" 174 9201 9260
+type(
+  exp
+)
+ident(
+  int_ref e1 "src/lang.ml" 174 9201 9211 "src/lang.ml" 174 9201 9213
+)
+"src/lang.ml" 174 9201 9244 "src/lang.ml" 174 9201 9260
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 175 9264 9302 "src/lang.ml" 175 9264 9304
+type(
+  typ
+)
+ident(
+  def t2 "src/lang.ml" 176 9327 9361 "src/lang.ml" 180 9622 9740
+)
+"src/lang.ml" 175 9264 9307 "src/lang.ml" 175 9264 9316
+type(
+  context -> exp -> typ
+)
+ident(
+  int_ref typecheck "src/lang.ml" 142 7154 7162 "src/lang.ml" 142 7154 7171
+)
+"src/lang.ml" 175 9264 9317 "src/lang.ml" 175 9264 9320
+type(
+  context
+)
+ident(
+  int_ref ctx "src/lang.ml" 142 7154 7173 "src/lang.ml" 142 7154 7176
+)
+"src/lang.ml" 175 9264 9321 "src/lang.ml" 175 9264 9323
+type(
+  exp
+)
+ident(
+  int_ref e2 "src/lang.ml" 174 9201 9215 "src/lang.ml" 174 9201 9217
+)
+"src/lang.ml" 175 9264 9307 "src/lang.ml" 175 9264 9323
+call(
+  stack
+)
+type(
+  typ
+)
+"src/lang.ml" 176 9327 9368 "src/lang.ml" 176 9327 9370
+type(
+  typ
+)
+ident(
+  int_ref t1 "src/lang.ml" 174 9201 9239 "src/lang.ml" 174 9201 9241
+)
+"src/lang.ml" 177 9376 9420 "src/lang.ml" 177 9376 9423
+type(
+  typ
+)
+ident(
+  def tc1 "src/lang.ml" 177 9376 9433 "src/lang.ml" 179 9511 9621
+)
+"src/lang.ml" 177 9376 9425 "src/lang.ml" 177 9376 9428
+type(
+  typ
+)
+ident(
+  def tc2 "src/lang.ml" 177 9376 9433 "src/lang.ml" 179 9511 9621
+)
+"src/lang.ml" 177 9376 9413 "src/lang.ml" 177 9376 9429
+type(
+  typ
+)
+"src/lang.ml" 177 9376 9436 "src/lang.ml" 177 9376 9438
+type(
+  typ
+)
+ident(
+  int_ref t2 "src/lang.ml" 175 9264 9302 "src/lang.ml" 175 9264 9304
+)
+"src/lang.ml" 177 9376 9439 "src/lang.ml" 177 9376 9440
+type(
+  typ -> typ -> bool
+)
+ident(
+  int_ref Pervasives.( = ) "pervasives.mli" 51 2086 2086 "pervasives.mli" 51 2086 2130
+)
+"src/lang.ml" 177 9376 9441 "src/lang.ml" 177 9376 9444
+type(
+  typ
+)
+ident(
+  int_ref tc1 "src/lang.ml" 177 9376 9420 "src/lang.ml" 177 9376 9423
+)
+"src/lang.ml" 177 9376 9436 "src/lang.ml" 177 9376 9444
+type(
+  bool
+)
+"src/lang.ml" 178 9445 9507 "src/lang.ml" 178 9445 9510
+type(
+  typ
+)
+ident(
+  int_ref tc2 "src/lang.ml" 177 9376 9425 "src/lang.ml" 177 9376 9428
+)
+"src/lang.ml" 179 9511 9573 "src/lang.ml" 179 9511 9581
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 179 9511 9582 "src/lang.ml" 179 9511 9621
+type(
+  string
+)
+"src/lang.ml" 179 9511 9573 "src/lang.ml" 179 9511 9621
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 177 9376 9433 "src/lang.ml" 179 9511 9621
+type(
+  typ
+)
+"src/lang.ml" 180 9622 9659 "src/lang.ml" 180 9622 9660
+type(
+  typ
+)
+"src/lang.ml" 180 9622 9679 "src/lang.ml" 180 9622 9687
+type(
+  string -> typ
+)
+ident(
+  int_ref Pervasives.failwith "pervasives.mli" 41 1847 1847 "pervasives.mli" 41 1847 1874
+)
+"src/lang.ml" 180 9622 9688 "src/lang.ml" 180 9622 9739
+type(
+  string
+)
+"src/lang.ml" 180 9622 9679 "src/lang.ml" 180 9622 9739
+call(
+  tail
+)
+type(
+  typ
+)
+"src/lang.ml" 176 9327 9361 "src/lang.ml" 180 9622 9740
+type(
+  typ
+)
+"src/lang.ml" 175 9264 9298 "src/lang.ml" 180 9622 9740
+type(
+  typ
+)
+"src/lang.ml" 174 9201 9235 "src/lang.ml" 180 9622 9740
+type(
+  typ
+)
+"src/lang.ml" 143 7202 7204 "src/lang.ml" 180 9622 9740
+type(
+  typ
+)
+type(
+  typ
 )
