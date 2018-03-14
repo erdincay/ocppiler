@@ -11,29 +11,9 @@ ocamlfind ocamldep -modules src/lexer.ml > src/lexer.ml.depends # cached
 menhir --raw-depend --ocamldep 'ocamlfind ocamldep -modules' src/parser.mly > src/parser.mly.depends # cached
 # Target: src/lang.cmo, tags: { byte, compile, explain, extension:cmo, extension:ml, file:src/lang.cmo, file:src/lang.ml, implem, ocaml, quiet, traverse, use_menhir }
 ocamlfind ocamlc -c -annot -g -I src -o src/lang.cmo src/lang.ml
-# Target: src/parser.mly, tags: { byte, compile, explain, extension:ml, extension:mly, file:src/parser.ml, file:src/parser.mly, infer, menhir, ocaml, parser, quiet, traverse, use_menhir }
-menhir --ocamlc 'ocamlfind ocamlc -annot -g -I src' --explain --infer src/parser.mly
-+ menhir --ocamlc 'ocamlfind ocamlc -annot -g -I src' --explain --infer src/parser.mly
-Warning: 11 states have shift/reduce conflicts.
-Warning: 106 shift/reduce conflicts were arbitrarily resolved.
-# Target: src/parser.mli.depends, tags: { explain, extension:mli, file:src/parser.mli, ocaml, ocamldep, quiet, traverse, use_menhir }
-ocamlfind ocamldep -modules src/parser.mli > src/parser.mli.depends
-# Target: src/parser.cmi, tags: { byte, compile, explain, extension:mli, file:src/parser.mli, interf, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlc -c -annot -g -I src -o src/parser.cmi src/parser.mli
-# Target: src/lexer.cmo, tags: { byte, compile, explain, extension:cmo, extension:ml, file:src/lexer.cmo, file:src/lexer.ml, implem, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlc -c -annot -g -I src -o src/lexer.cmo src/lexer.ml
-# Target: src/compiler.cmo, tags: { byte, compile, explain, extension:cmo, extension:ml, file:src/compiler.cmo, file:src/compiler.ml, implem, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlc -c -annot -g -I src -o src/compiler.cmo src/compiler.ml
-# Target: src/parser.ml.depends, tags: { explain, extension:ml, file:src/parser.ml, ocaml, ocamldep, quiet, traverse, use_menhir }
-ocamlfind ocamldep -modules src/parser.ml > src/parser.ml.depends
-# Target: src/lang.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/lang.cmx, file:src/lang.ml, implem, native, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/lang.cmx src/lang.ml
-# Target: src/parser.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/parser.cmx, file:src/parser.ml, implem, native, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/parser.cmx src/parser.ml
-# Target: src/lexer.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/lexer.cmx, file:src/lexer.ml, implem, native, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/lexer.cmx src/lexer.ml
-# Target: src/compiler.cmx, tags: { compile, explain, extension:cmx, extension:ml, file:src/compiler.cmx, file:src/compiler.ml, implem, native, ocaml, quiet, traverse, use_menhir }
-ocamlfind ocamlopt -c -annot -g -inline 20 -I src -o src/compiler.cmx src/compiler.ml
-# Target: src/compiler.native, tags: { dont_link_with, explain, extension:native, file:src/compiler.native, link, native, ocaml, program, quiet, traverse, use_menhir }
-ocamlfind ocamlopt -linkpkg -I src src/lang.cmx src/parser.cmx src/lexer.cmx src/compiler.cmx -o src/compiler.native
-# Compilation successful.
++ ocamlfind ocamlc -c -annot -g -I src -o src/lang.cmo src/lang.ml
+File "src/lang.ml", line 96, characters 34-52:
+Error: This expression has type 'a * 'b
+       but an expression was expected of type value
+Command exited with code 2.
+# Compilation unsuccessful.

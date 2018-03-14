@@ -25,21 +25,21 @@ type(
   string -> bool -> string
 )
 ident(
-  def flag_handler "src/compiler.ml" 8 307 307 "src/compiler.ml" 1 0 -1
+  def flag_handler "src/compiler.ml" 8 323 323 "src/compiler.ml" 1 0 -1
 )
 "src/compiler.ml" 3 23 40 "src/compiler.ml" 3 23 49
 type(
   string
 )
 ident(
-  def file_name "src/compiler.ml" 3 23 50 "src/compiler.ml" 6 186 305
+  def file_name "src/compiler.ml" 3 23 50 "src/compiler.ml" 6 186 321
 )
 "src/compiler.ml" 3 23 50 "src/compiler.ml" 3 23 57
 type(
   bool
 )
 ident(
-  def parse_b "src/compiler.ml" 4 60 62 "src/compiler.ml" 6 186 305
+  def parse_b "src/compiler.ml" 4 60 62 "src/compiler.ml" 6 186 321
 )
 "src/compiler.ml" 4 60 68 "src/compiler.ml" 4 60 75
 type(
@@ -106,14 +106,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 35 381 381 "src/parser.mli" 35 381 446
+  int_ref Parser.prog "src/parser.mli" 39 422 422 "src/parser.mli" 39 422 487
 )
 "src/compiler.ml" 5 81 152 "src/compiler.ml" 5 81 163
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 174 8734 8742 "src/lexer.ml" 174 8734 8747
+  int_ref Lexer.token "src/lexer.ml" 178 8815 8823 "src/lexer.ml" 178 8815 8828
 )
 "src/compiler.ml" 5 81 140 "src/compiler.ml" 5 81 163
 type(
@@ -138,7 +138,7 @@ type(
   Lang.exp -> string
 )
 ident(
-  int_ref Lang.string_of_exp "src/lang.ml" 47 1482 1490 "src/lang.ml" 47 1482 1503
+  int_ref Lang.string_of_exp "src/lang.ml" 51 1698 1706 "src/lang.ml" 51 1698 1719
 )
 "src/compiler.ml" 5 81 96 "src/compiler.ml" 5 81 185
 call(
@@ -205,14 +205,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 35 381 381 "src/parser.mli" 35 381 446
+  int_ref Parser.prog "src/parser.mli" 39 422 422 "src/parser.mli" 39 422 487
 )
 "src/compiler.ml" 6 186 257 "src/compiler.ml" 6 186 268
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 174 8734 8742 "src/lexer.ml" 174 8734 8747
+  int_ref Lexer.token "src/lexer.ml" 178 8815 8823 "src/lexer.ml" 178 8815 8828
 )
 "src/compiler.ml" 6 186 245 "src/compiler.ml" 6 186 268
 type(
@@ -227,185 +227,206 @@ type(
 )
 "src/compiler.ml" 6 186 269 "src/compiler.ml" 6 186 271
 type(
+  Lang.exp -> (Lang.exp -> Lang.exp) -> Lang.exp
+)
+ident(
+  int_ref Pervasives.( |> ) "pervasives.mli" 223 9124 9124 "pervasives.mli" 223 9124 9178
+)
+"src/compiler.ml" 6 186 272 "src/compiler.ml" 6 186 284
+type(
+  Lang.exp -> Lang.exp
+)
+ident(
+  int_ref Lang.typechk "src/lang.ml" 166 8684 8692 "src/lang.ml" 166 8684 8699
+)
+"src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 284
+call(
+  stack
+)
+type(
+  Lang.exp
+)
+"src/compiler.ml" 6 186 285 "src/compiler.ml" 6 186 287
+type(
   Lang.exp -> (Lang.exp -> Lang.value) -> Lang.value
 )
 ident(
   int_ref Pervasives.( |> ) "pervasives.mli" 223 9124 9124 "pervasives.mli" 223 9124 9178
 )
-"src/compiler.ml" 6 186 272 "src/compiler.ml" 6 186 281
+"src/compiler.ml" 6 186 288 "src/compiler.ml" 6 186 297
 type(
   Lang.exp -> Lang.value
 )
 ident(
-  int_ref Lang.eval "src/lang.ml" 81 3194 3202 "src/lang.ml" 81 3194 3206
+  int_ref Lang.eval "src/lang.ml" 93 3971 3979 "src/lang.ml" 93 3971 3983
 )
-"src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 281
+"src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 297
 call(
   stack
 )
 type(
   Lang.value
 )
-"src/compiler.ml" 6 186 282 "src/compiler.ml" 6 186 284
+"src/compiler.ml" 6 186 298 "src/compiler.ml" 6 186 300
 type(
   Lang.value -> (Lang.value -> string) -> string
 )
 ident(
   int_ref Pervasives.( |> ) "pervasives.mli" 223 9124 9124 "pervasives.mli" 223 9124 9178
 )
-"src/compiler.ml" 6 186 285 "src/compiler.ml" 6 186 305
+"src/compiler.ml" 6 186 301 "src/compiler.ml" 6 186 321
 type(
   Lang.value -> string
 )
 ident(
-  int_ref Lang.string_of_value "src/lang.ml" 59 2393 2397 "src/lang.ml" 59 2393 2412
+  int_ref Lang.string_of_value "src/lang.ml" 67 2920 2924 "src/lang.ml" 67 2920 2939
 )
-"src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 305
+"src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 321
 call(
   tail
 )
 type(
   string
 )
-"src/compiler.ml" 4 60 62 "src/compiler.ml" 6 186 305
+"src/compiler.ml" 4 60 62 "src/compiler.ml" 6 186 321
 type(
   string
 )
-"src/compiler.ml" 8 307 311 "src/compiler.ml" 8 307 315
+"src/compiler.ml" 8 323 327 "src/compiler.ml" 8 323 331
 type(
   unit -> unit
 )
 ident(
-  def main "src/compiler.ml" 15 589 589 "src/compiler.ml" 1 0 -1
+  def main "src/compiler.ml" 15 605 605 "src/compiler.ml" 1 0 -1
 )
-"src/compiler.ml" 8 307 316 "src/compiler.ml" 8 307 318
+"src/compiler.ml" 8 323 332 "src/compiler.ml" 8 323 334
 type(
   unit
 )
-"src/compiler.ml" 9 327 333 "src/compiler.ml" 9 327 341
+"src/compiler.ml" 9 343 349 "src/compiler.ml" 9 343 357
 type(
   (string * Arg.spec * string) list
 )
 ident(
-  def speclist "src/compiler.ml" 10 427 429 "src/compiler.ml" 12 544 583
+  def speclist "src/compiler.ml" 10 443 445 "src/compiler.ml" 12 560 599
 )
-"src/compiler.ml" 9 327 346 "src/compiler.ml" 9 327 354
+"src/compiler.ml" 9 343 362 "src/compiler.ml" 9 343 370
 type(
   string
 )
-"src/compiler.ml" 9 327 364 "src/compiler.ml" 9 327 369
+"src/compiler.ml" 9 343 380 "src/compiler.ml" 9 343 385
 type(
   bool ref
 )
 ident(
   int_ref parse "src/compiler.ml" 1 0 4 "src/compiler.ml" 1 0 9
 )
-"src/compiler.ml" 9 327 356 "src/compiler.ml" 9 327 369
+"src/compiler.ml" 9 343 372 "src/compiler.ml" 9 343 385
 type(
   Arg.spec
 )
-"src/compiler.ml" 9 327 371 "src/compiler.ml" 9 327 421
+"src/compiler.ml" 9 343 387 "src/compiler.ml" 9 343 437
 type(
   string
 )
-"src/compiler.ml" 9 327 345 "src/compiler.ml" 9 327 422
+"src/compiler.ml" 9 343 361 "src/compiler.ml" 9 343 438
 type(
   string * Arg.spec * string
 )
-"src/compiler.ml" 9 327 344 "src/compiler.ml" 9 327 423
+"src/compiler.ml" 9 343 360 "src/compiler.ml" 9 343 439
 type(
   (string * Arg.spec * string) list
 )
-"src/compiler.ml" 10 427 433 "src/compiler.ml" 10 427 441
+"src/compiler.ml" 10 443 449 "src/compiler.ml" 10 443 457
 type(
   string -> unit
 )
 ident(
-  def anon_fun "src/compiler.ml" 11 513 515 "src/compiler.ml" 12 544 583
+  def anon_fun "src/compiler.ml" 11 529 531 "src/compiler.ml" 12 560 599
 )
-"src/compiler.ml" 10 427 449 "src/compiler.ml" 10 427 458
+"src/compiler.ml" 10 443 465 "src/compiler.ml" 10 443 474
 type(
   string
 )
 ident(
-  def file_name "src/compiler.ml" 10 427 462 "src/compiler.ml" 10 427 508
+  def file_name "src/compiler.ml" 10 443 478 "src/compiler.ml" 10 443 524
 )
-"src/compiler.ml" 10 427 462 "src/compiler.ml" 10 427 474
+"src/compiler.ml" 10 443 478 "src/compiler.ml" 10 443 490
 type(
   string -> bool -> string
 )
 ident(
   int_ref flag_handler "src/compiler.ml" 3 23 27 "src/compiler.ml" 3 23 39
 )
-"src/compiler.ml" 10 427 475 "src/compiler.ml" 10 427 484
+"src/compiler.ml" 10 443 491 "src/compiler.ml" 10 443 500
 type(
   string
 )
 ident(
-  int_ref file_name "src/compiler.ml" 10 427 449 "src/compiler.ml" 10 427 458
+  int_ref file_name "src/compiler.ml" 10 443 465 "src/compiler.ml" 10 443 474
 )
-"src/compiler.ml" 10 427 485 "src/compiler.ml" 10 427 486
+"src/compiler.ml" 10 443 501 "src/compiler.ml" 10 443 502
 type(
   bool ref -> bool
 )
 ident(
   int_ref Pervasives.( ! ) "pervasives.mli" 1066 41266 41266 "pervasives.mli" 1066 41266 41307
 )
-"src/compiler.ml" 10 427 486 "src/compiler.ml" 10 427 491
+"src/compiler.ml" 10 443 502 "src/compiler.ml" 10 443 507
 type(
   bool ref
 )
 ident(
   int_ref parse "src/compiler.ml" 1 0 4 "src/compiler.ml" 1 0 9
 )
-"src/compiler.ml" 10 427 485 "src/compiler.ml" 10 427 491
+"src/compiler.ml" 10 443 501 "src/compiler.ml" 10 443 507
 type(
   bool
 )
-"src/compiler.ml" 10 427 462 "src/compiler.ml" 10 427 491
+"src/compiler.ml" 10 443 478 "src/compiler.ml" 10 443 507
 call(
   stack
 )
 type(
   string
 )
-"src/compiler.ml" 10 427 492 "src/compiler.ml" 10 427 494
+"src/compiler.ml" 10 443 508 "src/compiler.ml" 10 443 510
 type(
   string -> (string -> unit) -> unit
 )
 ident(
   int_ref Pervasives.( |> ) "pervasives.mli" 223 9124 9124 "pervasives.mli" 223 9124 9178
 )
-"src/compiler.ml" 10 427 495 "src/compiler.ml" 10 427 508
+"src/compiler.ml" 10 443 511 "src/compiler.ml" 10 443 524
 type(
   string -> unit
 )
 ident(
   int_ref Pervasives.print_endline "pervasives.mli" 730 27122 27122 "pervasives.mli" 730 27122 27156
 )
-"src/compiler.ml" 10 427 462 "src/compiler.ml" 10 427 508
+"src/compiler.ml" 10 443 478 "src/compiler.ml" 10 443 524
 call(
   tail
 )
 type(
   unit
 )
-"src/compiler.ml" 10 427 444 "src/compiler.ml" 10 427 509
+"src/compiler.ml" 10 443 460 "src/compiler.ml" 10 443 525
 type(
   string -> unit
 )
-"src/compiler.ml" 11 513 519 "src/compiler.ml" 11 513 528
+"src/compiler.ml" 11 529 535 "src/compiler.ml" 11 529 544
 type(
   string
 )
 ident(
-  def usage_msg "src/compiler.ml" 12 544 546 "src/compiler.ml" 12 544 583
+  def usage_msg "src/compiler.ml" 12 560 562 "src/compiler.ml" 12 560 599
 )
-"src/compiler.ml" 11 513 531 "src/compiler.ml" 11 513 540
+"src/compiler.ml" 11 529 547 "src/compiler.ml" 11 529 556
 type(
   string
 )
-"src/compiler.ml" 12 544 546 "src/compiler.ml" 12 544 555
+"src/compiler.ml" 12 560 562 "src/compiler.ml" 12 560 571
 type(
   (Arg.key * Arg.spec * Arg.doc) list ->
   Arg.anon_fun -> Arg.usage_msg -> unit
@@ -413,91 +434,91 @@ type(
 ident(
   int_ref Arg.parse "arg.mli" 77 4335 4335 "arg.mli" 78 4347 4405
 )
-"src/compiler.ml" 12 544 556 "src/compiler.ml" 12 544 564
+"src/compiler.ml" 12 560 572 "src/compiler.ml" 12 560 580
 type(
   (Arg.key * Arg.spec * Arg.doc) list
 )
 ident(
-  int_ref speclist "src/compiler.ml" 9 327 333 "src/compiler.ml" 9 327 341
+  int_ref speclist "src/compiler.ml" 9 343 349 "src/compiler.ml" 9 343 357
 )
-"src/compiler.ml" 12 544 565 "src/compiler.ml" 12 544 573
+"src/compiler.ml" 12 560 581 "src/compiler.ml" 12 560 589
 type(
   Arg.anon_fun
 )
 ident(
-  int_ref anon_fun "src/compiler.ml" 10 427 433 "src/compiler.ml" 10 427 441
+  int_ref anon_fun "src/compiler.ml" 10 443 449 "src/compiler.ml" 10 443 457
 )
-"src/compiler.ml" 12 544 574 "src/compiler.ml" 12 544 583
+"src/compiler.ml" 12 560 590 "src/compiler.ml" 12 560 599
 type(
   Arg.usage_msg
 )
 ident(
-  int_ref usage_msg "src/compiler.ml" 11 513 519 "src/compiler.ml" 11 513 528
+  int_ref usage_msg "src/compiler.ml" 11 529 535 "src/compiler.ml" 11 529 544
 )
-"src/compiler.ml" 12 544 546 "src/compiler.ml" 12 544 583
+"src/compiler.ml" 12 560 562 "src/compiler.ml" 12 560 599
 call(
   tail
 )
 type(
   unit
 )
-"src/compiler.ml" 11 513 515 "src/compiler.ml" 12 544 583
+"src/compiler.ml" 11 529 531 "src/compiler.ml" 12 560 599
 type(
   unit
 )
-"src/compiler.ml" 10 427 429 "src/compiler.ml" 12 544 583
+"src/compiler.ml" 10 443 445 "src/compiler.ml" 12 560 599
 type(
   unit
 )
-"src/compiler.ml" 8 307 321 "src/compiler.ml" 13 584 587
+"src/compiler.ml" 8 323 337 "src/compiler.ml" 13 600 603
 type(
   unit
 )
-"src/compiler.ml" 15 589 593 "src/compiler.ml" 15 589 594
+"src/compiler.ml" 15 605 609 "src/compiler.ml" 15 605 610
 type(
   unit
 )
-"src/compiler.ml" 15 589 600 "src/compiler.ml" 15 589 601
+"src/compiler.ml" 15 605 616 "src/compiler.ml" 15 605 617
 type(
   bool ref -> bool
 )
 ident(
   int_ref Pervasives.( ! ) "pervasives.mli" 1066 41266 41266 "pervasives.mli" 1066 41266 41307
 )
-"src/compiler.ml" 15 589 601 "src/compiler.ml" 15 589 616
+"src/compiler.ml" 15 605 617 "src/compiler.ml" 15 605 632
 type(
   bool ref
 )
 ident(
   int_ref Sys.interactive "sys.mli" 88 4026 4026 "sys.mli" 88 4026 4052
 )
-"src/compiler.ml" 15 589 600 "src/compiler.ml" 15 589 616
+"src/compiler.ml" 15 605 616 "src/compiler.ml" 15 605 632
 type(
   bool
 )
-"src/compiler.ml" 15 589 622 "src/compiler.ml" 15 589 624
+"src/compiler.ml" 15 605 638 "src/compiler.ml" 15 605 640
 type(
   unit
 )
-"src/compiler.ml" 15 589 630 "src/compiler.ml" 15 589 634
+"src/compiler.ml" 15 605 646 "src/compiler.ml" 15 605 650
 type(
   unit -> unit
 )
 ident(
-  int_ref main "src/compiler.ml" 8 307 311 "src/compiler.ml" 8 307 315
+  int_ref main "src/compiler.ml" 8 323 327 "src/compiler.ml" 8 323 331
 )
-"src/compiler.ml" 15 589 635 "src/compiler.ml" 15 589 637
+"src/compiler.ml" 15 605 651 "src/compiler.ml" 15 605 653
 type(
   unit
 )
-"src/compiler.ml" 15 589 630 "src/compiler.ml" 15 589 637
+"src/compiler.ml" 15 605 646 "src/compiler.ml" 15 605 653
 call(
   stack
 )
 type(
   unit
 )
-"src/compiler.ml" 15 589 597 "src/compiler.ml" 15 589 637
+"src/compiler.ml" 15 605 613 "src/compiler.ml" 15 605 653
 type(
   unit
 )

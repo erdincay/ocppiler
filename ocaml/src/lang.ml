@@ -2,17 +2,22 @@
 (* LANGUAGE BASICS *)
 (* e::= *)
 type exp =
+| EUnit                                 (* ()                    *)
 | EInt  of int                          (* n                     *)
 | EBool of bool                         (* b                     *)
 | EVar  of var                          (* x                     *)
+| EPair of exp * exp                    (* (e1, e2)              *)
 | ELet  of var * typ * exp * exp        (* let x = e1 in e2      *)
 | EFun  of var * typ * typ * exp        (* fun x -> e            *)
 | EFix  of var * var * typ * typ * exp  (* fix f x -> e          *)
 | EIf   of exp * exp * exp              (* if e1 then e2 else e3 *)
 | EOp   of exp * operator * exp         (* e1 (+) e2             *)
 | EApp  of exp * exp                    (* e1 e2                 *)
+| EFst  of exp                          (* fst e                 *)
+| ESnd  of exp                          (* snd e                 *)
 
 and value =
+| VUnit
 | VInt  of int
 | VBool of bool
 | VFun  of var * typ * typ * exp
@@ -30,37 +35,40 @@ and var =
 
 (* t::= *)
 and typ =
+| TUnit              (* ()       *)
 | TInt               (* int      *)
 | TBool              (* bool     *)
 | TConv of typ * typ (* t1 -> t2 *)
+| TPair of typ * typ (* (e1, e2)*)
 
 type context = (var * typ) list
 
 let context_bind (ctx:context) (vr:var) (t:typ) =
-  try
-    ignore(List.assoc vr ctx);                    (* see if vr is in ctx list *)
-    (vr, t) :: (List.remove_assoc vr ctx) (* remove old vr in ctx list, put new in *)
-  with
-    Not_found -> failwith "Unable to find variable in context."
+  (vr, t) :: (List.remove_assoc vr ctx) (* remove old vr in ctx list, put new in *)
 
 (* STRING GENERATION *)
 let rec string_of_exp (e:exp) : string =
   match e with
+  | EUnit                              -> string_of_value (VUnit)
   | EInt n                             -> string_of_value (VInt n)
   | EBool b                            -> string_of_value (VBool b)
   | EVar (Var vr)                      -> vr
+  | EPair (e1, e2)                     -> "(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
   | ELet (Var vr, t, e1, e2)           -> "(let "  ^ vr ^ " : " ^ string_of_typ t ^ " = " ^ string_of_exp e1 ^ " in " ^ string_of_exp e2
   | EFun (Var vr, t1, t2, e)           -> string_of_value (VFun (Var vr, t1, t2, e))
   | EFix (Var vr1, Var vr2, t1, t2, e) -> string_of_value (VFix (Var vr1, Var vr2, t1, t2, e))
   | EIf (e1, e2, e3)                   -> "(if " ^ string_of_exp e1 ^ " then " ^ string_of_exp e2 ^ " else " ^ string_of_exp e3 ^ ")"
   | EOp (e1, o, e2)                    -> "(" ^ string_of_exp e1 ^ " " ^ string_of_operator o ^ " " ^ string_of_exp e2 ^ ")"
   | EApp (e1, e2)                      -> "( " ^ string_of_exp e1 ^ " " ^ string_of_exp e2 ^ " )"
+  | EFst e                             -> "(fst " ^ string_of_exp e ^ ")"
+  | ESnd e                             -> "(fst " ^ string_of_exp e ^ ")"
 
 and string_of_value (vl:value) : string =
   match vl with
-  | VInt n                            -> string_of_int n
-  | VBool b                           -> string_of_bool b
-  | VFun (Var vr, t1, t2, e)          -> "(fun (" ^ vr ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
+  | VUnit                              -> "()"
+  | VInt n                             -> string_of_int n
+  | VBool b                            -> string_of_bool b
+  | VFun (Var vr, t1, t2, e)           -> "(fun (" ^ vr ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
   | VFix (Var vr1, Var vr2, t1, t2, e) -> "(fix " ^ vr1 ^ " (" ^ vr2 ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
 
 and string_of_operator (o:operator) : string =
@@ -73,15 +81,19 @@ and string_of_operator (o:operator) : string =
 
 and string_of_typ (t:typ) : string =
   match t with
+  | TUnit          -> "unit"
   | TInt           -> "int"
   | TBool          -> "bool"
   | TConv (t1, t2) -> string_of_typ t1 ^ " -> " ^ string_of_typ t2
+  | TPair (t1, t2) -> string_of_typ t1 ^ " * " ^ string_of_typ t2
 
 (* EVALS *)
 let rec eval (e:exp) : value =
   match e with
+  | EUnit                      -> VUnit
   | EInt n                     -> VInt n
   | EBool b                    -> VBool b
+  | EPair (e1, e2)             -> (eval e1, eval e2)
   | ELet (vr, t, e1, e2)       -> let vl = eval e1 in eval (subst vl vr e2)
   | EFun (vr, t1, t2, e)       -> VFun (vr, t1, t2, e)
   | EFix (vr1, vr2, t1, t2, e) -> VFix (vr1, vr2, t1, t2, e)
@@ -91,9 +103,15 @@ let rec eval (e:exp) : value =
                                    | _                             -> failwith "Expected matching types or boolean guard")
   | EOp (e1, o, e2)            -> eval_op_exp e1 o e2
   | EApp (e1, e2)              -> (match (eval e1) with
-                                   | VFun (x, t1, t2, e)    -> eval (subst  (eval e2) x e)
+                                   | VFun (x, t1, t2, e)    -> eval (subst (eval e2) x e)
                                    | VFix (f, x, t1, t2, e) -> eval (subst (VFix (f, x, t1, t2, e)) f (subst (eval e2) x e))
                                    | _                      -> failwith "Expected applicable function.")
+  | EFst e                     -> (match (eval e) with
+                                   | EPair (e1, e2) -> eval e1
+                                   | _              -> failwith "fst was not given pair.")
+  | ESnd e                     -> (match (eval e) with
+                                   | EPair (e1, e2) -> eval e2
+                                   | _              -> failwith "fst was not given pair.")
   | _                          -> failwith "Unbound variable"
 
 and eval_op_exp (e1:exp) (o:operator) (e2:exp) : value =
@@ -119,8 +137,10 @@ and eval_op_exp (e1:exp) (o:operator) (e2:exp) : value =
 (* SUBSTITUTION SEMANTICS *)
 and subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
 match e_sub with
+| EUnit                      -> EUnit
 | EInt n                     -> EInt n
 | EBool b                    -> EBool b
+| EPair (e1, e2)             -> EPair (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2)
 | EVar vr1                   -> if vr1 = vr_sub
                                 then (match vl_sub with
                                       | VInt n                             -> EInt n
@@ -138,11 +158,20 @@ match e_sub with
 | EIf (e1, e2, e3)           -> EIf (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2, subst vl_sub vr_sub e3)
 | EOp (e1, o, e2)            -> EOp (subst vl_sub vr_sub e1, o, subst vl_sub vr_sub e2)
 | EApp (e1, e2)              -> EApp (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2)
+| EFst (e)                   -> EFst (subst vl_sub vr_sub e)
+| ESnd (e)                   -> ESnd (subst vl_sub vr_sub e)
 
-let rec typecheck (ctx:context) (e:exp) : typ =
+let rec typechk (e:exp) : exp =
+  (let t = typecheck [] e in e)
+
+and typecheck (ctx:context) (e:exp) : typ =
   match e with
+  | EUnit                      -> TUnit
   | EInt n                     -> TInt
   | EBool b                    -> TBool
+  | EPair (e1, e2)             -> let t1 = typecheck ctx e1 in
+                                  let t2 = typecheck ctx e2 in
+                                  TPair (t1, t2)
   | EVar vr                    -> (try List.assoc vr ctx
                                   with Not_found -> failwith "Variable not found in context.")
   | ELet (vr1, t, e1, e2)      -> let this_ctx = context_bind ctx vr1 t in
@@ -178,3 +207,11 @@ let rec typecheck (ctx:context) (e:exp) : typ =
                                                          then tc2
                                                          else failwith "Type mismatch in function application"
                                    | _                -> failwith "Attempted function application with non-function.")
+  | EFst e                     -> let t = typecheck ctx e in
+                                  (match t with
+                                   | TPair (t1, t2) -> t1)
+                                   | _              -> failwith "Type mismatch in fst: expected pair"
+  | ESnd e                     -> let t = typecheck ctx e in
+                                  (match t with
+                                   | TPair (t1, t2) -> t1)
+                                   | _              -> failwith "Type mismatch in snd: expected pair"

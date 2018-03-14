@@ -3,10 +3,12 @@
 
 type token = 
   | VAR of (string)
+  | TUNIT
   | TINT
   | THEN
   | TBOOL
   | SUB
+  | SECOND
   | RPAREN
   | RARROW
   | MUL
@@ -18,10 +20,12 @@ type token =
   | IF
   | FUN
   | FIX
+  | FIRST
   | EQ
   | EOF
   | ELSE
   | DIV
+  | COMMA
   | COLON
   | BOOL of (bool)
   | ADD

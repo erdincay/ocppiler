@@ -3,7 +3,7 @@ let parse = ref false
 let flag_handler file_name parse_b =
   match parse_b with
     | true  -> open_in file_name |> Lexing.from_channel |> Parser.prog Lexer.token |> Lang.string_of_exp
-    | false -> open_in file_name |> Lexing.from_channel |> Parser.prog Lexer.token |> Lang.eval |> Lang.string_of_value
+    | false -> open_in file_name |> Lexing.from_channel |> Parser.prog Lexer.token |> Lang.typechk |> Lang.eval |> Lang.string_of_value
 
 let main () = begin
   let speclist = [("-parse", Arg.Set parse, "Performs lexing and parsing, but not evaluation.")] in

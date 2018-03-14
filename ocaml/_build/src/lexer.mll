@@ -6,6 +6,7 @@ exception Lexer_error of string
 
 let create_char_token c =
   match c with
+  | ',' -> COMMA
   | '=' -> EQ
   | '-' -> SUB
   | '+' -> ADD
@@ -28,6 +29,7 @@ let create_alpha_token str =
   | "false" -> BOOL false
   | "int"   -> TINT
   | "bool"  -> TBOOL
+  | "unit"  -> TUNIT
   | "let"   -> LET
   | "in"    -> IN
   | "fun"   -> FUN
@@ -35,13 +37,15 @@ let create_alpha_token str =
   | "if"    -> IF
   | "then"  -> THEN
   | "else"  -> ELSE
+  | "fst"   -> FIRST
+  | "snd"   -> SECOND
   | _       -> VAR (str)
 }
 
 let newline      = '\n' | ('\r' '\n') | '\r'
 let whitespace   = ['\t' ' ']
 let digit        = ['0'-'9']
-let char_tokens  = '=' | '-' | '+' | '/' | '*' | '(' | ')' | ':'
+let char_tokens  = ',' | '=' | '-' | '+' | '/' | '*' | ':' | '(' | ')'
 let str_tokens   = "<=" | "->"
 let var_chars    = ['a'-'z'] | ['A'-'Z'] | '_' | digit
 
