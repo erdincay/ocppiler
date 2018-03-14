@@ -1,4 +1,4 @@
-# cppiler
+# Ocppiler
 A bare-bones compiler written in C++, flex, and Bison, as well as OCaml and Menhir; made by [@hadleyel](https://github.com/hadleyel "Hadley") to experiment with programming language implementation.
 
 ## Grammar
