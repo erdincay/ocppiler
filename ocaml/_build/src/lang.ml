@@ -6,7 +6,7 @@ type exp =
 | EInt  of int                          (* n                     *)
 | EBool of bool                         (* b                     *)
 | EVar  of var                          (* x                     *)
-| EPair of exp * exp                    (* (e1, e2)              *)
+| EPair of (exp * exp)                  (* (e1, e2)              *)
 | ELet  of var * typ * exp * exp        (* let x = e1 in e2      *)
 | EFun  of var * typ * typ * exp        (* fun x -> e            *)
 | EFix  of var * var * typ * typ * exp  (* fix f x -> e          *)
@@ -20,6 +20,7 @@ and value =
 | VUnit
 | VInt  of int
 | VBool of bool
+| VPair of value * value
 | VFun  of var * typ * typ * exp
 | VFix  of var * var * typ * typ * exp
 
@@ -68,6 +69,7 @@ and string_of_value (vl:value) : string =
   | VUnit                              -> "()"
   | VInt n                             -> string_of_int n
   | VBool b                            -> string_of_bool b
+  | VPair (vl1, vl2)                   -> "(" ^ string_of_value vl1 ^ ", " ^ string_of_value vl2 ^ ")"
   | VFun (Var vr, t1, t2, e)           -> "(fun (" ^ vr ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
   | VFix (Var vr1, Var vr2, t1, t2, e) -> "(fix " ^ vr1 ^ " (" ^ vr2 ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
 
@@ -93,7 +95,7 @@ let rec eval (e:exp) : value =
   | EUnit                      -> VUnit
   | EInt n                     -> VInt n
   | EBool b                    -> VBool b
-  | EPair (e1, e2)             -> (eval e1, eval e2)
+  | EPair (e1, e2)             -> VPair (eval e1, eval e2)
   | ELet (vr, t, e1, e2)       -> let vl = eval e1 in eval (subst vl vr e2)
   | EFun (vr, t1, t2, e)       -> VFun (vr, t1, t2, e)
   | EFix (vr1, vr2, t1, t2, e) -> VFix (vr1, vr2, t1, t2, e)
@@ -107,11 +109,11 @@ let rec eval (e:exp) : value =
                                    | VFix (f, x, t1, t2, e) -> eval (subst (VFix (f, x, t1, t2, e)) f (subst (eval e2) x e))
                                    | _                      -> failwith "Expected applicable function.")
   | EFst e                     -> (match (eval e) with
-                                   | EPair (e1, e2) -> eval e1
-                                   | _              -> failwith "fst was not given pair.")
+                                   | VPair (vl1, vl2) -> vl1
+                                   | _                -> failwith "fst was not given pair.")
   | ESnd e                     -> (match (eval e) with
-                                   | EPair (e1, e2) -> eval e2
-                                   | _              -> failwith "fst was not given pair.")
+                                   | VPair (vl1, vl2) -> vl2
+                                   | _                -> failwith "fst was not given pair.")
   | _                          -> failwith "Unbound variable"
 
 and eval_op_exp (e1:exp) (o:operator) (e2:exp) : value =
@@ -143,8 +145,10 @@ match e_sub with
 | EPair (e1, e2)             -> EPair (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2)
 | EVar vr1                   -> if vr1 = vr_sub
                                 then (match vl_sub with
+                                      | VUnit                              -> EUnit
                                       | VInt n                             -> EInt n
                                       | VBool b                            -> EBool b
+                                      | VPair (vl1, vl2)                   -> failwith "VPair edge case" (* TODO: fix *)
                                       | VFun (Var vr, t1, t2, e)           -> EFun (Var vr, t1, t2, e)
                                       | VFix (Var vr1, Var vr2, t1, t2, e) -> EFix (Var vr1, Var vr2, t1, t2, e))
                                 else EVar vr1
@@ -162,7 +166,7 @@ match e_sub with
 | ESnd (e)                   -> ESnd (subst vl_sub vr_sub e)
 
 let rec typechk (e:exp) : exp =
-  (let t = typecheck [] e in e)
+  (let _t = typecheck [] e in e)
 
 and typecheck (ctx:context) (e:exp) : typ =
   match e with
@@ -209,9 +213,9 @@ and typecheck (ctx:context) (e:exp) : typ =
                                    | _                -> failwith "Attempted function application with non-function.")
   | EFst e                     -> let t = typecheck ctx e in
                                   (match t with
-                                   | TPair (t1, t2) -> t1)
-                                   | _              -> failwith "Type mismatch in fst: expected pair"
+                                   | TPair (t1, t2) -> t1
+                                   | _              -> failwith "Type mismatch in fst: expected pair")
   | ESnd e                     -> let t = typecheck ctx e in
                                   (match t with
-                                   | TPair (t1, t2) -> t1)
-                                   | _              -> failwith "Type mismatch in snd: expected pair"
+                                   | TPair (t1, t2) -> t1
+                                   | _              -> failwith "Type mismatch in snd: expected pair")
