@@ -57,13 +57,11 @@ exp: n=INT                                                                    { 
    | FIRST e=exp                                                              { EFst e }
    | SECOND e=exp                                                             { ESnd e }
    | LPAREN e=exp RPAREN                                                      { e }
-   | f=fexp                                                                   { f }
-
-fexp: LET vr=VAR COLON t=typ EQ e1=exp IN e2=exp                               { ELet (Var vr, t, e1, e2) }
-    | FUN LPAREN vr=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp          { EFun (Var vr, t1, t2, e) }
-    | FIX vr1=VAR LPAREN vr2=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp { EFix (Var vr1, Var vr2, t1, t2, e) }
-    | IF e1=exp THEN e2=exp ELSE e3=exp                                        { EIf (e1, e2, e3) }
-    | e1=exp e2=exp                                                            { EApp (e1, e2) }
+   | LET vr=VAR COLON t=typ EQ e1=exp IN e2=exp                               { ELet (Var vr, t, e1, e2) }
+   | FUN LPAREN vr=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp          { EFun (Var vr, t1, t2, e) }
+   | FIX vr1=VAR LPAREN vr2=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp { EFix (Var vr1, Var vr2, t1, t2, e) }
+   | IF e1=exp THEN e2=exp ELSE e3=exp                                        { EIf (e1, e2, e3) }
+   | e1=exp e2=exp                                                            { EApp (e1, e2) }
 
 typ: TINT                 { TInt }
    | TBOOL                { TBool }

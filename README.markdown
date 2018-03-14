@@ -4,15 +4,23 @@ A bare-bones compiler written in C++, flex, and Bison, as well as OCaml and Menh
 ## Grammar
 This will be frequently modified and added to.
 ```
-e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 | if e1 then e2 else e3 | x | let x = e1 in e2 | fun x -> e | e1 e2
+e ::= n | b | e1 (+) e2 | if e1 then e2 else e3
+     | x | let x : t = e1 in e2
+     | e1 e2 | fun (x:t1) : t2 -> e | fix f (x:t1) : t2 -> e
+     | () | (e1, e2) | fst e | snd e
+
+t ::= int | bool | t1 -> t2 | unit | t1 * t2
 ```
 ## Compiler
 ### Dependencies
+#### For both
 - [Git](https://git-scm.com/)
 - [Make](https://www.gnu.org/software/make/)
+#### For C++
 - [GCC](http://gcc.gnu.org/ "GCC, the GNU Compiler Collection")
 - [flex](https://github.com/westes/flex "The Fast Lexical Analyzer")
 - [Bison](https://www.gnu/software/bison/)
+#### For OCaml
 - [OCaml](https://ocaml.org/)
 - [Menhir](http://gallium.inria.fr/~fpottier/menhir/)
 
@@ -25,9 +33,15 @@ e ::= n | (e) | e1 + e2 | e1 - e2 | e1 * e2 | e1 / e2 | true | false | e1 <= e2 
 | Clean up | `make clean` |
 
 ## History
+* **Assignment 5**:
+    * Added explicit types and typechecking
+    * Added unit, pair, and pair pseudo-functions
+    * Fixed messed up `fix` substitution
+    * Cried less this time!
 * **Assignment 4**:
     * Switched to OCaml, Lexing, and Menhir
     * Added let, function, variable, and function application support
+    * Added substitution
     * Cried a lot
 * **Assignment 3**:
     * Added tests for hand-rolled parser

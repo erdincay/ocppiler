@@ -144,13 +144,7 @@ match e_sub with
 | EBool b                    -> EBool b
 | EPair (e1, e2)             -> EPair (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2)
 | EVar vr1                   -> if vr1 = vr_sub
-                                then (match vl_sub with
-                                      | VUnit                              -> EUnit
-                                      | VInt n                             -> EInt n
-                                      | VBool b                            -> EBool b
-                                      | VPair (vl1, vl2)                   -> failwith "VPair edge case" (* TODO: fix *)
-                                      | VFun (Var vr, t1, t2, e)           -> EFun (Var vr, t1, t2, e)
-                                      | VFix (Var vr1, Var vr2, t1, t2, e) -> EFix (Var vr1, Var vr2, t1, t2, e))
+                                then value_to_exp vl_sub
                                 else EVar vr1
 | ELet (vr1, t, e1, e2)      -> if vr1 = vr_sub
                                 then ELet (vr1, t, subst vl_sub vr_sub e1, e2)
@@ -158,12 +152,23 @@ match e_sub with
 | EFun (vr1, t1, t2, e)      -> if vr1 = vr_sub
                                 then EFun (vr1, t1, t2, e)
                                 else EFun (vr1, t1, t2, subst vl_sub vr_sub e)
-| EFix (vr1, vr2, t1, t2, e) -> EFix (vr1, vr2, t1, t2, e) (* TODO: i'm tired, is this right? *)
+| EFix (vr1, vr2, t1, t2, e) -> if vr2 = vr_sub && vr2 = vr1
+                                then EFix (vr1, vr2, t1, t2, e)
+                                else EFix (vr1, vr2, t1, t2, subst vl_sub vr_sub e)
 | EIf (e1, e2, e3)           -> EIf (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2, subst vl_sub vr_sub e3)
 | EOp (e1, o, e2)            -> EOp (subst vl_sub vr_sub e1, o, subst vl_sub vr_sub e2)
 | EApp (e1, e2)              -> EApp (subst vl_sub vr_sub e1, subst vl_sub vr_sub e2)
 | EFst (e)                   -> EFst (subst vl_sub vr_sub e)
 | ESnd (e)                   -> ESnd (subst vl_sub vr_sub e)
+
+and value_to_exp (vl:value) : exp =
+  match vl with
+  | VUnit                    -> EUnit
+  | VInt n                   -> EInt n
+  | VBool b                  -> EBool b
+  | VPair (vl1, vl2)         -> EPair (value_to_exp vl1, value_to_exp vl2)
+  | VFun (Var vr, t1, t2, e) -> EFun (Var vr, t1, t2, e)
+  | VFix (Var vr1, Var vr2, t1, t2, e) -> EFix (Var vr1, Var vr2, t1, t2, e)
 
 let rec typechk (e:exp) : exp =
   (let _t = typecheck [] e in e)
