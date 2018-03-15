@@ -6,21 +6,26 @@ exception Lexer_error of string
 
 let create_char_token c =
   match c with
+  | ';' -> SEMI
   | ',' -> COMMA
   | '=' -> EQ
+  | '<' -> LANGL
+  | '>' -> RANGL
   | '-' -> SUB
   | '+' -> ADD
   | '/' -> DIV
   | '*' -> MUL
   | ':' -> COLON
+  | '!' -> BANG
   | '(' -> LPAREN
   | ')' -> RPAREN
   | _   -> failwith "Expected single char, found string."
 
 let create_str_token str =
   match str with
-  | "->"   -> RARROW
+  | ":="   -> ASS
   | "<="   -> LEQ
+  | "->"   -> RARROW
   | _      -> failwith "Expected nonalphabetic string."
 
 let create_alpha_token str =
@@ -30,6 +35,7 @@ let create_alpha_token str =
   | "int"   -> TINT
   | "bool"  -> TBOOL
   | "unit"  -> TUNIT
+  | "ref"   -> REF
   | "let"   -> LET
   | "in"    -> IN
   | "fun"   -> FUN
@@ -45,8 +51,8 @@ let create_alpha_token str =
 let newline      = '\n' | ('\r' '\n') | '\r'
 let whitespace   = ['\t' ' ']
 let digit        = ['0'-'9']
-let char_tokens  = ',' | '=' | '-' | '+' | '/' | '*' | ':' | '(' | ')'
-let str_tokens   = "<=" | "->"
+let char_tokens  = ';' | ',' | '=' | '<' | '>' |'-' | '+' | '/' | '*' | ':' | '!' | '(' | ')'
+let str_tokens   = ":=" | "<=" | "->"
 let var_chars    = ['a'-'z'] | ['A'-'Z'] | '_' | digit
 
 rule token = parse
