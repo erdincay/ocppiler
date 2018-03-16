@@ -4,12 +4,14 @@ A bare-bones compiler written in C++, flex, and Bison, as well as OCaml and Menh
 ## Grammar
 This will be frequently modified and added to.
 ```
-e ::= n | b | e1 (+) e2 | if e1 then e2 else e3
-     | x | let x : t = e1 in e2
-     | e1 e2 | fun (x:t1) : t2 -> e | fix f (x:t1) : t2 -> e
-     | () | (e1, e2) | fst e | snd e
+e ::= (e) | n | b | e1 (+) e2 | if e1 then e2 else e3
+    | x | let x : t = e1 in e2
+    | e1 e2 | fun (x:t1) : t2 -> e | fix f (x:t1) : t2 -> e
+    | ()
+    | (e1, e2) | fst e | snd e
+    | ref e | e1 := e2 | !e | e1 ; e2
 
-t ::= int | bool | t1 -> t2 | unit | t1 * t2
+t ::= int | bool | t1 -> t2 | unit | <t>
 ```
 ## Compiler
 ### Dependencies
