@@ -10,33 +10,36 @@ open Lang
 %token TINT
 %token TBOOL
 
-%token LPAREN (* (    *)
-%token RPAREN (* )    *)
-%token COLON  (* :    *)
-%token LET    (* let  *)
-%token IN     (* in   *)
-%token FUN    (* fun  *)
-%token FIX    (* fix  *)
-%token RARROW (* ->   *)
-%token SEMI   (* ;    *)
-%token IF     (* if   *)
-%token THEN   (* then *)
-%token ELSE   (* else *)
-%token ASS    (* :=   *)
-%token REF    (* ref  *)
-%token BANG   (* !    *)
-%token COMMA  (* ,    *)
-%token EQ     (* =    *)
-%token LANGL  (* <    *)
-%token RANGL  (* >    *)
-%token LEQ    (* <=   *)
-%token SUB    (* -    *)
-%token ADD    (* +    *)
-%token DIV    (* /    *)
-%token MUL    (* *    *)
+%token LPAREN (* (     *)
+%token RPAREN (* )     *)
+%token COLON  (* :     *)
+%token LET    (* let   *)
+%token IN     (* in    *)
+%token FUN    (* fun   *)
+%token FIX    (* fix   *)
+%token RARROW (* ->    *)
+%token SEMI   (* ;     *)
+%token IF     (* if    *)
+%token THEN   (* then  *)
+%token ELSE   (* else  *)
+%token ASS    (* :=    *)
+%token REF    (* ref   *)
+%token BANG   (* !     *)
+%token COMMA  (* ,     *)
+%token EQ     (* =     *)
+%token LANGL  (* <     *)
+%token RANGL  (* >     *)
+%token LEQ    (* <=    *)
+%token SUB    (* -     *)
+%token ADD    (* +     *)
+%token DIV    (* /     *)
+%token MUL    (* *     *)
 
-%token FIRST  (* fst  *)
-%token SECOND (* snd  *)
+%token FIRST  (* fst   *)
+%token SECOND (* snd   *)
+%token WHILE  (* while *)
+%token DO     (* do    *)
+%token END    (* end   *)
 
 %token EOF
 
@@ -76,6 +79,7 @@ exp: LPAREN RPAREN                                                            { 
    | e1=exp e2=exp                                                            { EApp (e1, e2) }
    | FIRST e=exp                                                              { EFst e }
    | SECOND e=exp                                                             { ESnd e }
+   | WHILE e1=exp DO e2=exp END                                               { EWhile (e1, e2) }
 
 typ: TUNIT                { TUnit }
    | TINT                 { TInt }

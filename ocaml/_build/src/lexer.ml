@@ -46,9 +46,12 @@ let create_alpha_token str =
   | "else"  -> ELSE
   | "fst"   -> FIRST
   | "snd"   -> SECOND
+  | "while" -> WHILE
+  | "do"    -> DO
+  | "end"   -> END
   | _       -> VAR (str)
 
-# 52 "src/lexer.ml"
+# 55 "src/lexer.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base =
    "\000\000\249\255\250\255\001\000\002\000\007\000\075\000\254\255\
@@ -186,49 +189,49 @@ let rec token lexbuf =
 and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 59 "src/lexer.mll"
+# 62 "src/lexer.mll"
                               ( INT (int_of_string (lexeme lexbuf)) )
-# 192 "src/lexer.ml"
+# 195 "src/lexer.ml"
 
   | 1 ->
 let
-# 60 "src/lexer.mll"
+# 63 "src/lexer.mll"
                    c
-# 198 "src/lexer.ml"
+# 201 "src/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 60 "src/lexer.mll"
+# 63 "src/lexer.mll"
                               ( create_char_token c )
-# 202 "src/lexer.ml"
+# 205 "src/lexer.ml"
 
   | 2 ->
-# 61 "src/lexer.mll"
+# 64 "src/lexer.mll"
                               ( create_str_token (lexeme lexbuf) )
-# 207 "src/lexer.ml"
+# 210 "src/lexer.ml"
 
   | 3 ->
-# 62 "src/lexer.mll"
+# 65 "src/lexer.mll"
                               ( create_alpha_token (lexeme lexbuf) )
-# 212 "src/lexer.ml"
+# 215 "src/lexer.ml"
 
   | 4 ->
-# 63 "src/lexer.mll"
+# 66 "src/lexer.mll"
                               ( token lexbuf )
-# 217 "src/lexer.ml"
+# 220 "src/lexer.ml"
 
   | 5 ->
-# 64 "src/lexer.mll"
+# 67 "src/lexer.mll"
                               ( EOF )
-# 222 "src/lexer.ml"
+# 225 "src/lexer.ml"
 
   | 6 ->
 let
-# 65 "src/lexer.mll"
+# 68 "src/lexer.mll"
          c
-# 228 "src/lexer.ml"
+# 231 "src/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 65 "src/lexer.mll"
+# 68 "src/lexer.mll"
            ( raise @@ Lexer_error ("Unexpected character: " ^ Char.escaped c) )
-# 232 "src/lexer.ml"
+# 235 "src/lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_token_rec lexbuf __ocaml_lex_state

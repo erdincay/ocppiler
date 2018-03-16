@@ -1,7 +1,7 @@
 
-** Conflict (shift/reduce) in state 82.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 83.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 SECOND exp 
@@ -13,23 +13,23 @@ prog
 exp EOF 
 (?)
 
-** In state 82, looking ahead at VAR, shifting is permitted
+** In state 83, looking ahead at WHILE, reducing production
+** exp -> SECOND exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+SECOND exp . 
+
+** In state 83, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 SECOND exp 
        exp exp 
-           . VAR 
+           . WHILE exp DO exp END 
 
-** In state 82, looking ahead at VAR, reducing production
-** exp -> SECOND exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-SECOND exp . 
-
-** Conflict (shift/reduce) in state 81.
-** Tokens involved: VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 82.
+** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 REF exp 
@@ -41,23 +41,23 @@ prog
 exp EOF 
 (?)
 
-** In state 81, looking ahead at VAR, shifting is permitted
+** In state 82, looking ahead at WHILE, reducing production
+** exp -> REF exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+REF exp . 
+
+** In state 82, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 REF exp 
     exp exp 
-        . VAR 
+        . WHILE exp DO exp END 
 
-** In state 81, looking ahead at VAR, reducing production
-** exp -> REF exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-REF exp . 
-
-** Conflict (shift/reduce) in state 80.
-** Tokens involved: VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 81.
+** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 LET VAR COLON typ EQ exp IN exp 
@@ -69,23 +69,23 @@ prog
 exp EOF 
 (?)
 
-** In state 80, looking ahead at VAR, shifting is permitted
+** In state 81, looking ahead at WHILE, reducing production
+** exp -> LET VAR COLON typ EQ exp IN exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+LET VAR COLON typ EQ exp IN exp . 
+
+** In state 81, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 LET VAR COLON typ EQ exp IN exp 
                             exp exp 
-                                . VAR 
+                                . WHILE exp DO exp END 
 
-** In state 80, looking ahead at VAR, reducing production
-** exp -> LET VAR COLON typ EQ exp IN exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-LET VAR COLON typ EQ exp IN exp . 
-
-** Conflict (shift/reduce) in state 77.
-** Tokens involved: VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 78.
+** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 IF exp THEN exp ELSE exp 
@@ -97,23 +97,23 @@ prog
 exp EOF 
 (?)
 
-** In state 77, looking ahead at VAR, shifting is permitted
+** In state 78, looking ahead at WHILE, reducing production
+** exp -> IF exp THEN exp ELSE exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+IF exp THEN exp ELSE exp . 
+
+** In state 78, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 IF exp THEN exp ELSE exp 
                      exp exp 
-                         . VAR 
+                         . WHILE exp DO exp END 
 
-** In state 77, looking ahead at VAR, reducing production
-** exp -> IF exp THEN exp ELSE exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-IF exp THEN exp ELSE exp . 
-
-** Conflict (shift/reduce) in state 72.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 73.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
@@ -125,23 +125,23 @@ prog
 exp EOF 
 (?)
 
-** In state 72, looking ahead at VAR, shifting is permitted
+** In state 73, looking ahead at WHILE, reducing production
+** exp -> FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
+
+** In state 73, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
                                                  exp exp 
-                                                     . VAR 
+                                                     . WHILE exp DO exp END 
 
-** In state 72, looking ahead at VAR, reducing production
-** exp -> FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
-
-** Conflict (shift/reduce) in state 66.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 67.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
@@ -153,23 +153,23 @@ prog
 exp EOF 
 (?)
 
-** In state 66, looking ahead at VAR, shifting is permitted
+** In state 67, looking ahead at WHILE, reducing production
+** exp -> FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
+
+** In state 67, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
                                                      exp exp 
-                                                         . VAR 
+                                                         . WHILE exp DO exp END 
 
-** In state 66, looking ahead at VAR, reducing production
-** exp -> FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
-
-** Conflict (shift/reduce) in state 65.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 66.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 FIRST exp 
@@ -181,23 +181,23 @@ prog
 exp EOF 
 (?)
 
-** In state 65, looking ahead at VAR, shifting is permitted
+** In state 66, looking ahead at WHILE, reducing production
+** exp -> FIRST exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+FIRST exp . 
+
+** In state 66, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 FIRST exp 
       exp exp 
-          . VAR 
+          . WHILE exp DO exp END 
 
-** In state 65, looking ahead at VAR, reducing production
-** exp -> FIRST exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-FIRST exp . 
-
-** Conflict (shift/reduce) in state 64.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 65.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp ASS exp 
@@ -209,23 +209,23 @@ prog
 exp EOF 
 (?)
 
-** In state 64, looking ahead at VAR, shifting is permitted
-** because of the following sub-derivation:
-
-exp ASS exp 
-        exp exp 
-            . VAR 
-
-** In state 64, looking ahead at VAR, reducing production
+** In state 65, looking ahead at WHILE, reducing production
 ** exp -> exp ASS exp 
 ** is permitted because of the following sub-derivation:
 
-exp exp // lookahead token appears because exp can begin with VAR
+exp exp // lookahead token appears because exp can begin with WHILE
 exp ASS exp . 
 
-** Conflict (shift/reduce) in state 62.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** In state 65, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+exp ASS exp 
+        exp exp 
+            . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 63.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp ADD exp 
@@ -237,23 +237,23 @@ prog
 exp EOF 
 (?)
 
-** In state 62, looking ahead at VAR, shifting is permitted
-** because of the following sub-derivation:
-
-exp ADD exp 
-        exp exp 
-            . VAR 
-
-** In state 62, looking ahead at VAR, reducing production
+** In state 63, looking ahead at WHILE, reducing production
 ** exp -> exp ADD exp 
 ** is permitted because of the following sub-derivation:
 
-exp exp // lookahead token appears because exp can begin with VAR
+exp exp // lookahead token appears because exp can begin with WHILE
 exp ADD exp . 
 
-** Conflict (shift/reduce) in state 60.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** In state 63, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+exp ADD exp 
+        exp exp 
+            . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 61.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp DIV exp 
@@ -265,23 +265,23 @@ prog
 exp EOF 
 (?)
 
-** In state 60, looking ahead at VAR, shifting is permitted
-** because of the following sub-derivation:
-
-exp DIV exp 
-        exp exp 
-            . VAR 
-
-** In state 60, looking ahead at VAR, reducing production
+** In state 61, looking ahead at WHILE, reducing production
 ** exp -> exp DIV exp 
 ** is permitted because of the following sub-derivation:
 
-exp exp // lookahead token appears because exp can begin with VAR
+exp exp // lookahead token appears because exp can begin with WHILE
 exp DIV exp . 
 
-** Conflict (shift/reduce) in state 58.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** In state 61, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+exp DIV exp 
+        exp exp 
+            . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 59.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp LEQ exp 
@@ -293,23 +293,23 @@ prog
 exp EOF 
 (?)
 
-** In state 58, looking ahead at VAR, shifting is permitted
+** In state 59, looking ahead at WHILE, reducing production
+** exp -> exp LEQ exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+exp LEQ exp . 
+
+** In state 59, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp LEQ exp 
         exp exp 
-            . VAR 
+            . WHILE exp DO exp END 
 
-** In state 58, looking ahead at VAR, reducing production
-** exp -> exp LEQ exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-exp LEQ exp . 
-
-** Conflict (shift/reduce) in state 56.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 57.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp SEMI exp 
@@ -321,23 +321,23 @@ prog
 exp EOF 
 (?)
 
-** In state 56, looking ahead at VAR, shifting is permitted
+** In state 57, looking ahead at WHILE, reducing production
+** exp -> exp SEMI exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+exp SEMI exp . 
+
+** In state 57, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp SEMI exp 
          exp exp 
-             . VAR 
+             . WHILE exp DO exp END 
 
-** In state 56, looking ahead at VAR, reducing production
-** exp -> exp SEMI exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-exp SEMI exp . 
-
-** Conflict (shift/reduce) in state 54.
-** Tokens involved: VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 55.
+** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp exp 
@@ -349,23 +349,23 @@ prog
 exp EOF 
 (?)
 
-** In state 54, looking ahead at VAR, shifting is permitted
+** In state 55, looking ahead at WHILE, reducing production
+** exp -> exp exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+exp exp . 
+
+** In state 55, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp exp 
     exp exp 
-        . VAR 
+        . WHILE exp DO exp END 
 
-** In state 54, looking ahead at VAR, reducing production
-** exp -> exp exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-exp exp . 
-
-** Conflict (shift/reduce) in state 53.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 54.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp MUL exp 
@@ -377,23 +377,23 @@ prog
 exp EOF 
 (?)
 
-** In state 53, looking ahead at VAR, shifting is permitted
-** because of the following sub-derivation:
-
-exp MUL exp 
-        exp exp 
-            . VAR 
-
-** In state 53, looking ahead at VAR, reducing production
+** In state 54, looking ahead at WHILE, reducing production
 ** exp -> exp MUL exp 
 ** is permitted because of the following sub-derivation:
 
-exp exp // lookahead token appears because exp can begin with VAR
+exp exp // lookahead token appears because exp can begin with WHILE
 exp MUL exp . 
 
-** Conflict (shift/reduce) in state 51.
-** Tokens involved: VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token VAR.
+** In state 54, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+exp MUL exp 
+        exp exp 
+            . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 52.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 exp SUB exp 
@@ -405,23 +405,23 @@ prog
 exp EOF 
 (?)
 
-** In state 51, looking ahead at VAR, shifting is permitted
+** In state 52, looking ahead at WHILE, reducing production
+** exp -> exp SUB exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+exp SUB exp . 
+
+** In state 52, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp SUB exp 
         exp exp 
-            . VAR 
+            . WHILE exp DO exp END 
 
-** In state 51, looking ahead at VAR, reducing production
-** exp -> exp SUB exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-exp SUB exp . 
-
-** Conflict (shift/reduce) in state 49.
-** Tokens involved: VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
-** The following explanations concentrate on token VAR.
+** Conflict (shift/reduce) in state 50.
+** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 BANG exp 
@@ -433,16 +433,16 @@ prog
 exp EOF 
 (?)
 
-** In state 49, looking ahead at VAR, shifting is permitted
+** In state 50, looking ahead at WHILE, reducing production
+** exp -> BANG exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+BANG exp . 
+
+** In state 50, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 BANG exp 
      exp exp 
-         . VAR 
-
-** In state 49, looking ahead at VAR, reducing production
-** exp -> BANG exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with VAR
-BANG exp . 
+         . WHILE exp DO exp END 

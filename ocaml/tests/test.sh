@@ -122,6 +122,14 @@ if [ -n "$res" ]; then
   echo "$res"
 fi
 
+#test16
+./compiler.native -parse tests/test16.src > tests/tmp.txt
+res="$(diff -w tests/tmp.txt tests/test16.parse.out)"
+if [ -n "$res" ]; then
+  failed=true
+  echo "$res"
+fi
+
 if [ $failed = false ]; then
   echo 'All tests successful'
 fi

@@ -45,6 +45,9 @@ let create_alpha_token str =
   | "else"  -> ELSE
   | "fst"   -> FIRST
   | "snd"   -> SECOND
+  | "while" -> WHILE
+  | "do"    -> DO
+  | "end"   -> END
   | _       -> VAR (str)
 }
 

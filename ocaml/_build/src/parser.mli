@@ -2,6 +2,7 @@
 (* The type of tokens. *)
 
 type token = 
+  | WHILE
   | VAR of (string)
   | TUNIT
   | TINT
@@ -27,7 +28,9 @@ type token =
   | FIRST
   | EQ
   | EOF
+  | END
   | ELSE
+  | DO
   | DIV
   | COMMA
   | COLON

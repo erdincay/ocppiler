@@ -106,14 +106,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 45 476 476 "src/parser.mli" 45 476 541
+  int_ref Parser.prog "src/parser.mli" 48 501 501 "src/parser.mli" 48 501 566
 )
 "src/compiler.ml" 5 81 152 "src/compiler.ml" 5 81 163
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 184 8942 8950 "src/lexer.ml" 184 8942 8955
+  int_ref Lexer.token "src/lexer.ml" 187 9000 9008 "src/lexer.ml" 187 9000 9013
 )
 "src/compiler.ml" 5 81 140 "src/compiler.ml" 5 81 163
 type(
@@ -138,7 +138,7 @@ type(
   Lang.exp -> string
 )
 ident(
-  int_ref Lang.string_of_exp "src/lang.ml" 245 13083 13091 "src/lang.ml" 245 13083 13104
+  int_ref Lang.string_of_exp "src/lang.ml" 77 2593 2601 "src/lang.ml" 77 2593 2614
 )
 "src/compiler.ml" 5 81 96 "src/compiler.ml" 5 81 185
 call(
@@ -205,14 +205,14 @@ type(
   (Lexing.lexbuf -> Parser.token) -> Lexing.lexbuf -> Lang.exp
 )
 ident(
-  int_ref Parser.prog "src/parser.mli" 45 476 476 "src/parser.mli" 45 476 541
+  int_ref Parser.prog "src/parser.mli" 48 501 501 "src/parser.mli" 48 501 566
 )
 "src/compiler.ml" 6 186 257 "src/compiler.ml" 6 186 268
 type(
   Lexing.lexbuf -> Parser.token
 )
 ident(
-  int_ref Lexer.token "src/lexer.ml" 184 8942 8950 "src/lexer.ml" 184 8942 8955
+  int_ref Lexer.token "src/lexer.ml" 187 9000 9008 "src/lexer.ml" 187 9000 9013
 )
 "src/compiler.ml" 6 186 245 "src/compiler.ml" 6 186 268
 type(
@@ -237,7 +237,7 @@ type(
   Lang.exp -> Lang.exp
 )
 ident(
-  int_ref Lang.typechk "src/lang.ml" 175 8718 8722 "src/lang.ml" 175 8718 8729
+  int_ref Lang.typechk "src/lang.ml" 238 11731 11735 "src/lang.ml" 238 11731 11742
 )
 "src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 284
 call(
@@ -258,7 +258,7 @@ type(
   Lang.exp -> Lang.value
 )
 ident(
-  int_ref Lang.interpret "src/lang.ml" 73 2501 2509 "src/lang.ml" 73 2501 2518
+  int_ref Lang.interpret "src/lang.ml" 127 5484 5492 "src/lang.ml" 127 5484 5501
 )
 "src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 302
 call(
@@ -279,7 +279,7 @@ type(
   Lang.value -> string
 )
 ident(
-  int_ref Lang.string_of_value "src/lang.ml" 266 14687 14691 "src/lang.ml" 266 14687 14706
+  int_ref Lang.string_of_value "src/lang.ml" 99 4306 4310 "src/lang.ml" 99 4306 4325
 )
 "src/compiler.ml" 6 186 201 "src/compiler.ml" 6 186 326
 call(
