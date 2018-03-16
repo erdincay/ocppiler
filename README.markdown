@@ -33,6 +33,11 @@ t ::= int | bool | t1 -> t2 | unit | t1 * t2
 | Clean up | `make clean` |
 
 ## History
+* **Assignment 6**:
+    * Added rudimentary state with refs, !s, and assignments
+    * Added sequences
+    * Added while loop
+    * Known bugs: In corner cases, while loops become infinite. Oops.
 * **Assignment 5**:
     * Added explicit types and typechecking
     * Added unit, pair, and pair pseudo-functions

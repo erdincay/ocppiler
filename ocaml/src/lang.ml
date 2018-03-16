@@ -1,4 +1,5 @@
-(* Credit to: Zachary Susag (@zsusag on GitHub) for helping me figure out let/fun/fix eval & subst *)
+(* Credit to: Zachary Susag (@zsusag on GitHub) for helping me figure out let/fun/fix eval and subst, and if evaluation *)
+(* Also thumbs up to Reilly Noonan Grant, whose code I peeked at on occasion to get myself up to speed with Menhir's structure *)
 (* LANGUAGE BASICS *)
 (* e::= *)
 type exp =
