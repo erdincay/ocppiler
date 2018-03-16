@@ -41,6 +41,7 @@ open Lang
 %token EOF
 
 %right RARROW
+%right SEMI
 %right ASS
 %left LEQ
 %left SUB ADD
@@ -62,7 +63,7 @@ exp: LPAREN RPAREN                                                            { 
    | LET vr=VAR COLON t=typ EQ e1=exp IN e2=exp                               { ELet (Var vr, t, e1, e2) }
    | FUN LPAREN vr=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp          { EFun (Var vr, t1, t2, e) }
    | FIX vr1=VAR LPAREN vr2=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp { EFix (Var vr1, Var vr2, t1, t2, e) }
-   | e1=exp SEMI e2=exp                                                       { ESeq }
+   | e1=exp SEMI e2=exp                                                       { ESeq (e1, e2) }
    | IF e1=exp THEN e2=exp ELSE e3=exp                                        { EIf (e1, e2, e3) }
    | e1=exp ASS e2=exp                                                        { EAssign (e1, e2) }
    | REF e=exp                                                                { ERef e }

@@ -7,6 +7,7 @@ type exp =
 | EBool   of bool                         (* b                     *)
 | EVar    of var                          (* x                     *)
 | EPair   of (exp * exp)                  (* (e1, e2)              *)
+| EPtr    of typ * int                    (* Ptr(n)                *)
 | ELet    of var * typ * exp * exp        (* let x = e1 in e2      *)
 | EFun    of var * typ * typ * exp        (* fun x -> e            *)
 | EFix    of var * var * typ * typ * exp  (* fix f x -> e          *)
@@ -19,13 +20,13 @@ type exp =
 | EApp    of exp * exp                    (* e1 e2                 *)
 | EFst    of exp                          (* fst e                 *)
 | ESnd    of exp                          (* snd e                 *)
-| EPtr    of typ * int                    (* Ptr(n)                *)
 
 and value =
 | VUnit
 | VInt  of int
 | VBool of bool
 | VPair of value * value
+| VPtr  of typ * int
 | VFun  of var * typ * typ * exp
 | VFix  of var * var * typ * typ * exp
 
@@ -51,68 +52,29 @@ and typ =
 type context = (var * typ) list
 type environment = (int * value) list
 
-let rec is_value (e:exp) : bool =
-  match e with
-  | EUnit | EInt _ | EBool _ | EFun _ | EFix _ | EPtr _ -> true
-  | EPair (e1, e2)                                                                             -> is_value e1 && is_value e2
-  | _ -> false
-
+(* EXTERNALS *)
 let context_bind (ctx:context) (vr:var) (t:typ) =
   (vr, t) :: (List.remove_assoc vr ctx) (* remove old vr in ctx list, put new in *)
 
-let environment_assign (env:environment) (a:int) (vl:value) =
+let environment_assign (env:environment) (a:int) (vl:value) : environment =
   (a, vl) :: (List.remove_assoc a env)
 
-(* STRING GENERATION *)
-let rec string_of_exp (e:exp) : string =
-  match e with
-  | EUnit                              -> string_of_value (VUnit)
-  | EInt n                             -> string_of_value (VInt n)
-  | EBool b                            -> string_of_value (VBool b)
-  | EVar (Var vr)                      -> vr
-  | EPair (e1, e2)                     -> "(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
-  | ELet (Var vr, t, e1, e2)           -> "(let "  ^ vr ^ " : " ^ string_of_typ t ^ " = " ^ string_of_exp e1 ^ " in " ^ string_of_exp e2
-  | EFun (Var vr, t1, t2, e)           -> string_of_value (VFun (Var vr, t1, t2, e))
-  | EFix (Var vr1, Var vr2, t1, t2, e) -> string_of_value (VFix (Var vr1, Var vr2, t1, t2, e))
-  | ESeq (e1, e2)                      -> string_of_exp e1 ^ " ; " ^ string_of_exp e2
-  | EIf (e1, e2, e3)                   -> "(if " ^ string_of_exp e1 ^ " then " ^ string_of_exp e2 ^ " else " ^ string_of_exp e3 ^ ")"
-  | EAssign (e1, e2)                   -> string_of_exp e1 ^ " := " ^ string_of_exp e2
-  | ERef e                             -> "ref " ^ string_of_exp e
-  | EDeref e                           -> "!" ^ string_of_exp e
-  | EOp (e1, o, e2)                    -> "(" ^ string_of_exp e1 ^ " " ^ string_of_operator o ^ " " ^ string_of_exp e2 ^ ")"
-  | EApp (e1, e2)                      -> "( " ^ string_of_exp e1 ^ " " ^ string_of_exp e2 ^ " )"
-  | EFst e                             -> "(fst " ^ string_of_exp e ^ ")"
-  | ESnd e                             -> "(fst " ^ string_of_exp e ^ ")"
-  | EPtr (t, n)                        -> "Ptr(" ^ string_of_int n ^ ")"
+let cur_addr = ref (1)
 
-and string_of_value (vl:value) : string =
-  match vl with
-  | VUnit                              -> "()"
-  | VInt n                             -> string_of_int n
-  | VBool b                            -> string_of_bool b
-  | VPair (vl1, vl2)                   -> "(" ^ string_of_value vl1 ^ ", " ^ string_of_value vl2 ^ ")"
-  | VFun (Var vr, t1, t2, e)           -> "(fun (" ^ vr ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
-  | VFix (Var vr1, Var vr2, t1, t2, e) -> "(fix " ^ vr1 ^ " (" ^ vr2 ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
+let gen_addr () =
+  cur_addr := !cur_addr + 1;
+  !cur_addr
 
-and string_of_operator (o:operator) : string =
-  match o with
-  | OLEq -> "<="
-  | OSub -> "-"
-  | OAdd -> "+"
-  | ODiv -> "/"
-  | OMul -> "*"
+let gen_ptr (env:environment) (t:typ) (vl:value) =
+  let a = gen_addr () in
+  (environment_assign env a vl, VPtr (t, a))
 
-and string_of_typ (t:typ) : string =
-  match t with
-  | TUnit          -> "unit"
-  | TInt           -> "int"
-  | TBool          -> "bool"
-  | TConv (t1, t2) -> string_of_typ t1 ^ " -> " ^ string_of_typ t2
-  | TPair (t1, t2) -> string_of_typ t1 ^ " * " ^ string_of_typ t2
-  | TRef t         -> "<" ^ string_of_typ t ^ ">"
+(* EVALUATION *)
+let rec interpret (e:exp) : value =
+  snd (eval [] e)
 
-(* EVALS *)
-let rec eval (env:environment) (e:exp) : (env * value) list =
+and eval (env:environment) (e:exp) : (environment * value) =
+  let eval e = snd (eval env e) in
   match e with
   | EUnit                      -> (env, VUnit)
   | EInt n                     -> (env, VInt n)
@@ -121,15 +83,20 @@ let rec eval (env:environment) (e:exp) : (env * value) list =
   | ELet (vr, t, e1, e2)       -> (env, let vl = eval e1 in eval (subst vl vr e2))
   | EFun (vr, t1, t2, e)       -> (env, VFun (vr, t1, t2, e))
   | EFix (vr1, vr2, t1, t2, e) -> (env, VFix (vr1, vr2, t1, t2, e))
-  | ESeq (e1, e2)              -> (env, eval e1 ; eval e2)
+  | ESeq (e1, e2)              -> (env, (eval e1 ; eval e2))
   | EIf (e1, e2, e3)           -> (match (eval e1, eval e2, eval e3) with
                                    | (VBool b, VInt n1, VInt n2)   -> (env, (if b then VInt n1 else VInt n2))
                                    | (VBool b, VBool b1, VBool b2) -> (env, (if b then VBool b1 else VBool b2))
                                    | _                             -> failwith "Expected matching types or boolean guard")
-  | EAssign (e1, e2)           -> (* something *) (env, ())
-  | ERef e                     -> (* something *) (env, ())
-  | EDeref e                   -> (* something *) (env, ())
-  | EOp (e1, o, e2)            -> (env, eval_op_exp e1 o e2)
+  | EAssign (e1, e2)           -> (match (eval e1, eval e2) with
+                                   | (VPtr (t, a), exp2)             -> ref env := environment_assign !(ref env) a exp2; (env, VUnit)
+                                   | _                               -> failwith "EAssign expected a ref and a value.")
+  | ERef e                     -> let (new_env, new_ptr) = gen_ptr !(ref env) (typecheck [] e) (eval e) in
+                                  ref (env) := new_env; (env, new_ptr)
+  | EDeref e                   -> (match (eval e) with
+                                   | VPtr (t, a) -> (env, (List.assoc a env))
+                                   | _           -> failwith "Expected to deref a pointer.")
+  | EOp (e1, o, e2)            -> (env, snd (eval_op_exp env e1 o e2))
   | EApp (e1, e2)              -> (match (eval e1) with
                                    | VFun (x, t1, t2, e)    -> (env, eval (subst (eval e2) x e))
                                    | VFix (f, x, t1, t2, e) -> (env, eval (subst (VFix (f, x, t1, t2, e)) f (subst (eval e2) x e)))
@@ -142,27 +109,28 @@ let rec eval (env:environment) (e:exp) : (env * value) list =
                                    | _                -> failwith "fst was not given pair.")
   | _                          -> failwith "Unbound variable"
 
-and eval_op_exp (e1:exp) (o:operator) (e2:exp) : value =
+and eval_op_exp (env:environment) (e1:exp) (o:operator) (e2:exp) : (environment * value) =
+let eval e = snd (eval env e) in
   match o with
   | OLEq -> (match (eval e1, eval e2) with
-             | (VInt n1, VInt n2) -> VBool (n1 <= n2)
+             | (VInt n1, VInt n2) -> (env, VBool (n1 <= n2))
              | _                  -> failwith "Expected integer arguments for less-than-or-equals-to operator.")
   | OSub -> (match (eval e1, eval e2) with
-             | (VInt n1, VInt n2) -> VInt (n1 - n2)
+             | (VInt n1, VInt n2) -> (env, VInt (n1 - n2))
              | _                  -> failwith "Expected integer arguments for subtraction operator.")
   | OAdd -> (match (eval e1, eval e2) with
-             | (VInt n1, VInt n2) -> VInt (n1 + n2)
+             | (VInt n1, VInt n2) -> (env, VInt (n1 + n2))
              | _                  -> failwith "Expected integer arguments for addition operator.")
   | ODiv -> (match (eval e1, eval e2) with
              | (VInt n1, VInt n2) -> if n2 = 0
                                      then failwith "Expected non-zero denominator for division operator."
-                                     else VInt (n1 / n2)
+                                     else (env, VInt (n1 / n2))
              | _                  -> failwith "Expected integer arguments for division operator.")
   | OMul -> (match (eval e1, eval e2) with
-             | (VInt n1, VInt n2) -> VInt (n1 * n2)
+             | (VInt n1, VInt n2) -> (env, VInt (n1 * n2))
              | _                  -> failwith "Expected integer arguments for multiplication operator.")
 
-(* SUBSTITUTION SEMANTICS *)
+(* SUBSTITUTION *)
 and subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
   let subst e = subst vl_sub vr_sub e in
   match e_sub with
@@ -191,17 +159,20 @@ and subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
   | EApp (e1, e2)              -> EApp (subst e1, subst e2)
   | EFst (e)                   -> EFst (subst e)
   | ESnd (e)                   -> ESnd (subst e)
+  | EPtr (t, a)                -> failwith "Pointer substitution not allowed."
 
 and value_to_exp (vl:value) : exp =
   match vl with
-  | VUnit                    -> EUnit
-  | VInt n                   -> EInt n
-  | VBool b                  -> EBool b
-  | VPair (vl1, vl2)         -> EPair (value_to_exp vl1, value_to_exp vl2)
-  | VFun (Var vr, t1, t2, e) -> EFun (Var vr, t1, t2, e)
+  | VUnit                              -> EUnit
+  | VInt n                             -> EInt n
+  | VBool b                            -> EBool b
+  | VPair (vl1, vl2)                   -> EPair (value_to_exp vl1, value_to_exp vl2)
+  | VFun (Var vr, t1, t2, e)           -> EFun (Var vr, t1, t2, e)
   | VFix (Var vr1, Var vr2, t1, t2, e) -> EFix (Var vr1, Var vr2, t1, t2, e)
+  | VPtr (t, a)                        -> EPtr (t, a)
 
-let rec typechk (e:exp) : exp =
+(* TYPECHECKING *)
+and typechk (e:exp) : exp =
   (let _t = typecheck [] e in e)
 
 and typecheck (ctx:context) (e:exp) : typ =
@@ -268,4 +239,53 @@ and typecheck (ctx:context) (e:exp) : typ =
                                   (match t with
                                    | TPair (t1, t2) -> t1
                                    | _              -> failwith "Type mismatch in snd: expected pair")
-  | EPtr (t, n)                -> TRef t
+  | EPtr (t, a)                -> TRef t
+
+(* STRINGS *)
+let rec string_of_exp (e:exp) : string =
+  match e with
+  | EUnit                              -> string_of_value (VUnit)
+  | EInt n                             -> string_of_value (VInt n)
+  | EBool b                            -> string_of_value (VBool b)
+  | EVar (Var vr)                      -> vr
+  | EPair (e1, e2)                     -> "(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
+  | EPtr (t, a)                        -> string_of_value (VPtr (t, a))
+  | ELet (Var vr, t, e1, e2)           -> "(let "  ^ vr ^ " : " ^ string_of_typ t ^ " = " ^ string_of_exp e1 ^ " in " ^ string_of_exp e2 ^ ")"
+  | EFun (Var vr, t1, t2, e)           -> string_of_value (VFun (Var vr, t1, t2, e))
+  | EFix (Var vr1, Var vr2, t1, t2, e) -> string_of_value (VFix (Var vr1, Var vr2, t1, t2, e))
+  | ESeq (e1, e2)                      -> string_of_exp e1 ^ " ; " ^ string_of_exp e2
+  | EIf (e1, e2, e3)                   -> "(if " ^ string_of_exp e1 ^ " then " ^ string_of_exp e2 ^ " else " ^ string_of_exp e3 ^ ")"
+  | EAssign (e1, e2)                   -> string_of_exp e1 ^ " := " ^ string_of_exp e2
+  | ERef e                             -> "ref " ^ string_of_exp e
+  | EDeref e                           -> "!" ^ string_of_exp e
+  | EOp (e1, o, e2)                    -> "(" ^ string_of_exp e1 ^ " " ^ string_of_operator o ^ " " ^ string_of_exp e2 ^ ")"
+  | EApp (e1, e2)                      -> "( " ^ string_of_exp e1 ^ " " ^ string_of_exp e2 ^ " )"
+  | EFst e                             -> "(fst " ^ string_of_exp e ^ ")"
+  | ESnd e                             -> "(snd " ^ string_of_exp e ^ ")"
+
+and string_of_value (vl:value) : string =
+  match vl with
+  | VUnit                              -> "()"
+  | VInt n                             -> string_of_int n
+  | VBool b                            -> string_of_bool b
+  | VPair (vl1, vl2)                   -> "(" ^ string_of_value vl1 ^ ", " ^ string_of_value vl2 ^ ")"
+  | VFun (Var vr, t1, t2, e)           -> "(fun (" ^ vr ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " -> " ^ string_of_exp e ^ ")"
+  | VFix (Var vr1, Var vr2, t1, t2, e) -> "(fix " ^ vr1 ^ " (" ^ vr2 ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
+  | VPtr (t, n)                        -> "Ptr(" ^ string_of_int n ^ ")"
+
+and string_of_operator (o:operator) : string =
+  match o with
+  | OLEq -> "<="
+  | OSub -> "-"
+  | OAdd -> "+"
+  | ODiv -> "/"
+  | OMul -> "*"
+
+and string_of_typ (t:typ) : string =
+  match t with
+  | TUnit          -> "unit"
+  | TInt           -> "int"
+  | TBool          -> "bool"
+  | TConv (t1, t2) -> string_of_typ t1 ^ " -> " ^ string_of_typ t2
+  | TPair (t1, t2) -> string_of_typ t1 ^ " * " ^ string_of_typ t2
+  | TRef t         -> "<" ^ string_of_typ t ^ ">"
