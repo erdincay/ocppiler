@@ -1,2 +1,2 @@
-src/parser.ml: Lang Lexing
+src/parser.ml: Lang Lexing List
 src/parser.mli: Lang Lexing

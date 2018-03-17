@@ -8,7 +8,7 @@ e ::= (e) | n | b | e1 (+) e2 | if e1 then e2 else e3
     | x | let x : t = e1 in e2
     | e1 e2 | fun (x:t1) : t2 -> e | fix f (x:t1) : t2 -> e
     | ()
-    | (e1, e2) | fst e | snd e
+    | (e1, e2, ...) | get n e
     | ref e | e1 := e2 | !e | e1 ; e2
 
 t ::= int | bool | t1 -> t2 | unit | <t>
@@ -35,6 +35,9 @@ t ::= int | bool | t1 -> t2 | unit | <t>
 | Clean up | `make clean` |
 
 ## History
+* **Final Project**
+    * Added tuples to replace pairs!
+    * Added `get` to replace `fst` and `snd`: it gets the nth item of a tuple!
 * **Assignment 6**:
     * Added rudimentary state with refs, !s, and assignments
     * Added sequences

@@ -44,14 +44,13 @@ let create_alpha_token str =
   | "if"    -> IF
   | "then"  -> THEN
   | "else"  -> ELSE
-  | "fst"   -> FIRST
-  | "snd"   -> SECOND
+  | "get"   -> GET
   | "while" -> WHILE
   | "do"    -> DO
   | "end"   -> END
   | _       -> VAR (str)
 
-# 55 "src/lexer.ml"
+# 54 "src/lexer.ml"
 let __ocaml_lex_tables = {
   Lexing.lex_base =
    "\000\000\249\255\250\255\001\000\002\000\007\000\075\000\254\255\
@@ -189,49 +188,49 @@ let rec token lexbuf =
 and __ocaml_lex_token_rec lexbuf __ocaml_lex_state =
   match Lexing.engine __ocaml_lex_tables __ocaml_lex_state lexbuf with
       | 0 ->
-# 62 "src/lexer.mll"
+# 61 "src/lexer.mll"
                               ( INT (int_of_string (lexeme lexbuf)) )
-# 195 "src/lexer.ml"
+# 194 "src/lexer.ml"
 
   | 1 ->
 let
-# 63 "src/lexer.mll"
+# 62 "src/lexer.mll"
                    c
-# 201 "src/lexer.ml"
+# 200 "src/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 63 "src/lexer.mll"
+# 62 "src/lexer.mll"
                               ( create_char_token c )
-# 205 "src/lexer.ml"
+# 204 "src/lexer.ml"
 
   | 2 ->
-# 64 "src/lexer.mll"
+# 63 "src/lexer.mll"
                               ( create_str_token (lexeme lexbuf) )
-# 210 "src/lexer.ml"
+# 209 "src/lexer.ml"
 
   | 3 ->
-# 65 "src/lexer.mll"
+# 64 "src/lexer.mll"
                               ( create_alpha_token (lexeme lexbuf) )
-# 215 "src/lexer.ml"
+# 214 "src/lexer.ml"
 
   | 4 ->
-# 66 "src/lexer.mll"
+# 65 "src/lexer.mll"
                               ( token lexbuf )
-# 220 "src/lexer.ml"
+# 219 "src/lexer.ml"
 
   | 5 ->
-# 67 "src/lexer.mll"
+# 66 "src/lexer.mll"
                               ( EOF )
-# 225 "src/lexer.ml"
+# 224 "src/lexer.ml"
 
   | 6 ->
 let
-# 68 "src/lexer.mll"
+# 67 "src/lexer.mll"
          c
-# 231 "src/lexer.ml"
+# 230 "src/lexer.ml"
 = Lexing.sub_lexeme_char lexbuf lexbuf.Lexing.lex_start_pos in
-# 68 "src/lexer.mll"
+# 67 "src/lexer.mll"
            ( raise @@ Lexer_error ("Unexpected character: " ^ Char.escaped c) )
-# 235 "src/lexer.ml"
+# 234 "src/lexer.ml"
 
   | __ocaml_lex_state -> lexbuf.Lexing.refill_buff lexbuf;
       __ocaml_lex_token_rec lexbuf __ocaml_lex_state

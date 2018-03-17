@@ -1,34 +1,6 @@
 
-** Conflict (shift/reduce) in state 83.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token WHILE.
-** This state is reached from prog after reading:
-
-SECOND exp 
-
-** The derivations that appear below have the following common factor:
-** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
-
-prog 
-exp EOF 
-(?)
-
-** In state 83, looking ahead at WHILE, reducing production
-** exp -> SECOND exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with WHILE
-SECOND exp . 
-
-** In state 83, looking ahead at WHILE, shifting is permitted
-** because of the following sub-derivation:
-
-SECOND exp 
-       exp exp 
-           . WHILE exp DO exp END 
-
-** Conflict (shift/reduce) in state 82.
-** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** Conflict (shift/reduce) in state 89.
+** Tokens involved: WHILE VAR SUB SEMI REF MUL LPAREN LET LEQ INT IF GET FUN FIX DIV BOOL BANG ASS ADD
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -41,22 +13,22 @@ prog
 exp EOF 
 (?)
 
-** In state 82, looking ahead at WHILE, reducing production
+** In state 89, looking ahead at WHILE, reducing production
 ** exp -> REF exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 REF exp . 
 
-** In state 82, looking ahead at WHILE, shifting is permitted
+** In state 89, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 REF exp 
     exp exp 
         . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 81.
-** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** Conflict (shift/reduce) in state 88.
+** Tokens involved: WHILE VAR SUB SEMI REF MUL LPAREN LET LEQ INT IF GET FUN FIX DIV BOOL BANG ASS ADD
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -69,22 +41,22 @@ prog
 exp EOF 
 (?)
 
-** In state 81, looking ahead at WHILE, reducing production
+** In state 88, looking ahead at WHILE, reducing production
 ** exp -> LET VAR COLON typ EQ exp IN exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 LET VAR COLON typ EQ exp IN exp . 
 
-** In state 81, looking ahead at WHILE, shifting is permitted
+** In state 88, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 LET VAR COLON typ EQ exp IN exp 
                             exp exp 
                                 . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 78.
-** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** Conflict (shift/reduce) in state 85.
+** Tokens involved: WHILE VAR SUB SEMI REF MUL LPAREN LET LEQ INT IF GET FUN FIX DIV BOOL BANG ASS ADD
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -97,22 +69,50 @@ prog
 exp EOF 
 (?)
 
-** In state 78, looking ahead at WHILE, reducing production
+** In state 85, looking ahead at WHILE, reducing production
 ** exp -> IF exp THEN exp ELSE exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 IF exp THEN exp ELSE exp . 
 
-** In state 78, looking ahead at WHILE, shifting is permitted
+** In state 85, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 IF exp THEN exp ELSE exp 
                      exp exp 
                          . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 73.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Conflict (shift/reduce) in state 80.
+** Tokens involved: WHILE VAR SUB SEMI REF MUL LPAREN LET LEQ INT IF GET FUN FIX DIV BOOL BANG ASS ADD
+** The following explanations concentrate on token WHILE.
+** This state is reached from prog after reading:
+
+GET INT exp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+exp EOF 
+(?)
+
+** In state 80, looking ahead at WHILE, reducing production
+** exp -> GET INT exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+GET INT exp . 
+
+** In state 80, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+GET INT exp 
+        exp exp 
+            . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 79.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -125,26 +125,82 @@ prog
 exp EOF 
 (?)
 
-** In state 73, looking ahead at WHILE, reducing production
+** In state 79, looking ahead at WHILE, reducing production
 ** exp -> FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
 
-** In state 73, looking ahead at WHILE, shifting is permitted
+** In state 79, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 FUN LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
                                                  exp exp 
                                                      . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 67.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Conflict (shift/reduce) in state 70.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
 FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+exp EOF 
+(?)
+
+** In state 70, looking ahead at WHILE, reducing production
+** exp -> FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
+
+** In state 70, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
+                                                     exp exp 
+                                                         . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 69.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
+** This state is reached from prog after reading:
+
+exp ASS exp 
+
+** The derivations that appear below have the following common factor:
+** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
+
+prog 
+exp EOF 
+(?)
+
+** In state 69, looking ahead at WHILE, reducing production
+** exp -> exp ASS exp 
+** is permitted because of the following sub-derivation:
+
+exp exp // lookahead token appears because exp can begin with WHILE
+exp ASS exp . 
+
+** In state 69, looking ahead at WHILE, shifting is permitted
+** because of the following sub-derivation:
+
+exp ASS exp 
+        exp exp 
+            . WHILE exp DO exp END 
+
+** Conflict (shift/reduce) in state 67.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
+** The following explanations concentrate on token WHILE.
+** This state is reached from prog after reading:
+
+exp ADD exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -154,53 +210,25 @@ exp EOF
 (?)
 
 ** In state 67, looking ahead at WHILE, reducing production
-** exp -> FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
+** exp -> exp ADD exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
-FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp . 
+exp ADD exp . 
 
 ** In state 67, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
-FIX VAR LPAREN VAR COLON typ RPAREN COLON typ RARROW exp 
-                                                     exp exp 
-                                                         . WHILE exp DO exp END 
-
-** Conflict (shift/reduce) in state 66.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token WHILE.
-** This state is reached from prog after reading:
-
-FIRST exp 
-
-** The derivations that appear below have the following common factor:
-** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
-
-prog 
-exp EOF 
-(?)
-
-** In state 66, looking ahead at WHILE, reducing production
-** exp -> FIRST exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with WHILE
-FIRST exp . 
-
-** In state 66, looking ahead at WHILE, shifting is permitted
-** because of the following sub-derivation:
-
-FIRST exp 
-      exp exp 
-          . WHILE exp DO exp END 
+exp ADD exp 
+        exp exp 
+            . WHILE exp DO exp END 
 
 ** Conflict (shift/reduce) in state 65.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
-exp ASS exp 
+exp DIV exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -210,25 +238,25 @@ exp EOF
 (?)
 
 ** In state 65, looking ahead at WHILE, reducing production
-** exp -> exp ASS exp 
+** exp -> exp DIV exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
-exp ASS exp . 
+exp DIV exp . 
 
 ** In state 65, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
-exp ASS exp 
+exp DIV exp 
         exp exp 
             . WHILE exp DO exp END 
 
 ** Conflict (shift/reduce) in state 63.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
-exp ADD exp 
+exp LEQ exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -238,25 +266,25 @@ exp EOF
 (?)
 
 ** In state 63, looking ahead at WHILE, reducing production
-** exp -> exp ADD exp 
+** exp -> exp LEQ exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
-exp ADD exp . 
+exp LEQ exp . 
 
 ** In state 63, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
-exp ADD exp 
+exp LEQ exp 
         exp exp 
             . WHILE exp DO exp END 
 
 ** Conflict (shift/reduce) in state 61.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
-exp DIV exp 
+exp SEMI exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -266,25 +294,25 @@ exp EOF
 (?)
 
 ** In state 61, looking ahead at WHILE, reducing production
-** exp -> exp DIV exp 
+** exp -> exp SEMI exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
-exp DIV exp . 
+exp SEMI exp . 
 
 ** In state 61, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
-exp DIV exp 
-        exp exp 
-            . WHILE exp DO exp END 
+exp SEMI exp 
+         exp exp 
+             . WHILE exp DO exp END 
 
 ** Conflict (shift/reduce) in state 59.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Tokens involved: WHILE VAR SUB SEMI REF MUL LPAREN LET LEQ INT IF GET FUN FIX DIV BOOL BANG ASS ADD
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
-exp LEQ exp 
+exp exp 
 
 ** The derivations that appear below have the following common factor:
 ** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
@@ -294,77 +322,21 @@ exp EOF
 (?)
 
 ** In state 59, looking ahead at WHILE, reducing production
-** exp -> exp LEQ exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with WHILE
-exp LEQ exp . 
-
-** In state 59, looking ahead at WHILE, shifting is permitted
-** because of the following sub-derivation:
-
-exp LEQ exp 
-        exp exp 
-            . WHILE exp DO exp END 
-
-** Conflict (shift/reduce) in state 57.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
-** The following explanations concentrate on token WHILE.
-** This state is reached from prog after reading:
-
-exp SEMI exp 
-
-** The derivations that appear below have the following common factor:
-** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
-
-prog 
-exp EOF 
-(?)
-
-** In state 57, looking ahead at WHILE, reducing production
-** exp -> exp SEMI exp 
-** is permitted because of the following sub-derivation:
-
-exp exp // lookahead token appears because exp can begin with WHILE
-exp SEMI exp . 
-
-** In state 57, looking ahead at WHILE, shifting is permitted
-** because of the following sub-derivation:
-
-exp SEMI exp 
-         exp exp 
-             . WHILE exp DO exp END 
-
-** Conflict (shift/reduce) in state 55.
-** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
-** The following explanations concentrate on token WHILE.
-** This state is reached from prog after reading:
-
-exp exp 
-
-** The derivations that appear below have the following common factor:
-** (The question mark symbol (?) represents the spot where the derivations begin to differ.)
-
-prog 
-exp EOF 
-(?)
-
-** In state 55, looking ahead at WHILE, reducing production
 ** exp -> exp exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 exp exp . 
 
-** In state 55, looking ahead at WHILE, shifting is permitted
+** In state 59, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp exp 
     exp exp 
         . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 54.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Conflict (shift/reduce) in state 58.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -377,22 +349,22 @@ prog
 exp EOF 
 (?)
 
-** In state 54, looking ahead at WHILE, reducing production
+** In state 58, looking ahead at WHILE, reducing production
 ** exp -> exp MUL exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 exp MUL exp . 
 
-** In state 54, looking ahead at WHILE, shifting is permitted
+** In state 58, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp MUL exp 
         exp exp 
             . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 52.
-** Tokens involved: WHILE VAR REF LPAREN LET INT IF FUN FIX BOOL BANG
+** Conflict (shift/reduce) in state 56.
+** Tokens involved: WHILE VAR REF LPAREN LET INT IF GET FUN FIX BOOL BANG
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -405,22 +377,22 @@ prog
 exp EOF 
 (?)
 
-** In state 52, looking ahead at WHILE, reducing production
+** In state 56, looking ahead at WHILE, reducing production
 ** exp -> exp SUB exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 exp SUB exp . 
 
-** In state 52, looking ahead at WHILE, shifting is permitted
+** In state 56, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 exp SUB exp 
         exp exp 
             . WHILE exp DO exp END 
 
-** Conflict (shift/reduce) in state 50.
-** Tokens involved: WHILE VAR SUB SEMI SECOND REF MUL LPAREN LET LEQ INT IF FUN FIX FIRST DIV BOOL BANG ASS ADD
+** Conflict (shift/reduce) in state 54.
+** Tokens involved: WHILE VAR SUB SEMI REF MUL LPAREN LET LEQ INT IF GET FUN FIX DIV BOOL BANG ASS ADD
 ** The following explanations concentrate on token WHILE.
 ** This state is reached from prog after reading:
 
@@ -433,14 +405,14 @@ prog
 exp EOF 
 (?)
 
-** In state 50, looking ahead at WHILE, reducing production
+** In state 54, looking ahead at WHILE, reducing production
 ** exp -> BANG exp 
 ** is permitted because of the following sub-derivation:
 
 exp exp // lookahead token appears because exp can begin with WHILE
 BANG exp . 
 
-** In state 50, looking ahead at WHILE, shifting is permitted
+** In state 54, looking ahead at WHILE, shifting is permitted
 ** because of the following sub-derivation:
 
 BANG exp 

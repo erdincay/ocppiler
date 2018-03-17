@@ -43,8 +43,7 @@ let create_alpha_token str =
   | "if"    -> IF
   | "then"  -> THEN
   | "else"  -> ELSE
-  | "fst"   -> FIRST
-  | "snd"   -> SECOND
+  | "get"   -> GET
   | "while" -> WHILE
   | "do"    -> DO
   | "end"   -> END

@@ -35,8 +35,7 @@ open Lang
 %token DIV    (* /     *)
 %token MUL    (* *     *)
 
-%token FIRST  (* fst   *)
-%token SECOND (* snd   *)
+%token GET    (* get   *)
 %token WHILE  (* while *)
 %token DO     (* do    *)
 %token END    (* end   *)
@@ -49,7 +48,6 @@ open Lang
 %left LEQ
 %left SUB ADD
 %left DIV MUL
-%left FIRST SECOND
 
 %start <Lang.exp> prog
 
@@ -61,7 +59,8 @@ exp: LPAREN RPAREN                                                            { 
    | n=INT                                                                    { EInt n }
    | b=BOOL                                                                   { EBool b }
    | vr=VAR                                                                   { EVar (Var vr) }
-   | LPAREN e1=exp COMMA e2=exp RPAREN                                        { EPair (e1, e2) }
+   | LPAREN e1=exp COMMA e2=tuple RPAREN                                      { let e = e1::e2 in
+                                                                                ETuple (e, List.length e) }
    | LPAREN e=exp RPAREN                                                      { e }
    | LET vr=VAR COLON t=typ EQ e1=exp IN e2=exp                               { ELet (Var vr, t, e1, e2) }
    | FUN LPAREN vr=VAR COLON t1=typ RPAREN COLON t2=typ RARROW e=exp          { EFun (Var vr, t1, t2, e) }
@@ -77,14 +76,20 @@ exp: LPAREN RPAREN                                                            { 
    | e1=exp DIV e2=exp                                                        { EOp (e1, ODiv, e2) }
    | e1=exp MUL e2=exp                                                        { EOp (e1, OMul, e2) }
    | e1=exp e2=exp                                                            { EApp (e1, e2) }
-   | FIRST e=exp                                                              { EFst e }
-   | SECOND e=exp                                                             { ESnd e }
+   | GET n=INT e=exp                                                          { EGet (n, e) }
    | WHILE e1=exp DO e2=exp END                                               { EWhile (e1, e2) }
 
-typ: TUNIT                { TUnit }
-   | TINT                 { TInt }
-   | TBOOL                { TBool }
-   | t1=typ RARROW t2=typ { TConv (t1, t2) }
-   | t1=typ MUL t2=typ    { TPair (t1, t2) }
-   | LANGL t=typ RANGL    { TRef t }
-   | LPAREN t=typ RPAREN  { t }
+typ: TUNIT                                { TUnit }
+   | TINT                                 { TInt }
+   | TBOOL                                { TBool }
+   | t1=typ RARROW t2=typ                 { TConv (t1, t2) }
+   | LPAREN t1=typ MUL t2=tupletyp RPAREN { let t = t1::t2 in
+                                             TTuple (t, List.length t) }
+   | LANGL t=typ RANGL                    { TRef t }
+   | LPAREN t=typ RPAREN                  { t }
+
+tupletyp: t1=typ MUL t2=tupletyp { t1::t2 }
+        | t=typ                  { t::[] }
+
+tuple: e1=exp COMMA e2=tuple { e1::e2 }
+     | e=exp                 { e::[] }

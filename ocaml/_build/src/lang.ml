@@ -1,4 +1,5 @@
-(* Credit to: Zachary Susag (@zsusag on GitHub) for helping me figure out let/fun/fix eval & subst *)
+(* Credit to: Zachary Susag (@zsusag on GitHub) for helping me figure out let/fun/fix eval and subst, and if evaluation *)
+(* Also thumbs up to Reilly Noonan Grant, whose code I peeked at on occasion to get myself up to speed with Menhir's structure *)
 (* LANGUAGE BASICS *)
 (* e::= *)
 type exp =
@@ -6,7 +7,7 @@ type exp =
 | EInt    of int                          (* n                     *)
 | EBool   of bool                         (* b                     *)
 | EVar    of var                          (* x                     *)
-| EPair   of (exp * exp)                  (* (e1, e2)              *)
+| ETuple  of (exp list) * int             (* (e1, e2)              *)
 | EPtr    of typ * int                    (* Ptr(n)                *)
 | ELet    of var * typ * exp * exp        (* let x = e1 in e2      *)
 | EFun    of var * typ * typ * exp        (* fun x -> e            *)
@@ -18,18 +19,17 @@ type exp =
 | EDeref  of exp                          (* !e                    *)
 | EOp     of exp * operator * exp         (* e1 (+) e2             *)
 | EApp    of exp * exp                    (* e1 e2                 *)
-| EFst    of exp                          (* fst e                 *)
-| ESnd    of exp                          (* snd e                 *)
+| EGet    of int * exp                    (* get e1, e2...         *)
 | EWhile  of exp * exp                    (* while e1 do e2 end    *)
 
 and value =
 | VUnit
-| VInt  of int
-| VBool of bool
-| VPair of value * value
-| VPtr  of typ * int
-| VFun  of var * typ * typ * exp
-| VFix  of var * var * typ * typ * exp
+| VInt   of int
+| VBool  of bool
+| VTuple of (value list) * int
+| VPtr   of typ * int
+| VFun   of var * typ * typ * exp
+| VFix   of var * var * typ * typ * exp
 
 and operator =
 | OLEq (* <= *)
@@ -43,17 +43,15 @@ and var =
 
 (* t::= *)
 and typ =
-| TUnit              (* ()       *)
-| TInt               (* int      *)
-| TBool              (* bool     *)
-| TConv of typ * typ (* t1 -> t2 *)
-| TPair of typ * typ (* (e1, e2) *)
-| TRef  of typ       (* <t>      *)
+| TUnit                      (* ()       *)
+| TInt                       (* int      *)
+| TBool                      (* bool     *)
+| TConv of typ * typ         (* t1 -> t2 *)
+| TTuple of (typ list) * int (* (e1, e2) *)
+| TRef  of typ               (* <t>      *)
 
 type context = (var * typ) list
 type environment = (int * value) list
-
-(* let env = ref [] *)
 
 (* EXTERNALS *)
 let context_bind (ctx:context) (vr:var) (t:typ) =
@@ -72,6 +70,11 @@ let gen_ptr (env:environment) (t:typ) (vl:value) =
   let a = gen_addr () in
   (environment_assign env a vl, VPtr (t, a))
 
+let rec get_n n vls =
+  match (n, vls) with
+  | (0, vl::_)  -> vl
+  | (n, vl::vls) -> get_n (n-1) vls
+  | (n, _)     -> failwith "Tuple doesn't have that many values"
 
 (* STRINGS *)
 let rec string_of_exp (e:exp) : string =
@@ -80,7 +83,8 @@ let rec string_of_exp (e:exp) : string =
   | EInt n                             -> string_of_value (VInt n)
   | EBool b                            -> string_of_value (VBool b)
   | EVar (Var vr)                      -> vr
-  | EPair (e1, e2)                     -> "(" ^ string_of_exp e1 ^ ", " ^ string_of_exp e2 ^ ")"
+  | ETuple (exps, n)                   -> let comma_between ex = (string_of_exp ex) ^ ", " in
+                                          "(" ^ (List.fold_left (^) "" (List.map comma_between exps)) ^ ")"
   | EPtr (t, a)                        -> string_of_value (VPtr (t, a))
   | ELet (Var vr, t, e1, e2)           -> "(let "  ^ vr ^ " : " ^ string_of_typ t ^ " = " ^ string_of_exp e1 ^ " in " ^ string_of_exp e2 ^ ")"
   | EFun (Var vr, t1, t2, e)           -> string_of_value (VFun (Var vr, t1, t2, e))
@@ -92,8 +96,7 @@ let rec string_of_exp (e:exp) : string =
   | EDeref e                           -> "!" ^ string_of_exp e
   | EOp (e1, o, e2)                    -> "(" ^ string_of_exp e1 ^ " " ^ string_of_operator o ^ " " ^ string_of_exp e2 ^ ")"
   | EApp (e1, e2)                      -> "( " ^ string_of_exp e1 ^ " " ^ string_of_exp e2 ^ " )"
-  | EFst e                             -> "(fst " ^ string_of_exp e ^ ")"
-  | ESnd e                             -> "(snd " ^ string_of_exp e ^ ")"
+  | EGet (n, e)                        -> "(get " ^ string_of_int n ^ " " ^ string_of_exp e ^ ")"
   | EWhile (e1, e2)                    -> "(while " ^ string_of_exp e1 ^ " do " ^ string_of_exp e2 ^ " end)"
 
 and string_of_value (vl:value) : string =
@@ -101,7 +104,8 @@ and string_of_value (vl:value) : string =
   | VUnit                              -> "()"
   | VInt n                             -> string_of_int n
   | VBool b                            -> string_of_bool b
-  | VPair (vl1, vl2)                   -> "(" ^ string_of_value vl1 ^ ", " ^ string_of_value vl2 ^ ")"
+  | VTuple (vls, n)                    -> let comma_between v = (string_of_value v) ^ ", " in
+                                          "(" ^ (List.fold_left (^) "" (List.map comma_between vls)) ^ ")"
   | VFun (Var vr, t1, t2, e)           -> "(fun (" ^ vr ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " -> " ^ string_of_exp e ^ ")"
   | VFix (Var vr1, Var vr2, t1, t2, e) -> "(fix " ^ vr1 ^ " (" ^ vr2 ^ ":" ^ string_of_typ t1 ^ ") : " ^ string_of_typ t2 ^ " ->" ^ string_of_exp e ^ ")"
   | VPtr (t, n)                        -> "Ptr(" ^ string_of_int n ^ ")"
@@ -120,7 +124,8 @@ and string_of_typ (t:typ) : string =
   | TInt           -> "int"
   | TBool          -> "bool"
   | TConv (t1, t2) -> string_of_typ t1 ^ " -> " ^ string_of_typ t2
-  | TPair (t1, t2) -> string_of_typ t1 ^ " * " ^ string_of_typ t2
+  | TTuple (ts, n) -> let star_between ty = (string_of_typ ty) ^ ", " in
+                      "(" ^ (List.fold_left (^) "" (List.map star_between ts)) ^ ")"
   | TRef t         -> "<" ^ string_of_typ t ^ ">"
 
 (* EVALUATION *)
@@ -128,6 +133,7 @@ let rec interpret (e:exp) : value =
   snd (eval [] e)
 
 and eval (env:environment) (e:exp) : (environment * value) =
+  (* huge thanks to Theo Kalfas for this pattern that saved my environment *)
   let envr = ref env in
   let evalr e =
   let (saved_env, val_only_eval) = eval !envr e in
@@ -137,7 +143,7 @@ and eval (env:environment) (e:exp) : (environment * value) =
   | EUnit                      -> VUnit
   | EInt n                     -> VInt n
   | EBool b                    -> VBool b
-  | EPair (e1, e2)             -> VPair (evalr e1, evalr e2)
+  | ETuple (e, n)              -> VTuple (List.map evalr e, n)
   | ELet (vr, t, e1, e2)       -> let vl = evalr e1 in evalr (subst vl vr e2)
   | EFun (vr, t1, t2, e)       -> VFun (vr, t1, t2, e)
   | EFix (vr1, vr2, t1, t2, e) -> VFix (vr1, vr2, t1, t2, e)
@@ -159,12 +165,11 @@ and eval (env:environment) (e:exp) : (environment * value) =
                                    | VFun (x, t1, t2, e)    -> evalr (subst (evalr e2) x e)
                                    | VFix (f, x, t1, t2, e) -> evalr (subst (VFix (f, x, t1, t2, e)) f (subst (evalr e2) x e))
                                    | _                      -> failwith "Expected applicable function.")
-  | EFst e                     -> (match (evalr e) with
-                                   | VPair (vl1, vl2) -> vl1
-                                   | _                -> failwith "fst was not given pair.")
-  | ESnd e                     -> (match (evalr e) with
-                                   | VPair (vl1, vl2) -> vl2
-                                   | _                -> failwith "fst was not given pair.")
+  | EGet (ng, e)              -> (match (evalr e) with
+                                   | VTuple (vls, nt) -> if ng < nt
+                                                         then get_n ng vls
+                                                         else failwith "Index out of bounds in tuple."
+                                   | _                -> failwith "get was not given tuple.")
   | EWhile (e1, e2)            -> (evalr (EIf (e1, ESeq (e2, EWhile (e1, e2)), EUnit)))
   | EPtr (t, a)                -> VPtr (t, a)
   | _                          -> failwith ("Unbound variable " ^ string_of_exp e)
@@ -199,7 +204,7 @@ and subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
   | EUnit                      -> EUnit
   | EInt n                     -> EInt n
   | EBool b                    -> EBool b
-  | EPair (e1, e2)             -> EPair (subst e1, subst e2)
+  | ETuple (exps, n)           -> ETuple (List.map subst exps, n)
   | EVar vr1                   -> if vr1 = vr_sub
                                   then value_to_exp vl_sub
                                   else EVar vr1
@@ -219,8 +224,7 @@ and subst (vl_sub:value) (vr_sub:var) (e_sub:exp) : exp =
   | EDeref e                   -> EDeref (subst e)
   | EOp (e1, o, e2)            -> EOp (subst e1, o, subst e2)
   | EApp (e1, e2)              -> EApp (subst e1, subst e2)
-  | EFst (e)                   -> EFst (subst e)
-  | ESnd (e)                   -> ESnd (subst e)
+  | EGet (n, e)                -> EGet (n, subst e)
   | EPtr (t, a)                -> EPtr (t, a)
   | EWhile (e1, e2)            -> EWhile (subst e1, subst e2)
 
@@ -229,7 +233,7 @@ and value_to_exp (vl:value) : exp =
   | VUnit                              -> EUnit
   | VInt n                             -> EInt n
   | VBool b                            -> EBool b
-  | VPair (vl1, vl2)                   -> EPair (value_to_exp vl1, value_to_exp vl2)
+  | VTuple (vls, n)                    -> ETuple (List.map value_to_exp vls, n)
   | VFun (Var vr, t1, t2, e)           -> EFun (Var vr, t1, t2, e)
   | VFix (Var vr1, Var vr2, t1, t2, e) -> EFix (Var vr1, Var vr2, t1, t2, e)
   | VPtr (t, a)                        -> EPtr (t, a)
@@ -243,9 +247,7 @@ and typecheck (ctx:context) (e:exp) : typ =
   | EUnit                      -> TUnit
   | EInt n                     -> TInt
   | EBool b                    -> TBool
-  | EPair (e1, e2)             -> let t1 = typecheck ctx e1 in
-                                  let t2 = typecheck ctx e2 in
-                                  TPair (t1, t2)
+  | ETuple (exps, n)           -> TTuple ((List.map (typecheck ctx) exps), n)
   | EVar vr                    -> (try List.assoc vr ctx
                                   with Not_found -> failwith "Variable not found in context.")
   | ELet (vr1, t, e1, e2)      -> let this_ctx = context_bind ctx vr1 t in
@@ -296,14 +298,11 @@ and typecheck (ctx:context) (e:exp) : typ =
                                                          then tc2
                                                          else failwith "Type mismatch in function application"
                                    | _                -> failwith "Type mismatch in function application: Expected e1 to be function.")
-  | EFst e                     -> let t = typecheck ctx e in
-                                  (match t with
-                                   | TPair (t1, t2) -> t1
-                                   | _              -> failwith "Type mismatch in fst: expected pair.")
-  | ESnd e                     -> let t = typecheck ctx e in
-                                  (match t with
-                                   | TPair (t1, t2) -> t1
-                                   | _              -> failwith "Type mismatch in snd: expected pair.")
+  | EGet (ng, e)                -> (match (typecheck ctx e) with
+                                    | TTuple (ts, nt) -> if ng < nt
+                                                         then List.nth ts ng
+                                                         else failwith "Index out of bounds in ttuple."
+                                    | _                -> failwith "get was not given tuple.")
   | EPtr (t, a)                -> TRef t
   | EWhile (e1, e2)            -> let t1 = typecheck ctx e1 in
                                   match t1 with

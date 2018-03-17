@@ -10,7 +10,6 @@ type token =
   | TBOOL
   | SUB
   | SEMI
-  | SECOND
   | RPAREN
   | REF
   | RARROW
@@ -23,9 +22,9 @@ type token =
   | INT of (int)
   | IN
   | IF
+  | GET
   | FUN
   | FIX
-  | FIRST
   | EQ
   | EOF
   | END
